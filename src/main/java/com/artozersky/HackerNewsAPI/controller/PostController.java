@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.artozersky.HackerNewsAPI.controller;
 
-import com.example.demo.model.Post;
-import com.example.demo.service.PostService;
+import com.artozersky.HackerNewsAPI.model.Post;
+import com.artozersky.HackerNewsAPI.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

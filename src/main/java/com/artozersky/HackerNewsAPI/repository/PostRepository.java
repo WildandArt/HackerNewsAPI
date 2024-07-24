@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.artozersky.HackerNewsAPI.repository;
 
-import com.example.demo.model.Post;
+import com.artozersky.HackerNewsAPI.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

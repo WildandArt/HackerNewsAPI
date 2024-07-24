@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.artozersky.HackerNewsAPI.service;
 
-import com.example.demo.model.Post;
-import com.example.demo.repository.PostRepository;
+import com.artozersky.HackerNewsAPI.model.Post;
+import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class PostService {
-
     @Autowired
     private PostRepository postRepository;
 

@@ -1,4 +1,6 @@
-package com.example.demo.model;
+package com.artozersky.HackerNewsAPI.model;
+
+import java.sql.Timestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
+    private Integer donvotes;
+    private Integer upvotes;
+    private Integer currentVotes;
+    private Timestamp created_at;
+
 
     // Getters and setters
 
@@ -29,4 +36,5 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
+
 }
