@@ -6,8 +6,8 @@ services:
     container_name: postgres
     environment:
       POSTGRES_DB: hackernewsdb
-      POSTGRES_USER: myusername
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - hackernews-api_dbvol:/var/lib/postgresql/data
     ports:
@@ -20,8 +20,8 @@ services:
     container_name: hackernewsapi
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hackernewsdb
-      SPRING_DATASOURCE_USERNAME: myusername
-      SPRING_DATASOURCE_PASSWORD: mypassword
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
     depends_on:
       - db
     ports:
