@@ -6,50 +6,63 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String content;
-    private Integer downvotes;
-    private Integer upvotes;
+    private Long postId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+    private String author;
+    private String url;
+    private String title;
     private Integer currentVotes;
-    private Timestamp created_at;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-
-    // Getters and setters
-
-    public Long getId() {
-        return id;
+    public Long getPostId() {
+        return postId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 
-    public String getContent() {
-        return content;
+    public User getUser() {
+        return user;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-    public Integer getDownvotes() {
-        return downvotes;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public void setDownvotes(Integer downvotes) {
-        this.downvotes = downvotes;
+    public String getAuthor() {
+        return author;
     }
 
-    public Integer getUpvotes() {
-        return upvotes;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public void setUpvotes(Integer upvotes) {
-        this.upvotes = upvotes;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Integer getCurrentVotes() {
@@ -61,11 +74,18 @@ public class Post {
     }
 
     public Timestamp getCreatedAt() {
-        return created_at;
+        return createdAt;
     }
 
-    public void setCreatedAt(Timestamp created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
