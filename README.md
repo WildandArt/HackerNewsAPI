@@ -30,7 +30,7 @@ Welcome to the Mini Hacker News project! This is a lightweight version of the po
 
    
 ```bash
-   git clone https://github.com/wildandart/mini-hacker-news.git
+   git clone https://github.com/WildandArt/HackerNewsAPI.git
    cd mini-hacker-news
 ```
 
