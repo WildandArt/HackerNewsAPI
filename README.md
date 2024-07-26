@@ -97,7 +97,7 @@ curl -X POST http://localhost:8080/posts/<ID>/downvote
 
 Below is the schema used by the Mini Hacker News database:
 
-![Database Schema](DBSchema.png)
+![Database Schema](img/DBSchema.png)
 
 ## Contributing
 
