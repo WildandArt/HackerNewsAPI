@@ -29,9 +29,10 @@ Welcome to the Mini Hacker News project! This is a lightweight version of the po
 1. **Clone the repository**
 
    
-bash
+```bash
    git clone https://github.com/wildandart/mini-hacker-news.git
    cd mini-hacker-news
+```
 
 
 2. **Install dependencies**
@@ -39,18 +40,18 @@ bash
    Using Maven, you can install all required dependencies for the project:
 
    
-bash
+```bash
    mvn install
-
+```
 
 3. **Run the application**
 
    Once the dependencies are installed, you can run the application using:
 
    
-bash
+```bash
    mvn spring-boot:run
-
+```
 
    This will start the application on http://localhost:8080.
 
@@ -60,43 +61,43 @@ Here are some examples of how you can interact with the API using curl:
 
 ### Create a Post
 
-bash
+```bash
 curl -X POST http://localhost:8080/posts \
 -H "Content-Type: application/json" \
 -d '{"content": "This is a new post"}'
-
+```
 
 ### Get Top Posts
 
-bash
+```bash
 curl http://localhost:8080/posts
-
+```
 
 ### Update a Post
 
-bash
+```bash
 curl -X PUT http://localhost:8080/posts/<ID> \
 -H "Content-Type: application/json" \
 -d '{"content": "Updated post content"}'
-
+```
 
 ### Upvote a Post
 
-bash
+```bash
 curl -X POST http://localhost:8080/posts/<ID>/upvote
-
+```
 
 ### Downvote a Post
 
-bash
+```bash
 curl -X POST http://localhost:8080/posts/<ID>/downvote
-
+```
 
 ## Database Schema
 
 Below is the schema used by the Mini Hacker News database:
 
-![Database Schema](../java/HackerNewsAPI/DBSchema.png)
+![Database Schema](DBSchema.png)
 
 ## Contributing
 
