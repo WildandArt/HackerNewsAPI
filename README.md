@@ -1,4 +1,3 @@
-# HackerNewsAPI
 
 # Web Service RESTful API for HackerNews Project
 
@@ -9,7 +8,6 @@
     -H "Content-Type: application/json" \
     -d '{"content": "This is a new post"}'
 
-
 ### To Get Top posts:
     curl http://localhost:8080/posts
 
@@ -17,10 +15,6 @@
     curl -X PUT http://localhost:8080/posts/<ID> \
     -H "Content-Type: application/json" \
     -d '{"content": "Updated post content"}'
-
-
-### To Delete a post by ID:
-    curl -X DELETE http://localhost:8080/posts/<ID>
 
 
 ### To Upvote a post:

@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @RestController
 @RequestMapping("/posts")
@@ -35,14 +39,50 @@ public class PostController {
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Post> updatePost(@PathVariable("id") Long id, @RequestBody Post postDetails) {
-        try {
+    public ResponseEntity<Post> updatePost(@PathVariable Long id, @RequestBody Post postDetails) {
+        try{
+            Post existingPost = postService.getPostById(id);
+            if(null == existingPost){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
             Post updatedPost = postService.updatePost(id, postDetails);
             return new ResponseEntity<>(updatedPost, HttpStatus.OK);
-        } catch (Exception e) {
+        }
+        catch(Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PutMapping("/{id}/downvote")
+    public ResponseEntity<Post> downVote(@PathVariable Long id) {
+        try{
+            Post existingPost = postService.getPostById(id);
+            if(null == existingPost){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+            Post updatedPost = postService.downVotePost(id);
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/{id}/upvote")
+    public ResponseEntity<Post> upVote(@PathVariable Long id) {
+        try{
+            Post existingPost = postService.getPostById(id);
+            if(null == existingPost){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+            Post updatedPost = postService.upVotePost(id);
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
     
 
 
