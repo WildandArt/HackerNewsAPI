@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class CacheConfig{
     @Bean
     public CacheManager cacheManager(){
-        return new CustomCacheManager(100);
+        return new HNACacheManager(100);
     }
 }

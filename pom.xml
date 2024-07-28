@@ -53,7 +53,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+	
+   <dependency>
+     <groupId>com.ning</groupId>
+     <artifactId>async-http-client</artifactId>
+     <version>1.9.40</version>
+   </dependency>
+ 
+   <dependency>
+     <groupId>com.google.guava</groupId>
+     <artifactId>guava</artifactId>
+     <version>28.0-jre</version>
+   </dependency>
+ </dependencies>
 
 	<build>
 		<plugins>
