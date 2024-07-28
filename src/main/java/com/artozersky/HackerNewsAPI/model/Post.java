@@ -88,4 +88,34 @@ public class Post {
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public void setUpvotes(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setUpvotes'");
+    }
+
+    public void setDownvotes(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDownvotes'");
+    }
+
+    public Object getContent() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getContent'");
+    }
+
+    public void setContent(Object content) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setContent'");
+    }
+
+    public int getUpvotes() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUpvotes'");
+    }
+
+    public int getDownvotes() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDownvotes'");
+    }
 }

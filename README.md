@@ -99,6 +99,10 @@ Below is the schema used by the Mini Hacker News database:
 
 ![Database Schema](img/DBSchema.png)
 
+## Invalidation
+
+(img/CacheInvalidationStrategy.jpg)
+
 ## Contributing
 
 Contributions to the Mini Hacker News project are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
