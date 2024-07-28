@@ -101,7 +101,7 @@ Below is the schema used by the Mini Hacker News database:
 
 ## Invalidation
 
-(img/CacheInvalidationStrategy.jpg)
+![Invalidatoin Strategy](img/CacheInvalidationStrategy.jpg)
 
 ## Contributing
 
