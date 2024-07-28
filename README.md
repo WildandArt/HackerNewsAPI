@@ -99,7 +99,7 @@ Below is the schema used by the Mini Hacker News database:
 
 ![Database Schema](img/DBSchema.png)
 
-## Invalidation
+## Invalidation Strategy
 
 ![Invalidatoin Strategy](img/CacheInvalidationStrategy.jpg)
 
