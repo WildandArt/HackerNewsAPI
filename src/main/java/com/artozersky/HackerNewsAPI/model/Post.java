@@ -89,7 +89,7 @@ public class Post {
     public void setCreatedHoursAgo(Integer createdHoursAgo) {
         this.createdHoursAgo = createdHoursAgo;
     }
-    public Integer getCreatedHoursago() {
+    public Integer getCreatedHoursAgo() {
         return this.createdHoursAgo;
     }
 }
