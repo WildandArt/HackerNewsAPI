@@ -17,11 +17,14 @@ public class PostController {
 
     @Autowired
     private PostService postService;
-   
+   /*
+    * The creation of a new post is straightforward. Create a new Post and save it into DB. 
+    If for some reason creation fails, exception is caught and presented to the user in a Browser.
+    */
     @PostMapping   
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+    public ResponseEntity<Post> createPost(@RequestBody Post post, @RequestParam Long userId) {
         try {
-            Post createdPost = postService.savePost(post);
+            Post createdPost = postService.savePost(post, userId);
             return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -36,23 +39,23 @@ public class PostController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Post> updatePost(@PathVariable("id") Long id, @RequestBody Post post) {
-        try {
-            Post updatedPost = postService.updatePost(id, post);
-            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-    @PutMapping("/{id}")
-    public ResponseEntity<Post> upvotePost(@PathVariable("id") Long id, @RequestBody Post post) {
-        return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-    @PutMapping("/{id}")
-    public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id, @RequestBody Post post) {
-        return new ResponseEntity<>(null, HttpStatus.OK);
-    }
+    // @PutMapping("/{id}")
+    // public ResponseEntity<Post> updatePost(@PathVariable("id") Long id, @RequestBody Post post) {
+    //     try {
+    //         Post updatedPost = postService.updatePost(id, post);
+    //         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
+    // @PutMapping("/{id}")
+    // public ResponseEntity<Post> upvotePost(@PathVariable("id") Long id, @RequestBody Post post) {
+    //     return new ResponseEntity<>(null, HttpStatus.OK);
+    // }
+    // @PutMapping("/{id}")
+    // public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id, @RequestBody Post post) {
+    //     return new ResponseEntity<>(null, HttpStatus.OK);
+    // }
 
   
     
