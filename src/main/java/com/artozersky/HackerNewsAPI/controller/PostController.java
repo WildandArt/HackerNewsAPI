@@ -22,9 +22,11 @@ public class PostController {
     If for some reason creation fails, exception is caught and presented to the user in a Browser.
     */
     @PostMapping   
-    public ResponseEntity<Post> createPost(@RequestBody Post post, @RequestParam Long userId) {
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
         try {
-            Post createdPost = postService.savePost(post, userId);
+            // System.out.println("userId: " + userId);  // Log the userId
+            // System.out.println("Post: " + post);   
+            Post createdPost = postService.savePost(post);
             return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -56,12 +58,4 @@ public class PostController {
     // public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id, @RequestBody Post post) {
     //     return new ResponseEntity<>(null, HttpStatus.OK);
     // }
-
-  
-    
-
-
-    
-
-
 }

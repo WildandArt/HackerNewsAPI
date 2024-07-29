@@ -5,6 +5,9 @@ import com.artozersky.HackerNewsAPI.model.User;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.repository.UserRepository;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +22,12 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
+
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
-    public Post savePost(Post post, Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        post.setUser(user);
+    public Post savePost(Post post) {
+        User user = userRepository.findById(post.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
         post.setCurrentVotes(0);
         post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         double timeInHours = 0;

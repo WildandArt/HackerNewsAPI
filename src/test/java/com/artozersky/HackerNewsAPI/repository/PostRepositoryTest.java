@@ -33,7 +33,7 @@ public class PostRepositoryTest {
 
         // Create a new post
         Post post = new Post();
-        post.setUser(user);
+        post.setUserId(1l);
         post.setAuthor("John Doe");
         post.setTitle("Interesting Article");
         post.setUrl("http://example.com/interesting-article");
@@ -53,7 +53,7 @@ public class PostRepositoryTest {
         assertThat(retrievedPost.getAuthor()).isEqualTo(post.getAuthor());
         assertThat(retrievedPost.getTitle()).isEqualTo(post.getTitle());
         assertThat(retrievedPost.getUrl()).isEqualTo(post.getUrl());
-        assertThat(retrievedPost.getUser().getUserId()).isEqualTo(user.getUserId());
+        assertThat(retrievedPost.getUserId()).isEqualTo(user.getUserId());
         assertThat(retrievedPost.getCreatedAt()).isNotNull();
         assertThat(retrievedPost.getCurrentVotes()).isEqualTo(post.getCurrentVotes());
         assertThat(retrievedPost.getScore()).isEqualTo(post.getScore());

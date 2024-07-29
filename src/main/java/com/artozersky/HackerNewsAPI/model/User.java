@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -18,12 +19,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+
     private Timestamp createdAt;
-    private int karma;
+    private Integer karma;
     private String about;
     private String username;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private List<Post> posts;
 
     public Long getUserId() {
@@ -43,7 +46,7 @@ public class User {
     public int getKarma() {
         return karma;
     }
-    public void setKarma(int karma) {
+    public void setKarma(Integer karma) {
         this.karma = karma;
     }
 

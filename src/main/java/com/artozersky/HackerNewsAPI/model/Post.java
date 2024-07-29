@@ -2,43 +2,49 @@ package com.artozersky.HackerNewsAPI.model;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    // @ManyToOne
+    // @JoinColumn(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
 
     private String author;
     private String url;
     private String title;
+    @Column(name = "current_votes")
     private Integer currentVotes;
+    @Column(name = "created_at")
     private Timestamp createdAt;
     private Double score;
+    @Column(name = "created_hours_ago")
     private Integer createdHoursAgo;
 
     public Long getPostId() {
         return postId;
     }
-    // public void setPostId(Long postId) {
-    //     this.postId = postId;
-    // }
-
-    public User getUser() {
-        return user;
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
-    public void setUser(User user) {
-        this.user = user;
+    public Long getUserId() {
+        return userId;
+    }
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
     public String getAuthor() {
         return author;

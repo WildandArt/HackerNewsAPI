@@ -62,9 +62,14 @@ Here are some examples of how you can interact with the API using curl:
 ### Create a Post
 
 ```bash
-curl -X POST http://localhost:8080/posts \
--H "Content-Type: application/json" \
--d '{"content": "This is a new post"}'
+curl -X POST http://localhost:8081/posts \
+     -H "Content-Type: application/json" \
+     -d '{
+           "userId": 1,
+           "author": "John Doe",
+           "url": "http://example.com/post",
+           "title": "My First Post"
+         }'
 ```
 
 ### Get Top Posts
