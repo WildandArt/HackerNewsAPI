@@ -49,14 +49,20 @@ public class PostService {
         }
     }
    
-    // public Post updatePost(Long id, Post postDetails) {
-    //     Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-    //     post.setContent(postDetails.getContent());
-    //     post.setUpvotes(postDetails.getUpvotes());
-    //     post.setDownvotes(postDetails.getDownvotes());
-    //     post.setCurrentVotes(postDetails.getCurrentVotes());
-    //     return postRepository.save(post);
-    // }
+    public Post updatePost(Long id, Post postDetails) {
+        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+        Integer currentVotes = postDetails.getCurrentVotes();
+        post.setAuthor(postDetails.getAuthor());
+        post.setUrl(postDetails.getUrl());
+        post.setTitle(postDetails.getTitle());
+        post.setCurrentVotes(currentVotes);
+        /* fields that need to be recalculated at each update */
+        post.setCreatedHoursAgo(0);
+        post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
+
+        return postRepository.save(post);
+    }
     // public Post getPostById(Long id) {
     //     return postRepository.findById(id).orElse(null);
     // }
