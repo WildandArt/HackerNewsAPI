@@ -5,9 +5,6 @@ import com.artozersky.HackerNewsAPI.model.User;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.repository.UserRepository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +45,7 @@ public class PostService {
             return (points - 1) / Math.pow((timeInHours + 2), gravity);
         }
     }
-   
+   /* Consider logic that checks first which fields diff, it may be more efficient */
     public Post updatePost(Long id, Post postDetails) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
         Integer currentVotes = postDetails.getCurrentVotes();
@@ -66,14 +63,12 @@ public class PostService {
     // public Post getPostById(Long id) {
     //     return postRepository.findById(id).orElse(null);
     // }
-    // public Post downVotePost(Long id) {
-    //     Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-    //     post.setDownvotes(post.getDownvotes() + 1);
-    //     post.setCurrentVotes(post.getCurrentVotes() - 1);
-    //     return postRepository.save(post);
-    // }
-    // public Post upVotePost(Long id) {
-       
-    // }
+    public Post updateVote(Long id, Integer byNum) {
+        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+        post.setCurrentVotes(post.getCurrentVotes() + byNum);
+        /* score is changing */
+        return postRepository.save(post);
+    }
+    
 }
 

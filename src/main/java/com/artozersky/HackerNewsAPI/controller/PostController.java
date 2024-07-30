@@ -63,12 +63,22 @@ public class PostController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Post> upvotePost(@PathVariable("id") Long id, @RequestBody Post post) {
-    //     return new ResponseEntity<>(null, HttpStatus.OK);
-    // }
-    // @PutMapping("/{id}")
-    // public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id, @RequestBody Post post) {
-    //     return new ResponseEntity<>(null, HttpStatus.OK);
-    // }
+    @PutMapping("/{id}/upvote")
+    public ResponseEntity<Post> upvotePost(@PathVariable("id") Long id) {
+        try {
+            Post updatedPost = postService.updateVote(id, 1);
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    @PutMapping("/{id}/downvote")
+    public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id) {
+        try {
+            Post updatedPost = postService.updateVote(id, -1);
+            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
