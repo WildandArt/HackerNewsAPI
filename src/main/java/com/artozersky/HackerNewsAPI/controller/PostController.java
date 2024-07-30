@@ -1,13 +1,18 @@
 package com.artozersky.HackerNewsAPI.controller;
 
-import com.artozersky.HackerNewsAPI.model.Post;
-import com.artozersky.HackerNewsAPI.service.PostService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.artozersky.HackerNewsAPI.model.Post;
+import com.artozersky.HackerNewsAPI.service.PostService;
 
 
 @RestController
@@ -18,7 +23,7 @@ public class PostController {
     @Autowired
     private PostService postService;
    /*
-    * The creation of a new post is straightforward. Create a new Post and save it into DB. 
+    * Create a new Post and save it into DB. 
     If for some reason creation fails, exception is caught and presented to the user in a Browser.
     */
     @PostMapping   
@@ -35,6 +40,14 @@ public class PostController {
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
+        if (posts.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+    @GetMapping("/sortedposts")
+    public ResponseEntity<List<Post>> getAllSortedPosts() {
+        List<Post> posts = postService.getSortedPostsByScore();
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

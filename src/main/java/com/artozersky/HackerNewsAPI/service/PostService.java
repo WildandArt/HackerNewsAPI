@@ -26,6 +26,11 @@ public class PostService {
     public List<Post> getAllPosts() {
         return postRepository.findAll();
     }
+    /* List of posts sorted by score field.*/
+    public List<Post> getSortedPostsByScore() {
+        return postRepository.findAllByOrderByScoreDesc();
+    }
+    
     public Post savePost(Post post) {
         User user = userRepository.findById(post.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
         post.setCurrentVotes(0);
@@ -65,3 +70,4 @@ public class PostService {
        
     // }
 }
+

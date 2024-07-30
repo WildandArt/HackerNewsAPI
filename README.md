@@ -105,7 +105,9 @@ Below is the schema used by the Mini Hacker News database:
 ![Database Schema](img/DBSchema.png)
 
 ## Invalidation Strategy
-
+#### Case 1: Update of a post automatically updates the time of the creation of the post, which changes the score. fields: created_at and score should be updated in DB and Cache if post_id exists in already Cache.
+#### Case 2: Upvote/Downvote changes the score. Update should be made to DB and in Cache if exists in Cache.
+#### Case 3: Creation of a Post may change the sorted list by GET.The Cache could not be changed.
 ![Invalidatoin Strategy](img/CacheInvalidationStrategy.jpg)
 
 ## Contributing
