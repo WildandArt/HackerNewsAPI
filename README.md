@@ -104,7 +104,7 @@ Below is the schema used by the Mini Hacker News database:
 
 ![Database Schema](img/DBSchema.png)
 ## Cache Strategy:
-#### - when GET is called, each post returning from GET can Cache Hit or Cache miss. 
+#### When GET is called, each post returning from GET can Cache Hit or Cache miss. 
 #### If Cache Hit-> fetch it from cache 
 #### if Cache Miss->fetch from DB and add to cache.
 #### OPTION: When the cache entry is found but is slightly outdated due to changes in hoursAgo, return the cached value immediately and trigger an asynchronous update to the cache.
