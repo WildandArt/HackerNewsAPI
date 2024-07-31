@@ -75,7 +75,7 @@ public class PostController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping("/{id}/upvote")
+    @PatchMapping("/{id}/upvote")
     public ResponseEntity<Post> upvotePost(@PathVariable("id") Long id) {
         try {
             Post updatedPost = postService.updateVote(id, 1);
@@ -84,7 +84,7 @@ public class PostController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @PutMapping("/{id}/downvote")
+    @PatchMapping("/{id}/downvote")
     public ResponseEntity<Post> downVotePost(@PathVariable("id") Long id) {
         try {
             Post updatedPost = postService.updateVote(id, -1);

@@ -37,7 +37,7 @@ public class PostService {
         post.setUserId(postCreateDTO.getUserId());
 
         post.setAuthor(user.getUsername());
-        
+
         post.setCurrentVotes(0);
         post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         double timeInHours = 0;
@@ -45,15 +45,7 @@ public class PostService {
         post.setCreatedHoursAgo((int) timeInHours);
         return postRepository.save(post);
     }
-    // public Post savePost(Post post) {
-    //     User user = userRepository.findById(post.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
-    //     post.setCurrentVotes(0);
-    //     post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-    //     double timeInHours = 0;
-    //     post.setScore(ScoreCalculator.calculateScore(0, 0, ScoreCalculator.GRAVITY));
-    //     post.setCreatedHoursAgo((int) timeInHours);
-    //     return postRepository.save(post);
-    // }
+    
     public static class ScoreCalculator {
 
         private static final double GRAVITY = 1.8;
@@ -86,10 +78,12 @@ public class PostService {
    
     public Post updateVote(Long id, Integer byNum) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-        post.setCurrentVotes(post.getCurrentVotes() + byNum);
+        Integer updatedVotesNumber = post.getCurrentVotes() + byNum;
+        post.setCurrentVotes(updatedVotesNumber);
         /* score is changing */
+        post.setScore(ScoreCalculator.calculateScore(updatedVotesNumber, post.getCreatedHoursAgo(), ScoreCalculator.GRAVITY));
+
         return postRepository.save(post);
     }
-    
 }
 
