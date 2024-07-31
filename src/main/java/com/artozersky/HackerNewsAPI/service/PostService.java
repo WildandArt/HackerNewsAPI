@@ -54,6 +54,14 @@ public class PostService {
             return (points - 1) / Math.pow((timeInHours + 2), gravity);
         }
     }
+    public class TimeUtils {
+        public static double calculateHoursAgo(Timestamp createdAt) {
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+            long msSinceCreation = now.getTime() - createdAt.getTime();
+            return msSinceCreation / (1000.0 * 60 * 60);  
+        }
+    }
+    
     public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) {
         System.out.println("Received DTO: Title = " + postUpdateDTO.getTitle() + ", URL = " + postUpdateDTO.getUrl());
         Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
@@ -81,7 +89,13 @@ public class PostService {
         Integer updatedVotesNumber = post.getCurrentVotes() + byNum;
         post.setCurrentVotes(updatedVotesNumber);
         /* score is changing */
-        post.setScore(ScoreCalculator.calculateScore(updatedVotesNumber, post.getCreatedHoursAgo(), ScoreCalculator.GRAVITY));
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        long msSinceCreation = now.getTime() - post.getCreatedAt().getTime();
+        double hoursAgoDouble = msSinceCreation / (1000.0 * 60 * 60);
+        Integer hoursAgoInt = (int) Math.floor(hoursAgoDouble);
+        /*updating the field hoursAgo in a post*/
+        post.setCreatedHoursAgo(hoursAgoInt);
+        post.setScore(ScoreCalculator.calculateScore(updatedVotesNumber, hoursAgoDouble, ScoreCalculator.GRAVITY));
 
         return postRepository.save(post);
     }
