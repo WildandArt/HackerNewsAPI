@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.Post;
 import com.artozersky.HackerNewsAPI.service.PostService;
@@ -31,14 +32,23 @@ public class PostController {
     If for some reason creation fails, exception is caught and presented to the user in a Browser.
     */
     @PostMapping   
-    public ResponseEntity<Post> createPost(@RequestBody Post post) {
+    public ResponseEntity<Post> createPost(@RequestBody PostCreateDTO postCreateDTO) {
         try {
-            Post createdPost = postService.savePost(post);
+            Post createdPost = postService.savePost(postCreateDTO);
             return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    // @PostMapping   
+    // public ResponseEntity<Post> createPost(@RequestBody Post post) {
+    //     try {
+    //         Post createdPost = postService.savePost(post);
+    //         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
+    //     } catch (Exception e) {
+    //         return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
     @GetMapping
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();

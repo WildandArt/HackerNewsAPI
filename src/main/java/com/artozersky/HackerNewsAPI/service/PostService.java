@@ -1,5 +1,6 @@
 package com.artozersky.HackerNewsAPI.service;
 
+import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.Post;
 import com.artozersky.HackerNewsAPI.model.User;
@@ -28,9 +29,15 @@ public class PostService {
     public List<Post> getSortedPostsByScore() {
         return postRepository.findAllByOrderByScoreDesc();
     }
-    
-    public Post savePost(Post post) {
-        User user = userRepository.findById(post.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+    public Post savePost(PostCreateDTO postCreateDTO) {
+        User user = userRepository.findById(postCreateDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+        Post post = new Post();
+        post.setTitle(postCreateDTO.getTitle());
+        post.setUrl(postCreateDTO.getUrl());
+        post.setUserId(postCreateDTO.getUserId());
+
+        post.setAuthor(user.getUsername());
+        
         post.setCurrentVotes(0);
         post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         double timeInHours = 0;
@@ -38,6 +45,15 @@ public class PostService {
         post.setCreatedHoursAgo((int) timeInHours);
         return postRepository.save(post);
     }
+    // public Post savePost(Post post) {
+    //     User user = userRepository.findById(post.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
+    //     post.setCurrentVotes(0);
+    //     post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+    //     double timeInHours = 0;
+    //     post.setScore(ScoreCalculator.calculateScore(0, 0, ScoreCalculator.GRAVITY));
+    //     post.setCreatedHoursAgo((int) timeInHours);
+    //     return postRepository.save(post);
+    // }
     public static class ScoreCalculator {
 
         private static final double GRAVITY = 1.8;
@@ -46,21 +62,6 @@ public class PostService {
             return (points - 1) / Math.pow((timeInHours + 2), gravity);
         }
     }
-   /* Consider logic that checks first which fields diff, it may be more efficient */
-    // public Post updatePost(Long id, Post postDetails) {
-    //     Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-    //     Integer currentVotes = postDetails.getCurrentVotes();
-    //     post.setAuthor(postDetails.getAuthor());
-    //     post.setUrl(postDetails.getUrl());
-    //     post.setTitle(postDetails.getTitle());
-    //     post.setCurrentVotes(currentVotes);
-    //     /* fields that need to be recalculated at each update */
-    //     post.setCreatedHoursAgo(0);
-    //     post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-    //     post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
-
-    //     return postRepository.save(post);
-    // }
     public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) {
         System.out.println("Received DTO: Title = " + postUpdateDTO.getTitle() + ", URL = " + postUpdateDTO.getUrl());
         Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
@@ -82,9 +83,7 @@ public class PostService {
 
         return postRepository.save(post);
     }
-    // public Post getPostById(Long id) {
-    //     return postRepository.findById(id).orElse(null);
-    // }
+   
     public Post updateVote(Long id, Integer byNum) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
         post.setCurrentVotes(post.getCurrentVotes() + byNum);
