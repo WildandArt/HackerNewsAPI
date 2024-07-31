@@ -115,7 +115,7 @@ Below is the schema used by the Mini Hacker News database:
 
 ## 1. Download the Collection JSON File
 - First, ensure you have the Postman collection JSON file saved to your local machine.
-You can access the Postman collection file [here](Postman/HackerNewsAPI.postman_collection.json).
+You can access the Postman collection file [here](Postman/HackerNewsAPI_V2.postman_collection.json).
 . This file contains all the endpoints, requests, and configurations defined in the collection.
 
 ## 2. Importing the Collection into Postman
