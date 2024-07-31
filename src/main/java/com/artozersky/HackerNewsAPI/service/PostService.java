@@ -62,7 +62,12 @@ public class PostService {
     //     return postRepository.save(post);
     // }
     public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) {
+        System.out.println("Received DTO: Title = " + postUpdateDTO.getTitle() + ", URL = " + postUpdateDTO.getUrl());
         Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
+        /*if both null, return the post */
+        // if( postUpdateDTO.getTitle() != null && postUpdateDTO.getUrl() != null){
+        //     return post;
+        // }
         if (postUpdateDTO.getTitle() != null) {
             post.setTitle(postUpdateDTO.getTitle());
         }
