@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: postgres:15.3
-    container_name: postgres
+    container_name: postgres # change name to database
     environment:
       POSTGRES_DB: hackernewsdb
       POSTGRES_USER: ${POSTGRES_USER}
@@ -16,7 +16,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile # why do we need the docker file? if it is really needed keep it if not remove it
     container_name: hackernewsapi
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hackernewsdb

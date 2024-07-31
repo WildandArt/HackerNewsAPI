@@ -1,4 +1,4 @@
-package com.artozersky.HackerNewsAPI.model;
+package com.artozersky.HackerNewsAPI.model; // i think you need to delete this file, you don't need it.
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

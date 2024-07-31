@@ -9,17 +9,30 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+// do an interface with doxygen
+/* read about and implement here
+@NotBlank
+@Size
+@URL
+@CreatedDate
+@Min
+@Max
+@PrePersist
+@PreUpdate
+@Column(name = 'name', updatable =)
+*/ 
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name = "posts") // please add indexes to the database, think how and why and what field to index. 
+public class Post { // rename this to NewsPostModel/Schema
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
+    // remove comments from code.
     // @ManyToOne
     // @JoinColumn(name = "user_id", nullable = false)
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @Column(name = "user_id", nullable = false) // remove user id
+    private Long userId; // instead of user id i would create String postedBy
 
     private String author;
     private String url;
@@ -27,11 +40,13 @@ public class Post {
     @Column(name = "current_votes")
     private Integer currentVotes;
     @Column(name = "created_at")
-    private Timestamp createdAt;
+    private Timestamp createdAt; // look at this type LocalDateTime, and insert config to .properties
     private Double score;
     @Column(name = "created_hours_ago")
-    private Integer createdHoursAgo;
+    private Integer createdHoursAgo; // change the name to timeElapsed
 
+
+    // Group all the setters together and group all the getters together.
     public Long getPostId() {
         return postId;
     }

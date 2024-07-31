@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.artozersky.HackerNewsAPI.cache.CacheEntityManager;
-
+// create interface and document with doxygen
 @Configuration
 public class CacheConfig{
     @Bean
-    public CacheManager cacheManager(){
-        return new CacheEntityManager(100);
+    public CacheManager cacheManager(){     // @Value(
+        return new CacheEntityManager(100); // 100? please let the user decide how many he can set do it inside the application properties and get the value from there. 
     }
 }

@@ -1,6 +1,11 @@
 package com.artozersky.HackerNewsAPI.dto;
 
-
+/* use:
+@NotBlank(
+@Column(
+@Size(
+@URL(
+*/
 public class PostUpdateDTO {
     private String title;
     private String url;

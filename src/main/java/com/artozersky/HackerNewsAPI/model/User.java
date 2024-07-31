@@ -1,4 +1,4 @@
-package com.artozersky.HackerNewsAPI.model;
+package com.artozersky.HackerNewsAPI.model; // delete this we don't need to take care of users in this project.
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

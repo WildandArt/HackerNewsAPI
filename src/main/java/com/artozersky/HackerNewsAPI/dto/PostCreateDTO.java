@@ -1,5 +1,12 @@
 package com.artozersky.HackerNewsAPI.dto;
 
+
+/* create interfaces for both files
+@NotBlank(
+@Column(
+@Size(
+@URL(
+*/
 public class PostCreateDTO {
     private String title;
     private String url;
