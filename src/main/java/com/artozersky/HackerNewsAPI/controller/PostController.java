@@ -24,8 +24,12 @@ import com.artozersky.HackerNewsAPI.service.PostService;
 public class PostController {
 
 
+    private final PostService postService;
+    
     @Autowired
-    private PostService postService;
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
    /*
     * Create a new Post and save it into DB. 
     If for some reason creation fails, exception is caught and presented to the user in a Browser.
