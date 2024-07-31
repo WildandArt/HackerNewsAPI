@@ -110,6 +110,41 @@ Below is the schema used by the Mini Hacker News database:
 #### Case 3: Creation of a Post may change the sorted list by GET.The Cache could not be changed.
 ![Invalidatoin Strategy](img/CacheInvalidationStrategy.jpg)
 
+# Testing:
+# How to Use a Postman Collection JSON File
+
+## 1. Download the Collection JSON File
+- First, ensure you have the Postman collection JSON file saved to your local machine.
+You can access the Postman collection file [here](Postman/HackerNewsAPI.postman_collection.json).
+. This file contains all the endpoints, requests, and configurations defined in the collection.
+
+## 2. Importing the Collection into Postman
+1. **Open Postman.**
+2. On the main interface, look for the **“Import”** button. This is usually located on the top left side of the app.
+3. Click on **“Import.”**
+4. In the import dialog that appears, choose the **“Upload Files”** tab.
+5. Click **“Choose Files”** or drag the JSON file directly into the import area.
+6. Navigate to `/home/art/dev/java/HackerNewsAPI/Postman/HackerNewsAPI.postman_collection.json` and select it.
+7. Once the file is selected, click **“Import”** to load the collection into Postman.
+
+## 3. Using the Imported Collection
+- After importing, the collection will appear in your **"Collections"** tab on the left sidebar.
+- Expand the collection to view all the requests, folders, and other configurations within it.
+- Click on any request to view its details, including the method, URL, headers, and body content.
+- You can now execute any of the requests by selecting them and clicking the **“Send”** button.
+
+## 4. Editing and Customizing the Collection
+- You can modify any request within the collection to suit your needs. This includes changing endpoints, parameters, headers, and body content.
+- If you need to add new requests, you can do so within the same collection by right-clicking the collection name and selecting **"Add Request."**
+
+## 5. Running Tests and Pre-Scripts
+- If the collection includes tests or pre-request scripts, these will run automatically when you send the requests.
+- To view or edit these scripts, click on the **“Tests”** or **“Pre-request Script”** tab within the request.
+
+## 6. Saving and Exporting Changes
+- After making changes to the collection, you can save your work by clicking the save button.
+- If you need to share your modified collection with others, you can export it by right-clicking the collection name, selecting **“Export,”** and choosing the format (usually JSON).
+
 ## Contributing
 
 Contributions to the Mini Hacker News project are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
