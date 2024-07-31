@@ -1,5 +1,6 @@
 package com.artozersky.HackerNewsAPI.service;
 
+import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.Post;
 import com.artozersky.HackerNewsAPI.model.User;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
@@ -46,14 +47,30 @@ public class PostService {
         }
     }
    /* Consider logic that checks first which fields diff, it may be more efficient */
-    public Post updatePost(Long id, Post postDetails) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-        Integer currentVotes = postDetails.getCurrentVotes();
-        post.setAuthor(postDetails.getAuthor());
-        post.setUrl(postDetails.getUrl());
-        post.setTitle(postDetails.getTitle());
-        post.setCurrentVotes(currentVotes);
+    // public Post updatePost(Long id, Post postDetails) {
+    //     Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
+    //     Integer currentVotes = postDetails.getCurrentVotes();
+    //     post.setAuthor(postDetails.getAuthor());
+    //     post.setUrl(postDetails.getUrl());
+    //     post.setTitle(postDetails.getTitle());
+    //     post.setCurrentVotes(currentVotes);
+    //     /* fields that need to be recalculated at each update */
+    //     post.setCreatedHoursAgo(0);
+    //     post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+    //     post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
+
+    //     return postRepository.save(post);
+    // }
+    public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
+        if (postUpdateDTO.getTitle() != null) {
+            post.setTitle(postUpdateDTO.getTitle());
+        }
+        if (postUpdateDTO.getUrl() != null) {
+            post.setUrl(postUpdateDTO.getUrl());
+        }
         /* fields that need to be recalculated at each update */
+        Integer currentVotes = post.getCurrentVotes();
         post.setCreatedHoursAgo(0);
         post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
