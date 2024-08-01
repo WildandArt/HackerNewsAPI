@@ -10,11 +10,13 @@ import java.util.List;
 // add delete post logic we must be able to delete, and getpostbyid
 // please document the interface and every function with Doxygen comments
 public interface NewPostService {
-    List<Post> getAllPosts();
-    List<Post> getSortedPostsByScore();
-    Post savePost(PostCreateDTO postCreateDTO);
-    Post updatePost(Long postId, PostUpdateDTO postUpdateDTO);
-    Post updateVote(Long id, Integer byNum);
+    List<NewsPostModel> getAllPosts();
+    List<NewsPostModel> getSortedPostsByScore();
+    NewsPostModel savePost(PostCreateDTO postCreateDTO);
+    NewsPostModel updatePost(Long postId, PostUpdateDTO postUpdateDTO);
+    NewsPostModel updateVote(Long id, Integer byNum);
+    NewsPostModel deletePost(Long id);
+    NewsPostModel getPostById(Long id);
 }
 
 

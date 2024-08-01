@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findByUserId(Long userId);
-    List<Post> findAllByOrderByScoreDesc();
+public interface PostRepository extends JpaRepository<NewsPostModel, Long> {
+    List<NewsPostModel> findByUserId(Long userId);
+    List<NewsPostModel> findAllByOrderByScoreDesc();
 }

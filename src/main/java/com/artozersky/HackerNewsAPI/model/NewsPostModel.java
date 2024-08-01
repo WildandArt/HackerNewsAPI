@@ -151,6 +151,11 @@ public class NewsPostModel {
     protected void onUpdate() {
         this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
+    /* score calculation method
+     * 
+     * 
+     * 
+     */
 }
 
 
