@@ -2,7 +2,7 @@ package com.artozersky.HackerNewsAPI.service;
 
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
-import com.artozersky.HackerNewsAPI.model.Post;
+import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 
 import java.util.List;
 
