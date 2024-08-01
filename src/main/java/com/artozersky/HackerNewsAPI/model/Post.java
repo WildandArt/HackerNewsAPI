@@ -28,9 +28,6 @@ public class Post { // rename this to NewsPostModel/Schema
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    // remove comments from code.
-    // @ManyToOne
-    // @JoinColumn(name = "user_id", nullable = false)
     @Column(name = "user_id", nullable = false) // remove user id
     private Long userId; // instead of user id i would create String postedBy
 
