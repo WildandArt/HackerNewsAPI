@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
-import com.artozersky.HackerNewsAPI.service.NewPostService;
+import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
 // read about @Validated
 // you need to implement deletePost to be able to delete it. 
@@ -27,9 +27,9 @@ import com.artozersky.HackerNewsAPI.service.NewPostService;
 public class PostController {
     // remove new line here
 
-    private final NewPostService postService;
+    private final NewsPostService postService;
 
-    public PostController(NewPostService postService) {
+    public PostController(NewsPostService postService) {
         this.postService = postService;
     }
 
@@ -59,7 +59,7 @@ public class PostController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
-    @GetMapping("/sorted") // rename to top_posts
+    @GetMapping("/top_posts") // rename to top_posts
     public ResponseEntity<List<NewsPostModel>> getAllSortedPosts() {
         List<NewsPostModel> posts = postService.getSortedPostsByScore(); // You need to implement response dto
         if (posts.isEmpty()) {

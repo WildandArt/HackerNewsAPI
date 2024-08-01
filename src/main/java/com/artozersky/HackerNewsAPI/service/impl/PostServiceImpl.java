@@ -2,12 +2,10 @@ package com.artozersky.HackerNewsAPI.service.impl;
 
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
-import com.artozersky.HackerNewsAPI.model.Post;
-
-import com.artozersky.HackerNewsAPI.model.User;
+import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.model.NewsPostModel.ScoreCalculator;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
-import com.artozersky.HackerNewsAPI.repository.UserRepository;
-import com.artozersky.HackerNewsAPI.service.PostService;
+import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,26 +15,28 @@ import java.util.List;
 
 // please space one line between objects and functions.
 @Service
-public class PostServiceImpl implements PostService {
+public class PostServiceImpl implements NewsPostService {
+
     @Autowired
     private PostRepository postRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private ModelMapper modelMapper;
+
 
     @Override
-    public List<Post> getAllPosts() {
+    public List<NewsPostModel> getAllPosts() {
         return postRepository.findAll();
     }
 
     /* List of posts sorted by score field. */
     @Override
-    public List<Post> getSortedPostsByScore() {
+    public List<NewsPostModel> getSortedPostsByScore() {
         return postRepository.findAllByOrderByScoreDesc();
     }
 
     @Override
-    public Post savePost(PostCreateDTO postCreateDTO) { // make this function exception safe.
+    public NewsPostModel savePost(@Valid PostCreateDTO postCreateDTO) { // make this function exception safe.
         User user = userRepository.findById(postCreateDTO.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         // read about ModelMapper and implement mapper to transition between dto to full
@@ -56,29 +56,11 @@ public class PostServiceImpl implements PostService {
         return postRepository.save(post);
     }
 
-    // remove those help functions to the place they belong to, please think wher.
-    // dont create a new impl and interface for this.
-    public static class ScoreCalculator {
-
-        private static final double GRAVITY = 1.8;
-
-        public static double calculateScore(double points, double timeInHours, double gravity) {
-            return (points - 1) / Math.pow((timeInHours + 2), gravity);
-        }
-    }
-
-    public class TimeUtils {
-        public static double calculateHoursAgo(Timestamp createdAt) {
-            Timestamp now = new Timestamp(System.currentTimeMillis());
-            long msSinceCreation = now.getTime() - createdAt.getTime();
-            return msSinceCreation / (1000.0 * 60 * 60);
-        }
-    }
 
     // make this function exception safe.
     // think of the user updating a empty json what do do how to prevent updating.
     @Override
-    public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) { // change the order of parameters to be DTO, id
+    public NewsPostModel updatePost(Long postId, PostUpdateDTO postUpdateDTO) { // change the order of parameters to be DTO, id
         Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
         // remove this
         /* if both null, return the post */
@@ -105,7 +87,7 @@ public class PostServiceImpl implements PostService {
     // error.
     // think of how to restrict this function to get only 1 or -1.
     @Override
-    public Post updateVote(Long id, Integer byNum) {
+    public NewsPostModel updateVote(Long id, Integer byNum) {
         Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
         Integer updatedVotesNumber = post.getCurrentVotes() + byNum; // create an upvote and downvote function in the
                                                                      // schema.

@@ -9,7 +9,7 @@ import java.util.List;
 // change the name to NewsPostService
 // add delete post logic we must be able to delete, and getpostbyid
 // please document the interface and every function with Doxygen comments
-public interface NewPostService {
+public interface NewsPostService {
     List<NewsPostModel> getAllPosts();
     List<NewsPostModel> getSortedPostsByScore();
     NewsPostModel savePost(PostCreateDTO postCreateDTO);

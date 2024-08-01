@@ -1,5 +1,6 @@
 package com.artozersky.HackerNewsAPI.model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -151,11 +152,19 @@ public class NewsPostModel {
     protected void onUpdate() {
         this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
-    /* score calculation method
-     * 
-     * 
-     * 
-     */
+    
+    // dont create a new impl and interface for this.
+    public static class ScoreCalculator {
+
+        private static final double GRAVITY = 1.8;
+
+        public static double calculateScore(double points, double timeInHours, double gravity) {
+            return (points - 1) / Math.pow((timeInHours + 2), gravity);
+        }
+    }
+
+    
+
 }
 
 
