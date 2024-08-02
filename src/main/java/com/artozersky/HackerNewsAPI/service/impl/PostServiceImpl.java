@@ -3,6 +3,7 @@ package com.artozersky.HackerNewsAPI.service.impl;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
@@ -54,31 +55,49 @@ public class PostServiceImpl implements NewsPostService {
     @Override
     public PostResponseDTO savePost(@Valid PostCreateDTO postCreateDTO) {
         
-            NewsPostModel post = modelMapper.map(postCreateDTO, NewsPostModel.class);
+        NewsPostModel post = modelMapper.map(postCreateDTO, NewsPostModel.class);
 
-            post.initialize();
+        post.initialize();
 
-            NewsPostModel savedPost = postRepository.save(post);
+        NewsPostModel savedPost = postRepository.save(post);
 
-            PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
-            
-            responseDTO.setMessage("Post created successfully");
-            
-            return responseDTO;
+        PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
+        
+        responseDTO.setMessage("Post created successfully");
+        
+        return responseDTO;
     }
 
 
     // make this function exception safe.
     // think of the user updating a empty json what do do how to prevent updating.
     @Override
-    public NewsPostModel updatePost(PostUpdateDTO postUpdateDTO, Long postId) { 
-        NewsPostModel post = postRepository.findById(postId)
-                .orElseThrow(() -> new RuntimeException("Post not found"));
-            post.setTitle(postUpdateDTO.getTitle());
-            post.setUrl(postUpdateDTO.getUrl());
+    public PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId) {
 
+        NewsPostModel post = postRepository.findById(postId)
+            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        //check if empty and redundant
+        boolean isRedundant = true;
+
+        if(isRedundant) {
+            //change nothing
+            //return responsedto
+        }
         post.onPostUpdate();
-        return postRepository.save(post);
+
+        NewsPostModel updatedPost = postRepository.save(post);
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Post updated successfully");
+
+        return responseDTO;
+
+        // NewsPostModel post = postRepository.findById(postId)
+        //         .orElseThrow(() -> new RuntimeException("Post not found"));
+        //     post.setTitle(postUpdateDTO.getTitle());
+        //     post.setUrl(postUpdateDTO.getUrl());
+
+        // post.onPostUpdate();
+        // return postRepository.save(post);
     }
 
     // exception safe, read how not to crash your server and send the client the

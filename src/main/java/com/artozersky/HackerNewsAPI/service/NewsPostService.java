@@ -15,7 +15,7 @@ public interface NewsPostService {
     List<NewsPostModel> getAllPosts();
     List<NewsPostModel> getSortedPostsByScore();
     PostResponseDTO savePost(PostCreateDTO postCreateDTO);
-    NewsPostModel updatePost(PostUpdateDTO postUpdateDTO, Long postId);
+    PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId);
     NewsPostModel updateVote(Long id, Integer byNum);
     NewsPostModel deletePost(Long id);
     NewsPostModel getPostById(Long id);
