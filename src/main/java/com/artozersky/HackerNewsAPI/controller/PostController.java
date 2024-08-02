@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
+import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
@@ -23,9 +25,9 @@ import com.artozersky.HackerNewsAPI.service.NewsPostService;
 //getbyid
 // create interface and document with doxygen
 @RestController
-@RequestMapping("/posts") // best industry practice is to do /api/post
+@RequestMapping("/api/posts")
+@Validated
 public class PostController {
-    // remove new line here
 
     private final NewsPostService postService;
 
@@ -38,16 +40,10 @@ public class PostController {
      * If for some reason creation fails, exception is caught and presented to the
      * user in a Browser.
      */
-    @PostMapping // also best practise is to do @PostMapping(""), also @Validated
-    public ResponseEntity<NewsPostModel> createPost(@RequestBody PostCreateDTO postCreateDTO) {
-        try {
-            NewsPostModel createdPost = postService.savePost(postCreateDTO);
-            return new ResponseEntity<>(createdPost, HttpStatus.CREATED); // You need to implement response dto
-        } catch (Exception e) { // implement exception manager in your project with interface that will define
-                                // exceptions and what to do with them, every excpetion in the project wil get
-                                // to it and he will decide whtat do to and who to send.
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR); // ???? t
-        }
+    @PostMapping("") // also best practise is to do @PostMapping(""), also @Validated
+    public ResponseEntity<PostResponseDTO> createPost(@RequestBody @Validated PostCreateDTO postCreateDTO) {
+        PostResponseDTO createdPost = postService.savePost(postCreateDTO);
+        return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
 
     @GetMapping // also best practise is to do @PostMapping("")
