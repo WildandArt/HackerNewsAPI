@@ -72,31 +72,119 @@ $(function() {
 <div class="title">com.artozersky.HackerNewsAPI.controller.PostController Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="dynheader">
+Inheritance diagram for com.artozersky.HackerNewsAPI.controller.PostController:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController__inherit__graph.png" border="0" usemap="#acom_8artozersky_8HackerNewsAPI_8controller_8PostController_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for com.artozersky.HackerNewsAPI.controller.PostController:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController__coll__graph.png" border="0" usemap="#acom_8artozersky_8HackerNewsAPI_8controller_8PostController_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a59ac6d1e5d6fc97989ea33f653633204"><td class="memItemLeft" align="right" valign="top"><a id="a59ac6d1e5d6fc97989ea33f653633204"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PostController</b> (<a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html">NewsPostService</a> postService)</td></tr>
-<tr class="separator:a59ac6d1e5d6fc97989ea33f653633204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e99604488e10f5ad68d6716b3bf14c5"><td class="memItemLeft" align="right" valign="top"><a id="a6e99604488e10f5ad68d6716b3bf14c5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PostController</b> (<a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html">NewsPostService</a> postService, ModelMapper modelMapper)</td></tr>
+<tr class="separator:a6e99604488e10f5ad68d6716b3bf14c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb739a7c9e3267d5a6a2e0a93287b0f5"><td class="memItemLeft" align="right" valign="top"><a id="abb739a7c9e3267d5a6a2e0a93287b0f5"></a>
 ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createPost</b> (@RequestBody @Validated <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostCreateDTO.html">PostCreateDTO</a> postCreateDTO)</td></tr>
 <tr class="separator:abb739a7c9e3267d5a6a2e0a93287b0f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe335488232c925f740c2b08913d4d4a"><td class="memItemLeft" align="right" valign="top"><a id="abe335488232c925f740c2b08913d4d4a"></a>
-ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllPosts</b> ()</td></tr>
-<tr class="separator:abe335488232c925f740c2b08913d4d4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adccf028eabbd8235ab5c7fa5df73ebcf"><td class="memItemLeft" align="right" valign="top"><a id="adccf028eabbd8235ab5c7fa5df73ebcf"></a>
-ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getAllSortedPosts</b> ()</td></tr>
-<tr class="separator:adccf028eabbd8235ab5c7fa5df73ebcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb0b1f53e05f26641120991384d2c32e"><td class="memItemLeft" align="right" valign="top"><a id="acb0b1f53e05f26641120991384d2c32e"></a>
-ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>updatePost</b> (@PathVariable(&quot;id&quot;) Long id, @RequestBody <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO.html">PostUpdateDTO</a> postUpdateDTO)</td></tr>
-<tr class="separator:acb0b1f53e05f26641120991384d2c32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a229edcd3ffe1a7c907863e15140ba4cc"><td class="memItemLeft" align="right" valign="top"><a id="a229edcd3ffe1a7c907863e15140ba4cc"></a>
-ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>upvotePost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
-<tr class="separator:a229edcd3ffe1a7c907863e15140ba4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6b0f7106f9a9d7b3e46098db55c51a5"><td class="memItemLeft" align="right" valign="top"><a id="ac6b0f7106f9a9d7b3e46098db55c51a5"></a>
-ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>downVotePost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
-<tr class="separator:ac6b0f7106f9a9d7b3e46098db55c51a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed134e8e68378de349c0df45a2f5d0e4"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController.html#aed134e8e68378de349c0df45a2f5d0e4">getAllPosts</a> ()</td></tr>
+<tr class="separator:aed134e8e68378de349c0df45a2f5d0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a584255f7d33412a30ed2087a500a9acd"><td class="memItemLeft" align="right" valign="top"><a id="a584255f7d33412a30ed2087a500a9acd"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
+<tr class="separator:a584255f7d33412a30ed2087a500a9acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a216964d2f4103af93a09624d3d2f5a1a"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController.html#a216964d2f4103af93a09624d3d2f5a1a">getAllSortedPosts</a> ()</td></tr>
+<tr class="separator:a216964d2f4103af93a09624d3d2f5a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a743a492106253ce8912a6264bf014b"><td class="memItemLeft" align="right" valign="top"><a id="a7a743a492106253ce8912a6264bf014b"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>updatePost</b> (@PathVariable(&quot;id&quot;) Long id, @RequestBody @Validated <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO.html">PostUpdateDTO</a> postUpdateDTO)</td></tr>
+<tr class="separator:a7a743a492106253ce8912a6264bf014b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35b8567cd5ee6334aa77098b17a25586"><td class="memItemLeft" align="right" valign="top"><a id="a35b8567cd5ee6334aa77098b17a25586"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>upvotePost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
+<tr class="separator:a35b8567cd5ee6334aa77098b17a25586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af93c810babdff6949bfd6ee9ed9941b6"><td class="memItemLeft" align="right" valign="top"><a id="af93c810babdff6949bfd6ee9ed9941b6"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>downVotePost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
+<tr class="separator:af93c810babdff6949bfd6ee9ed9941b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cbc55ae97af6a17c5ccd95c566dc8e3"><td class="memItemLeft" align="right" valign="top"><a id="a7cbc55ae97af6a17c5ccd95c566dc8e3"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>deletePost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
+<tr class="separator:a7cbc55ae97af6a17c5ccd95c566dc8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html">com.artozersky.HackerNewsAPI.controller.IPostController</a></td></tr>
+<tr class="memitem:a4a1329e358132928598935714b37edba inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a4a1329e358132928598935714b37edba">createPost</a> (<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostCreateDTO.html">PostCreateDTO</a> postCreateDTO)</td></tr>
+<tr class="separator:a4a1329e358132928598935714b37edba inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48c5b8495a38987bac6162e2dc8ca61f inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a48c5b8495a38987bac6162e2dc8ca61f">updatePost</a> (Long id, <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO.html">PostUpdateDTO</a> postUpdateDTO)</td></tr>
+<tr class="separator:a48c5b8495a38987bac6162e2dc8ca61f inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fa14f2452d868c1c522c7f576468053 inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a5fa14f2452d868c1c522c7f576468053">upvotePost</a> (Long id)</td></tr>
+<tr class="separator:a5fa14f2452d868c1c522c7f576468053 inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bd6fc5905067c202bf38db494855f3e inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a2bd6fc5905067c202bf38db494855f3e">downVotePost</a> (Long id)</td></tr>
+<tr class="separator:a2bd6fc5905067c202bf38db494855f3e inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4881073a4a740582c8d33296597425a inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top"><a id="ad4881073a4a740582c8d33296597425a"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>deletePost</b> (Long id)</td></tr>
+<tr class="separator:ad4881073a4a740582c8d33296597425a inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7c4f18770a1810e91f78ec5ceca9fb inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memItemLeft" align="right" valign="top"><a id="a0f7c4f18770a1810e91f78ec5ceca9fb"></a>
+ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPost</b> (Long id)</td></tr>
+<tr class="separator:a0f7c4f18770a1810e91f78ec5ceca9fb inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aed134e8e68378de349c0df45a2f5d0e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed134e8e68378de349c0df45a2f5d0e4">&#9670;&nbsp;</a></span>getAllPosts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResponseEntity&lt;List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.PostController.getAllPosts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Retrieves all posts.</p>
+<dl class="section return"><dt>Returns</dt><dd>A ResponseEntity containing a list of PostResponseDTOs and HTTP status. </dd></dl>
+
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a2e3d18a0f70fb48776dd6b8638f72f4d">com.artozersky.HackerNewsAPI.controller.IPostController</a>.</p>
+
+</div>
+</div>
+<a id="a216964d2f4103af93a09624d3d2f5a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216964d2f4103af93a09624d3d2f5a1a">&#9670;&nbsp;</a></span>getAllSortedPosts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ResponseEntity&lt;List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO.html">PostResponseDTO</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.PostController.getAllSortedPosts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Retrieves all posts sorted by score in descending order.</p>
+<dl class="section return"><dt>Returns</dt><dd>A ResponseEntity containing a list of sorted PostResponseDTOs and HTTP status. </dd></dl>
+
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController.html#a3499c160370119e83bb180a8adc64f07">com.artozersky.HackerNewsAPI.controller.IPostController</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>src/main/java/com/artozersky/HackerNewsAPI/controller/PostController.java</li>
 </ul>

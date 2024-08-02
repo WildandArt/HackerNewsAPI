@@ -24,7 +24,9 @@ List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1New
 \item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a450fbc9ac03e404d67047870278efe8a}{update\+Post}} (\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO}{Post\+Update\+DTO}} post\+Update\+DTO, Long post\+Id)
 \item 
-\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_afba4ff891db9e2519c74b2d22e68d231}{update\+Vote}} (Long id, Integer by\+Num)
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}{up\+Vote}} (Long id)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}{down\+Vote}} (Long id)
 \end{DoxyCompactItemize}
 
 
@@ -48,6 +50,28 @@ A \mbox{\hyperlink{}{Post\+Response\+DTO}} confirming the deletion of the post.
 
 
 Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a727ce2800d3ac81b71f6792583b41181}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!downVote@{downVote}}
+\index{downVote@{downVote}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{downVote()}{downVote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+down\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Subtracts 1 from the vote count for a post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to be updated. \\
+\hline
+{\em by\+Num} & The number to adjust the vote count by. Must be either 1 (upvote) or -\/1 (downvote). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the post after the vote update. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a40e9ba0679169996fe9843ed53050639}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f6c3ca1527c9d792e268cb9ec4b5da8}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f6c3ca1527c9d792e268cb9ec4b5da8}} 
 \index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!getAllPosts@{getAllPosts}}
@@ -121,13 +145,13 @@ A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the updated
 
 Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a21e5046bee8b6d7256f7b78db02ae375}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_afba4ff891db9e2519c74b2d22e68d231}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_afba4ff891db9e2519c74b2d22e68d231}} 
-\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!updateVote@{updateVote}}
-\index{updateVote@{updateVote}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
-\doxysubsubsection{\texorpdfstring{updateVote()}{updateVote()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+update\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id,  }\item[{Integer}]{by\+Num }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!upVote@{upVote}}
+\index{upVote@{upVote}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{upVote()}{upVote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+up\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Updates the vote count for a post.
+Adds to the vote count for a post.
 
 
 \begin{DoxyParams}{Parameters}
@@ -141,7 +165,7 @@ A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the post af
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a97f07e7dafb520150fc90d84494c07cd}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a5989c50e3670a0910c3535cf596563d8}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
 
 

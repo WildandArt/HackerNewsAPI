@@ -85,8 +85,6 @@ Collaboration diagram for com.artozersky.HackerNewsAPI.repository.PostRepository
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a773129c9b185b0be744c41f33211550c"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#a773129c9b185b0be744c41f33211550c">findByUserId</a> (Long userId)</td></tr>
-<tr class="separator:a773129c9b185b0be744c41f33211550c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf2fe1d6f20fcaa81ad9b0f546e4890d"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#acf2fe1d6f20fcaa81ad9b0f546e4890d">findAllByOrderByScoreDesc</a> ()</td></tr>
 <tr class="separator:acf2fe1d6f20fcaa81ad9b0f546e4890d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -109,32 +107,6 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Finds all posts and orders them by score in descending order.</p>
 <dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModel</a> objects ordered by their score in descending order. </dd></dl>
-
-</div>
-</div>
-<a id="a773129c9b185b0be744c41f33211550c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a773129c9b185b0be744c41f33211550c">&#9670;&nbsp;</a></span>findByUserId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findByUserId </td>
-          <td>(</td>
-          <td class="paramtype">Long&#160;</td>
-          <td class="paramname"><em>userId</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Finds all posts by a specific user ID.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">userId</td><td>The ID of the user whose posts are to be retrieved. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModel</a> objects associated with the specified user ID. </dd></dl>
 
 </div>
 </div>

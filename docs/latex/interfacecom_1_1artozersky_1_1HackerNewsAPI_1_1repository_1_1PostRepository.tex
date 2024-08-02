@@ -11,8 +11,6 @@ Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Po
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a773129c9b185b0be744c41f33211550c}{find\+By\+User\+Id}} (Long user\+Id)
-\item 
 List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_acf2fe1d6f20fcaa81ad9b0f546e4890d}{find\+All\+By\+Order\+By\+Score\+Desc}} ()
 \end{DoxyCompactItemize}
 
@@ -31,22 +29,6 @@ Finds all posts and orders them by score in descending order.
 
 \begin{DoxyReturn}{Returns}
 A list of \mbox{\hyperlink{}{News\+Post\+Model}} objects ordered by their score in descending order. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a773129c9b185b0be744c41f33211550c}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a773129c9b185b0be744c41f33211550c}} 
-\index{com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}!findByUserId@{findByUserId}}
-\index{findByUserId@{findByUserId}!com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}}
-\doxysubsubsection{\texorpdfstring{findByUserId()}{findByUserId()}}
-{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Post\+Repository.\+find\+By\+User\+Id (\begin{DoxyParamCaption}\item[{Long}]{user\+Id }\end{DoxyParamCaption})}
-
-Finds all posts by a specific user ID.
-
-
-\begin{DoxyParams}{Parameters}
-{\em user\+Id} & The ID of the user whose posts are to be retrieved. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A list of \mbox{\hyperlink{}{News\+Post\+Model}} objects associated with the specified user ID. 
 \end{DoxyReturn}
 
 
