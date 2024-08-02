@@ -1,6 +1,5 @@
 package com.artozersky.HackerNewsAPI.model;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,10 +38,6 @@ public class NewsPostModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @NotBlank(message = "Author is required")
-    @Size(max = 100, message = "Author name should not exceed 100 characters")
-    private String author;
-
     @NotBlank(message = "URL is required")
     @URL(message = "URL should be valid")
     @Size(max = 2048, message = "URL should not exceed 2048 characters")
@@ -67,15 +62,24 @@ public class NewsPostModel {
     private Integer timeElapsed;
 
     @NotBlank(message = "Posted by is required")
+    @Size(max = 100, message = "Author name should not exceed 100 characters")
     private String postedBy;
 
+    public void initialize() {
+        this.setCurrentVotes(0);
+        this.setTimeElapsed(0);
+        this.setCreatedAt(LocalDateTime.now());
+        updateScore();
+    }
+    public void onPostUpdate()
+    {
+        this.setCreatedAt(LocalDateTime.now());
+        this.setTimeElapsed(0);
+        this.updateScore();
+    }
     // Getters
     public Long getPostId() {
         return postId;
-    }
-
-    public String getAuthor() {
-        return author;
     }
 
     public String getUrl() {
@@ -111,10 +115,6 @@ public class NewsPostModel {
         this.postId = postId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -144,27 +144,30 @@ public class NewsPostModel {
     }
 
     @PrePersist
-    protected void onCreate() {
+    protected void createdAtOnCreate() {
         this.createdAt = LocalDateTime.now();
     }
 
     @PreUpdate
-    protected void onUpdate() {
+    protected void updateElapsedTime() {
         this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
-    
-    // dont create a new impl and interface for this.
-    public static class ScoreCalculator {
 
-        private static final double GRAVITY = 1.8;
-
-        public static double calculateScore(double points, double timeInHours, double gravity) {
-            return (points - 1) / Math.pow((timeInHours + 2), gravity);
-        }
+    public void updateScore(){
+        final double GRAVITY = 1.8;
+        double updatedScore = (this.getCurrentVotes() - 1) / Math.pow((this.getTimeElapsed() + 2), GRAVITY);
+        this.setScore(updatedScore); 
     }
 
-    
+    public void upVote()
+    {
+        this.currentVotes++;
+    }
 
+    public void downVote()
+    {
+        this.currentVotes--;
+    }
 }
 
 

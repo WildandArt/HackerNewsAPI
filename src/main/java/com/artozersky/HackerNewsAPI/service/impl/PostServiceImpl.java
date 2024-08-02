@@ -1,21 +1,37 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
+import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel.ScoreCalculator;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
+import jakarta.validation.Valid;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 // please space one line between objects and functions.
 @Service
 public class PostServiceImpl implements NewsPostService {
+
+    @Override
+    public NewsPostModel deletePost(Long postId) {
+        
+        return null;
+    }
+
+    @Override
+    public NewsPostModel getPostById(Long postId) {
+        
+        return null; 
+    }
 
     @Autowired
     private PostRepository postRepository;
@@ -36,50 +52,32 @@ public class PostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public NewsPostModel savePost(@Valid PostCreateDTO postCreateDTO) { // make this function exception safe.
-        User user = userRepository.findById(postCreateDTO.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        // read about ModelMapper and implement mapper to transition between dto to full
-        // schema
-        Post post = new Post();
-        post.setTitle(postCreateDTO.getTitle());
-        post.setUrl(postCreateDTO.getUrl());
-        post.setUserId(postCreateDTO.getUserId());
+    public PostResponseDTO savePost(@Valid PostCreateDTO postCreateDTO) {
+        
+            NewsPostModel post = modelMapper.map(postCreateDTO, NewsPostModel.class);
 
-        post.setAuthor(user.getUsername());
+            post.initialize();
 
-        post.setCurrentVotes(0);
-        post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        double timeInHours = 0; // remove this
-        post.setScore(ScoreCalculator.calculateScore(0, 0, ScoreCalculator.GRAVITY));
-        post.setCreatedHoursAgo((int) timeInHours); // insert 0
-        return postRepository.save(post);
+            NewsPostModel savedPost = postRepository.save(post);
+
+            PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
+            
+            responseDTO.setMessage("Post created successfully");
+            
+            return responseDTO;
     }
 
 
     // make this function exception safe.
     // think of the user updating a empty json what do do how to prevent updating.
     @Override
-    public NewsPostModel updatePost(Long postId, PostUpdateDTO postUpdateDTO) { // change the order of parameters to be DTO, id
-        Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
-        // remove this
-        /* if both null, return the post */
-        // if( postUpdateDTO.getTitle() != null && postUpdateDTO.getUrl() != null){
-        // return post;
-        // }
-        if (postUpdateDTO.getTitle() != null) {
+    public NewsPostModel updatePost(PostUpdateDTO postUpdateDTO, Long postId) { 
+        NewsPostModel post = postRepository.findById(postId)
+                .orElseThrow(() -> new RuntimeException("Post not found"));
             post.setTitle(postUpdateDTO.getTitle());
-        }
-        if (postUpdateDTO.getUrl() != null) {
             post.setUrl(postUpdateDTO.getUrl());
-        }
 
-        /* fields that need to be recalculated at each update */ // create a function in model update()
-        Integer currentVotes = post.getCurrentVotes();
-        post.setCreatedHoursAgo(0);
-        post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
-
+        post.onPostUpdate();
         return postRepository.save(post);
     }
 
@@ -101,4 +99,5 @@ public class PostServiceImpl implements NewsPostService {
 
         return postRepository.save(post);
     }
+
 }
