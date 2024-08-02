@@ -1,5 +1,11 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
@@ -10,43 +16,47 @@ import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
 import jakarta.validation.Valid;
 
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.List;
-
 // please space one line between objects and functions.
 @Service
 public class PostServiceImpl implements NewsPostService {
-
-    @Override
-    public NewsPostModel deletePost(Long postId) {
-        
-        return null;
-    }
-
-    @Override
-    public NewsPostModel getPostById(Long postId) {
-        
-        return null; 
-    }
-
+    
     @Autowired
     private PostRepository postRepository;
-
+    
     @Autowired
     private ModelMapper modelMapper;
+    
+    @Override
+    public PostResponseDTO deletePost(Long postId) {
+        
+        NewsPostModel post = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        
+        postRepository.delete(post);
 
+        PostResponseDTO responseDTO = new PostResponseDTO();
+        responseDTO.setPostId(postId);
+        responseDTO.setMessage("Post deleted successfully");
 
+        return responseDTO;
+    }
+
+    @Override
+    public PostResponseDTO getPostById(Long postId) {
+        
+        NewsPostModel post = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        
+        PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
+
+        return responseDTO;
+    }
+    
     @Override
     public List<NewsPostModel> getAllPosts() {
         return postRepository.findAll();
     }
 
-    /* List of posts sorted by score field. */
     @Override
     public List<NewsPostModel> getSortedPostsByScore() {
         return postRepository.findAllByOrderByScoreDesc();
@@ -76,47 +86,62 @@ public class PostServiceImpl implements NewsPostService {
 
         NewsPostModel post = postRepository.findById(postId)
             .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
-        //check if empty and redundant
         boolean isRedundant = true;
 
-        if(isRedundant) {
-            //change nothing
-            //return responsedto
+        if (postUpdateDTO.getTitle() != null && !postUpdateDTO.getTitle().trim().isEmpty()) {
+            if (!postUpdateDTO.getTitle().equals(post.getTitle())) {
+                post.setTitle(postUpdateDTO.getTitle());
+                isRedundant = false;
+            }
         }
+    
+        if (postUpdateDTO.getUrl() != null && !postUpdateDTO.getUrl().trim().isEmpty()) {
+            if (!postUpdateDTO.getUrl().equals(post.getUrl())) {
+                post.setUrl(postUpdateDTO.getUrl());
+                isRedundant = false;
+            }
+        }
+
+        if(isRedundant) {
+            PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
+            responseDTO.setMessage("No changes detected. Update skipped.");
+            return responseDTO;
+        }
+
         post.onPostUpdate();
 
         NewsPostModel updatedPost = postRepository.save(post);
+
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Post updated successfully");
 
         return responseDTO;
-
-        // NewsPostModel post = postRepository.findById(postId)
-        //         .orElseThrow(() -> new RuntimeException("Post not found"));
-        //     post.setTitle(postUpdateDTO.getTitle());
-        //     post.setUrl(postUpdateDTO.getUrl());
-
-        // post.onPostUpdate();
-        // return postRepository.save(post);
     }
 
     // exception safe, read how not to crash your server and send the client the
     // error.
     // think of how to restrict this function to get only 1 or -1.
     @Override
-    public NewsPostModel updateVote(Long id, Integer byNum) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-        Integer updatedVotesNumber = post.getCurrentVotes() + byNum; // create an upvote and downvote function in the
-                                                                     // schema.
-        post.setCurrentVotes(updatedVotesNumber);
-        /* update score field */
-        Double hoursAgoDouble = TimeUtils.calculateHoursAgo(post.getCreatedAt());
-        post.setScore(ScoreCalculator.calculateScore(updatedVotesNumber, hoursAgoDouble, ScoreCalculator.GRAVITY));
-        /* updating the field hoursAgo */
-        Integer hoursAgoInt = (int) Math.floor(hoursAgoDouble);
-        post.setCreatedHoursAgo(hoursAgoInt);
+    public PostResponseDTO updateVote(Long id, Integer byNum) {
 
-        return postRepository.save(post);
+        if(1 == byNum || -1 == byNum)
+        {
+            NewsPostModel post = postRepository.findById(id)
+                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+                if (1 == byNum) {
+                    post.upVote();
+                }
+                else {
+                    post.downVote();
+                }
+                //TODO: CHECK if @Preupdate of elapsed time will work here
+                post.updateScore();
+                NewsPostModel updatedPost = postRepository.save(post);
+                PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+                responseDTO.setMessage("Vote updated successfully");
+                return responseDTO;
+        }
+        throw new IllegalArgumentException("Vote value must be either 1 (upvote) or -1 (downvote)");
+    
     }
-
 }

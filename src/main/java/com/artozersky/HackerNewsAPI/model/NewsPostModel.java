@@ -192,5 +192,6 @@ public class NewsPostModel implements INewsPostModel {
     public void downVote() {
         this.currentVotes--;
     }
+    
 }
 
