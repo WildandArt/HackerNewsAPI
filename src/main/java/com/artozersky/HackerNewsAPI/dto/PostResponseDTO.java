@@ -1,6 +1,6 @@
 package com.artozersky.HackerNewsAPI.dto;
 
-public class PostResponseDTO {
+public class PostResponseDTO implements IPostResponseDTO {
 
     private Long postId;
     private String title;
@@ -9,52 +9,63 @@ public class PostResponseDTO {
     private Double score;
     private String message;
 
-    // Getters and Setters
-
+    @Override
     public Long getPostId() {
         return postId;
     }
 
-    public void setPostId(Long postId) {
-        this.postId = postId;
-    }
-
+    @Override
     public String getTitle() {
         return title;
+    
     }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    @Override
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
+    @Override
     public String getPostedBy() {
         return postedBy;
     }
 
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
-    }
-
+    @Override
     public Double getScore() {
         return score;
     }
 
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
+    @Override
     public String getMessage() {
         return message;
     }
 
+    @Override
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
+    @Override
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
+    }
+
+    @Override
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    @Override
     public void setMessage(String message) {
         this.message = message;
     }

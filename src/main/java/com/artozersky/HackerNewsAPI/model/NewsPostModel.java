@@ -16,7 +16,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-
 // do an interface with doxygen
 /* read about and implement here
 @NotBlank
@@ -30,9 +29,10 @@ import jakarta.validation.constraints.Size;
 @Column(name = 'name', updatable =)
 */ 
 /*fix author, add proper methods, including scor calculation */
+
 @Entity
 @Table(name = "posts")
-public class NewsPostModel {
+public class NewsPostModel implements INewsPostModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,6 +46,7 @@ public class NewsPostModel {
 
     @NotBlank(message = "Title is required")
     @Size(max = 255, message = "Title should not exceed 255 characters")
+    @Column(name = "title", length = 255)
     private String title;
 
     @Column(name = "current_votes")
@@ -63,86 +64,108 @@ public class NewsPostModel {
 
     @NotBlank(message = "Posted by is required")
     @Size(max = 100, message = "Author name should not exceed 100 characters")
+    @Column(name = "posted_by", length = 100)
     private String postedBy;
 
+    // ----------------- Getters -----------------
+
+    @Override
+    public Long getPostId() {
+        return postId;
+    }
+
+    @Override
+    public String getUrl() {
+        return url;
+    }
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
+
+    @Override
+    public Integer getCurrentVotes() {
+        return currentVotes;
+    }
+
+    @Override
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public Double getScore() {
+        return score;
+    }
+
+    @Override
+    public Integer getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    @Override
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    // ----------------- Setters -----------------
+
+    @Override
+    public void setPostId(Long postId) {
+        this.postId = postId;
+    }
+
+    @Override
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public void setCurrentVotes(Integer currentVotes) {
+        this.currentVotes = currentVotes;
+    }
+
+    @Override
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    @Override
+    public void setTimeElapsed(Integer timeElapsed) {
+        this.timeElapsed = timeElapsed;
+    }
+
+    @Override
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
+    }
+
+    // ----------------- Other Methods -----------------
+    @Override
     public void initialize() {
         this.setCurrentVotes(0);
         this.setTimeElapsed(0);
         this.setCreatedAt(LocalDateTime.now());
         updateScore();
     }
-    public void onPostUpdate()
-    {
+
+    @Override
+    public void onPostUpdate() {
         this.setCreatedAt(LocalDateTime.now());
         this.setTimeElapsed(0);
         this.updateScore();
     }
-    // Getters
-    public Long getPostId() {
-        return postId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Integer getCurrentVotes() {
-        return currentVotes;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public Double getScore() {
-        return score;
-    }
-
-    public Integer getTimeElapsed() {
-        return timeElapsed;
-    }
-
-    public String getPostedBy() {
-        return postedBy;
-    }
-
-    // Setters
-    public void setPostId(Long postId) {
-        this.postId = postId;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setCurrentVotes(Integer currentVotes) {
-        this.currentVotes = currentVotes;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setScore(Double score) {
-        this.score = score;
-    }
-
-    public void setTimeElapsed(Integer timeElapsed) {
-        this.timeElapsed = timeElapsed;
-    }
-
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
-    }
-
     @PrePersist
     protected void createdAtOnCreate() {
         this.createdAt = LocalDateTime.now();
@@ -153,22 +176,21 @@ public class NewsPostModel {
         this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
 
-    public void updateScore(){
+    @Override
+    public void updateScore() {
         final double GRAVITY = 1.8;
         double updatedScore = (this.getCurrentVotes() - 1) / Math.pow((this.getTimeElapsed() + 2), GRAVITY);
-        this.setScore(updatedScore); 
+        this.setScore(updatedScore);
     }
 
-    public void upVote()
-    {
+    @Override
+    public void upVote() {
         this.currentVotes++;
     }
 
-    public void downVote()
-    {
+    @Override
+    public void downVote() {
         this.currentVotes--;
     }
 }
-
-
 

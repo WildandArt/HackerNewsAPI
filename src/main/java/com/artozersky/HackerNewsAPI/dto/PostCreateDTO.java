@@ -1,15 +1,10 @@
 package com.artozersky.HackerNewsAPI.dto;
 
 import org.hibernate.validator.constraints.URL;
-
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-/* create interfaces for both files
-@Column(
-
-*/
-public class PostCreateDTO {
+public class PostCreateDTO implements IPostCreateDTO {
 
     @NotBlank(message = "Title is required")
     @Size(max = 255, message = "Title should not exceed 255 characters")
@@ -24,26 +19,32 @@ public class PostCreateDTO {
     private String postedBy;
 
     // Getters and Setters
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @Override
     public String getUrl() {
         return url;
     }
 
+    @Override
     public void setUrl(String url) {
         this.url = url;
     }
 
+    @Override
     public String getPostedBy() {
         return postedBy;
     }
 
+    @Override
     public void setPostedBy(String postedBy) {
         this.postedBy = postedBy;
     }
