@@ -44,13 +44,22 @@ public interface NewsPostService {
     PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId);
 
     /**
-     * Updates the vote count for a post.
+     * Adds to the vote count for a post.
      *
      * @param id The ID of the post to be updated.
      * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
      * @return A {@link PostResponseDTO} containing the details of the post after the vote update.
      */
-    PostResponseDTO updateVote(Long id, Integer byNum);
+    public PostResponseDTO upVote(Long id);
+
+      /**
+     * Subtracts 1 from the vote count for a post.
+     *
+     * @param id The ID of the post to be updated.
+     * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
+     * @return A {@link PostResponseDTO} containing the details of the post after the vote update.
+     */
+    public PostResponseDTO downVote(Long id);
 
     /**
      * Deletes a post by its ID.

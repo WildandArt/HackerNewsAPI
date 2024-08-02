@@ -121,27 +121,53 @@ public class PostServiceImpl implements NewsPostService {
     // exception safe, read how not to crash your server and send the client the
     // error.
     // think of how to restrict this function to get only 1 or -1.
-    @Override
-    public PostResponseDTO updateVote(Long id, Integer byNum) {
+    //@Override
+    // public PostResponseDTO updateVote(Long id, Integer byNum) {
 
-        if(1 == byNum || -1 == byNum)
-        {
-            NewsPostModel post = postRepository.findById(id)
-                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
-                if (1 == byNum) {
-                    post.upVote();
-                }
-                else {
-                    post.downVote();
-                }
-                //TODO: CHECK if @Preupdate of elapsed time will work here
-                post.updateScore();
-                NewsPostModel updatedPost = postRepository.save(post);
-                PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
-                responseDTO.setMessage("Vote updated successfully");
-                return responseDTO;
-        }
-        throw new IllegalArgumentException("Vote value must be either 1 (upvote) or -1 (downvote)");
+    //     if(1 == byNum || -1 == byNum)
+    //     {
+    //         NewsPostModel post = postRepository.findById(id)
+    //                 .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+    //             if (1 == byNum) {
+    //                 post.upVote();
+    //             }
+    //             else {
+    //                 post.downVote();
+    //             }
+    //             //TODO: CHECK if @Preupdate of elapsed time will work here
+    //             post.updateScore();
+    //             NewsPostModel updatedPost = postRepository.save(post);
+    //             PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+    //             responseDTO.setMessage("Vote updated successfully");
+    //             return responseDTO;
+    //     }
+    //     throw new IllegalArgumentException("Vote value must be either 1 (upvote) or -1 (downvote)");
     
+    // }
+    @Override
+    public PostResponseDTO upVote(Long id) {
+        NewsPostModel post = postRepository.findById(id)
+                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+        post.upVote();        
+        post.updateScore();
+        NewsPostModel updatedPost = postRepository.save(post);
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Vote updated successfully");
+        return responseDTO;
     }
+
+    @Override
+    public PostResponseDTO downVote(Long id) {
+        NewsPostModel post = postRepository.findById(id)
+                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+        post.downVote();        
+        post.updateScore();
+        NewsPostModel updatedPost = postRepository.save(post);
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Vote updated successfully");
+        return responseDTO;
+    }
+
+
+
 }
