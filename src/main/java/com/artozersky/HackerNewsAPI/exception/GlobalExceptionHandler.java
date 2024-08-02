@@ -13,7 +13,7 @@ import jakarta.validation.ConstraintViolationException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
+    
     @ExceptionHandler(Exception.class)
     public ResponseEntity<PostResponseDTO> handleGeneralException(Exception e) {
         PostResponseDTO errorResponse = new PostResponseDTO();
@@ -56,7 +56,4 @@ public class GlobalExceptionHandler {
         errorResponse.setMessage("Database error: " + e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
-
-
 }

@@ -1,0 +1,21 @@
+\hypertarget{md_HELP_autotoc_md1}{}\doxysubsection{Reference Documentation}\label{md_HELP_autotoc_md1}
+For further reference, please consider the following sections\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://maven.apache.org/guides/index.html}{\texttt{ Official Apache Maven documentation}}
+\item \href{https://docs.spring.io/spring-boot/docs/3.3.2/maven-plugin/reference/html/}{\texttt{ Spring Boot Maven Plugin Reference Guide}}
+\item \href{https://docs.spring.io/spring-boot/docs/3.3.2/maven-plugin/reference/html/\#build-image}{\texttt{ Create an OCI image}}
+\item \href{https://docs.spring.io/spring-boot/docs/3.3.2/reference/htmlsingle/index.html\#web}{\texttt{ Spring Web}}
+\item \href{https://docs.spring.io/spring-boot/docs/3.3.2/reference/htmlsingle/index.html\#data.sql.jpa-and-spring-data}{\texttt{ Spring Data JPA}}
+\end{DoxyItemize}\hypertarget{md_HELP_autotoc_md2}{}\doxysubsection{Guides}\label{md_HELP_autotoc_md2}
+The following guides illustrate how to use some features concretely\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://spring.io/guides/gs/rest-service/}{\texttt{ Building a RESTful Web Service}}
+\item \href{https://spring.io/guides/gs/serving-web-content/}{\texttt{ Serving Web Content with Spring MVC}}
+\item \href{https://spring.io/guides/tutorials/rest/}{\texttt{ Building REST services with Spring}}
+\item \href{https://spring.io/guides/gs/accessing-data-jpa/}{\texttt{ Accessing Data with JPA}}
+\end{DoxyItemize}\hypertarget{md_HELP_autotoc_md3}{}\doxysubsection{Maven Parent overrides}\label{md_HELP_autotoc_md3}
+Due to Maven\textquotesingle{}s design, elements are inherited from the parent POM to the project POM. While most of the inheritance is fine, it also inherits unwanted elements like {\ttfamily $<$license$>$} and {\ttfamily $<$developers$>$} from the parent. To prevent this, the project POM contains empty overrides for these elements. If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides. 
