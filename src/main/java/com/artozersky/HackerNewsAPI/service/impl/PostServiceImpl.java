@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
@@ -24,6 +25,9 @@ public class PostServiceImpl implements NewsPostService {
     
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private CacheServiceImpl<Long, NewsPostModel> cacheService;
     
     @Override
     public PostResponseDTO deletePost(Long postId) {

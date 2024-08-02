@@ -4,6 +4,7 @@ import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -58,4 +59,9 @@ public interface IPostController {
      * @return A ResponseEntity containing the updated PostResponseDTO and HTTP status.
      */
     ResponseEntity<PostResponseDTO> downVotePost(Long id);
+
+
+    ResponseEntity<PostResponseDTO> deletePost(Long id);
+
+    ResponseEntity<PostResponseDTO> getPost(Long id);
 }

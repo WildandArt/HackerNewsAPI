@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,6 +58,14 @@ public class PostController implements IPostController{
         return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    @Override
+    public ResponseEntity<PostResponseDTO> getPost(@PathVariable("id") Long id) {
+        PostResponseDTO gotPost = postService.getPostById(id);
+        return new ResponseEntity<>(gotPost, HttpStatus.OK);
+    }
+
+
     @GetMapping("/top_posts")
     @Override
     public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
@@ -97,6 +106,14 @@ public class PostController implements IPostController{
 
         PostResponseDTO updatedPost = postService.downVote(id);
         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}/delete")
+    @Override
+    public ResponseEntity<PostResponseDTO> deletePost(@PathVariable("id") Long id) {
+
+        PostResponseDTO deletedPost = postService.deletePost(id);
+        return new ResponseEntity<>(deletedPost, HttpStatus.OK);
     }
 
 }
