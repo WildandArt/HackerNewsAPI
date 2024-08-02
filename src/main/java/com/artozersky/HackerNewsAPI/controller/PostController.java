@@ -3,7 +3,6 @@ package com.artozersky.HackerNewsAPI.controller;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -22,88 +21,61 @@ import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
-// read about @Validated
-// you need to implement deletePost to be able to delete it. 
-//getbyid
-// create interface and document with doxygen
 @RestController
 @RequestMapping("/api/posts")
 @Validated
-public class PostController {
+public class PostController implements IPostController{
 
     private final NewsPostService postService;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
-    public PostController(NewsPostService postService) {
+    private final ModelMapper modelMapper;
+    
+    public PostController(NewsPostService postService, ModelMapper modelMapper) {
         this.postService = postService;
+        this.modelMapper = modelMapper;
     }
 
-    /*
-     * Create a new Post and save it into DB.
-     * If for some reason creation fails, exception is caught and presented to the
-     * user in a Browser.
-     */
-    @PostMapping("") // also best practise is to do @PostMapping(""), also @Validated
+    @PostMapping("")
+    @Override
     public ResponseEntity<PostResponseDTO> createPost(@RequestBody @Validated PostCreateDTO postCreateDTO) {
         PostResponseDTO createdPost = postService.savePost(postCreateDTO);
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
-    @GetMapping("") // Use "" to make this endpoint more explicit
+    @GetMapping("")
+    @Override
     public ResponseEntity<List<PostResponseDTO>> getAllPosts() {
+
         List<NewsPostModel> posts = postService.getAllPosts();
 
-        // Convert the list of NewsPostModel to PostResponseDTO using ModelMapper
         List<PostResponseDTO> postResponseDTOs = posts.stream()
                                                     .map(post -> modelMapper.map(post, PostResponseDTO.class))
                                                     .toList();
 
-        // Check if the list is empty and respond with NO_CONTENT if true
         if (postResponseDTOs.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        // Return the list of posts with HTTP status OK
         return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
-}
-
-@GetMapping("/top_posts") // Changed the mapping to "top_posts" as per the best practice
-public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
-    List<NewsPostModel> posts = postService.getSortedPostsByScore();
-
-    // Convert the list of NewsPostModel to PostResponseDTO using ModelMapper
-    List<PostResponseDTO> postResponseDTOs = posts.stream()
-                                                  .map(post -> modelMapper.map(post, PostResponseDTO.class))
-                                                  .toList();
-
-    // Check if the list is empty and respond with NO_CONTENT if true
-    if (postResponseDTOs.isEmpty()) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    // Return the sorted list of posts with HTTP status OK
-    return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
-}
 
-    // @GetMapping // also best practise is to do @PostMapping("")
-    // public ResponseEntity<List<NewsPostModel>> getAllPosts() {
-    //     List<NewsPostModel> posts = postService.getAllPosts(); // You need to implement response dto
-    //     if (posts.isEmpty()) {
-    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    //     }
-    //     return new ResponseEntity<>(posts, HttpStatus.OK);
-    // }
+    @GetMapping("/top_posts")
+    @Override
+    public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
 
-    // @GetMapping("/top_posts") // rename to top_posts
-    // public ResponseEntity<List<NewsPostModel>> getAllSortedPosts() {
-    //     List<NewsPostModel> posts = postService.getSortedPostsByScore(); // You need to implement response dto
-    //     if (posts.isEmpty()) {
-    //         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    //     }
-    //     return new ResponseEntity<>(posts, HttpStatus.OK);
-    // }
+        List<NewsPostModel> posts = postService.getSortedPostsByScore();
 
-    // Use @PutMapping
+        List<PostResponseDTO> postResponseDTOs = posts.stream()
+                                                    .map(post -> modelMapper.map(post, PostResponseDTO.class))
+                                                    .toList();
+
+        if (postResponseDTOs.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
+    @Override
     public ResponseEntity<PostResponseDTO> updatePost(@PathVariable("id") Long id, @RequestBody @Validated PostUpdateDTO postUpdateDTO) {
 
         // Full replacement of the resource, need to check about votes, they should be copied
@@ -112,6 +84,7 @@ public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
 }
 
     @PatchMapping("/{id}/upvote")
+    @Override
     public ResponseEntity<PostResponseDTO> upvotePost(@PathVariable("id") Long id) {
 
         PostResponseDTO updatedPost = postService.upVote(id);
@@ -119,31 +92,11 @@ public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
 }
 
     @PatchMapping("/{id}/downvote")
-        public ResponseEntity<PostResponseDTO> downVotePost(@PathVariable("id") Long id) {
+    @Override
+    public ResponseEntity<PostResponseDTO> downVotePost(@PathVariable("id") Long id) {
 
-            PostResponseDTO updatedPost = postService.downVote(id);
-            return new ResponseEntity<>(updatedPost, HttpStatus.OK);
+        PostResponseDTO updatedPost = postService.downVote(id);
+        return new ResponseEntity<>(updatedPost, HttpStatus.OK);
     }
-// }
-//     @PatchMapping("/{id}/upvote")
-//     public ResponseEntity<NewsPostModel> upvotePost(@PathVariable("id") Long id) {
-//         try {
-//             NewsPostModel updatedPost = postService.updateVote(id, 1); // you need to remove this hard coded, and implement in
-//                                                               // the model a way to do this without any number, use ++,
-//                                                               // -- perators
-//             return new ResponseEntity<>(updatedPost, HttpStatus.OK);
-//         } catch (Exception e) {
-//             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);// You need to implement response dto
-//         }
-//     }
 
-//     @PatchMapping("/{id}/downvote")
-//     public ResponseEntity<NewsPostModel> downVotePost(@PathVariable("id") Long id) {
-//         try {
-//             NewsPostModel updatedPost = postService.updateVote(id, -1);
-//             return new ResponseEntity<>(updatedPost, HttpStatus.OK); // You need to implement response dto
-//         } catch (Exception e) {
-//             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//         }
-//     }
 }
