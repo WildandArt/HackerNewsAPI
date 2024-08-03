@@ -90,7 +90,7 @@ public class PostServiceImpl implements NewsPostService {
 
         NewsPostModel post = postRepository.findById(postId)
             .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
-            
+
         boolean isRedundant = true;
 
         if (postUpdateDTO.getTitle() != null && !postUpdateDTO.getTitle().trim().isEmpty()) {
@@ -123,7 +123,7 @@ public class PostServiceImpl implements NewsPostService {
         return responseDTO;
     }
 
-    //             //TODO: CHECK if @Preupdate of elapsed time will work here
+    //TODO: CHECK if @Preupdate of elapsed time will work here
     @Override
     public PostResponseDTO upVote(Long id) {
         NewsPostModel post = postRepository.findById(id)
@@ -145,7 +145,5 @@ public class PostServiceImpl implements NewsPostService {
         responseDTO.setMessage("Vote updated successfully");
         return responseDTO;
     }
-
-
 
 }
