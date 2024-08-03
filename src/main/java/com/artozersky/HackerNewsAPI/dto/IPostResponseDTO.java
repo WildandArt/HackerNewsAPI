@@ -1,5 +1,7 @@
 package com.artozersky.HackerNewsAPI.dto;
 
+import java.time.LocalDateTime;
+
 /**
  * Interface for Post Response Data Transfer Object.
  * This interface defines the structure of the data returned by the API when
@@ -94,4 +96,8 @@ public interface IPostResponseDTO {
      * @param message The message to set related to the post action.
      */
     void setMessage(String message);
+
+    public Integer getTimeElapsed();
+    void setCreatedAt(LocalDateTime createdAt);
+    LocalDateTime getCreatedAt();
 }

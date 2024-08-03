@@ -1,5 +1,8 @@
 package com.artozersky.HackerNewsAPI.dto;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 public class PostResponseDTO implements IPostResponseDTO {
 
     private Long postId;
@@ -9,6 +12,8 @@ public class PostResponseDTO implements IPostResponseDTO {
     private Double score;
     private Integer currentVotes;
     private String message;
+    private LocalDateTime createdAt;
+
 
     @Override
     public Integer getCurrentVotes() {
@@ -79,5 +84,19 @@ public class PostResponseDTO implements IPostResponseDTO {
     @Override
     public void setMessage(String message) {
         this.message = message;
+    }
+    @Override
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    @Override
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    // Calculated dynamically
+    @Override
+    public Integer getTimeElapsed() {
+        return (int) Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
 }
