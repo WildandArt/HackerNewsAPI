@@ -65,7 +65,7 @@ public class PostServiceImplTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    void testGetAllPosts_FromDB() {
+    void testGetAllPosts_FromDB() throws Exception {
         String cacheKey = "all_posts";
         List<NewsPostModel> posts = List.of(new NewsPostModel());
         List<PostResponseDTO> postResponseDTOs = posts.stream()
@@ -76,7 +76,10 @@ public class PostServiceImplTest {
         when(postRepository.findAll()).thenReturn(posts);
         when(modelMapper.map(posts.get(0), PostResponseDTO.class)).thenReturn(postResponseDTOs.get(0));
         when(allPostsCacheService.getFromCacheOrDb(eq(cacheKey), any(ParameterizedTypeReference.class), any()))
-                .thenAnswer(invocation -> invocation.getArgument(2, Callable.class).call());
+                .thenAnswer(invocation -> {
+                    Callable<List<PostResponseDTO>> dbFetch = invocation.getArgument(2, Callable.class);
+                    return dbFetch.call();
+                });
 
         List<PostResponseDTO> result = postService.getAllPosts();
 

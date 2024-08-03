@@ -46,7 +46,7 @@ public class PostController implements IPostController{
     @Override
     public ResponseEntity<List<PostResponseDTO>> getAllPosts() {
 
-        List<NewsPostModel> posts = postService.getAllPosts();
+        List<PostResponseDTO> posts = postService.getAllPosts();
 
         List<PostResponseDTO> postResponseDTOs = posts.stream()
                                                     .map(post -> modelMapper.map(post, PostResponseDTO.class))
@@ -70,7 +70,7 @@ public class PostController implements IPostController{
     @Override
     public ResponseEntity<List<PostResponseDTO>> getAllSortedPosts() {
 
-        List<NewsPostModel> posts = postService.getSortedPostsByScore();
+        List<PostResponseDTO> posts = postService.getSortedPostsByScore();
 
         List<PostResponseDTO> postResponseDTOs = posts.stream()
                                                     .map(post -> modelMapper.map(post, PostResponseDTO.class))
