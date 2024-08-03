@@ -57,12 +57,16 @@ public class PostServiceImpl implements NewsPostService {
     
     @Override
     public List<NewsPostModel> getAllPosts() {
+
         return postRepository.findAll();
+
     }
 
     @Override
     public List<NewsPostModel> getSortedPostsByScore() {
+
         return postRepository.findAllByOrderByScoreDesc();
+
     }
 
     @Override
@@ -86,6 +90,7 @@ public class PostServiceImpl implements NewsPostService {
 
         NewsPostModel post = postRepository.findById(postId)
             .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+            
         boolean isRedundant = true;
 
         if (postUpdateDTO.getTitle() != null && !postUpdateDTO.getTitle().trim().isEmpty()) {

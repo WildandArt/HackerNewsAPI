@@ -1,21 +1,38 @@
 package com.artozersky.HackerNewsAPI.config;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.artozersky.HackerNewsAPI.cache.CacheEntityManager;
-// create interface and document with doxygen
+
+/**
+ * Configuration class for beans like CacheManager and ModelMapper.
+ */
 @Configuration
-public class Config{
+public class Config implements IConfig{
+
+    @Value("${cache.size:5}")
+    private int cacheSize;
+
+    /**
+     * {@inheritDoc}
+     */
     @Bean
-    public CacheManager cacheManager(){     // @Value(
-        return new CacheEntityManager(100); // 100? please let the user decide how many he can set do it inside the application properties and get the value from there. 
+    @Override
+    public CacheManager cacheManager() {
+        return new CacheEntityManager(cacheSize);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Bean
+    @Override
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+   
 }

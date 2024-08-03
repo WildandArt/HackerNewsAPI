@@ -16,20 +16,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-// do an interface with doxygen
-/* read about and implement here
-@NotBlank
-@Size
-@URL
-@CreatedDate
-@Min
-@Max
-@PrePersist
-@PreUpdate
-@Column(name = 'name', updatable =)
-*/ 
-/*fix author, add proper methods, including scor calculation */
-
 @Entity
 @Table(name = "posts")
 public class NewsPostModel implements INewsPostModel {
