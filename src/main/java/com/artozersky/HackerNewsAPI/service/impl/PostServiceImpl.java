@@ -159,7 +159,9 @@ public class PostServiceImpl implements NewsPostService {
         post.upVote();        
         NewsPostModel updatedPost = postRepository.save(post);
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+
         responseDTO.setMessage("Vote updated successfully");
+        
         if (cacheService.get(id, PostResponseDTO.class) != null) {
             cacheService.put(id, responseDTO);
         }
