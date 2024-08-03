@@ -86,7 +86,11 @@ public class PostServiceImpl implements NewsPostService {
                 .toList()
         );
 
-    return posts;
+        if (posts != null && !posts.isEmpty()) {
+            allPostsCacheService.put(cacheKey, posts);
+        }
+
+        return posts;
     }
     
     @Override
