@@ -1,5 +1,6 @@
 package com.artozersky.HackerNewsAPI.cache;
 
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.Callable;
@@ -10,12 +11,19 @@ public class CacheServiceImpl<K, V> implements ICacheService<K, V> {
     private final CacheEntity cacheEntity;
 
     public CacheServiceImpl() {
+
         this.cacheEntity = new CacheEntity("postCache", 100);
+
     }
 
     @Override
     public V get(K key, Class<V> type) {
         return type.cast(cacheEntity.get(key));
+    }
+    @SuppressWarnings("unchecked")
+    public <T> T get(K key, ParameterizedTypeReference<T> typeReference) {
+        Object cachedValue = cacheEntity.get(key);
+        return (T) cachedValue;
     }
 
     @Override
@@ -38,10 +46,22 @@ public class CacheServiceImpl<K, V> implements ICacheService<K, V> {
         V value = this.get(key, type);
         if (value == null) {
             try {
-                // Fetch from DB if not in cache
                 value = dbFetch.call();
-                // Put it in cache
                 this.put(key, value);
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to fetch from DB", e);
+            }
+        }
+        return value;
+    }
+
+    @Override
+    public <T> T getFromCacheOrDb(K key, ParameterizedTypeReference<T> typeReference, Callable<T> dbFetch) {
+        T value = this.get(key, typeReference);
+        if (value == null) {
+            try {
+                value = dbFetch.call();
+                this.put(key, (V) value);  // Cast and store the fetched value
             } catch (Exception e) {
                 throw new RuntimeException("Failed to fetch from DB", e);
             }

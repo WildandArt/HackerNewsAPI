@@ -17,14 +17,14 @@ public interface NewsPostService {
      *
      * @return A list of all {@link NewsPostModel} objects.
      */
-    List<NewsPostModel> getAllPosts();
+    List<PostResponseDTO> getAllPosts();
 
     /**
      * Retrieves all posts sorted by their score in descending order.
      *
      * @return A list of {@link NewsPostModel} objects sorted by score in descending order.
      */
-    List<NewsPostModel> getSortedPostsByScore();
+    List<PostResponseDTO> getSortedPostsByScore();
 
     /**
      * Saves a new post.
