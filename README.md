@@ -102,7 +102,7 @@ curl -X POST http://localhost:8080/posts/<ID>/downvote
 
 Below is the schema used by the Mini Hacker News database:
 
-![Database Schema](img/DBSchema.png)
+
 ## Cache Strategy:
 #### When GET is called, each post returning from GET can Cache Hit or Cache miss. 
 #### If Cache Hit-> fetch it from cache 
@@ -115,14 +115,13 @@ Below is the schema used by the Mini Hacker News database:
 #### Case 1: Update of a post automatically updates the time of the creation of the post, which changes the score. fields: created_at and score should be updated in DB and (!!!)Cache if post_id exists in already Cache.
 #### Case 2: Upvote/Downvote changes the score. Update should be made to DB and in (!!!)Cache if exists in Cache.
 
-![Invalidatoin Strategy](img/CacheInvalidationStrategy.jpg)
 
 # Testing:
 # How to Use a Postman Collection JSON File
 
 ## 1. Download the Collection JSON File
 - First, ensure you have the Postman collection JSON file saved to your local machine.
-You can access the Postman collection file [here](Postman/HackerNewsAPIV3.postman_collection.json).
+You can access the Postman collection file [here](Postman/HackerNewsAPI.postman_collection.json).
 This file contains all the endpoints, requests, and configurations defined in the collection.
 
 ## 2. Importing the Collection into Postman
