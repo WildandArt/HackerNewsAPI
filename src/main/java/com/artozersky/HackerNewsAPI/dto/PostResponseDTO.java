@@ -7,7 +7,13 @@ public class PostResponseDTO implements IPostResponseDTO {
     private String url;
     private String postedBy;
     private Double score;
+    private Integer currentVotes;
     private String message;
+
+    @Override
+    public Integer getCurrentVotes() {
+        return currentVotes;
+    }
 
     @Override
     public Long getPostId() {
@@ -37,6 +43,11 @@ public class PostResponseDTO implements IPostResponseDTO {
     @Override
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public void setCurrentVotes(Integer currentVotes) {
+        this.currentVotes = currentVotes;
     }
 
     @Override

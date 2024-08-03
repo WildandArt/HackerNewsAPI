@@ -7,6 +7,8 @@ package com.artozersky.HackerNewsAPI.dto;
  */
 public interface IPostResponseDTO {
 
+    Integer getCurrentVotes();
+
     /**
      * Gets the ID of the post.
      * 
@@ -48,6 +50,8 @@ public interface IPostResponseDTO {
      * @return The message related to the post action.
      */
     String getMessage();
+
+    void setCurrentVotes(Integer currentVotes);
 
     /**
      * Sets the ID of the post.

@@ -186,11 +186,13 @@ public class NewsPostModel implements INewsPostModel {
     @Override
     public void upVote() {
         this.currentVotes++;
+        this.updateScore();
     }
 
     @Override
     public void downVote() {
         this.currentVotes--;
+        this.updateScore();
     }
     
 }

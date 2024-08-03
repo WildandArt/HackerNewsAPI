@@ -124,7 +124,6 @@ public class PostServiceImpl implements NewsPostService {
         NewsPostModel post = postRepository.findById(id)
                     .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.upVote();        
-        post.updateScore();
         NewsPostModel updatedPost = postRepository.save(post);
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Vote updated successfully");
@@ -136,7 +135,6 @@ public class PostServiceImpl implements NewsPostService {
         NewsPostModel post = postRepository.findById(id)
                     .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.downVote();        
-        post.updateScore();
         NewsPostModel updatedPost = postRepository.save(post);
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Vote updated successfully");

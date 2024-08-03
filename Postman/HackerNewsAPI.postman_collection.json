@@ -35,6 +35,47 @@
 			"name": "Create Post Requests",
 			"item": [
 				{
+					"name": "Create 5 Posts from JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": {{userId}},\n  \"author\": \"{{author}}\",\n  \"url\": \"{{url}}\",\n  \"title\": \"{{title}}\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Jack Black",
 					"event": [
 						{
@@ -238,47 +279,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Jack Black 3",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Successful POST request\", function () {",
-									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"userId\": 1,\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8081/posts",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -287,214 +287,9 @@
 			"item": [
 				{
 					"name": "Update post 6",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
 					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n           \"title\": \"Updated Title\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8081/posts/6",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update field url",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n           \"url\": \"http://updated.com/post6\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8081/posts/6",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update post_id 6 2 fields",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n           \"title\": \"Updated Again Title\",\n           \"url\": \"http://NewUpdatedurl.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8081/posts/6",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update post_id 6, send null",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n           \"title\": null\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8081/posts/6",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Upvote/Downvote",
-			"item": [
-				{
-					"name": "post_d=6,upvote",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "localhost:8081/posts/6/upvote",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6",
-								"upvote"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "post_d=6,downvote",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"url": {
-							"raw": "localhost:8081/posts/6/downvote",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"posts",
-								"6",
-								"downvote"
-							]
-						}
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
