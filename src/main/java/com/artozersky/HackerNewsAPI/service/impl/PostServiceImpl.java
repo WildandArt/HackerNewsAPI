@@ -1,103 +1,149 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
-import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
-import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
-import com.artozersky.HackerNewsAPI.model.Post;
+import java.util.List;
 
-import com.artozersky.HackerNewsAPI.model.User;
-import com.artozersky.HackerNewsAPI.repository.PostRepository;
-import com.artozersky.HackerNewsAPI.repository.UserRepository;
-import com.artozersky.HackerNewsAPI.service.PostService;
-
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.List;
+import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
+import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
+import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
+import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
+import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.repository.PostRepository;
+import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
+import jakarta.validation.Valid;
 
 @Service
-public class PostServiceImpl implements PostService {
+public class PostServiceImpl implements NewsPostService {
+    
     @Autowired
     private PostRepository postRepository;
+    
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Override
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
-    /* List of posts sorted by score field.*/
-    @Override
-    public List<Post> getSortedPostsByScore() {
-        return postRepository.findAllByOrderByScoreDesc();
-    }
-    @Override
-    public Post savePost(PostCreateDTO postCreateDTO) {
-        User user = userRepository.findById(postCreateDTO.getUserId()).orElseThrow(() -> new RuntimeException("User not found"));
-        Post post = new Post();
-        post.setTitle(postCreateDTO.getTitle());
-        post.setUrl(postCreateDTO.getUrl());
-        post.setUserId(postCreateDTO.getUserId());
-
-        post.setAuthor(user.getUsername());
-
-        post.setCurrentVotes(0);
-        post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        double timeInHours = 0;
-        post.setScore(ScoreCalculator.calculateScore(0, 0, ScoreCalculator.GRAVITY));
-        post.setCreatedHoursAgo((int) timeInHours);
-        return postRepository.save(post);
-    }
-    public static class ScoreCalculator {
-
-        private static final double GRAVITY = 1.8;
+    private CacheServiceImpl<Long, NewsPostModel> cacheService;
     
-        public static double calculateScore(double points, double timeInHours, double gravity) {
-            return (points - 1) / Math.pow((timeInHours + 2), gravity);
-        }
-    }
-    public class TimeUtils {
-        public static double calculateHoursAgo(Timestamp createdAt) {
-            Timestamp now = new Timestamp(System.currentTimeMillis());
-            long msSinceCreation = now.getTime() - createdAt.getTime();
-            return msSinceCreation / (1000.0 * 60 * 60);  
-        }
-    }
     @Override
-    public Post updatePost(Long postId, PostUpdateDTO postUpdateDTO) {
-        Post post = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
-        /*if both null, return the post */
-        // if( postUpdateDTO.getTitle() != null && postUpdateDTO.getUrl() != null){
-        //     return post;
-        // }
-        if (postUpdateDTO.getTitle() != null) {
-            post.setTitle(postUpdateDTO.getTitle());
-        }
-        if (postUpdateDTO.getUrl() != null) {
-            post.setUrl(postUpdateDTO.getUrl());
-        }
-        /* fields that need to be recalculated at each update */
-        Integer currentVotes = post.getCurrentVotes();
-        post.setCreatedHoursAgo(0);
-        post.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        post.setScore(ScoreCalculator.calculateScore(currentVotes, 0, ScoreCalculator.GRAVITY));
+    public PostResponseDTO deletePost(Long postId) {
+        
+        NewsPostModel post = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        
+        postRepository.delete(post);
 
-        return postRepository.save(post);
+        PostResponseDTO responseDTO = new PostResponseDTO();
+        responseDTO.setPostId(postId);
+        responseDTO.setMessage("Post deleted successfully");
+
+        return responseDTO;
     }
+
     @Override
-    public Post updateVote(Long id, Integer byNum) {
-        Post post = postRepository.findById(id).orElseThrow(() -> new RuntimeException("Post not found"));
-        Integer updatedVotesNumber = post.getCurrentVotes() + byNum;
-        post.setCurrentVotes(updatedVotesNumber);
-        /* update score field */
-        Double hoursAgoDouble = TimeUtils.calculateHoursAgo(post.getCreatedAt());
-        post.setScore(ScoreCalculator.calculateScore(updatedVotesNumber, hoursAgoDouble, ScoreCalculator.GRAVITY));
-        /*updating the field hoursAgo*/
-        Integer hoursAgoInt = (int) Math.floor(hoursAgoDouble);
-        post.setCreatedHoursAgo(hoursAgoInt);
+    public PostResponseDTO getPostById(Long postId) {
+        
+        NewsPostModel post = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        
+        PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
 
-        return postRepository.save(post);
+        return responseDTO;
     }
+    
+    @Override
+    public List<NewsPostModel> getAllPosts() {
+
+        return postRepository.findAll();
+
+    }
+
+    @Override
+    public List<NewsPostModel> getSortedPostsByScore() {
+
+        return postRepository.findAllByOrderByScoreDesc();
+
+    }
+
+    @Override
+    public PostResponseDTO savePost(@Valid PostCreateDTO postCreateDTO) {
+        
+        NewsPostModel post = modelMapper.map(postCreateDTO, NewsPostModel.class);
+
+        post.initialize();
+
+        NewsPostModel savedPost = postRepository.save(post);
+
+        PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
+        
+        responseDTO.setMessage("Post created successfully");
+        
+        return responseDTO;
+    }
+
+    @Override
+    public PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId) {
+
+        NewsPostModel post = postRepository.findById(postId)
+            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+
+        boolean isRedundant = true;
+
+        if (postUpdateDTO.getTitle() != null && !postUpdateDTO.getTitle().trim().isEmpty()) {
+            if (!postUpdateDTO.getTitle().equals(post.getTitle())) {
+                post.setTitle(postUpdateDTO.getTitle());
+                isRedundant = false;
+            }
+        }
+    
+        if (postUpdateDTO.getUrl() != null && !postUpdateDTO.getUrl().trim().isEmpty()) {
+            if (!postUpdateDTO.getUrl().equals(post.getUrl())) {
+                post.setUrl(postUpdateDTO.getUrl());
+                isRedundant = false;
+            }
+        }
+
+        if(isRedundant) {
+            PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
+            responseDTO.setMessage("No changes detected. Update skipped.");
+            return responseDTO;
+        }
+
+        post.onPostUpdate();
+
+        NewsPostModel updatedPost = postRepository.save(post);
+
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Post updated successfully");
+
+        return responseDTO;
+    }
+
+    //TODO: CHECK if @Preupdate of elapsed time will work here
+    @Override
+    public PostResponseDTO upVote(Long id) {
+        NewsPostModel post = postRepository.findById(id)
+                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+        post.upVote();        
+        NewsPostModel updatedPost = postRepository.save(post);
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Vote updated successfully");
+        return responseDTO;
+    }
+
+    @Override
+    public PostResponseDTO downVote(Long id) {
+        NewsPostModel post = postRepository.findById(id)
+                    .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
+        post.downVote();        
+        NewsPostModel updatedPost = postRepository.save(post);
+        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        responseDTO.setMessage("Vote updated successfully");
+        return responseDTO;
+    }
+
 }

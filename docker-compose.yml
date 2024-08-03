@@ -3,29 +3,36 @@ version: '3.8'
 services:
   db:
     image: postgres:15.3
-    container_name: postgres
+    container_name: hackernewsapi-db
     environment:
-      POSTGRES_DB: hackernewsdb
+      POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - hackernews-api_dbvol:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - hackernews-api-network
 
   app:
     build:
       context: .
-      dockerfile: Dockerfile
     container_name: hackernewsapi
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/hackernewsdb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
     depends_on:
       - db
     ports:
-      - "8080:8080"
+      - "8081:8081"
+    networks:
+      - hackernews-api-network
 
 volumes:
   hackernews-api_dbvol:
+
+networks:
+  hackernews-api-network:
+    driver: bridge

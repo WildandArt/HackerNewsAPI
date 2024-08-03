@@ -1,0 +1,134 @@
+\hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController}{}\doxysection{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller Interface Reference}
+\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController}\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+
+
+Inheritance diagram for com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a4a1329e358132928598935714b37edba}{create\+Post}} (\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostCreateDTO}{Post\+Create\+DTO}} post\+Create\+DTO)
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2e3d18a0f70fb48776dd6b8638f72f4d}{get\+All\+Posts}} ()
+\item 
+Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a3499c160370119e83bb180a8adc64f07}{get\+All\+Sorted\+Posts}} ()
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a48c5b8495a38987bac6162e2dc8ca61f}{update\+Post}} (Long id, \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO}{Post\+Update\+DTO}} post\+Update\+DTO)
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a5fa14f2452d868c1c522c7f576468053}{upvote\+Post}} (Long id)
+\item 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2bd6fc5905067c202bf38db494855f3e}{down\+Vote\+Post}} (Long id)
+\item 
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_ad4881073a4a740582c8d33296597425a}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_ad4881073a4a740582c8d33296597425a}} 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ {\bfseries delete\+Post} (Long id)
+\item 
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a0f7c4f18770a1810e91f78ec5ceca9fb}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a0f7c4f18770a1810e91f78ec5ceca9fb}} 
+Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} $>$ {\bfseries get\+Post} (Long id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController}{Post\+Controller}} that defines the API endpoints for managing posts. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a4a1329e358132928598935714b37edba}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a4a1329e358132928598935714b37edba}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!createPost@{createPost}}
+\index{createPost@{createPost}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{createPost()}{createPost()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+create\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostCreateDTO}{Post\+Create\+DTO}}}]{post\+Create\+DTO }\end{DoxyParamCaption})}
+
+Creates a new post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em post\+Create\+DTO} & The data transfer object containing the post creation details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing the created Post\+Response\+DTO and HTTP status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2bd6fc5905067c202bf38db494855f3e}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2bd6fc5905067c202bf38db494855f3e}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!downVotePost@{downVotePost}}
+\index{downVotePost@{downVotePost}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{downVotePost()}{downVotePost()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+down\+Vote\+Post (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})}
+
+Downvotes a post by decrementing its vote count.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to downvote. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing the updated Post\+Response\+DTO and HTTP status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2e3d18a0f70fb48776dd6b8638f72f4d}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a2e3d18a0f70fb48776dd6b8638f72f4d}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!getAllPosts@{getAllPosts}}
+\index{getAllPosts@{getAllPosts}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{getAllPosts()}{getAllPosts()}}
+{\footnotesize\ttfamily Response\+Entity$<$List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+get\+All\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieves all posts.
+
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing a list of Post\+Response\+DTOs and HTTP status. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController_aed134e8e68378de349c0df45a2f5d0e4}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+Post\+Controller}}.
+
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a3499c160370119e83bb180a8adc64f07}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a3499c160370119e83bb180a8adc64f07}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!getAllSortedPosts@{getAllSortedPosts}}
+\index{getAllSortedPosts@{getAllSortedPosts}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{getAllSortedPosts()}{getAllSortedPosts()}}
+{\footnotesize\ttfamily Response\+Entity$<$List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+get\+All\+Sorted\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Retrieves all posts sorted by score in descending order.
+
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing a list of sorted Post\+Response\+DTOs and HTTP status. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1PostController_a216964d2f4103af93a09624d3d2f5a1a}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+Post\+Controller}}.
+
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a48c5b8495a38987bac6162e2dc8ca61f}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a48c5b8495a38987bac6162e2dc8ca61f}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!updatePost@{updatePost}}
+\index{updatePost@{updatePost}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{updatePost()}{updatePost()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+update\+Post (\begin{DoxyParamCaption}\item[{Long}]{id,  }\item[{\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO}{Post\+Update\+DTO}}}]{post\+Update\+DTO }\end{DoxyParamCaption})}
+
+Updates an existing post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to update. \\
+\hline
+{\em post\+Update\+DTO} & The data transfer object containing the post update details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing the updated Post\+Response\+DTO and HTTP status. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a5fa14f2452d868c1c522c7f576468053}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1IPostController_a5fa14f2452d868c1c522c7f576468053}} 
+\index{com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}!upvotePost@{upvotePost}}
+\index{upvotePost@{upvotePost}!com.artozersky.HackerNewsAPI.controller.IPostController@{com.artozersky.HackerNewsAPI.controller.IPostController}}
+\doxysubsubsection{\texorpdfstring{upvotePost()}{upvotePost()}}
+{\footnotesize\ttfamily Response\+Entity$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+IPost\+Controller.\+upvote\+Post (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})}
+
+Upvotes a post by incrementing its vote count.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to upvote. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Response\+Entity containing the updated Post\+Response\+DTO and HTTP status. 
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/artozersky/\+Hacker\+News\+API/controller/IPost\+Controller.\+java\end{DoxyCompactItemize}

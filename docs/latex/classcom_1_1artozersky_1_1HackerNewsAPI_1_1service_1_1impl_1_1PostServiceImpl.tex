@@ -1,0 +1,174 @@
+\hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl}{}\doxysection{com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl Class Reference}
+\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl}\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+
+
+Inheritance diagram for com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl\+:
+% FIG 0
+
+
+Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f3e6f85b53932dcba6c24a958d472b6}{delete\+Post}} (Long post\+Id)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a987eed07fba1dceec4493b9ed9ec607f}{get\+Post\+By\+Id}} (Long post\+Id)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f6c3ca1527c9d792e268cb9ec4b5da8}{get\+All\+Posts}} ()
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_affe3912528bbb82960cfc06074746c70}{get\+Sorted\+Posts\+By\+Score}} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_aa99677fef10e18a07210aa40dc8707a5}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_aa99677fef10e18a07210aa40dc8707a5}} 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} {\bfseries save\+Post} (@Valid \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostCreateDTO}{Post\+Create\+DTO}} post\+Create\+DTO)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a450fbc9ac03e404d67047870278efe8a}{update\+Post}} (\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO}{Post\+Update\+DTO}} post\+Update\+DTO, Long post\+Id)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}{up\+Vote}} (Long id)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}{down\+Vote}} (Long id)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f3e6f85b53932dcba6c24a958d472b6}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f3e6f85b53932dcba6c24a958d472b6}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!deletePost@{deletePost}}
+\index{deletePost@{deletePost}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{deletePost()}{deletePost()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+delete\+Post (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Deletes a post by its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to be deleted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} confirming the deletion of the post. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a727ce2800d3ac81b71f6792583b41181}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_ad31efe19cd96733cb58f1a1a017ca972}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!downVote@{downVote}}
+\index{downVote@{downVote}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{downVote()}{downVote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+down\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Subtracts 1 from the vote count for a post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to be updated. \\
+\hline
+{\em by\+Num} & The number to adjust the vote count by. Must be either 1 (upvote) or -\/1 (downvote). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the post after the vote update. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a40e9ba0679169996fe9843ed53050639}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f6c3ca1527c9d792e268cb9ec4b5da8}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a0f6c3ca1527c9d792e268cb9ec4b5da8}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!getAllPosts@{getAllPosts}}
+\index{getAllPosts@{getAllPosts}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{getAllPosts()}{getAllPosts()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+get\+All\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves all posts.
+
+\begin{DoxyReturn}{Returns}
+A list of all \mbox{\hyperlink{}{News\+Post\+Model}} objects. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_abdf52fdb378e1d378d58477abe0f5132}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a987eed07fba1dceec4493b9ed9ec607f}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a987eed07fba1dceec4493b9ed9ec607f}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!getPostById@{getPostById}}
+\index{getPostById@{getPostById}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{getPostById()}{getPostById()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+get\+Post\+By\+Id (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves a post by its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to be retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the retrieved post. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a5dfec6b7f77e656192a01e150318fdaa}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_affe3912528bbb82960cfc06074746c70}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_affe3912528bbb82960cfc06074746c70}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!getSortedPostsByScore@{getSortedPostsByScore}}
+\index{getSortedPostsByScore@{getSortedPostsByScore}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{getSortedPostsByScore()}{getSortedPostsByScore()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+get\+Sorted\+Posts\+By\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves all posts sorted by their score in descending order.
+
+\begin{DoxyReturn}{Returns}
+A list of \mbox{\hyperlink{}{News\+Post\+Model}} objects sorted by score in descending order. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a476c49aca3aa7d1d90c10f4f533f5a86}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a450fbc9ac03e404d67047870278efe8a}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a450fbc9ac03e404d67047870278efe8a}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!updatePost@{updatePost}}
+\index{updatePost@{updatePost}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{updatePost()}{updatePost()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+update\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostUpdateDTO}{Post\+Update\+DTO}}}]{post\+Update\+DTO,  }\item[{Long}]{post\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Updates an existing post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em post\+Update\+DTO} & Data Transfer Object containing the updated details of the post. \\
+\hline
+{\em post\+Id} & The ID of the post to be updated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the updated post. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a21e5046bee8b6d7256f7b78db02ae375}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1PostServiceImpl_a9fc7a655cede02c90dc76af5060840f1}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}!upVote@{upVote}}
+\index{upVote@{upVote}!com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{upVote()}{upVote()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1PostResponseDTO}{Post\+Response\+DTO}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+Post\+Service\+Impl.\+up\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Adds to the vote count for a post.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the post to be updated. \\
+\hline
+{\em by\+Num} & The number to adjust the vote count by. Must be either 1 (upvote) or -\/1 (downvote). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{}{Post\+Response\+DTO}} containing the details of the post after the vote update. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a5989c50e3670a0910c3535cf596563d8}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/artozersky/\+Hacker\+News\+API/service/impl/Post\+Service\+Impl.\+java\end{DoxyCompactItemize}
