@@ -1,23 +1,30 @@
-import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
-import com.artozersky.HackerNewsAPI.repository.PostRepository;
-import com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl;
+package com.artozersky.HackerNewsAPI.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.*;
+
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.ParameterizedTypeReference;
 
-import java.util.Optional;
+import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
+import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
+import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.repository.PostRepository;
+import com.artozersky.HackerNewsAPI.service.impl.PostServiceImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.*;
-
-class PostServiceImplTest {
+public class PostServiceImplTest {
 
     @Mock
     private PostRepository postRepository;
@@ -26,7 +33,7 @@ class PostServiceImplTest {
     private ModelMapper modelMapper;
 
     @Mock
-    private CacheServiceImpl<Long, PostResponseDTO> cacheService;
+    private CacheServiceImpl<String, List<PostResponseDTO>> allPostsCacheService;
 
     @InjectMocks
     private PostServiceImpl postService;
@@ -37,44 +44,44 @@ class PostServiceImplTest {
     }
 
     @Test
-    void testGetPostById_CacheHit() {
-        // Arrange
-        Long postId = 1L;
-        PostResponseDTO cachedPost = new PostResponseDTO();
-        cachedPost.setPostId(postId);
+    @SuppressWarnings("unchecked")
+    void testGetAllPosts_FromCache() {
+        String cacheKey = "all_posts";
+        List<PostResponseDTO> cachedPosts = List.of(new PostResponseDTO());
 
-        when(cacheService.get(postId, PostResponseDTO.class)).thenReturn(cachedPost);
+        // Simulate cache hit
+        when(allPostsCacheService.getFromCacheOrDb(
+            eq(cacheKey), 
+            any(ParameterizedTypeReference.class), 
+            any()))
+                .thenReturn(cachedPosts);
 
-        // Act
-        PostResponseDTO result = postService.getPostById(postId);
+        List<PostResponseDTO> result = postService.getAllPosts();
 
-        // Assert
-        assertEquals(postId, result.getPostId());
-        verify(cacheService, times(1)).get(postId, PostResponseDTO.class);
-        verify(postRepository, never()).findById(any());
+        assertNotNull(result);
+        assertEquals(cachedPosts.size(), result.size());
+        verify(postRepository, never()).findAll(); // Ensure DB is not hit
     }
 
     @Test
-    void testGetPostById_CacheMiss() {
-        // Arrange
-        Long postId = 1L;
-        NewsPostModel postModel = new NewsPostModel();
-        postModel.setPostId(postId);
+    @SuppressWarnings("unchecked")
+    void testGetAllPosts_FromDB() {
+        String cacheKey = "all_posts";
+        List<NewsPostModel> posts = List.of(new NewsPostModel());
+        List<PostResponseDTO> postResponseDTOs = posts.stream()
+                .map(post -> new PostResponseDTO())
+                .collect(Collectors.toList());
 
-        PostResponseDTO postResponseDTO = new PostResponseDTO();
-        postResponseDTO.setPostId(postId);
+        // Simulate fetching from DB because cache is empty
+        when(postRepository.findAll()).thenReturn(posts);
+        when(modelMapper.map(posts.get(0), PostResponseDTO.class)).thenReturn(postResponseDTOs.get(0));
+        when(allPostsCacheService.getFromCacheOrDb(eq(cacheKey), any(ParameterizedTypeReference.class), any()))
+                .thenAnswer(invocation -> invocation.getArgument(2, Callable.class).call());
 
-        when(cacheService.get(postId, PostResponseDTO.class)).thenReturn(null);
-        when(postRepository.findById(postId)).thenReturn(Optional.of(postModel));
-        when(modelMapper.map(postModel, PostResponseDTO.class)).thenReturn(postResponseDTO);
+        List<PostResponseDTO> result = postService.getAllPosts();
 
-        // Act
-        PostResponseDTO result = postService.getPostById(postId);
-
-        // Assert
-        assertEquals(postId, result.getPostId());
-        verify(cacheService, times(1)).get(postId, PostResponseDTO.class);
-        verify(postRepository, times(1)).findById(postId);
-        verify(cacheService, times(1)).put(postId, postResponseDTO);
+        assertNotNull(result);
+        assertEquals(postResponseDTOs.size(), result.size());
+        verify(allPostsCacheService).put(cacheKey, postResponseDTOs); // Verify cache is updated
     }
 }
