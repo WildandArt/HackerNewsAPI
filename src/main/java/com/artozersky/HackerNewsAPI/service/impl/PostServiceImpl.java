@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
 import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
@@ -28,31 +29,60 @@ public class PostServiceImpl implements NewsPostService {
 
     @Autowired
     private CacheServiceImpl<Long, PostResponseDTO> cacheService;
-    
-    
-    // @Override
-    // public PostResponseDTO getPostById(Long postId) {
-        
-    //     NewsPostModel post = postRepository.findById(postId)
-    //     .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
-        
-    //     PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
-        
-    //     return responseDTO;
-    // }
+
+    @Autowired
+    private CacheServiceImpl<String, List<PostResponseDTO>> allPostsCacheService;
     
     @Override
-    public List<NewsPostModel> getAllPosts() {
+    public PostResponseDTO getPostById(Long postId) {
 
-        return postRepository.findAll();
-        
+        PostResponseDTO post = cacheService.getFromCacheOrDb(
+            postId,
+            PostResponseDTO.class,
+            () -> fetchPostFromDatabase(postId)
+        );
+
+        if (post.getTimeElapsed() > 1) { //more than 1 hour has passed
+            post = fetchPostFromDatabase(postId);
+            cacheService.put(postId, post); //refresh the cache
+        }
+
+        return post;
     }
     
     @Override
-    public List<NewsPostModel> getSortedPostsByScore() {
-        
-        return postRepository.findAllByOrderByScoreDesc();
-        
+    public List<PostResponseDTO> getAllPosts() {
+        String cacheKey = "all_posts";
+
+        // Retrieve from cache, fetching from DB if necessary
+        List<PostResponseDTO> posts = allPostsCacheService.getFromCacheOrDb(
+            cacheKey,
+            new ParameterizedTypeReference<List<PostResponseDTO>>() {},
+            () -> postRepository.findAll()
+                .stream()
+                .map(post -> modelMapper.map(post, PostResponseDTO.class))
+                .toList()
+        );
+
+        return posts;
+    }
+
+    // return postRepository.findAll();
+    @Override
+    public List<PostResponseDTO> getSortedPostsByScore() {
+        String cacheKey = "sorted_posts";
+
+        // Retrieve from cache, fetching from DB if necessary
+        List<PostResponseDTO> posts = allPostsCacheService.getFromCacheOrDb(
+            cacheKey,
+            new ParameterizedTypeReference<List<PostResponseDTO>>() {},
+            () -> postRepository.findAllByOrderByScoreDesc()
+                .stream()
+                .map(post -> modelMapper.map(post, PostResponseDTO.class))
+                .toList()
+        );
+
+    return posts;
     }
     
     @Override
@@ -105,11 +135,15 @@ public class PostServiceImpl implements NewsPostService {
         
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Post updated successfully");
+
+        //if in the cache update the cache
+        if (cacheService.get(postId, PostResponseDTO.class) != null) {
+            cacheService.put(postId, responseDTO);
+        }
         
         return responseDTO;
     }
     
-    //TODO: CHECK if @Preupdate of elapsed time will work here
     @Override
     public PostResponseDTO upVote(Long id) {
         NewsPostModel post = postRepository.findById(id)
@@ -118,6 +152,9 @@ public class PostServiceImpl implements NewsPostService {
         NewsPostModel updatedPost = postRepository.save(post);
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Vote updated successfully");
+        if (cacheService.get(id, PostResponseDTO.class) != null) {
+            cacheService.put(id, responseDTO);
+        }
         return responseDTO;
     }
     
@@ -129,6 +166,9 @@ public class PostServiceImpl implements NewsPostService {
         NewsPostModel updatedPost = postRepository.save(post);
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Vote updated successfully");
+        if (cacheService.get(id, PostResponseDTO.class) != null) {
+            cacheService.put(id, responseDTO);
+        }
         return responseDTO;
     }
     
@@ -139,11 +179,19 @@ public class PostServiceImpl implements NewsPostService {
                 .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
         
         postRepository.delete(post);
+
+        cacheService.evict(postId);//from cache
     
         PostResponseDTO responseDTO = new PostResponseDTO();
         responseDTO.setPostId(postId);
         responseDTO.setMessage("Post deleted successfully");
     
         return responseDTO;
+    }
+
+    private PostResponseDTO fetchPostFromDatabase(Long postId) {
+        NewsPostModel post = postRepository.findById(postId)
+            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        return modelMapper.map(post, PostResponseDTO.class);
     }
 }
