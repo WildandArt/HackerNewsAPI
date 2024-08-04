@@ -3,6 +3,10 @@ package com.artozersky.HackerNewsAPI.cache;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 
+import com.artozersky.HackerNewsAPI.exception.CacheRetrievalException;
+import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
+import com.artozersky.HackerNewsAPI.exception.DatabaseFetchException;
+
 import java.util.concurrent.Callable;
 
 @Service
@@ -41,19 +45,44 @@ public class CacheServiceImpl<K, V> implements ICacheService<K, V> {
         cacheEntity.clear();
     }
 
+    // @Override
+    // public V getFromCacheOrDb(K key, Class<V> type, Callable<V> dbFetch) {
+    //     V value = this.get(key, type);
+    //     if (value == null) {
+    //         try {
+    //             value = dbFetch.call();
+    //             this.put(key, value);
+    //         } catch (Exception e) {
+    //             throw new CustomNotFoundException("Unable to fetch data at this moment. Please try again later.");
+    //         }
+    //     }
+    //     return value;
+    // }
     @Override
-    public V getFromCacheOrDb(K key, Class<V> type, Callable<V> dbFetch) {
-        V value = this.get(key, type);
-        if (value == null) {
-            try {
-                value = dbFetch.call();
-                this.put(key, value);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to fetch from DB", e);
-            }
-        }
-        return value;
+public V getFromCacheOrDb(K key, Class<V> type, Callable<V> dbFetch) throws CacheRetrievalException, DatabaseFetchException {
+    V value = null;
+    try {
+        value = this.get(key, type);
+    } catch (Exception e) {
+        throw new CacheRetrievalException("Failed to retrieve value from cache for key: " + key, e);
     }
+
+    if (value == null) {
+        try {
+            value = dbFetch.call();
+            if (type.isInstance(value)) {
+                this.put(key, value);  // Store only if it's the correct type
+            } else {
+                throw new DatabaseFetchException("Fetched value type mismatch: expected " + type + " but got " + value.getClass());
+            }
+        } catch (Exception e) {
+            throw new DatabaseFetchException("Failed to fetch value from the database for key: " + key, e);
+        }
+    }
+
+    return value;
+}
+
 
     @Override
     public <T> T getFromCacheOrDb(K key, ParameterizedTypeReference<T> typeReference, Callable<T> dbFetch) {
@@ -63,7 +92,10 @@ public class CacheServiceImpl<K, V> implements ICacheService<K, V> {
                 value = dbFetch.call();
                 this.put(key, (V) value);  // Cast and store the fetched value
             } catch (Exception e) {
-                throw new RuntimeException("Failed to fetch from DB", e);
+                //log.error("Error fetching from DB", e);
+                // Return a meaningful error response or a default value
+                throw new CustomNotFoundException("Unable to fetch data at this moment. Please try again later.");
+                //throw new RuntimeException("Failed to fetch from DB", e);
             }
         }
         return value;

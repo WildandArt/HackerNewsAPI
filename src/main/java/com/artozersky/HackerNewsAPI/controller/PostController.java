@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
 @RestController
@@ -49,7 +48,8 @@ public class PostController implements IPostController{
         List<PostResponseDTO> posts = postService.getAllPosts();
 
         List<PostResponseDTO> postResponseDTOs = posts.stream()
-                                                    .map(post -> modelMapper.map(post, PostResponseDTO.class))
+                                                    .map(post -> modelMapper
+                                                    .map(post, PostResponseDTO.class))
                                                     .toList();
 
         if (postResponseDTOs.isEmpty()) {
@@ -73,7 +73,9 @@ public class PostController implements IPostController{
         List<PostResponseDTO> posts = postService.getSortedPostsByScore();
 
         List<PostResponseDTO> postResponseDTOs = posts.stream()
-                                                    .map(post -> modelMapper.map(post, PostResponseDTO.class))
+                                                    .map(post -> modelMapper.map(
+                                                        post, 
+                                                        PostResponseDTO.class))
                                                     .toList();
 
         if (postResponseDTOs.isEmpty()) {
@@ -85,9 +87,9 @@ public class PostController implements IPostController{
 
     @PutMapping("/{id}")
     @Override
-    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable("id") Long id, @RequestBody @Validated PostUpdateDTO postUpdateDTO) {
+    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable("id") Long id,
+        @RequestBody @Validated PostUpdateDTO postUpdateDTO) {
 
-        // Full replacement of the resource, need to check about votes, they should be copied
         PostResponseDTO updatedPost = postService.updatePost(postUpdateDTO, id);
         return new ResponseEntity<>(updatedPost, HttpStatus.OK);
 }

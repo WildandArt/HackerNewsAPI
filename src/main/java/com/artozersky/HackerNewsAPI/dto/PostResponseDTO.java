@@ -97,6 +97,9 @@ public class PostResponseDTO implements IPostResponseDTO {
     // Calculated dynamically
     @Override
     public Integer getTimeElapsed() {
-        return (int) Duration.between(this.createdAt, LocalDateTime.now()).toHours();
+        if (this.createdAt == null) {
+            return null; // or return a default value like 0
+        }
+        return (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
 }
