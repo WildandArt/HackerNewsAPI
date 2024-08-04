@@ -11,7 +11,10 @@ import com.artozersky.HackerNewsAPI.cache.CacheServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.exception.CacheRetrievalException;
 import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
+import com.artozersky.HackerNewsAPI.exception.CustomServiceException;
+import com.artozersky.HackerNewsAPI.exception.DatabaseFetchException;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
@@ -34,21 +37,35 @@ public class PostServiceImpl implements NewsPostService {
     private CacheServiceImpl<String, List<PostResponseDTO>> allPostsCacheService;
     
     @Override
-    public PostResponseDTO getPostById(Long postId) {
-
-        PostResponseDTO post = cacheService.getFromCacheOrDb(
-            postId,
-            PostResponseDTO.class,
-            () -> fetchPostFromDatabase(postId)
-        );
-
-        if (post.getTimeElapsed() > 1) { //more than 1 hour has passed
-            post = fetchPostFromDatabase(postId);
-            cacheService.put(postId, post); //refresh the cache
-        }
-
-        return post;
+public PostResponseDTO getPostById(Long postId) {
+    try {
+        return cacheService.getFromCacheOrDb(postId, PostResponseDTO.class, () -> {
+            NewsPostModel postModel = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+            return modelMapper.map(postModel, PostResponseDTO.class);
+        });
+    } catch (CacheRetrievalException | DatabaseFetchException e) {
+        throw new CustomServiceException("An error occurred while retrieving the post with id: " + postId, e);
     }
+}
+
+    // @Override
+    // public PostResponseDTO getPostById(Long postId) {
+
+    //     PostResponseDTO post = cacheService.getFromCacheOrDb(
+    //         postId,
+    //         PostResponseDTO.class,
+    //         () -> fetchPostFromDatabase(postId)
+    //     );
+
+    //     if (post.getTimeElapsed() > 1) { //more than 1 hour has passed
+    //         post = fetchPostFromDatabase(postId);
+    //         cacheService.put(postId, post); //refresh the cache
+    //     }
+    //     post.setMessage("Post retrieved successfully");
+
+    //     return post;
+    // }
     
     @Override
     public List<PostResponseDTO> getAllPosts() {
@@ -67,6 +84,7 @@ public class PostServiceImpl implements NewsPostService {
         if (posts != null && !posts.isEmpty()) {
             allPostsCacheService.put(cacheKey, posts);
         }
+        
 
         return posts;
     }

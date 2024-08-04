@@ -22,6 +22,9 @@ import java.util.concurrent.Callable;
 
 import org.springframework.core.ParameterizedTypeReference;
 
+import com.artozersky.HackerNewsAPI.exception.CacheRetrievalException;
+import com.artozersky.HackerNewsAPI.exception.DatabaseFetchException;
+
 public interface ICacheService<K, V> {
 
     // Retrieve a value from the cache by its key, casting to the specified type.
@@ -40,7 +43,7 @@ public interface ICacheService<K, V> {
     void clear();
 
     // Retrieve a value from the cache or fetch from the database if not present, using a class type.
-    V getFromCacheOrDb(K key, Class<V> type, Callable<V> dbFetch);
+    V getFromCacheOrDb(K key, Class<V> type, Callable<V> dbFetch) throws CacheRetrievalException, DatabaseFetchException;
 
     // Retrieve a value from the cache or fetch from the database if not present, using a ParameterizedTypeReference for generic types.
     <T> T getFromCacheOrDb(K key, ParameterizedTypeReference<T> typeReference, Callable<T> dbFetch);

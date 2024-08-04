@@ -113,4 +113,26 @@ public class GlobalExceptionHandler {
         errorResponse.setMessage("Data integrity violation: " + e.getMostSpecificCause().getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(CacheRetrievalException.class)
+    public ResponseEntity<PostResponseDTO> handleCacheRetrievalException(CacheRetrievalException e) {
+        PostResponseDTO errorResponse = new PostResponseDTO();
+        errorResponse.setMessage("Error retrieving data from cache: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+}
+
+    @ExceptionHandler(DatabaseFetchException.class)
+    public ResponseEntity<PostResponseDTO> handleDatabaseFetchException(DatabaseFetchException e) {
+        PostResponseDTO errorResponse = new PostResponseDTO();
+        errorResponse.setMessage("Error fetching data from the database: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(CustomServiceException.class)
+    public ResponseEntity<PostResponseDTO> handleCustomServiceException(CustomServiceException e) {
+        PostResponseDTO errorResponse = new PostResponseDTO();
+        errorResponse.setMessage("An error occurred: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
