@@ -1,4 +1,4 @@
-package com.artozersky.HackerNewsAPI.cache;
+package com.artozersky.HackerNewsAPI.cache.impl;
 
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import java.util.LinkedHashMap;
@@ -6,18 +6,18 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
-public class SimpleCache {
+public class CacheEntityImpl {
 
     private final int maxSize;
     private final Map<Long, NewsPostModel> cache;
 
-    public SimpleCache(int maxSize) {
+    public CacheEntityImpl(int maxSize) {
         this.maxSize = maxSize;
         this.cache = new LinkedHashMap<Long, NewsPostModel>(maxSize, 0.75f, true) {
             @Override
             protected boolean removeEldestEntry(Map.Entry<Long, NewsPostModel> eldest) {
                 // Remove the eldest entry if the size of the map exceeds the maxSize
-                return size() > SimpleCache.this.maxSize;
+                return size() > CacheEntityImpl.this.maxSize;
             }
         };
     }
