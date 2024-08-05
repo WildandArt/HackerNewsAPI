@@ -2,14 +2,12 @@ package com.artozersky.HackerNewsAPI.service.impl;
 
 import java.util.List;
 
-// import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-// import com.artozersky.HackerNewsAPI.cache.CacheEntityManager;
-import com.artozersky.HackerNewsAPI.cache.SimpleCache;
+import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
@@ -35,11 +33,11 @@ public class PostServiceImpl implements NewsPostService {
     private ModelMapper modelMapper;
 
     // @Autowired
-    private SimpleCache cacheService;
+    private CacheEntityImpl cacheService;
 
     @Autowired
     public PostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
-        this.cacheService = new SimpleCache(cacheSize);
+        this.cacheService = new CacheEntityImpl(cacheSize);
     }
     
     @Override
