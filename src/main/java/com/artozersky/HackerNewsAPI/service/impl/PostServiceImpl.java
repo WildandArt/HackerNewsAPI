@@ -2,11 +2,10 @@ package com.artozersky.HackerNewsAPI.service.impl;
 
 import java.util.List;
 
-
-
 // import org.apache.logging.log4j.util.PropertySource.Comparator;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 // import com.artozersky.HackerNewsAPI.cache.CacheEntityManager;
@@ -20,6 +19,7 @@ import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
 import java.util.Comparator;  
 
@@ -38,31 +38,32 @@ public class PostServiceImpl implements NewsPostService {
     private SimpleCache cacheService;
 
     @Autowired
-    public PostServiceImpl() {
-        this.cacheService = new SimpleCache(100);
+    public PostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
+        this.cacheService = new SimpleCache(cacheSize);
     }
     
     @Override
     public  PostResponseDTO getPostById(Long postId) {
         try{
-        // Step 1: Try to get the NewsPostModel from the cache
-        NewsPostModel cachedValue = cacheService.get(postId);
-        if (cachedValue != null) {
-            System.out.println("Cache hit: Retrieved from Cache: " + cachedValue);
-            // Convert to PostResponseDTO before returning
-            return convertToDTO(cachedValue);
-        }
+            // Step 1: Try to get the NewsPostModel from the cache
+            NewsPostModel cachedValue = cacheService.get(postId);
+            if (cachedValue != null) {
+                System.out.println("Cache hit: Retrieved from Cache: " + cachedValue);
+                // Convert to PostResponseDTO before returning
+                return convertToDTO(cachedValue);
+            }
 
-        // Step 2: Fetch the NewsPostModel from the database if not in cache
-        NewsPostModel postModel = postRepository.findById(postId)
-            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+            // Step 2: Fetch the NewsPostModel from the database if not in cache
+            NewsPostModel postModel = postRepository.findById(postId)
+                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
 
-        // Step 3: Store the NewsPostModel in the cache
-        cacheService.put(postId, postModel);
-        System.out.println("Storing in Cache: key = " + postId + ", value = " + postModel);
+            // Step 3: Store the NewsPostModel in the cache
+            cacheService.put(postId, postModel);
+            System.out.println("Storing in Cache: key = " + postId + ", value = " + postModel);
 
-        // Step 4: Convert to PostResponseDTO and return
-        return convertToDTO(postModel);
+            // Step 4: Convert to PostResponseDTO and return
+            return convertToDTO(postModel);
+
         } catch (Exception e) {
             // Handle and log exceptions
             throw new CustomServiceException("An error occurred while retrieving the post with id: " + postId, e);
@@ -75,13 +76,23 @@ public class PostServiceImpl implements NewsPostService {
         // Step 1: Try to get the list of NewsPostModel from the cache
         List<NewsPostModel> cachedPosts = cacheService.getAll();
 
-        if (!(cachedPosts.isEmpty())) {
-            System.out.println("Cache hit: Retrieved all posts from Cache");
-            return cachedPosts.stream()
-                    .map(this::convertToDTO)
-                    .collect(Collectors.toList());
-        }
+        if (!cachedPosts.isEmpty() && (cachedPosts.size() >= postRepository.count())) {
 
+            boolean isStale = cachedPosts.stream().anyMatch(post -> {
+                int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
+                return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;//more than one hou difference
+            });
+            if(!isStale) {
+                System.out.println("Cache hit: Retrieved all posts from Cache");
+                return cachedPosts.stream()
+                        .map(this::convertToDTO)
+                        .collect(Collectors.toList());
+            }
+            else{
+                cacheService.clear();
+                System.out.println("Cache invalidated due to stale data");
+            }
+        }
         // Step 2: Fetch the list of NewsPostModel from the database if not in cache
         List<NewsPostModel> allPosts = postRepository.findAll();
 
@@ -97,28 +108,39 @@ public class PostServiceImpl implements NewsPostService {
 
     @Override
     public List<PostResponseDTO> getSortedPostsByScore() {
-
         // Step 1: Try to get the list of NewsPostModel from the cache
         List<NewsPostModel> cachedPosts = cacheService.getAll();
 
-        if (!cachedPosts.isEmpty()) {
-            System.out.println("Cache hit: Retrieved all posts from Cache");
+        if (!cachedPosts.isEmpty() && cachedPosts.size() >= postRepository.count()) {
+            // Check if the cached data is stale by comparing `timeElapsed`
+            boolean isStale = cachedPosts.stream().anyMatch(post -> {
+                int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
+                return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;
+            });
 
-            // Sort the cached posts by score and convert to PostResponseDTO
-            return cachedPosts.stream()
-                    .sorted(Comparator.comparingDouble(NewsPostModel::getScore).reversed())
-                    .map(this::convertToDTO)
-                    .collect(Collectors.toList());
+            if (!isStale) {
+                System.out.println("Cache hit: Retrieved all posts from Cache");
+
+                // Sort the cached posts by score and convert to PostResponseDTO
+                return cachedPosts.stream()
+                        .sorted(Comparator.comparingDouble(NewsPostModel::getScore).reversed())
+                        .map(this::convertToDTO)
+                        .collect(Collectors.toList());
+            } else {
+                // Invalidate the cache if data is stale
+                cacheService.clear();
+                System.out.println("Cache invalidated due to stale data");
+            }
         }
 
-        // Step 2: Fetch the list of NewsPostModel from the database if not in cache
+        // Step 2: Fetch the list of NewsPostModel from the database if not in cache or if cache is stale
         List<NewsPostModel> allPosts = postRepository.findAllByOrderByScoreDesc();
 
         // Step 3: Store the list in the cache
         cacheService.putAll(allPosts);
         System.out.println("Storing in Cache: value = " + allPosts);
 
-        // Step 4: Sort the posts by score, convert to PostResponseDTO, and return
+        // Step 4: Convert to PostResponseDTO and return
         return allPosts.stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
@@ -238,12 +260,6 @@ public class PostServiceImpl implements NewsPostService {
     
         return responseDTO;
     }
-
-    // private PostResponseDTO fetchPostFromDatabase(Long postId) {
-    //     NewsPostModel post = postRepository.findById(postId)
-    //         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
-    //     return modelMapper.map(post, PostResponseDTO.class);
-    // }
 
     private PostResponseDTO convertToDTO(NewsPostModel postModel) {
         PostResponseDTO responseDTO = modelMapper.map(postModel, PostResponseDTO.class);
