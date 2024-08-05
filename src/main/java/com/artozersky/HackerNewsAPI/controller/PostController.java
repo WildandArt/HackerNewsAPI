@@ -47,15 +47,10 @@ public class PostController implements IPostController{
 
         List<PostResponseDTO> posts = postService.getAllPosts();
 
-        List<PostResponseDTO> postResponseDTOs = posts.stream()
-                                                    .map(post -> modelMapper
-                                                    .map(post, PostResponseDTO.class))
-                                                    .toList();
-
-        if (postResponseDTOs.isEmpty()) {
+        if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -72,17 +67,11 @@ public class PostController implements IPostController{
 
         List<PostResponseDTO> posts = postService.getSortedPostsByScore();
 
-        List<PostResponseDTO> postResponseDTOs = posts.stream()
-                                                    .map(post -> modelMapper.map(
-                                                        post, 
-                                                        PostResponseDTO.class))
-                                                    .toList();
-
-        if (postResponseDTOs.isEmpty()) {
+        if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<>(postResponseDTOs, HttpStatus.OK);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
