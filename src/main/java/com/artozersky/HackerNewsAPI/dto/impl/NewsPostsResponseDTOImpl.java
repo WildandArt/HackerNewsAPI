@@ -1,9 +1,10 @@
-package com.artozersky.HackerNewsAPI.dto;
+package com.artozersky.HackerNewsAPI.dto.impl;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class PostResponseDTO implements IPostResponseDTO {
+import com.artozersky.HackerNewsAPI.dto.NewsPostsResponseDTO;
+
+public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
 
     private Long postId;
     private String title;

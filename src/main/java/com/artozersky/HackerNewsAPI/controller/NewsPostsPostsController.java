@@ -1,8 +1,9 @@
 package com.artozersky.HackerNewsAPI.controller;
 
-import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
-import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
+
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -18,21 +19,21 @@ public interface NewsPostsPostsController {
      * @param postCreateDTO The data transfer object containing the post creation details.
      * @return A ResponseEntity containing the created PostResponseDTO and HTTP status.
      */
-    ResponseEntity<PostResponseDTO> createPost(PostCreateDTO postCreateDTO);
+    ResponseEntity<NewsPostsResponseDTOImpl> createPost(NewsPostsCreateDTOImpl postCreateDTO);
 
     /**
      * Retrieves all posts.
      *
      * @return A ResponseEntity containing a list of PostResponseDTOs and HTTP status.
      */
-    ResponseEntity<List<PostResponseDTO>> getAllPosts();
+    ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllPosts();
 
     /**
      * Retrieves all posts sorted by score in descending order.
      *
      * @return A ResponseEntity containing a list of sorted PostResponseDTOs and HTTP status.
      */
-    ResponseEntity<List<PostResponseDTO>> getAllSortedPosts();
+    ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllSortedPosts();
 
     /**
      * Updates an existing post.
@@ -41,7 +42,7 @@ public interface NewsPostsPostsController {
      * @param postUpdateDTO The data transfer object containing the post update details.
      * @return A ResponseEntity containing the updated PostResponseDTO and HTTP status.
      */
-    ResponseEntity<PostResponseDTO> updatePost(Long id, PostUpdateDTO postUpdateDTO);
+    ResponseEntity<NewsPostsResponseDTOImpl> updatePost(Long id, NewsPostsUpdateDTOImpl postUpdateDTO);
 
     /**
      * Upvotes a post by incrementing its vote count.
@@ -49,7 +50,7 @@ public interface NewsPostsPostsController {
      * @param id The ID of the post to upvote.
      * @return A ResponseEntity containing the updated PostResponseDTO and HTTP status.
      */
-    ResponseEntity<PostResponseDTO> upvotePost(Long id);
+    ResponseEntity<NewsPostsResponseDTOImpl> upvotePost(Long id);
 
     /**
      * Downvotes a post by decrementing its vote count.
@@ -57,10 +58,10 @@ public interface NewsPostsPostsController {
      * @param id The ID of the post to downvote.
      * @return A ResponseEntity containing the updated PostResponseDTO and HTTP status.
      */
-    ResponseEntity<PostResponseDTO> downVotePost(Long id);
+    ResponseEntity<NewsPostsResponseDTOImpl> downVotePost(Long id);
 
 
-    ResponseEntity<PostResponseDTO> deletePost(Long id);
+    ResponseEntity<NewsPostsResponseDTOImpl> deletePost(Long id);
 
-    ResponseEntity<PostResponseDTO> getPost(Long id);
+    ResponseEntity<NewsPostsResponseDTOImpl> getPost(Long id);
 }
