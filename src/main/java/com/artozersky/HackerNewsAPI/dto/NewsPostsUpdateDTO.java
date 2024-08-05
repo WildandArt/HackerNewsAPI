@@ -1,10 +1,10 @@
 package com.artozersky.HackerNewsAPI.dto;
 
 /**
- * Interface for Post Creation Data Transfer Object.
- * This interface defines the structure of the data required for creating a post.
+ * Interface for Post Update Data Transfer Object.
+ * This interface defines the structure of the data required for updating a post.
  */
-public interface IPostCreateDTO {
+public interface NewsPostsUpdateDTO {
 
     // ----------------- Getters -----------------
 
@@ -22,13 +22,6 @@ public interface IPostCreateDTO {
      */
     String getUrl();
 
-    /**
-     * Gets the author who is creating the post.
-     * 
-     * @return The author of the post.
-     */
-    String getPostedBy();
-
     // ----------------- Setters -----------------
 
     /**
@@ -44,11 +37,4 @@ public interface IPostCreateDTO {
      * @param url The URL to set for the post.
      */
     void setUrl(String url);
-
-    /**
-     * Sets the author of the post.
-     * 
-     * @param postedBy The author to set for the post.
-     */
-    void setPostedBy(String postedBy);
 }

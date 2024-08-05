@@ -1,10 +1,13 @@
-package com.artozersky.HackerNewsAPI.dto;
+package com.artozersky.HackerNewsAPI.dto.impl;
 
 import org.hibernate.validator.constraints.URL;
+
+import com.artozersky.HackerNewsAPI.dto.NewsPostsCreateDTO;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public class PostCreateDTO implements IPostCreateDTO {
+public class NewsPostsCreateDTOImpl implements NewsPostsCreateDTO {
 
     @NotBlank(message = "Title is required")
     @Size(max = 255, message = "Title should not exceed 255 characters")

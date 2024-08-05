@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
 public class ModelMapperTest {
@@ -34,7 +34,7 @@ public class ModelMapperTest {
         newsPost.setCreatedAt(LocalDateTime.now());
 
         // Act: Map NewsPostModel to PostResponseDTO
-        PostResponseDTO responseDTO = modelMapper.map(newsPost, PostResponseDTO.class);
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(newsPost, NewsPostsResponseDTOImpl.class);
 
         // Assert: Verify the mapping
         assertNotNull(responseDTO);

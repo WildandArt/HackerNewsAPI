@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl;
-import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
-import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
 import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
 import com.artozersky.HackerNewsAPI.exception.CustomServiceException;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
@@ -41,7 +41,7 @@ public class PostServiceImpl implements NewsPostService {
     }
     
     @Override
-    public  PostResponseDTO getPostById(Long postId) {
+    public  NewsPostsResponseDTOImpl getPostById(Long postId) {
         try{
             // Step 1: Try to get the NewsPostModel from the cache
             NewsPostModelImpl cachedValue = cacheService.get(postId);
@@ -69,7 +69,7 @@ public class PostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public List<PostResponseDTO> getAllPosts() {
+    public List<NewsPostsResponseDTOImpl> getAllPosts() {
 
         // Step 1: Try to get the list of NewsPostModel from the cache
         List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
@@ -105,7 +105,7 @@ public class PostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public List<PostResponseDTO> getSortedPostsByScore() {
+    public List<NewsPostsResponseDTOImpl> getSortedPostsByScore() {
         // Step 1: Try to get the list of NewsPostModel from the cache
         List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
 
@@ -146,7 +146,7 @@ public class PostServiceImpl implements NewsPostService {
     }
     
     @Override
-    public PostResponseDTO savePost(@Valid PostCreateDTO postCreateDTO) {
+    public NewsPostsResponseDTOImpl savePost(@Valid NewsPostsCreateDTOImpl postCreateDTO) {
         
         NewsPostModelImpl post = modelMapper.map(postCreateDTO, NewsPostModelImpl.class);
         
@@ -154,7 +154,7 @@ public class PostServiceImpl implements NewsPostService {
         
         NewsPostModelImpl savedPost = postRepository.save(post);
         
-        PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(savedPost, NewsPostsResponseDTOImpl.class);
         
         responseDTO.setMessage("Post created successfully");
         
@@ -162,7 +162,7 @@ public class PostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId) {
+    public NewsPostsResponseDTOImpl updatePost(NewsPostsUpdateDTOImpl postUpdateDTO, Long postId) {
         
         NewsPostModelImpl post = postRepository.findById(postId)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
@@ -184,7 +184,7 @@ public class PostServiceImpl implements NewsPostService {
         }
         
         if(isRedundant) {
-            PostResponseDTO responseDTO = modelMapper.map(post, PostResponseDTO.class);
+            NewsPostsResponseDTOImpl responseDTO = modelMapper.map(post, NewsPostsResponseDTOImpl.class);
             responseDTO.setMessage("No changes detected. Update skipped.");
             return responseDTO;
         }
@@ -198,7 +198,7 @@ public class PostServiceImpl implements NewsPostService {
             cacheService.put(postId, updatedPost);
         }
 
-        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Post updated successfully");
 
         
@@ -206,7 +206,7 @@ public class PostServiceImpl implements NewsPostService {
     }
     
     @Override
-    public PostResponseDTO upVote(Long id) {
+    public NewsPostsResponseDTOImpl upVote(Long id) {
         NewsPostModelImpl post = postRepository.findById(id)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.upVote();        
@@ -217,7 +217,7 @@ public class PostServiceImpl implements NewsPostService {
             cacheService.put(id, updatedPost);
         }
 
-        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
 
         responseDTO.setMessage("Vote updated successfully");
         
@@ -225,7 +225,7 @@ public class PostServiceImpl implements NewsPostService {
     }
     
     @Override
-    public PostResponseDTO downVote(Long id) {
+    public NewsPostsResponseDTOImpl downVote(Long id) {
         NewsPostModelImpl post = postRepository.findById(id)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.downVote();        
@@ -236,14 +236,14 @@ public class PostServiceImpl implements NewsPostService {
             cacheService.put(id, updatedPost);
         }
 
-        PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Vote updated successfully");
         
         return responseDTO;
     }
     
     @Override
-    public PostResponseDTO deletePost(Long postId) {
+    public NewsPostsResponseDTOImpl deletePost(Long postId) {
         
         NewsPostModelImpl post = postRepository.findById(postId)
                 .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
@@ -252,15 +252,15 @@ public class PostServiceImpl implements NewsPostService {
 
         cacheService.evict(postId);//from cache
     
-        PostResponseDTO responseDTO = new PostResponseDTO();
+        NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
         responseDTO.setPostId(postId);
         responseDTO.setMessage("Post deleted successfully");
     
         return responseDTO;
     }
 
-    private PostResponseDTO convertToDTO(NewsPostModelImpl postModel) {
-        PostResponseDTO responseDTO = modelMapper.map(postModel, PostResponseDTO.class);
+    private NewsPostsResponseDTOImpl convertToDTO(NewsPostModelImpl postModel) {
+        NewsPostsResponseDTOImpl responseDTO = modelMapper.map(postModel, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Successfully fetched " + postModel.getPostId());
         return responseDTO;
     }

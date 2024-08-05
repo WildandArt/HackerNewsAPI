@@ -1,9 +1,9 @@
 package com.artozersky.HackerNewsAPI.service;
 
-import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
-import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 
 import java.util.List;
 
@@ -17,63 +17,63 @@ public interface NewsPostService {
      *
      * @return A list of all {@link NewsPostModelImpl} objects.
      */
-    List<PostResponseDTO> getAllPosts();
+    List<NewsPostsResponseDTOImpl> getAllPosts();
 
     /**
      * Retrieves all posts sorted by their score in descending order.
      *
      * @return A list of {@link NewsPostModelImpl} objects sorted by score in descending order.
      */
-    List<PostResponseDTO> getSortedPostsByScore();
+    List<NewsPostsResponseDTOImpl> getSortedPostsByScore();
 
     /**
      * Saves a new post.
      *
      * @param postCreateDTO Data Transfer Object containing the details of the post to be created.
-     * @return A {@link PostResponseDTO} containing the details of the newly created post.
+     * @return A {@link NewsPostsResponseDTOImpl} containing the details of the newly created post.
      */
-    PostResponseDTO savePost(PostCreateDTO postCreateDTO);
+    NewsPostsResponseDTOImpl savePost(NewsPostsCreateDTOImpl postCreateDTO);
 
     /**
      * Updates an existing post.
      *
      * @param postUpdateDTO Data Transfer Object containing the updated details of the post.
      * @param postId The ID of the post to be updated.
-     * @return A {@link PostResponseDTO} containing the details of the updated post.
+     * @return A {@link NewsPostsResponseDTOImpl} containing the details of the updated post.
      */
-    PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId);
+    NewsPostsResponseDTOImpl updatePost(NewsPostsUpdateDTOImpl postUpdateDTO, Long postId);
 
     /**
      * Adds to the vote count for a post.
      *
      * @param id The ID of the post to be updated.
      * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
-     * @return A {@link PostResponseDTO} containing the details of the post after the vote update.
+     * @return A {@link NewsPostsResponseDTOImpl} containing the details of the post after the vote update.
      */
-    public PostResponseDTO upVote(Long id);
+    public NewsPostsResponseDTOImpl upVote(Long id);
 
       /**
      * Subtracts 1 from the vote count for a post.
      *
      * @param id The ID of the post to be updated.
      * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
-     * @return A {@link PostResponseDTO} containing the details of the post after the vote update.
+     * @return A {@link NewsPostsResponseDTOImpl} containing the details of the post after the vote update.
      */
-    public PostResponseDTO downVote(Long id);
+    public NewsPostsResponseDTOImpl downVote(Long id);
 
     /**
      * Deletes a post by its ID.
      *
      * @param id The ID of the post to be deleted.
-     * @return A {@link PostResponseDTO} confirming the deletion of the post.
+     * @return A {@link NewsPostsResponseDTOImpl} confirming the deletion of the post.
      */
-    PostResponseDTO deletePost(Long id);
+    NewsPostsResponseDTOImpl deletePost(Long id);
 
     /**
      * Retrieves a post by its ID.
      *
      * @param id The ID of the post to be retrieved.
-     * @return A {@link PostResponseDTO} containing the details of the retrieved post.
+     * @return A {@link NewsPostsResponseDTOImpl} containing the details of the retrieved post.
      */
-    PostResponseDTO getPostById(Long id);
+    NewsPostsResponseDTOImpl getPostById(Long id);
 }
