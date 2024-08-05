@@ -2,8 +2,8 @@ package com.artozersky.HackerNewsAPI.service;
 
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 
 import java.util.List;
 
@@ -15,14 +15,14 @@ public interface NewsPostService {
     /**
      * Retrieves all posts.
      *
-     * @return A list of all {@link NewsPostModel} objects.
+     * @return A list of all {@link NewsPostModelImpl} objects.
      */
     List<PostResponseDTO> getAllPosts();
 
     /**
      * Retrieves all posts sorted by their score in descending order.
      *
-     * @return A list of {@link NewsPostModel} objects sorted by score in descending order.
+     * @return A list of {@link NewsPostModelImpl} objects sorted by score in descending order.
      */
     List<PostResponseDTO> getSortedPostsByScore();
 

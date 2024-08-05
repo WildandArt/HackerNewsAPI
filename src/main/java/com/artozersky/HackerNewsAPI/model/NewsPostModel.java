@@ -2,187 +2,151 @@ package com.artozersky.HackerNewsAPI.model;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.validator.constraints.URL;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Index;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-@Entity
-@Table(name = "posts", indexes = {
-    @Index(name = "idx_score", columnList = "score")
-})
-public class NewsPostModel implements INewsPostModel {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long postId;
-
-    @NotBlank(message = "URL is required")
-    @URL(message = "URL should be valid")
-    @Size(max = 2048, message = "URL should not exceed 2048 characters")
-    @Column(name = "url", length = 2048)
-    private String url;
-
-    @NotBlank(message = "Title is required")
-    @Size(max = 255, message = "Title should not exceed 255 characters")
-    @Column(name = "title", length = 255)
-    private String title;
-
-    @Column(name = "current_votes")
-    private Integer currentVotes;
-
-    @Column(name = "created_at", updatable = true)
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "score")
-    private Double score;
-
-    @Column(name = "time_elapsed")
-    private Integer timeElapsed;
-
-    @NotBlank(message = "Posted by is required")
-    @Size(max = 100, message = "Author name should not exceed 100 characters")
-    @Column(name = "posted_by", length = 100)
-    private String postedBy;
+/**
+ * Interface for the News Post Model, representing the structure and behavior of a news post.
+ */
+public interface NewsPostModel {
 
     // ----------------- Getters -----------------
 
-    @Override
-    public Long getPostId() {
-        return postId;
-    }
+    /**
+     * Gets the ID of the post.
+     * 
+     * @return The ID of the post.
+     */
+    Long getPostId();
 
-    @Override
-    public String getUrl() {
-        return url;
-    }
+    /**
+     * Gets the URL of the post.
+     * 
+     * @return The URL of the post.
+     */
+    String getUrl();
 
-    @Override
-    public String getTitle() {
-        return title;
-    }
+    /**
+     * Gets the title of the post.
+     * 
+     * @return The title of the post.
+     */
+    String getTitle();
 
-    @Override
-    public Integer getCurrentVotes() {
-        return currentVotes;
-    }
+    /**
+     * Gets the current number of votes for the post.
+     * 
+     * @return The current number of votes.
+     */
+    Integer getCurrentVotes();
 
-    @Override
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+    /**
+     * Gets the creation timestamp of the post.
+     * 
+     * @return The creation timestamp.
+     */
+    LocalDateTime getCreatedAt();
 
-    @Override
-    public Double getScore() {
-        return score;
-    }
+    /**
+     * Gets the score of the post.
+     * 
+     * @return The score of the post.
+     */
+    Double getScore();
 
-    @Override
-    public Integer getTimeElapsed() {
-        return timeElapsed;
-    }
+    /**
+     * Gets the time elapsed since the post was created, in hours.
+     * 
+     * @return The time elapsed in hours.
+     */
+    Integer getTimeElapsed();
 
-    @Override
-    public String getPostedBy() {
-        return postedBy;
-    }
+    /**
+     * Gets the username of the person who posted.
+     * 
+     * @return The username of the poster.
+     */
+    String getPostedBy();
 
     // ----------------- Setters -----------------
 
-    @Override
-    public void setPostId(Long postId) {
-        this.postId = postId;
-    }
+    /**
+     * Sets the ID of the post.
+     * 
+     * @param postId The ID to set.
+     */
+    void setPostId(Long postId);
 
-    @Override
-    public void setUrl(String url) {
-        this.url = url;
-    }
+    /**
+     * Sets the URL of the post.
+     * 
+     * @param url The URL to set.
+     */
+    void setUrl(String url);
 
-    @Override
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    /**
+     * Sets the title of the post.
+     * 
+     * @param title The title to set.
+     */
+    void setTitle(String title);
 
-    @Override
-    public void setCurrentVotes(Integer currentVotes) {
-        this.currentVotes = currentVotes;
-    }
+    /**
+     * Sets the current number of votes for the post.
+     * 
+     * @param currentVotes The number of votes to set.
+     */
+    void setCurrentVotes(Integer currentVotes);
 
-    @Override
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    /**
+     * Sets the creation timestamp of the post.
+     * 
+     * @param createdAt The creation timestamp to set.
+     */
+    void setCreatedAt(LocalDateTime createdAt);
 
-    @Override
-    public void setScore(Double score) {
-        this.score = score;
-    }
+    /**
+     * Sets the score of the post.
+     * 
+     * @param score The score to set.
+     */
+    void setScore(Double score);
 
-    @Override
-    public void setTimeElapsed(Integer timeElapsed) {
-        this.timeElapsed = timeElapsed;
-    }
+    /**
+     * Sets the time elapsed since the post was created, in hours.
+     * 
+     * @param timeElapsed The time elapsed in hours to set.
+     */
+    void setTimeElapsed(Integer timeElapsed);
 
-    @Override
-    public void setPostedBy(String postedBy) {
-        this.postedBy = postedBy;
-    }
+    /**
+     * Sets the username of the person who posted.
+     * 
+     * @param postedBy The username of the poster to set.
+     */
+    void setPostedBy(String postedBy);
 
     // ----------------- Other Methods -----------------
-    @Override
-    public void initialize() {
-        this.setCurrentVotes(0);
-        this.setTimeElapsed(0);
-        this.setCreatedAt(LocalDateTime.now());
-        updateScore();
-    }
 
-    @Override
-    public void onPostUpdate() {
-        this.setCreatedAt(LocalDateTime.now());
-        this.setTimeElapsed(0);
-        this.updateScore();
-    }
-    @PrePersist
-    protected void createdAtOnCreate() {
-        this.createdAt = LocalDateTime.now();
-    }
+    /**
+     * Initializes the post, setting default values for fields like current votes and creation timestamp.
+     */
+    void initialize();
 
-    @PreUpdate
-    protected void updateElapsedTime() {
-        this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
-    }
+    /**
+     * Updates the post's state when it is modified, such as recalculating the score.
+     */
+    void onPostUpdate();
 
-    @Override
-    public void updateScore() {
-        final double GRAVITY = 1.8;
-        double updatedScore = (this.getCurrentVotes() - 1) / Math.pow((this.getTimeElapsed() + 2), GRAVITY);
-        this.setScore(updatedScore);
-    }
+    /**
+     * Updates the score of the post based on its current state.
+     */
+    void updateScore();
 
-    @Override
-    public void upVote() {
-        this.currentVotes++;
-        this.updateScore();
-    }
+    /**
+     * Increases the vote count by one.
+     */
+    void upVote();
 
-    @Override
-    public void downVote() {
-        this.currentVotes--;
-        this.updateScore();
-    }
-    
+    /**
+     * Decreases the vote count by one.
+     */
+    void downVote();
 }
-

@@ -13,7 +13,7 @@ import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
 import com.artozersky.HackerNewsAPI.exception.CustomNotFoundException;
 import com.artozersky.HackerNewsAPI.exception.CustomServiceException;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 import java.util.stream.Collectors;
@@ -44,7 +44,7 @@ public class PostServiceImpl implements NewsPostService {
     public  PostResponseDTO getPostById(Long postId) {
         try{
             // Step 1: Try to get the NewsPostModel from the cache
-            NewsPostModel cachedValue = cacheService.get(postId);
+            NewsPostModelImpl cachedValue = cacheService.get(postId);
             if (cachedValue != null) {
                 System.out.println("Cache hit: Retrieved from Cache: " + cachedValue);
                 // Convert to PostResponseDTO before returning
@@ -52,7 +52,7 @@ public class PostServiceImpl implements NewsPostService {
             }
 
             // Step 2: Fetch the NewsPostModel from the database if not in cache
-            NewsPostModel postModel = postRepository.findById(postId)
+            NewsPostModelImpl postModel = postRepository.findById(postId)
                 .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
 
             // Step 3: Store the NewsPostModel in the cache
@@ -72,7 +72,7 @@ public class PostServiceImpl implements NewsPostService {
     public List<PostResponseDTO> getAllPosts() {
 
         // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModel> cachedPosts = cacheService.getAll();
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
 
         if (!cachedPosts.isEmpty() && (cachedPosts.size() >= postRepository.count())) {
 
@@ -92,7 +92,7 @@ public class PostServiceImpl implements NewsPostService {
             }
         }
         // Step 2: Fetch the list of NewsPostModel from the database if not in cache
-        List<NewsPostModel> allPosts = postRepository.findAll();
+        List<NewsPostModelImpl> allPosts = postRepository.findAll();
 
         // Step 3: Store the list in the cache
         cacheService.putAll(allPosts);
@@ -107,7 +107,7 @@ public class PostServiceImpl implements NewsPostService {
     @Override
     public List<PostResponseDTO> getSortedPostsByScore() {
         // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModel> cachedPosts = cacheService.getAll();
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
 
         if (!cachedPosts.isEmpty() && cachedPosts.size() >= postRepository.count()) {
             // Check if the cached data is stale by comparing `timeElapsed`
@@ -121,7 +121,7 @@ public class PostServiceImpl implements NewsPostService {
 
                 // Sort the cached posts by score and convert to PostResponseDTO
                 return cachedPosts.stream()
-                        .sorted(Comparator.comparingDouble(NewsPostModel::getScore).reversed())
+                        .sorted(Comparator.comparingDouble(NewsPostModelImpl::getScore).reversed())
                         .map(this::convertToDTO)
                         .collect(Collectors.toList());
             } else {
@@ -132,7 +132,7 @@ public class PostServiceImpl implements NewsPostService {
         }
 
         // Step 2: Fetch the list of NewsPostModel from the database if not in cache or if cache is stale
-        List<NewsPostModel> allPosts = postRepository.findAllByOrderByScoreDesc();
+        List<NewsPostModelImpl> allPosts = postRepository.findAllByOrderByScoreDesc();
 
         // Step 3: Store the list in the cache
         cacheService.putAll(allPosts);
@@ -148,11 +148,11 @@ public class PostServiceImpl implements NewsPostService {
     @Override
     public PostResponseDTO savePost(@Valid PostCreateDTO postCreateDTO) {
         
-        NewsPostModel post = modelMapper.map(postCreateDTO, NewsPostModel.class);
+        NewsPostModelImpl post = modelMapper.map(postCreateDTO, NewsPostModelImpl.class);
         
         post.initialize();
         
-        NewsPostModel savedPost = postRepository.save(post);
+        NewsPostModelImpl savedPost = postRepository.save(post);
         
         PostResponseDTO responseDTO = modelMapper.map(savedPost, PostResponseDTO.class);
         
@@ -164,7 +164,7 @@ public class PostServiceImpl implements NewsPostService {
     @Override
     public PostResponseDTO updatePost(PostUpdateDTO postUpdateDTO, Long postId) {
         
-        NewsPostModel post = postRepository.findById(postId)
+        NewsPostModelImpl post = postRepository.findById(postId)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
         
         boolean isRedundant = true;
@@ -191,7 +191,7 @@ public class PostServiceImpl implements NewsPostService {
 
         post.onPostUpdate();
         
-        NewsPostModel updatedPost = postRepository.save(post);
+        NewsPostModelImpl updatedPost = postRepository.save(post);
         
         //if in the cache update the cache
         if (cacheService.get(postId) != null) {
@@ -207,10 +207,10 @@ public class PostServiceImpl implements NewsPostService {
     
     @Override
     public PostResponseDTO upVote(Long id) {
-        NewsPostModel post = postRepository.findById(id)
+        NewsPostModelImpl post = postRepository.findById(id)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.upVote();        
-        NewsPostModel updatedPost = postRepository.save(post);
+        NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //if in the cache update the cache
         if (cacheService.get(id) != null) {
@@ -226,10 +226,10 @@ public class PostServiceImpl implements NewsPostService {
     
     @Override
     public PostResponseDTO downVote(Long id) {
-        NewsPostModel post = postRepository.findById(id)
+        NewsPostModelImpl post = postRepository.findById(id)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.downVote();        
-        NewsPostModel updatedPost = postRepository.save(post);
+        NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //if in the cache update the cache
         if (cacheService.get(id) != null) {
@@ -245,7 +245,7 @@ public class PostServiceImpl implements NewsPostService {
     @Override
     public PostResponseDTO deletePost(Long postId) {
         
-        NewsPostModel post = postRepository.findById(postId)
+        NewsPostModelImpl post = postRepository.findById(postId)
                 .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
         
         postRepository.delete(post);
@@ -259,7 +259,7 @@ public class PostServiceImpl implements NewsPostService {
         return responseDTO;
     }
 
-    private PostResponseDTO convertToDTO(NewsPostModel postModel) {
+    private PostResponseDTO convertToDTO(NewsPostModelImpl postModel) {
         PostResponseDTO responseDTO = modelMapper.map(postModel, PostResponseDTO.class);
         responseDTO.setMessage("Successfully fetched " + postModel.getPostId());
         return responseDTO;
