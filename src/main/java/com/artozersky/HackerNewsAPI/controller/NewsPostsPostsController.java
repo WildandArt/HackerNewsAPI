@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Interface for PostController that defines the API endpoints for managing posts.
  */
-public interface IPostController {
+public interface NewsPostsPostsController {
 
     /**
      * Creates a new post.

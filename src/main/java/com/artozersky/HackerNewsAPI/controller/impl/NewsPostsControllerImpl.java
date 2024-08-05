@@ -1,4 +1,4 @@
-package com.artozersky.HackerNewsAPI.controller;
+package com.artozersky.HackerNewsAPI.controller.impl;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.artozersky.HackerNewsAPI.controller.NewsPostsPostsController;
 import com.artozersky.HackerNewsAPI.dto.PostCreateDTO;
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
 import com.artozersky.HackerNewsAPI.dto.PostUpdateDTO;
@@ -24,13 +25,13 @@ import com.artozersky.HackerNewsAPI.service.NewsPostService;
 @RestController
 @RequestMapping("/api/posts")
 @Validated
-public class PostController implements IPostController{
+public class NewsPostsControllerImpl implements NewsPostsPostsController{
 
     private final NewsPostService postService;
 
     private final ModelMapper modelMapper;
     
-    public PostController(NewsPostService postService, ModelMapper modelMapper) {
+    public NewsPostsControllerImpl(NewsPostService postService, ModelMapper modelMapper) {
         this.postService = postService;
         this.modelMapper = modelMapper;
     }

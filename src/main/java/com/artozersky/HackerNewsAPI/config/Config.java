@@ -1,24 +1,14 @@
 package com.artozersky.HackerNewsAPI.config;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-// import com.artozersky.HackerNewsAPI.cache.CacheEntityManager;
 
 /**
- * Configuration class for beans like CacheManager and ModelMapper.
+ * Interface for application configuration.
  */
-@Configuration
-public class Config implements IConfig{
-
+public interface Config {
     /**
-     * {@inheritDoc}
+     * Returns a ModelMapper bean for object mapping.
+     * @return the ModelMapper bean
      */
-    @Bean
-    @Override
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
-   
+    ModelMapper modelMapper();
 }

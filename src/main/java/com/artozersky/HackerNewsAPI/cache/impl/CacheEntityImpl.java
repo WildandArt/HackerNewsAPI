@@ -1,7 +1,7 @@
 package com.artozersky.HackerNewsAPI.cache.impl;
 
 import com.artozersky.HackerNewsAPI.cache.CacheEntity;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class CacheEntityImpl implements CacheEntity {
 
     private final int maxSize;
-    private final Map<Long, NewsPostModel> cache;
+    private final Map<Long, NewsPostModelImpl> cache;
 
     /**
      * Constructs a CacheEntityImpl with a specified maximum size.
@@ -23,9 +23,9 @@ public class CacheEntityImpl implements CacheEntity {
      */
     public CacheEntityImpl(int maxSize) {
         this.maxSize = maxSize;
-        this.cache = new LinkedHashMap<Long, NewsPostModel>(maxSize, 0.75f, true) {
+        this.cache = new LinkedHashMap<Long, NewsPostModelImpl>(maxSize, 0.75f, true) {
             @Override
-            protected boolean removeEldestEntry(Map.Entry<Long, NewsPostModel> eldest) {
+            protected boolean removeEldestEntry(Map.Entry<Long, NewsPostModelImpl> eldest) {
                 // Remove the eldest entry if the size of the map exceeds the maxSize
                 return size() > CacheEntityImpl.this.maxSize;
             }
@@ -33,23 +33,23 @@ public class CacheEntityImpl implements CacheEntity {
     }
 
     @Override
-    public NewsPostModel get(Long key) {
+    public NewsPostModelImpl get(Long key) {
         return cache.get(key);
     }
 
     @Override
-    public List<NewsPostModel> getAll() {
+    public List<NewsPostModelImpl> getAll() {
         return new ArrayList<>(cache.values());
     }
 
     @Override
-    public void put(Long key, NewsPostModel value) {
+    public void put(Long key, NewsPostModelImpl value) {
         cache.put(key, value);
     }
 
     @Override
-    public void putAll(List<NewsPostModel> allPosts) {
-        for (NewsPostModel post : allPosts) {
+    public void putAll(List<NewsPostModelImpl> allPosts) {
+        for (NewsPostModelImpl post : allPosts) {
             Long key = post.getPostId();
             cache.put(key, post);
         }

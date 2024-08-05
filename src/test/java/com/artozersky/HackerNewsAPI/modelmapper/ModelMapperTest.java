@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 
 import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
-import com.artozersky.HackerNewsAPI.model.NewsPostModel;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
 public class ModelMapperTest {
 
@@ -24,7 +24,7 @@ public class ModelMapperTest {
     @Test
     public void testMapNewsPostModelToPostResponseDTO() {
         // Arrange: Create a sample NewsPostModel object
-        NewsPostModel newsPost = new NewsPostModel();
+        NewsPostModelImpl newsPost = new NewsPostModelImpl();
         newsPost.setPostId(1L);
         newsPost.setTitle("Sample Title");
         newsPost.setUrl("http://sample.url");
