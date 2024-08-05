@@ -173,13 +173,14 @@ public class PostServiceImpl implements NewsPostService {
         
         NewsPostModel updatedPost = postRepository.save(post);
         
+        //if in the cache update the cache
+        if (cacheService.get(postId) != null) {
+            cacheService.put(postId, updatedPost);
+        }
+
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Post updated successfully");
 
-        //if in the cache update the cache
-        // if (cacheService.get(postId, PostResponseDTO.class) != null) {
-        //     cacheService.put(postId, responseDTO);
-        // }
         
         return responseDTO;
     }
@@ -190,13 +191,16 @@ public class PostServiceImpl implements NewsPostService {
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.upVote();        
         NewsPostModel updatedPost = postRepository.save(post);
+
+        //if in the cache update the cache
+        if (cacheService.get(id) != null) {
+            cacheService.put(id, updatedPost);
+        }
+
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
 
         responseDTO.setMessage("Vote updated successfully");
         
-        // if (cacheService.get(id, PostResponseDTO.class) != null) {
-        //     cacheService.put(id, responseDTO);
-        // }
         return responseDTO;
     }
     
@@ -206,11 +210,15 @@ public class PostServiceImpl implements NewsPostService {
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.downVote();        
         NewsPostModel updatedPost = postRepository.save(post);
+
+        //if in the cache update the cache
+        if (cacheService.get(id) != null) {
+            cacheService.put(id, updatedPost);
+        }
+
         PostResponseDTO responseDTO = modelMapper.map(updatedPost, PostResponseDTO.class);
         responseDTO.setMessage("Vote updated successfully");
-        // if (cacheService.get(id, PostResponseDTO.class) != null) {
-        //     cacheService.put(id, responseDTO);
-        // }
+        
         return responseDTO;
     }
     
@@ -231,14 +239,13 @@ public class PostServiceImpl implements NewsPostService {
         return responseDTO;
     }
 
-    private PostResponseDTO fetchPostFromDatabase(Long postId) {
-        NewsPostModel post = postRepository.findById(postId)
-            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
-        return modelMapper.map(post, PostResponseDTO.class);
-    }
+    // private PostResponseDTO fetchPostFromDatabase(Long postId) {
+    //     NewsPostModel post = postRepository.findById(postId)
+    //         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+    //     return modelMapper.map(post, PostResponseDTO.class);
+    // }
 
     private PostResponseDTO convertToDTO(NewsPostModel postModel) {
-        // Use ModelMapper or manual mapping to convert to DTO
         PostResponseDTO responseDTO = modelMapper.map(postModel, PostResponseDTO.class);
         responseDTO.setMessage("Successfully fetched " + postModel.getPostId());
         return responseDTO;
