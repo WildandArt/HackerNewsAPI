@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl;
+import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
@@ -33,46 +33,35 @@ public class NewsPostServiceImpl implements NewsPostService {
     private ModelMapper modelMapper;
 
     // @Autowired
-    private CacheEntityImpl cacheService;
+    private CacheEntityServiceImpl cacheService;
 
     @Autowired
     public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
-        this.cacheService = new CacheEntityImpl(cacheSize);
+        this.cacheService = new CacheEntityServiceImpl(cacheSize);
     }
     
     @Override
     public  NewsPostsResponseDTOImpl getPostById(Long postId) {
-        try{
-            // Step 1: Try to get the NewsPostModel from the cache
-            NewsPostModelImpl cachedValue = cacheService.get(postId);
-            if (cachedValue != null) {
-                System.out.println("Cache hit: Retrieved from Cache: " + cachedValue);
-                // Convert to PostResponseDTO before returning
-                return convertToDTO(cachedValue);
-            }
 
-            // Step 2: Fetch the NewsPostModel from the database if not in cache
-            NewsPostModelImpl postModel = postRepository.findById(postId)
-                .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+        NewsPostModelImpl cachedValue = cacheService.getPostFromCacheById(postId);
 
-            // Step 3: Store the NewsPostModel in the cache
-            cacheService.put(postId, postModel);
-            System.out.println("Storing in Cache: key = " + postId + ", value = " + postModel);
-
-            // Step 4: Convert to PostResponseDTO and return
-            return convertToDTO(postModel);
-
-        } catch (Exception e) {
-            // Handle and log exceptions
-            throw new CustomServiceException("An error occurred while retrieving the post with id: " + postId, e);
+        if (cachedValue != null) {
+            return convertToDTO(cachedValue);
         }
+
+        NewsPostModelImpl postModel = postRepository.findById(postId)
+            .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
+
+        cacheService.putPostInCache(postModel);
+
+        return convertToDTO(postModel);
     }
 
     @Override
     public List<NewsPostsResponseDTOImpl> getAllPosts() {
 
         // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
 
         if (!cachedPosts.isEmpty() && (cachedPosts.size() >= postRepository.count())) {
 
@@ -87,7 +76,7 @@ public class NewsPostServiceImpl implements NewsPostService {
                         .collect(Collectors.toList());
             }
             else{
-                cacheService.clear();
+                cacheService.clearCache();
                 System.out.println("Cache invalidated due to stale data");
             }
         }
@@ -95,7 +84,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         List<NewsPostModelImpl> allPosts = postRepository.findAll();
 
         // Step 3: Store the list in the cache
-        cacheService.putAll(allPosts);
+        cacheService.putAllPostsInCache(allPosts);
         System.out.println("Storing in Cache:  value = " + allPosts);
 
         // Step 4: Convert to PostResponseDTO and return
@@ -107,7 +96,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Override
     public List<NewsPostsResponseDTOImpl> getSortedPostsByScore() {
         // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModelImpl> cachedPosts = cacheService.getAll();
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
 
         if (!cachedPosts.isEmpty() && cachedPosts.size() >= postRepository.count()) {
             // Check if the cached data is stale by comparing `timeElapsed`
@@ -126,7 +115,7 @@ public class NewsPostServiceImpl implements NewsPostService {
                         .collect(Collectors.toList());
             } else {
                 // Invalidate the cache if data is stale
-                cacheService.clear();
+                cacheService.clearCache();
                 System.out.println("Cache invalidated due to stale data");
             }
         }
@@ -135,7 +124,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         List<NewsPostModelImpl> allPosts = postRepository.findAllByOrderByScoreDesc();
 
         // Step 3: Store the list in the cache
-        cacheService.putAll(allPosts);
+        cacheService.putAllPostsInCache(allPosts);
         System.out.println("Storing in Cache: value = " + allPosts);
 
         // Step 4: Convert to PostResponseDTO and return
@@ -194,8 +183,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl updatedPost = postRepository.save(post);
         
         //if in the cache update the cache
-        if (cacheService.get(postId) != null) {
-            cacheService.put(postId, updatedPost);
+        if (cacheService.getPostFromCacheById(postId) != null) {
+            cacheService.putPostInCache(updatedPost);
         }
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
@@ -213,8 +202,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //if in the cache update the cache
-        if (cacheService.get(id) != null) {
-            cacheService.put(id, updatedPost);
+        if (cacheService.getPostFromCacheById(id) != null) {
+            cacheService.putPostInCache(updatedPost);
         }
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
@@ -232,8 +221,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //if in the cache update the cache
-        if (cacheService.get(id) != null) {
-            cacheService.put(id, updatedPost);
+        if (cacheService.getPostFromCacheById(id) != null) {
+            cacheService.putPostInCache(updatedPost);
         }
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
@@ -250,7 +239,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         postRepository.delete(post);
 
-        cacheService.evict(postId);//from cache
+        cacheService.evictPost(postId);//from cache
     
         NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
         responseDTO.setPostId(postId);

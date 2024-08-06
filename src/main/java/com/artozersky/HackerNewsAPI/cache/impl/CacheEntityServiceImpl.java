@@ -17,7 +17,9 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
     @Autowired
     public CacheEntityServiceImpl(@Value("${cache.size:100}") int maxSize) {
+
         this.cacheEntity = new CacheEntityImpl(maxSize);
+        
     }
 
     @Override
@@ -28,27 +30,37 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
     @Override
     public List<NewsPostModelImpl> getAllPostsFromCache() {
+
         return cacheEntity.getAll();
     }
 
     @Override
     public void putPostInCache(NewsPostModelImpl post) {
+
         cacheEntity.put(post.getPostId(), post);
+        System.out.println("Storing in Cache: key = " + post.getPostId() + ", value = " + post);
+
     }
 
     @Override
     public void putAllPostsInCache(List<NewsPostModelImpl> posts) {
+
         cacheEntity.putAll(posts);
+
     }
 
     @Override
     public void evictPost(Long postId) {
+
         cacheEntity.evict(postId);
+
     }
 
     @Override
     public void clearCache() {
+
         cacheEntity.clear();
+
     }
 
 }
