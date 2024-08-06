@@ -24,7 +24,7 @@ import java.util.Comparator;
 import jakarta.validation.Valid;
 
 @Service
-public class PostServiceImpl implements NewsPostService {
+public class NewsPostServiceImpl implements NewsPostService {
     
     @Autowired
     private PostRepository postRepository;
@@ -36,7 +36,7 @@ public class PostServiceImpl implements NewsPostService {
     private CacheEntityImpl cacheService;
 
     @Autowired
-    public PostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
+    public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
         this.cacheService = new CacheEntityImpl(cacheSize);
     }
     
