@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 
+// import org.hibernate.engine.internal.Collections;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +26,7 @@ import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 
 import java.util.Comparator;  
-
+import java.util.Collections;
 import jakarta.validation.Valid;
 
 @Service
@@ -41,8 +43,11 @@ public class NewsPostServiceImpl implements NewsPostService {
 
     private final Integer getRequestLimit = 400;
 
+    private final int cacheSize;
+
     @Autowired
     public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
+        this.cacheSize = cacheSize;
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
     }
     
@@ -111,20 +116,17 @@ public class NewsPostServiceImpl implements NewsPostService {
                 .collect(Collectors.toList());
     }
 /////
+    @Override
+
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
-    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
+
+    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();//stale will be checked inside
 
     int postsNeeded = limit - cachedPosts.size();
 
     List<NewsPostModelImpl> dbPosts = new ArrayList<>();
-    if (postsNeeded > 0) {
-        Pageable pageable = PageRequest.of(0, postsNeeded);
-        dbPosts = postRepository.findTopPostsByScoreExcludingIds(
-            cachedPosts.stream()
-                .map(NewsPostModelImpl::getPostId)
-                .collect(Collectors.toList()), 
-            pageable);
-    }
+
+    dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
 
     List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
     combinedPosts.addAll(dbPosts);
@@ -134,7 +136,35 @@ public class NewsPostServiceImpl implements NewsPostService {
         .collect(Collectors.toList());
 }
 
+public List<NewsPostModelImpl> fetchPostsFromDbIfNeeded(
+    int postsNeeded, 
+    List<NewsPostModelImpl> cachedPosts) {
 
+    if (postsNeeded > 0) {
+        Pageable pageable = PageRequest.of(0, postsNeeded);
+        List<NewsPostModelImpl> dbPosts = postRepository.findTopPostsByScoreExcludingIds(
+            cachedPosts.stream()
+                .map(NewsPostModelImpl::getPostId)
+                .collect(Collectors.toList()), 
+            pageable);
+
+            //updating this field each time called to db
+            dbPosts.forEach(NewsPostModelImpl::updateElapsedTime);
+            return dbPosts;
+    }
+    return new ArrayList<>();
+}
+
+public void updateCacheWithTopPosts() {
+    List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
+
+    cacheService.clearCache(); // Clear the existing cache before updating
+    cacheService.putAllPostsInCache(topPosts);
+
+    System.out.println("Cache updated with top " + cacheSize + " posts by score.");
+}
+
+//function that will fetch  top posts by score in size of cache.size and update the cache
 
 /////
     @Override
