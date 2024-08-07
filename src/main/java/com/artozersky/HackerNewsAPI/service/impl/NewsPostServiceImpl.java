@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
@@ -41,13 +42,14 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private CacheEntityServiceImpl cacheService;
 
-    private final Integer getRequestLimit = 400;
+    private Integer limit = 400;
 
     private final int cacheSize;
 
     @Autowired
-    public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
+    public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize, @Value("${posts.page.limit:400}") int limit) {
         this.cacheSize = cacheSize;
+        this.limit = limit;
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
     }
     
@@ -63,61 +65,28 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl postModel = postRepository.findById(postId)
             .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
 
-        cacheService.putPostInCache(postModel);
+        //cacheService.putPostInCache(postModel);
+        //should i update the cache with the top posts???
 
         return convertToDTO(postModel);
     }
-/* getAllPosts
- * 
- * what? How? Why?
- * purpose: to get all posts. getall you can from cache. 
- * By the way is there something at all? whatever is there just grab it and the remaining grab from db.
- * lets say there is a limit and its 400.
- *  List<NewsPostModelImpl> cachedPosts = cacheservice.getAllNotStalePostsFromCache();
- * if null then -> pull from db -> update cache 
- * else take from db the remaining (limit - cache.size) after cache.size posts.
- * if there is nothing left to take dont, if there is nothing in cache take it all.
- * if there is something to take, then you have to take from post_id = cache.size() + 1
- *  how to grab from db 20ieth post to 40ieth after sorting them????
- */
+
     @Override
-    public List<NewsPostsResponseDTOImpl> getAllPosts() {
+    public List<NewsPostsResponseDTOImpl> getAllPosts(int limit) {
 
-        // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
-
-        if (!cachedPosts.isEmpty() && (cachedPosts.size() >= postRepository.count())) {
-
-            boolean isStale = cachedPosts.stream().anyMatch(post -> {
-                int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
-                return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;//more than one hou difference
-            });
-            if(!isStale) {
-                System.out.println("Cache hit: Retrieved all posts from Cache");
-                return cachedPosts.stream()
-                        .map(this::convertToDTO)
-                        .collect(Collectors.toList());
-            }
-            else{
-                cacheService.clearCache();
-                System.out.println("Cache invalidated due to stale data");
-            }
+        if (limit <= 0) {
+            throw new CustomServiceException("Limit must be greater than 0");
         }
-        // Step 2: Fetch the list of NewsPostModel from the database if not in cache
-        List<NewsPostModelImpl> allPosts = postRepository.findAll();
 
-        // Step 3: Store the list in the cache
-        cacheService.putAllPostsInCache(allPosts);
-        System.out.println("Storing in Cache:  value = " + allPosts);
+        Pageable pageable = PageRequest.of(0, limit);
+        Page<NewsPostModelImpl> page = postRepository.findAll(pageable);
 
-        // Step 4: Convert to PostResponseDTO and return
-        return allPosts.stream()
+        return page.getContent().stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
-/////
-    @Override
 
+    @Override
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
 
     List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();//stale will be checked inside
@@ -136,77 +105,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         .collect(Collectors.toList());
 }
 
-public List<NewsPostModelImpl> fetchPostsFromDbIfNeeded(
-    int postsNeeded, 
-    List<NewsPostModelImpl> cachedPosts) {
-
-    if (postsNeeded > 0) {
-        Pageable pageable = PageRequest.of(0, postsNeeded);
-        List<NewsPostModelImpl> dbPosts = postRepository.findTopPostsByScoreExcludingIds(
-            cachedPosts.stream()
-                .map(NewsPostModelImpl::getPostId)
-                .collect(Collectors.toList()), 
-            pageable);
-
-            //updating this field each time called to db
-            dbPosts.forEach(NewsPostModelImpl::updateElapsedTime);
-            return dbPosts;
-    }
-    return new ArrayList<>();
-}
-
-public void updateCacheWithTopPosts() {
-    List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
-
-    cacheService.clearCache(); // Clear the existing cache before updating
-    cacheService.putAllPostsInCache(topPosts);
-
-    System.out.println("Cache updated with top " + cacheSize + " posts by score.");
-}
-
-//function that will fetch  top posts by score in size of cache.size and update the cache
-
-/////
-    @Override
-    public List<NewsPostsResponseDTOImpl> getSortedPostsByScore() {
-        // Step 1: Try to get the list of NewsPostModel from the cache
-        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
-
-        if (!cachedPosts.isEmpty() && cachedPosts.size() >= postRepository.count()) {
-            // Check if the cached data is stale by comparing `timeElapsed`
-            boolean isStale = cachedPosts.stream().anyMatch(post -> {
-                int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
-                return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;
-            });
-
-            if (!isStale) {
-                System.out.println("Cache hit: Retrieved all posts from Cache");
-
-                // Sort the cached posts by score and convert to PostResponseDTO
-                return cachedPosts.stream()
-                        .sorted(Comparator.comparingDouble(NewsPostModelImpl::getScore).reversed())
-                        .map(this::convertToDTO)
-                        .collect(Collectors.toList());
-            } else {
-                // Invalidate the cache if data is stale
-                cacheService.clearCache();
-                System.out.println("Cache invalidated due to stale data");
-            }
-        }
-
-        // Step 2: Fetch the list of NewsPostModel from the database if not in cache or if cache is stale
-        List<NewsPostModelImpl> allPosts = postRepository.findAllByOrderByScoreDesc();
-
-        // Step 3: Store the list in the cache
-        cacheService.putAllPostsInCache(allPosts);
-        System.out.println("Storing in Cache: value = " + allPosts);
-
-        // Step 4: Convert to PostResponseDTO and return
-        return allPosts.stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
-
-    }
     
     @Override
     public NewsPostsResponseDTOImpl savePost(@Valid NewsPostsCreateDTOImpl postCreateDTO) {
@@ -220,7 +118,8 @@ public void updateCacheWithTopPosts() {
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(savedPost, NewsPostsResponseDTOImpl.class);
         
         responseDTO.setMessage("Post created successfully");
-        //add cache invalidation here ,if post changes the top40 it should be treated
+
+        updateCacheWithTopPosts();
         
         return responseDTO;
     }
@@ -257,10 +156,7 @@ public void updateCacheWithTopPosts() {
         
         NewsPostModelImpl updatedPost = postRepository.save(post);
         
-        //if in the cache update the cache
-        if (cacheService.getPostFromCacheById(postId) != null) {
-            cacheService.putPostInCache(updatedPost);
-        }
+        updateCacheWithTopPosts();
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Post updated successfully");
@@ -280,6 +176,8 @@ public void updateCacheWithTopPosts() {
         if (cacheService.getPostFromCacheById(id) != null) {
             cacheService.putPostInCache(updatedPost);
         }
+        //updateCacheWithTopPosts();
+
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
 
@@ -295,10 +193,8 @@ public void updateCacheWithTopPosts() {
         post.downVote();        
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
-        //if in the cache update the cache
-        if (cacheService.getPostFromCacheById(id) != null) {
-            cacheService.putPostInCache(updatedPost);
-        }
+        //downvote can make a post go down in the rank and out of sorted cache
+        updateCacheWithTopPosts();
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Vote updated successfully");
@@ -314,8 +210,8 @@ public void updateCacheWithTopPosts() {
         
         postRepository.delete(post);
 
-        cacheService.evictPost(postId);//from cache
-    
+        updateCacheWithTopPosts();
+
         NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
         responseDTO.setPostId(postId);
         responseDTO.setMessage("Post deleted successfully");
@@ -328,4 +224,36 @@ public void updateCacheWithTopPosts() {
         responseDTO.setMessage("Successfully fetched " + postModel.getPostId());
         return responseDTO;
     }
+
+    public List<NewsPostModelImpl> fetchPostsFromDbIfNeeded(
+    int postsNeeded, 
+    List<NewsPostModelImpl> cachedPosts) {
+
+    if (postsNeeded > 0) {
+
+        Pageable pageable = PageRequest.of(0, postsNeeded);
+
+        List<NewsPostModelImpl> dbPosts = postRepository.findTopPostsByScoreExcludingIds(
+            cachedPosts.stream()
+                .map(NewsPostModelImpl::getPostId)
+                .collect(Collectors.toList()), 
+            pageable);
+
+            //updating this field each time called to db
+            dbPosts.forEach(NewsPostModelImpl::updateElapsedTime);
+            return dbPosts;
+    }
+    
+    return new ArrayList<>();
+}
+
+public void updateCacheWithTopPosts() {
+
+    List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
+
+    cacheService.clearCache(); // Clear the existing cache before updating
+
+    cacheService.putAllPostsInCache(topPosts);
+
+}
 }

@@ -79,6 +79,8 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         cacheEntity.putAll(posts);
 
+        System.out.println("putAllPostsInCache.");
+
     }
 
     @Override
