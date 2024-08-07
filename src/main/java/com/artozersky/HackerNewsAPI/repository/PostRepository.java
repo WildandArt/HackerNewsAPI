@@ -18,35 +18,35 @@ import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 @Repository
 public interface PostRepository extends JpaRepository<NewsPostModelImpl, Long> {
 
-    Page<NewsPostModelImpl> findAll(Pageable pageable);
+Page<NewsPostModelImpl> findAll(Pageable pageable);
 
-    /**
-     * Finds all posts and orders them by score in descending order.
-     *
-     * @return A list of {@link NewsPostModelImpl} objects ordered by their score in descending order.
-     */
-    List<NewsPostModelImpl> findAllByOrderByScoreDesc();
+/**
+ * Finds all posts and orders them by score in descending order.
+ *
+ * @return A list of {@link NewsPostModelImpl} objects ordered by their score in descending order.
+ */
+List<NewsPostModelImpl> findAllByOrderByScoreDesc();
 
-    /**
-     * Finds the top posts by score excluding specific IDs and orders them by score in descending order.
-     *
-     * @param excludedIds A list of post IDs to exclude from the results.
-     * @param pageable    The pagination information (e.g., page size).
-     * @return A list of {@link NewsPostModelImpl} objects excluding the specified IDs,
-     *         ordered by their score in descending order.
-     */
-    @Query("SELECT p FROM NewsPostModelImpl p WHERE p.postId NOT IN :excludedIds ORDER BY p.score DESC")
-    List<NewsPostModelImpl> findTopPostsByScoreExcludingIds(
-            @Param("excludedIds") List<Long> excludedIds, 
-            Pageable pageable
-    );
+/**
+ * Finds the top posts by score excluding specific IDs and orders them by score in descending order.
+ *
+ * @param excludedIds A list of post IDs to exclude from the results.
+ * @param pageable    The pagination information (e.g., page size).
+ * @return A list of {@link NewsPostModelImpl} objects excluding the specified IDs,
+ *         ordered by their score in descending order.
+ */
+@Query("SELECT p FROM NewsPostModelImpl p WHERE p.postId NOT IN :excludedIds ORDER BY p.score DESC")
+List<NewsPostModelImpl> findTopPostsByScoreExcludingIds(
+        @Param("excludedIds") List<Long> excludedIds, 
+        Pageable pageable
+);
 
-    /**
-     * Finds the top posts by score and orders them by score in descending order.
-     *
-     * @param pageable The pagination information (e.g., page size).
-     * @return A list of {@link NewsPostModelImpl} objects ordered by their score in descending order.
-     */
-    @Query("SELECT p FROM NewsPostModelImpl p ORDER BY p.score DESC")
-    List<NewsPostModelImpl> findTopPostsByScore(Pageable pageable);
+/**
+ * Finds the top posts by score and orders them by score in descending order.
+ *
+ * @param pageable The pagination information (e.g., page size).
+ * @return A list of {@link NewsPostModelImpl} objects ordered by their score in descending order.
+ */
+@Query("SELECT p FROM NewsPostModelImpl p ORDER BY p.score DESC")
+List<NewsPostModelImpl> findTopPostsByScore(Pageable pageable);
 }

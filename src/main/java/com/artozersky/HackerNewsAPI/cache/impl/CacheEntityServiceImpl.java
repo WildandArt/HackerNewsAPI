@@ -30,7 +30,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     }
 
     @Override
-    public List<NewsPostModelImpl> getAllPostsFromCache() {//posts that are not stale, if stale??
+    public List<NewsPostModelImpl> getAllPostsFromCache() {
 
         List<NewsPostModelImpl> cachedPosts = cacheEntity.getAll();
 
@@ -45,26 +45,6 @@ public class CacheEntityServiceImpl implements CacheEntityService {
         }
         return cachedPosts;
     }
-
-
-    // if (!cachedPosts.isEmpty() && (cachedPosts.size() >= postRepository.count())) {
-
-    //     boolean isStale = cachedPosts.stream().anyMatch(post -> {
-    //         int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
-    //         return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;//more than one hou difference
-    //     });
-    //     if(!isStale) {
-    //         System.out.println("Cache hit: Retrieved all posts from Cache");
-    //         return cachedPosts.stream()
-    //                 .map(this::convertToDTO)
-    //                 .collect(Collectors.toList());
-    //     }
-    //     else{
-    //         cacheService.clearCache();
-    //         System.out.println("Cache invalidated due to stale data");
-    //     }
-    // }
-
 
     @Override
     public void putPostInCache(NewsPostModelImpl post) {

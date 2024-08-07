@@ -60,8 +60,19 @@ public interface NewsPostsPostsController {
      */
     ResponseEntity<NewsPostsResponseDTOImpl> downVotePost(Long id);
 
-
+    /**
+     * Deletes a post by its ID.
+     *
+     * @param id The ID of the post to delete.
+     * @return A ResponseEntity containing the deleted NewsPostsResponseDTOImpl and an HTTP status code.
+     */
     ResponseEntity<NewsPostsResponseDTOImpl> deletePost(Long id);
 
+    /**
+     * Retrieves a post by its ID.
+     *
+     * @param id The ID of the post to retrieve.
+     * @return A ResponseEntity containing the NewsPostsResponseDTOImpl for the requested post and an HTTP status code.
+     */
     ResponseEntity<NewsPostsResponseDTOImpl> getPost(Long id);
 }
