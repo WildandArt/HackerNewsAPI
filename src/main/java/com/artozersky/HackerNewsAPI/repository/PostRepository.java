@@ -2,6 +2,7 @@ package com.artozersky.HackerNewsAPI.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,8 @@ import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
  */
 @Repository
 public interface PostRepository extends JpaRepository<NewsPostModelImpl, Long> {
+
+    Page<NewsPostModelImpl> findAll(Pageable pageable);
 
     /**
      * Finds all posts and orders them by score in descending order.
