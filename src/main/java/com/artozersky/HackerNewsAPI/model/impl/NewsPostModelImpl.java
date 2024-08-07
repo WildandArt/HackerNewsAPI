@@ -163,7 +163,7 @@ public class NewsPostModelImpl implements NewsPostModel {
     }
 
     @PreUpdate
-    protected void updateElapsedTime() {
+    public void updateElapsedTime() {
         this.timeElapsed = (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
     }
 

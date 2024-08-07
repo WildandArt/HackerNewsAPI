@@ -76,4 +76,6 @@ public interface NewsPostService {
      * @return A {@link NewsPostsResponseDTOImpl} containing the details of the retrieved post.
      */
     NewsPostsResponseDTOImpl getPostById(Long id);
+
+    public List<NewsPostsResponseDTOImpl> getTopPosts(int limit);
 }
