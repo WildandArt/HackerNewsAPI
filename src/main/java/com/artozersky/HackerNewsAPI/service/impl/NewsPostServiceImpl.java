@@ -1,11 +1,15 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 
 import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
@@ -32,8 +36,10 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private ModelMapper modelMapper;
 
-    // @Autowired
+    @Autowired
     private CacheEntityServiceImpl cacheService;
+
+    private final Integer getRequestLimit = 400;
 
     @Autowired
     public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize) {
@@ -56,7 +62,19 @@ public class NewsPostServiceImpl implements NewsPostService {
 
         return convertToDTO(postModel);
     }
-
+/* getAllPosts
+ * 
+ * what? How? Why?
+ * purpose: to get all posts. getall you can from cache. 
+ * By the way is there something at all? whatever is there just grab it and the remaining grab from db.
+ * lets say there is a limit and its 400.
+ *  List<NewsPostModelImpl> cachedPosts = cacheservice.getAllNotStalePostsFromCache();
+ * if null then -> pull from db -> update cache 
+ * else take from db the remaining (limit - cache.size) after cache.size posts.
+ * if there is nothing left to take dont, if there is nothing in cache take it all.
+ * if there is something to take, then you have to take from post_id = cache.size() + 1
+ *  how to grab from db 20ieth post to 40ieth after sorting them????
+ */
     @Override
     public List<NewsPostsResponseDTOImpl> getAllPosts() {
 
@@ -92,7 +110,33 @@ public class NewsPostServiceImpl implements NewsPostService {
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
+/////
+    public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
+    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();
 
+    int postsNeeded = limit - cachedPosts.size();
+
+    List<NewsPostModelImpl> dbPosts = new ArrayList<>();
+    if (postsNeeded > 0) {
+        Pageable pageable = PageRequest.of(0, postsNeeded);
+        dbPosts = postRepository.findTopPostsByScoreExcludingIds(
+            cachedPosts.stream()
+                .map(NewsPostModelImpl::getPostId)
+                .collect(Collectors.toList()), 
+            pageable);
+    }
+
+    List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
+    combinedPosts.addAll(dbPosts);
+
+    return combinedPosts.stream()
+        .map(this::convertToDTO)
+        .collect(Collectors.toList());
+}
+
+
+
+/////
     @Override
     public List<NewsPostsResponseDTOImpl> getSortedPostsByScore() {
         // Step 1: Try to get the list of NewsPostModel from the cache
@@ -146,6 +190,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(savedPost, NewsPostsResponseDTOImpl.class);
         
         responseDTO.setMessage("Post created successfully");
+        //add cache invalidation here ,if post changes the top40 it should be treated
         
         return responseDTO;
     }
