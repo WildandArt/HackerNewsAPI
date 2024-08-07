@@ -24,10 +24,7 @@ import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 import com.artozersky.HackerNewsAPI.repository.PostRepository;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 import java.util.stream.Collectors;
-import java.time.LocalDateTime;
 
-import java.util.Comparator;  
-import java.util.Collections;
 import jakarta.validation.Valid;
 
 @Service

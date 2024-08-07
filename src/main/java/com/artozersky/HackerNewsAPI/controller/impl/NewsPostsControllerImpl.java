@@ -3,6 +3,7 @@ package com.artozersky.HackerNewsAPI.controller.impl;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -30,10 +31,15 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     private final NewsPostService postService;
 
     private final ModelMapper modelMapper;
+
+    private final int limit;
+
     
-    public NewsPostsControllerImpl(NewsPostService postService, ModelMapper modelMapper) {
+    public NewsPostsControllerImpl(NewsPostService postService, ModelMapper modelMapper, @Value("${posts.page.limit}") int limit) {
         this.postService = postService;
         this.modelMapper = modelMapper;
+        this.limit = limit;
+
     }
 
     @PostMapping("")
@@ -46,7 +52,7 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     @Override
     public ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllPosts() {
 
-        List<NewsPostsResponseDTOImpl> posts = postService.getAllPosts();
+        List<NewsPostsResponseDTOImpl> posts = postService.getAllPosts(limit);
 
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -66,7 +72,7 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     @Override
     public ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllSortedPosts() {
 
-        List<NewsPostsResponseDTOImpl> posts = postService.getSortedPostsByScore();
+        List<NewsPostsResponseDTOImpl> posts = postService.getTopPosts(limit);
 
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
