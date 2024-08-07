@@ -18,4 +18,6 @@ public interface CacheEntityService {
     void evictPost(Long postId);
 
     void clearCache();
+
+    boolean checkIfStale(List<NewsPostModelImpl> cachedPosts);
 }
