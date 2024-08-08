@@ -1,82 +1,60 @@
 package com.artozersky.HackerNewsAPI.cache;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
 
-import org.springframework.cache.Cache;
-import org.springframework.cache.Cache.ValueWrapper;
+import java.util.List;
 
-public class CacheEntity implements Cache{
-    private final String name;
-    private final Map<Long, Object> store;
-    private final int maxSize;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
-    public CacheEntity(String name, int maxSize) {
-        this.name = name;
-        this.maxSize = maxSize;
-        this.store = new LinkedHashMap<Long, Object>(maxSize, 0.75f, true) {
-			@Override
-            protected boolean removeEldestEntry(Map.Entry<Long, Object> eldest) {
-                return size() > CacheEntity.this.maxSize;
-		}
-	};
+/**
+ * Interface for the cache entity that provides methods to interact with the cache.
+ */
+public interface CacheEntity {
 
-    }
-	@Override
-	public Object getNativeCache() {
-		return this.store;
-	}
+    /**
+     * Retrieves a NewsPostModel from the cache based on the given key.
+     *
+     * @param key the key of the cache entry
+     * @return the NewsPostModel associated with the key, or null if not found
+     */
+    NewsPostModelImpl get(Long key);
 
-	@Override
-	public void clear() {
-		this.store.clear();
-		
-	}
+    /**
+     * Retrieves all NewsPostModels currently stored in the cache.
+     *
+     * @return a list of all NewsPostModels in the cache
+     */
+    List<NewsPostModelImpl> getAll();
 
-	@Override
-	public <T> T get(Object key, Class<T> type) {
-		Object value = store.get(key);
-        if (value != null && type.isInstance(value)) {
-            return type.cast(value);
-        }
-        return null;
-	}
-	@Override
-	public <T> T get(Object key, Callable<T> valueLoader) {
-		Object value = store.get(key);
-        if (value == null) {
-            try {
-                value = valueLoader.call();
-                put(key, value);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to load value for key: " + key, e);
-            }
-        }
-		return (T) (value);
-	}
+    /**
+     * Puts a NewsPostModel into the cache with the specified key.
+     *
+     * @param key the key under which the model will be stored
+     * @param value the NewsPostModel to store in the cache
+     */
+    void put(Long key, NewsPostModelImpl value);
 
-	@Override
-	public ValueWrapper get(Object key) {
-		Object value = store.get(key);
-        return (value != null) ? () -> value : null;
-	}
+    /**
+     * Puts a list of NewsPostModels into the cache.
+     *
+     * @param allPosts a list of NewsPostModels to store in the cache
+     */
+    void putAll(List<NewsPostModelImpl> allPosts);
 
-	@Override
-	public void evict(Object key) {
-		store.remove(key);
-		
-	}
+    /**
+     * Removes a NewsPostModel from the cache based on the given key.
+     *
+     * @param key the key of the cache entry to remove
+     */
+    void evict(Long key);
 
-	@Override
-	public void put(Object key, Object value) {
-		store.put((Long) key, value);
-		
-	}
+    /**
+     * Clears all entries from the cache.
+     */
+    void clear();
 
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-
+    /**
+     * Returns the current number of entries in the cache.
+     *
+     * @return the size of the cache
+     */
+    int size();
 }

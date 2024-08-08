@@ -85,20 +85,27 @@ Collaboration diagram for com.artozersky.HackerNewsAPI.repository.PostRepository
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acf2fe1d6f20fcaa81ad9b0f546e4890d"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#acf2fe1d6f20fcaa81ad9b0f546e4890d">findAllByOrderByScoreDesc</a> ()</td></tr>
-<tr class="separator:acf2fe1d6f20fcaa81ad9b0f546e4890d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4b3262037d88db009a2dd0b982138ce"><td class="memItemLeft" align="right" valign="top"><a id="ac4b3262037d88db009a2dd0b982138ce"></a>
+Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findAll</b> (Pageable pageable)</td></tr>
+<tr class="separator:ac4b3262037d88db009a2dd0b982138ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab94de9d8c1a13dad54bd7eae351d99f1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab94de9d8c1a13dad54bd7eae351d99f1">findAllByOrderByScoreDesc</a> ()</td></tr>
+<tr class="separator:ab94de9d8c1a13dad54bd7eae351d99f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2e9dd15e065937e006a2d40e11a2335"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab2e9dd15e065937e006a2d40e11a2335">findTopPostsByScoreExcludingIds</a> ( @Param(&quot;excludedIds&quot;) List&lt; Long &gt; excludedIds, Pageable pageable)</td></tr>
+<tr class="separator:ab2e9dd15e065937e006a2d40e11a2335"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82e1b605a75c2e034f0b04543c175e99"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#a82e1b605a75c2e034f0b04543c175e99">findTopPostsByScore</a> (Pageable pageable)</td></tr>
+<tr class="separator:a82e1b605a75c2e034f0b04543c175e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Repository interface for managing <a class="el" href="">NewsPostModel</a> entities. </p>
+<div class="textblock"><p>Repository interface for managing <a class="el" href="">NewsPostModelImpl</a> entities. Provides methods for retrieving posts based on their score and other criteria. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="acf2fe1d6f20fcaa81ad9b0f546e4890d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf2fe1d6f20fcaa81ad9b0f546e4890d">&#9670;&nbsp;</a></span>findAllByOrderByScoreDesc()</h2>
+<a id="ab94de9d8c1a13dad54bd7eae351d99f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab94de9d8c1a13dad54bd7eae351d99f1">&#9670;&nbsp;</a></span>findAllByOrderByScoreDesc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel.html">NewsPostModel</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findAllByOrderByScoreDesc </td>
+          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findAllByOrderByScoreDesc </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -106,7 +113,70 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Finds all posts and orders them by score in descending order.</p>
-<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModel</a> objects ordered by their score in descending order. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModelImpl</a> objects ordered by their score in descending order. </dd></dl>
+
+</div>
+</div>
+<a id="a82e1b605a75c2e034f0b04543c175e99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82e1b605a75c2e034f0b04543c175e99">&#9670;&nbsp;</a></span>findTopPostsByScore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findTopPostsByScore </td>
+          <td>(</td>
+          <td class="paramtype">Pageable&#160;</td>
+          <td class="paramname"><em>pageable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finds the top posts by score and orders them by score in descending order.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pageable</td><td>The pagination information (e.g., page size). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModelImpl</a> objects ordered by their score in descending order. </dd></dl>
+
+</div>
+</div>
+<a id="ab2e9dd15e065937e006a2d40e11a2335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2e9dd15e065937e006a2d40e11a2335">&#9670;&nbsp;</a></span>findTopPostsByScoreExcludingIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findTopPostsByScoreExcludingIds </td>
+          <td>(</td>
+          <td class="paramtype">@Param(&quot;excludedIds&quot;) List&lt; Long &gt;&#160;</td>
+          <td class="paramname"><em>excludedIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Pageable&#160;</td>
+          <td class="paramname"><em>pageable</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Finds the top posts by score excluding specific IDs and orders them by score in descending order.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">excludedIds</td><td>A list of post IDs to exclude from the results. </td></tr>
+    <tr><td class="paramname">pageable</td><td>The pagination information (e.g., page size). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModelImpl</a> objects excluding the specified IDs, ordered by their score in descending order. </dd></dl>
 
 </div>
 </div>
