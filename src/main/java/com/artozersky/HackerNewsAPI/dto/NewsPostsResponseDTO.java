@@ -97,7 +97,17 @@ public interface NewsPostsResponseDTO {
      */
     void setMessage(String message);
 
-    public Integer getTimeElapsed();
-    void setCreatedAt(LocalDateTime createdAt);
+    /**
+     * @brief Gets the creation timestamp of the post.
+     *
+     * @return The timestamp when the post was created.
+     */
     LocalDateTime getCreatedAt();
+
+    /**
+     * @brief Sets the creation timestamp of the post.
+     *
+     * @param createdAt The timestamp to set for the creation of the post.
+     */
+    void setCreatedAt(LocalDateTime createdAt);
 }

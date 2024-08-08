@@ -1,0 +1,9 @@
+digraph "com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="com.artozersky.HackerNews\lAPI.dto.impl.NewsPostsUpdateDTOImpl",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="com.artozersky.HackerNews\lAPI.dto.NewsPostsUpdateDTO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1NewsPostsUpdateDTO.html",tooltip=" "];
+}

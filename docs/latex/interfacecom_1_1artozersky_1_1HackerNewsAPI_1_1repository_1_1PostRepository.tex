@@ -11,24 +11,65 @@ Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Po
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_acf2fe1d6f20fcaa81ad9b0f546e4890d}{find\+All\+By\+Order\+By\+Score\+Desc}} ()
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ac4b3262037d88db009a2dd0b982138ce}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ac4b3262037d88db009a2dd0b982138ce}} 
+Page$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ {\bfseries find\+All} (Pageable pageable)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab94de9d8c1a13dad54bd7eae351d99f1}{find\+All\+By\+Order\+By\+Score\+Desc}} ()
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab2e9dd15e065937e006a2d40e11a2335}{find\+Top\+Posts\+By\+Score\+Excluding\+Ids}} ( @Param(\char`\"{}excluded\+Ids\char`\"{}) List$<$ Long $>$ excluded\+Ids, Pageable pageable)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a82e1b605a75c2e034f0b04543c175e99}{find\+Top\+Posts\+By\+Score}} (Pageable pageable)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Repository interface for managing \mbox{\hyperlink{}{News\+Post\+Model}} entities. 
+Repository interface for managing \mbox{\hyperlink{}{News\+Post\+Model\+Impl}} entities. Provides methods for retrieving posts based on their score and other criteria. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_acf2fe1d6f20fcaa81ad9b0f546e4890d}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_acf2fe1d6f20fcaa81ad9b0f546e4890d}} 
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab94de9d8c1a13dad54bd7eae351d99f1}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab94de9d8c1a13dad54bd7eae351d99f1}} 
 \index{com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}!findAllByOrderByScoreDesc@{findAllByOrderByScoreDesc}}
 \index{findAllByOrderByScoreDesc@{findAllByOrderByScoreDesc}!com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}}
 \doxysubsubsection{\texorpdfstring{findAllByOrderByScoreDesc()}{findAllByOrderByScoreDesc()}}
-{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1NewsPostModel}{News\+Post\+Model}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Post\+Repository.\+find\+All\+By\+Order\+By\+Score\+Desc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Post\+Repository.\+find\+All\+By\+Order\+By\+Score\+Desc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 Finds all posts and orders them by score in descending order.
 
 \begin{DoxyReturn}{Returns}
-A list of \mbox{\hyperlink{}{News\+Post\+Model}} objects ordered by their score in descending order. 
+A list of \mbox{\hyperlink{}{News\+Post\+Model\+Impl}} objects ordered by their score in descending order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a82e1b605a75c2e034f0b04543c175e99}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_a82e1b605a75c2e034f0b04543c175e99}} 
+\index{com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}!findTopPostsByScore@{findTopPostsByScore}}
+\index{findTopPostsByScore@{findTopPostsByScore}!com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}}
+\doxysubsubsection{\texorpdfstring{findTopPostsByScore()}{findTopPostsByScore()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Post\+Repository.\+find\+Top\+Posts\+By\+Score (\begin{DoxyParamCaption}\item[{Pageable}]{pageable }\end{DoxyParamCaption})}
+
+Finds the top posts by score and orders them by score in descending order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pageable} & The pagination information (e.\+g., page size). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \mbox{\hyperlink{}{News\+Post\+Model\+Impl}} objects ordered by their score in descending order. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab2e9dd15e065937e006a2d40e11a2335}\label{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository_ab2e9dd15e065937e006a2d40e11a2335}} 
+\index{com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}!findTopPostsByScoreExcludingIds@{findTopPostsByScoreExcludingIds}}
+\index{findTopPostsByScoreExcludingIds@{findTopPostsByScoreExcludingIds}!com.artozersky.HackerNewsAPI.repository.PostRepository@{com.artozersky.HackerNewsAPI.repository.PostRepository}}
+\doxysubsubsection{\texorpdfstring{findTopPostsByScoreExcludingIds()}{findTopPostsByScoreExcludingIds()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+repository.\+Post\+Repository.\+find\+Top\+Posts\+By\+Score\+Excluding\+Ids (\begin{DoxyParamCaption}\item[{@Param(\char`\"{}excluded\+Ids\char`\"{}) List$<$ Long $>$}]{excluded\+Ids,  }\item[{Pageable}]{pageable }\end{DoxyParamCaption})}
+
+Finds the top posts by score excluding specific IDs and orders them by score in descending order.
+
+
+\begin{DoxyParams}{Parameters}
+{\em excluded\+Ids} & A list of post IDs to exclude from the results. \\
+\hline
+{\em pageable} & The pagination information (e.\+g., page size). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of \mbox{\hyperlink{}{News\+Post\+Model\+Impl}} objects excluding the specified IDs, ordered by their score in descending order. 
 \end{DoxyReturn}
 
 
