@@ -1,0 +1,169 @@
+\hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl}{}\doxysection{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl Class Reference}
+\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl}\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+
+
+Inheritance diagram for com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl\+:
+% FIG 0
+
+
+Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_af945384066d0c40206085a4da93fb808}{Cache\+Entity\+Impl}} (int max\+Size)
+\item 
+\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a76268665cbd5f039e3aaf25f10b80b0c}{get}} (Long key)
+\item 
+List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a0905b76fbc0dbc3483a98d798816a4d1}{get\+All}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a646830c0a9216b45f10cdbecb79f3adb}{put}} (Long key, \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} value)
+\item 
+void \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a8a3298fcb78ac17a4762ce632294af37}{put\+All}} (List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ all\+Posts)
+\item 
+void \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_aa475537f2c71b3a976506a240ca01751}{evict}} (Long key)
+\item 
+void \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_ab33f241aa75ff0a7d358c3f3086c3d3d}{clear}} ()
+\item 
+int \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a371599089bb1169043567015e7a9f27c}{size}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity}{Cache\+Entity}} interface that provides a simple cache mechanism. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_af945384066d0c40206085a4da93fb808}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_af945384066d0c40206085a4da93fb808}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!CacheEntityImpl@{CacheEntityImpl}}
+\index{CacheEntityImpl@{CacheEntityImpl}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{CacheEntityImpl()}{CacheEntityImpl()}}
+{\footnotesize\ttfamily com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+Cache\+Entity\+Impl (\begin{DoxyParamCaption}\item[{int}]{max\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructs a \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl}{Cache\+Entity\+Impl}} with a specified maximum size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Size} & the maximum number of entries the cache can hold \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_ab33f241aa75ff0a7d358c3f3086c3d3d}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_ab33f241aa75ff0a7d358c3f3086c3d3d}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!clear@{clear}}
+\index{clear@{clear}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Clears all entries from the cache. 
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_a9b46d3e519e57370f3aaab1f015a133d}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_aa475537f2c71b3a976506a240ca01751}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_aa475537f2c71b3a976506a240ca01751}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!evict@{evict}}
+\index{evict@{evict}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{evict()}{evict()}}
+{\footnotesize\ttfamily void com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+evict (\begin{DoxyParamCaption}\item[{Long}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Removes a News\+Post\+Model from the cache based on the given key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the key of the cache entry to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_afd2a6067d91b46513096365fbd4e4e75}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a76268665cbd5f039e3aaf25f10b80b0c}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a76268665cbd5f039e3aaf25f10b80b0c}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!get@{get}}
+\index{get@{get}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+get (\begin{DoxyParamCaption}\item[{Long}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves a News\+Post\+Model from the cache based on the given key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the key of the cache entry \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the News\+Post\+Model associated with the key, or null if not found 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_af18935c459ca395be11eee3d8be4c9bb}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a0905b76fbc0dbc3483a98d798816a4d1}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a0905b76fbc0dbc3483a98d798816a4d1}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!getAll@{getAll}}
+\index{getAll@{getAll}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{getAll()}{getAll()}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+get\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Retrieves all News\+Post\+Models currently stored in the cache.
+
+\begin{DoxyReturn}{Returns}
+a list of all News\+Post\+Models in the cache 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_a7d691a04d3264076db5232f83a60459d}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a646830c0a9216b45f10cdbecb79f3adb}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a646830c0a9216b45f10cdbecb79f3adb}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!put@{put}}
+\index{put@{put}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily void com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+put (\begin{DoxyParamCaption}\item[{Long}]{key,  }\item[{\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}}}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Puts a News\+Post\+Model into the cache with the specified key.
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & the key under which the model will be stored \\
+\hline
+{\em value} & the News\+Post\+Model to store in the cache \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_ab17629a1e3cf3dee1cc18bbdcde0dee2}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a8a3298fcb78ac17a4762ce632294af37}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a8a3298fcb78ac17a4762ce632294af37}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!putAll@{putAll}}
+\index{putAll@{putAll}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{putAll()}{putAll()}}
+{\footnotesize\ttfamily void com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+put\+All (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$}]{all\+Posts }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Puts a list of News\+Post\+Models into the cache.
+
+
+\begin{DoxyParams}{Parameters}
+{\em all\+Posts} & a list of News\+Post\+Models to store in the cache \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_ab9b1c98a402ee3bbebdf4db51811d522}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a371599089bb1169043567015e7a9f27c}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1impl_1_1CacheEntityImpl_a371599089bb1169043567015e7a9f27c}} 
+\index{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}!size@{size}}
+\index{size@{size}!com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl@{com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl}}
+\doxysubsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily int com.\+artozersky.\+Hacker\+News\+API.\+cache.\+impl.\+Cache\+Entity\+Impl.\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Returns the current number of entries in the cache.
+
+\begin{DoxyReturn}{Returns}
+the size of the cache 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1cache_1_1CacheEntity_a3497f0e5a90a2e8de3c6cae96da081d2}{com.\+artozersky.\+Hacker\+News\+API.\+cache.\+Cache\+Entity}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/artozersky/\+Hacker\+News\+API/cache/impl/Cache\+Entity\+Impl.\+java\end{DoxyCompactItemize}

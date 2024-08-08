@@ -136,7 +136,6 @@ Downvote a Post</h2>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
 Database Schema</h1>
 <p>Below is the schema used by the Mini Hacker News database:</p>
-<p><img src="img/DBSchema.png" alt="Database Schema" class="inline"/> </p>
 <h1><a class="anchor" id="autotoc_md16"></a>
 Cache Strategy:</h1>
 <h3><a class="anchor" id="autotoc_md17"></a>
@@ -159,7 +158,6 @@ Invalidation Strategy</h1>
 Case 1: Update of a post automatically updates the time of the creation of the post, which changes the score. fields: created_at and score should be updated in DB and (!!!)Cache if post_id exists in already Cache.</h3>
 <h3><a class="anchor" id="autotoc_md26"></a>
 Case 2: Upvote/Downvote changes the score. Update should be made to DB and in (!!!)Cache if exists in Cache.</h3>
-<p><img src="img/CacheInvalidationStrategy.jpg" alt="Invalidatoin Strategy" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md27"></a>
 Testing:</h1>
 <h1><a class="anchor" id="autotoc_md28"></a>
@@ -167,7 +165,7 @@ How to Use a Postman Collection JSON File</h1>
 <h2><a class="anchor" id="autotoc_md29"></a>
 1. Download the Collection JSON File</h2>
 <ul>
-<li>First, ensure you have the Postman collection JSON file saved to your local machine. You can access the Postman collection file <a href="Postman/HackerNewsAPIV3.postman_collection.json">here</a>. This file contains all the endpoints, requests, and configurations defined in the collection.</li>
+<li>First, ensure you have the Postman collection JSON file saved to your local machine. You can access the Postman collection file <a href="Postman/HackerNewsAPI.postman_collection.json">here</a>. This file contains all the endpoints, requests, and configurations defined in the collection.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md30"></a>
 2. Importing the Collection into Postman</h2>

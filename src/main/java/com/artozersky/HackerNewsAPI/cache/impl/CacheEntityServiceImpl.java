@@ -34,6 +34,8 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         List<NewsPostModelImpl> cachedPosts = cacheEntity.getAll();
 
+        System.out.println("inside getAllPostsFromCache size : " + cachedPosts.size());
+
         boolean isStale = cachedPosts.stream().anyMatch(post -> {
             int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
             return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;//more than one hour difference

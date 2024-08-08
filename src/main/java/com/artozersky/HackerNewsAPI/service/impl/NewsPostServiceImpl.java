@@ -90,9 +90,15 @@ public class NewsPostServiceImpl implements NewsPostService {
 
     int postsNeeded = limit - cachedPosts.size();
 
+    System.out.println("cached posts size: " + cachedPosts.size() );
+
+    System.out.println("posts needed: " + postsNeeded );
+
     List<NewsPostModelImpl> dbPosts = new ArrayList<>();
 
     dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
+
+    System.out.println("fetched from db: " + dbPosts.size() );
 
     List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
     combinedPosts.addAll(dbPosts);
