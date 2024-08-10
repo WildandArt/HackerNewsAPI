@@ -18,7 +18,9 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
+@Builder
 @Entity
 @Table(name = "posts", indexes = {
     @Index(name = "idx_score", columnList = "score")

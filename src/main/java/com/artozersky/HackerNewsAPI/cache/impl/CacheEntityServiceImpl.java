@@ -44,6 +44,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
         if(isStale) {
            this.clearCache();
            System.out.println("Cache invalidated due to stale data");
+           return List.of();
         }
         return cachedPosts;
     }

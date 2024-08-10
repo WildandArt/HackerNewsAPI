@@ -1,106 +1,161 @@
-// package com.artozersky.HackerNewsAPI.cache;
+package com.artozersky.HackerNewsAPI.cache;
 
-// import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl;
-// import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
-// import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
-// import org.junit.jupiter.api.BeforeEach;
-// import org.junit.jupiter.api.Test;
-// import org.mockito.InjectMocks;
-// import org.mockito.Mock;
-// import org.mockito.MockitoAnnotations;
-// import org.mockito.Mockito;
-// import java.time.LocalDateTime;
-// import java.util.List;
-// import java.util.ArrayList;
+import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityImpl;
+import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
+import com.artozersky.HackerNewsAPI.repository.PostRepository;
 
-// import static org.junit.jupiter.api.Assertions.*;
-// import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mockito;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.ArrayList;
 
-// class CacheEntityServiceImplTest {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
-//     @Mock
-//     private CacheEntityImpl cacheEntity;
 
-//     @InjectMocks
-//     private CacheEntityServiceImpl cacheEntityService;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-//     @BeforeEach
-//     void setUp() {
-//         MockitoAnnotations.openMocks(this);
-//     }
+import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
+import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
+import com.artozersky.HackerNewsAPI.repository.PostRepository;
 
-//     @Test
-//     void testGetPostFromCacheById() {
-//         NewsPostModelImpl post = new NewsPostModelImpl();
-//         post.setPostId(1L);
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-//         when(cacheEntity.get(1L)).thenReturn(post);
+@ExtendWith(MockitoExtension.class)
+class CacheEntityServiceImplTest {
 
-//         NewsPostModelImpl result = cacheEntityService.getPostFromCacheById(1L);
+    @Mock
+    private PostRepository postRepository;
 
-//         assertNotNull(result);
-//         assertEquals(1L, result.getPostId());
-//         verify(cacheEntity, times(1)).get(1L);
-//     }
+    private CacheEntityServiceImpl cacheEntityService;
 
-//     @Test
-//     void testGetAllPostsFromCacheWithStaleData() {
-//         List<NewsPostModelImpl> cachedPosts = new ArrayList<>();
-//         NewsPostModelImpl post1 = new NewsPostModelImpl();
-//         post1.setPostId(1L);
-//         post1.setCreatedAt(LocalDateTime.now().minusHours(2));
-//         post1.setTimeElapsed(1); // One hour elapsed since creation
+    @BeforeEach
+    public void setUp() {
+        int maxSize = 100;  // Provide the required cache size
+        cacheEntityService = new CacheEntityServiceImpl(maxSize);
+    }
 
-//         cachedPosts.add(post1);
+    @Test
+    public void testPutPostInCache() {
+        NewsPostModelImpl modelImpl = NewsPostModelImpl.builder()
+            .postId(1L)
+            .title("Test Post")
+            .url("http://example.com")
+            .postedBy("Author")
+            .score(10.0)
+            .currentVotes(100)
+            .createdAt(LocalDateTime.now())
+            .build();
 
-//         when(cacheEntity.getAll()).thenReturn(cachedPosts);
+        cacheEntityService.putPostInCache(modelImpl);
 
-//         List<NewsPostModelImpl> result = cacheEntityService.getAllPostsFromCache();
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        assertNotNull(cachedPost);
+        assertEquals("Test Post", cachedPost.getTitle());
+    }
+    @Test
+    public void testGetAllPostsFromCache() {
+        LocalDateTime now = LocalDateTime.now();
+        NewsPostModelImpl post1 = NewsPostModelImpl.builder()
+            .postId(1L)
+            .title("Post 1")
+            .url("http://example.com/1")
+            .postedBy("Author 1")
+            .score(5.0)
+            .currentVotes(50)
+            .createdAt(now.minusHours(1))
+            .timeElapsed(1)
+            .build();
 
-//         assertTrue(result.isEmpty()); // Because cache should be invalidated due to stale data
-//         verify(cacheEntity, times(1)).clear();
-//     }
+        NewsPostModelImpl post2 = NewsPostModelImpl.builder()
+            .postId(2L)
+            .title("Post 2")
+            .url("http://example.com/2")
+            .postedBy("Author 2")
+            .score(7.0)
+            .currentVotes(70)
+            .createdAt(now.minusHours(2))
+            .timeElapsed(2)
+            .build();
 
-//     @Test
-//     void testPutPostInCache() {
-//         NewsPostModelImpl post = new NewsPostModelImpl();
-//         post.setPostId(1L);
+        cacheEntityService.putPostInCache(post1);
+        cacheEntityService.putPostInCache(post2);
 
-//         cacheEntityService.putPostInCache(post);
+        List<NewsPostModelImpl> cachedPosts = cacheEntityService.getAllPostsFromCache();
+        assertEquals(2, cachedPosts.size());
+    }
 
-//         verify(cacheEntity, times(1)).put(1L, post);
-//     }
+    // @Test
+    // public void testGetAllPostsFromCacheWithStaleData() {
+    //     LocalDateTime now = LocalDateTime.now();
+    //     NewsPostModelImpl post = NewsPostModelImpl.builder()
+    //         .postId(1L)
+    //         .title("Stale Post")
+    //         .url("http://example.com/stale")
+    //         .postedBy("Author")
+    //         .score(10.0)
+    //         .currentVotes(100)
+    //         .createdAt(now.minusHours(3))
+    //         .timeElapsed(3) // Set a time that indicates the data is stale
+    //         .build();
 
-//     @Test
-//     void testPutAllPostsInCache() {
-//         List<NewsPostModelImpl> posts = new ArrayList<>();
-//         NewsPostModelImpl post1 = new NewsPostModelImpl();
-//         post1.setPostId(1L);
+    //     cacheEntityService.putPostInCache(post);
 
-//         NewsPostModelImpl post2 = new NewsPostModelImpl();
-//         post2.setPostId(2L);
+    //     List<NewsPostModelImpl> cachedPosts = cacheEntityService.getAllPostsFromCache();
+    //     assertTrue(cachedPosts.isEmpty(), "Cache should be cleared due to stale data");
+    // }
 
-//         posts.add(post1);
-//         posts.add(post2);
+    @Test
+    public void testEvictPost() {
+        NewsPostModelImpl modelImpl = NewsPostModelImpl.builder()
+            .postId(1L)
+            .title("Test Post")
+            .url("http://example.com")
+            .postedBy("Author")
+            .score(10.0)
+            .currentVotes(100)
+            .createdAt(LocalDateTime.now())
+            .build();
 
-//         cacheEntityService.putAllPostsInCache(posts);
+        cacheEntityService.putPostInCache(modelImpl);
 
-//         verify(cacheEntity, times(1)).putAll(posts);
-//     }
+        cacheEntityService.evictPost(1L);
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        assertNull(cachedPost, "Post should be evicted from cache");
+    }
 
-//     @Test
-//     void testEvictPost() {
-//         Long postId = 1L;
+    @Test
+    public void testClearCache() {
+        NewsPostModelImpl modelImpl = NewsPostModelImpl.builder()
+            .postId(1L)
+            .title("Test Post")
+            .url("http://example.com")
+            .postedBy("Author")
+            .score(10.0)
+            .currentVotes(100)
+            .createdAt(LocalDateTime.now())
+            .build();
 
-//         cacheEntityService.evictPost(postId);
+        cacheEntityService.putPostInCache(modelImpl);
 
-//         verify(cacheEntity, times(1)).evict(postId);
-//     }
-
-//     @Test
-//     void testClearCache() {
-//         cacheEntityService.clearCache();
-
-//         verify(cacheEntity, times(1)).clear();
-//     }
-// }
+        cacheEntityService.clearCache();
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        assertNull(cachedPost, "Cache should be cleared");
+    }
+}

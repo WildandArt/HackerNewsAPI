@@ -12,7 +12,7 @@ RUN mvn dependency:go-offline
 
 # Copy the source code and build the application
 COPY src ./src
-RUN mvn clean package -DskipTests
+RUN mvn package -DskipTests
 
 # Second stage: Use a lightweight JRE to run the application
 #FROM amazoncorretto:22-jdk
