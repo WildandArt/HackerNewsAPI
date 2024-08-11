@@ -24,8 +24,6 @@ The Mini Hacker News Project is an implementation of a content aggregation platf
 10. [License](#license)
 
 
-To run this project, you need to install the Java JDK and set up Spring Boot.
-
 ## Requirements
 
 Before running this project, you need to install the Java Development Kit (JDK). Follow these steps:
