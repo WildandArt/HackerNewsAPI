@@ -1,7 +1,29 @@
+## Table of Contents
+
+1. [Requirements](#requirements)
+2. [Main Entities](#main-entities)
+3. [Features](#features)
+4. [UML Diagram](#uml-diagram)
+5. [Prerequisites](#prerequisites)
+6. [Installation](#installation)
+   - [Application Properties Configuration](#application-properties-configuration)
+   - [Database Setup](#database-setup)
+   - [Docker Usage](#docker-usage)
+7. [API Usage](#api-usage)
+   - [Endpoints](#endpoints)
+   - [Postman Collection](#postman-collection)
+   - [Error Handling](#error-handling)
+8. [Cache Strategy](#cache-strategy)
+9. [Support and Contributions](#support-and-contributions)
+10. [License](#license)
+
 
 # Welcome to the Mini Hacker News project
 
 The Mini Hacker News Project is an implementation of a content aggregation platform similar to Hacker News. This project provides a RESTful API for managing posts, allowing users to submit, view, and interact with various news articles. The core feature of the application is its caching system, which stores posts in a cache for efficient retrieval while ensuring that cached data remains fresh and relevant. By implementing a caching strategy, the project optimizes performance and reduces the load on the database, making it capable of handling high traffic scenarios typical of popular news aggregation sites.
+
+
+
 
 To run this project, you need to install the Java JDK and set up Spring Boot.
 
@@ -19,12 +41,14 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 Welcome to the Mini Hacker News project! This is a lightweight version of the popular news aggregation site tailored for simple use and ease of deployment. Built with Spring Boot, this project features a RESTful API that allows users to create, update, view, and vote on posts.
 
-## Features
+## Allowed CRUD Operations
 
 - Create new posts
 - Fetch top posts
-- Update existing posts
-- Upvote and downvote posts
+- Fetch all posts
+- Update an existing post
+- Upvote/Downvote a post
+- Delete a post
 
 ## Installation
 
@@ -64,7 +88,7 @@ Here are some examples of how you can interact with the API using curl:
 ### Create a Post
 
 ```bash
-curl -X POST http://localhost:8081/posts \
+curl -X POST http://localhost:8080/api/posts \
      -H "Content-Type: application/json" \
      -d '{
            "userId": 1,
@@ -73,17 +97,27 @@ curl -X POST http://localhost:8081/posts \
            "title": "My First Post"
          }'
 ```
+### Get a Post by Id
+```bash
+curl http://localhost:8080/api/posts/id
+```
 
 ### Get Top Posts
 
 ```bash
-curl http://localhost:8080/posts
+curl http://localhost:8080/api/top_posts
+```
+
+### Get All Posts
+
+```bash
+curl http://localhost:8080/api/posts
 ```
 
 ### Update a Post
 
 ```bash
-curl -X PUT http://localhost:8080/posts/<ID> \
+curl -X PUT http://localhost:8080/api/posts/<ID> \
 -H "Content-Type: application/json" \
 -d '{"content": "Updated post content"}'
 ```
@@ -91,31 +125,25 @@ curl -X PUT http://localhost:8080/posts/<ID> \
 ### Upvote a Post
 
 ```bash
-curl -X POST http://localhost:8080/posts/<ID>/upvote
+curl -X PATCH http://localhost:8080/api/posts/<ID>/upvote
 ```
 
 ### Downvote a Post
 
 ```bash
-curl -X POST http://localhost:8080/posts/<ID>/downvote
+curl -X PATCH http://localhost:8080/api/posts/<ID>/downvote
 ```
+
+### Delete a Post
+
+```bash
+curl -X DELETE http://localhost:8080/api/posts/<ID>
+```
+
 
 ## Database Schema
 
 Below is the schema used by the Mini Hacker News database:
-
-
-## Cache Strategy:
-#### When GET is called, each post returning from GET can Cache Hit or Cache miss. 
-#### If Cache Hit-> fetch it from cache 
-#### if Cache Miss->fetch from DB and add to cache.
-#### OPTION: When the cache entry is found but is slightly outdated due to changes in hoursAgo, return the cached value immediately and trigger an asynchronous update to the cache.
-#### also quick check if hoursAgo is in acceptable range, if yes pull from cache and update(cache and db) if unacceptable range, pull from db and update cache.
-####
-####
-## Invalidation Strategy
-#### Case 1: Update of a post automatically updates the time of the creation of the post, which changes the score. fields: created_at and score should be updated in DB and (!!!)Cache if post_id exists in already Cache.
-#### Case 2: Upvote/Downvote changes the score. Update should be made to DB and in (!!!)Cache if exists in Cache.
 
 
 # Testing:
