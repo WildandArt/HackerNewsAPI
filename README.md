@@ -36,6 +36,66 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 ## Main Entities
 
+### 1. **NewsPostModelImpl**
+- **Description**: Represents the main entity for a news post in the application.
+- **Key Fields**:
+  - `postId`: Unique identifier for the post.
+  - `url`: The URL of the news post.
+  - `title`: The title of the post.
+  - `currentVotes`: Number of votes the post has received.
+  - `createdAt`: Timestamp when the post was created.
+  - `score`: Score of the post, typically derived from its popularity.
+  - `timeElapsed`: Time elapsed since the post was created.
+  - `postedBy`: The author of the post.
+
+### 2. **CacheEntityImpl**
+- **Description**: Represents a custom implementation of a caching mechanism to store and retrieve `NewsPostModelImpl` objects.
+- **Key Features**:
+  - Caches posts to improve retrieval speed and reduce database queries.
+  - Implements size-limiting and stale data invalidation logic.
+
+### 3. **CacheEntityServiceImpl**
+- **Description**: Service that interacts with `CacheEntityImpl` to provide caching functionalities.
+- **Key Operations**:
+  - `getPostFromCacheById(Long postId)`: Retrieves a single post from the cache by its ID.
+  - `getAllPostsFromCache()`: Retrieves all cached posts, with a check for stale data.
+  - `putPostInCache(NewsPostModelImpl post)`: Adds a single post to the cache.
+  - `putAllPostsInCache(List<NewsPostModelImpl> posts)`: Adds a list of posts to the cache.
+  - `evictPost(Long postId)`: Removes a specific post from the cache.
+  - `clearCache()`: Clears all entries in the cache.
+
+### 4. **PostRepository**
+- **Description**: Repository interface for managing `NewsPostModelImpl` entities in the database.
+- **Key Features**:
+  - Provides basic CRUD operations for `NewsPostModelImpl`.
+  - Extends Spring Data JPA, making it easy to interact with the database.
+
+### 5. **NewsPostsResponseDTO**
+- **Description**: Data Transfer Object interface used for transferring data related to news posts between the API and the client.
+- **Key Fields**:
+  - `postId`, `url`, `title`, `currentVotes`, `createdAt`, `score`, `postedBy`, etc.
+  - These fields correspond closely to those in `NewsPostModelImpl`.
+
+### 6. **HackerNewsAPIApplication**
+- **Description**: The main entry point for the Spring Boot application.
+- **Key Features**:
+  - Initializes and configures the application.
+  - Scans and sets up Spring Data JPA repositories and other Spring components.
+
+## Supporting Components
+
+### Database (PostgreSQL)
+- **Description**: Manages the persistence of `NewsPostModelImpl` entities.
+- **Configuration**: Integrated with Docker Compose for seamless setup and management in development and production environments.
+
+### Docker & Docker Compose
+- **Dockerfile**: Defines a multi-stage build for creating a lightweight Docker image of the application.
+- **docker-compose.yml**: Configures the services, including the database and the application itself, for easy deployment.
+
+## Project Structure
+- **`src/main/java/com/username/HackerNewsAPI/`**: Contains the main source code, including models, services, and repositories.
+- **`src/test/java/com/username/HackerNewsAPI/`**: Contains the test classes for unit and integration testing.
+
 ## Features
 
 ## Diagram
