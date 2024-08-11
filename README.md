@@ -146,7 +146,7 @@ Ensure the following environment variables are set up:
 
 
 
-## Installation
+# Installation
 
    1. **Clone the repository**
 
@@ -176,18 +176,95 @@ Ensure the following environment variables are set up:
    ```
 
    This will start the application on http://localhost:8080.
+ 
+# Application Properties Configuration
 
-   2. Application Properties Configuration
+The following properties are configured to manage the database connection, Hibernate settings, and data source details for the application. These configurations ensure that the application connects to the correct database, uses the appropriate credentials, and utilizes Hibernate for ORM (Object-Relational Mapping) with PostgreSQL.
 
-   3. Database Setup
+### Database Connection Properties
 
-   4. Docker Usage
+- `spring.datasource.url`: Specifies the JDBC URL for connecting to the PostgreSQL database. This should be adjusted based on whether the application is running locally or within Docker. For local development, use `jdbc:postgresql://localhost:5432/mytestdatabase`. When using Docker, adjust it accordingly.
+- `spring.datasource.username`: The username used for authenticating the connection to the PostgreSQL database.
+- `spring.datasource.password`: The password associated with the username for database authentication.
+- `spring.datasource.driver-class-name`: Specifies the driver class name for PostgreSQL, which is `org.postgresql.Driver`.
+
+### Hibernate Settings
+
+- `spring.jpa.database-platform`: Defines the SQL dialect for Hibernate, set to `org.hibernate.dialect.PostgreSQLDialect` to match PostgreSQL.
+- `spring.jpa.hibernate.ddl-auto`: Configures the Hibernate DDL (Data Definition Language) auto-generation behavior. Set to `update` to automatically update the database schema as needed.
+- `spring.jpa.show-sql`: If set to `true`, Hibernate will log the generated SQL statements to the console, which is useful for debugging and development.
+
+### Example Properties File
+
+```properties
+# Database connection properties for local development
+spring.datasource.url=jdbc:postgresql://localhost:5432/mytestdatabase
+spring.datasource.username=mytestuser
+spring.datasource.password=mytestpassword
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Hibernate settings
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+# Docker Usage Dockerfile
+
+This Dockerfile builds and packages the Java application using Maven and then runs it with a lightweight JRE.
+
+```dockerfile
+# First stage: Build the application with Maven
+FROM eclipse-temurin:17-jdk-ubi9-minimal as build
+WORKDIR /app
+
+# Install Maven
+RUN microdnf install -y maven
+
+# Copy the pom.xml file and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy the source code and build the application
+COPY src ./src
+RUN mvn clean test
+
+# Second stage: Use a lightweight JRE to run the application
+FROM eclipse-temurin:17-jre-ubi9-minimal
+WORKDIR /app
+COPY --from=build /app/target/HackerNewsAPI-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
+```
+To build and start the application using Docker Compose, run the following commands:
+```
+docker-compose up --build
+```
+Alternatively, if the containers are already built, just start them
+```
+docker-compose up
+```
+If you need to run tests or interact with the application, you can use:
+```
+docker-compose run --rm app
+```
+
+# Database connection settings
+Configure your application properties to connect to the PostgreSQL database inside the Docker container. This file is typically located at src/main/resources/application.properties.
+Using Docker Version of properties file:
+```
+spring.datasource.url=jdbc:postgresql://db:5432/mydatabase
+```
+
+If you need to run the application locally without Docker, use the following settings.
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/mytestdatabase
+```
 
 ## Allowed CRUD Operations
 
 - Create new posts
-- Fetch top posts
-- Fetch all posts
+- Get top posts
+- Get all posts
 - Update an existing post
 - Upvote/Downvote a post
 - Delete a post

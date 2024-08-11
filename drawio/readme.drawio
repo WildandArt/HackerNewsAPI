@@ -1,35 +1,26 @@
 <mxfile host="65bd71144e">
     <diagram id="MmIdsh-Oe8tLr_MlBv-J" name="Page-1">
-        <mxGraphModel dx="2044" dy="855" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="894" dy="855" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="PostServiceImpl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;" parent="1" vertex="1">
-                    <mxGeometry x="160" y="60" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="162" y="150" width="120" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="CacheServiceImpl" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="60" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="420" y="150" width="88" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;" parent="1" vertex="1">
-                    <mxGeometry x="360" y="160" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="312" y="150" width="78" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="PostRepository" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;" parent="1" vertex="1">
-                    <mxGeometry x="150" y="160" width="140" height="60" as="geometry"/>
+                    <mxGeometry x="42" y="150" width="80" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="NewsPostModel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" parent="1" vertex="1">
                     <mxGeometry x="160" y="390" width="140" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="PostResponseDTO" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;" parent="1" vertex="1">
-                    <mxGeometry x="510" y="380" width="140" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2" target="3" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="2" target="5" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="3" target="4" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                    <mxGeometry x="540" y="150" width="100" height="170" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
