@@ -1,7 +1,9 @@
 
-# Mini Hacker News Site RESTful API Documentation
+# Welcome to the Mini Hacker News project
 
-This documentation covers the RESTful API for a Mini Hacker News site. To run this project, you need to install the Java JDK and set up Spring Boot.
+The Mini Hacker News Project is an implementation of a content aggregation platform similar to Hacker News. This project provides a RESTful API for managing posts, allowing users to submit, view, and interact with various news articles. The core feature of the application is its caching system, which stores posts in a cache for efficient retrieval while ensuring that cached data remains fresh and relevant. By implementing a caching strategy, the project optimizes performance and reduces the load on the database, making it capable of handling high traffic scenarios typical of popular news aggregation sites.
+
+To run this project, you need to install the Java JDK and set up Spring Boot.
 
 ## Prerequisites
 
