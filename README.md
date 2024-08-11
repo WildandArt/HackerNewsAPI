@@ -42,6 +42,50 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 ## Prerequisites
 
+Before you can run this project, ensure that you have the following software installed:
+
+1. **Java Development Kit (JDK)**: 
+   - Version: `17` or higher.
+   - You can download it from [AdoptOpenJDK](https://adoptopenjdk.net/) or use a package manager like `sdkman` to install it.
+
+2. **Maven**:
+   - Version: `3.6.0` or higher.
+   - Maven is used to build and manage the dependencies of the project. Download it from the [official website](https://maven.apache.org/download.cgi) or install it via a package manager like `brew` on macOS, `apt` on Ubuntu, or `choco` on Windows.
+
+3. **Docker**:
+   - Docker is required to containerize the application and its dependencies. 
+   - Make sure Docker is installed and running on your machine. You can download Docker Desktop from [here](https://www.docker.com/products/docker-desktop).
+
+4. **Docker Compose**:
+   - Version: `1.27.0` or higher.
+   - Docker Compose is used to manage multi-container Docker applications. It is usually included with Docker Desktop, but you can install it separately if needed.
+
+5. **PostgreSQL**:
+   - Version: `15.3` or compatible.
+   - This project uses PostgreSQL as the database. You can run it via Docker or install it locally. Ensure you have the correct environment variables set for `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`.
+
+6. **Git**:
+   - Version: `2.0` or higher.
+   - Git is used for version control. Make sure you have Git installed to clone the repository.
+
+### Environment Variables
+
+Ensure the following environment variables are set up:
+
+- `POSTGRES_DB`: Name of the PostgreSQL database.
+- `POSTGRES_USER`: PostgreSQL username.
+- `POSTGRES_PASSWORD`: PostgreSQL password.
+
+### Optional Tools
+
+- **IDE**: 
+  - An Integrated Development Environment (IDE) like IntelliJ IDEA, Eclipse, or VS Code is recommended for working with the project.
+
+- **cURL or Postman**:
+  - These tools can be useful for testing API endpoints once the application is up and running.
+
+
+
 ## Installation
 
    1. **Clone the repository**
