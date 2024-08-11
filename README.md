@@ -1,3 +1,9 @@
+
+
+# Welcome to the Mini Hacker News project
+
+The Mini Hacker News Project is an implementation of a content aggregation platform similar to Hacker News. This project provides a RESTful API for managing posts, allowing users to submit, view, and interact with various news articles. The core feature of the application is its caching system, which stores posts in a cache for efficient retrieval while ensuring that cached data remains fresh and relevant. By implementing a caching strategy, the project optimizes performance and reduces the load on the database, making it capable of handling high traffic scenarios typical of popular news aggregation sites.
+
 ## Table of Contents
 
 1. [Requirements](#requirements)
@@ -18,16 +24,9 @@
 10. [License](#license)
 
 
-# Welcome to the Mini Hacker News project
-
-The Mini Hacker News Project is an implementation of a content aggregation platform similar to Hacker News. This project provides a RESTful API for managing posts, allowing users to submit, view, and interact with various news articles. The core feature of the application is its caching system, which stores posts in a cache for efficient retrieval while ensuring that cached data remains fresh and relevant. By implementing a caching strategy, the project optimizes performance and reduces the load on the database, making it capable of handling high traffic scenarios typical of popular news aggregation sites.
-
-
-
-
 To run this project, you need to install the Java JDK and set up Spring Boot.
 
-## Prerequisites
+## Requirements
 
 Before running this project, you need to install the Java Development Kit (JDK). Follow these steps:
 
@@ -37,9 +36,50 @@ Before running this project, you need to install the Java Development Kit (JDK).
 
 Additionally, ensure that you have Maven installed to manage project dependencies. Install Maven by following the instructions on the [Apache Maven Project website](https://maven.apache.org/install.html).
 
-## Mini Hacker News
+## Main Entities
 
-Welcome to the Mini Hacker News project! This is a lightweight version of the popular news aggregation site tailored for simple use and ease of deployment. Built with Spring Boot, this project features a RESTful API that allows users to create, update, view, and vote on posts.
+## Features
+
+## Diagram
+
+## Prerequisites
+
+## Installation
+
+   1. **Clone the repository**
+
+      
+   ```bash
+      git clone https://github.com/WildandArt/HackerNewsAPI.git
+      cd mini-hacker-news
+   ```
+
+
+   2. **Install dependencies**
+
+      Using Maven, you can install all required dependencies for the project:
+
+      
+   ```bash
+      mvn install
+   ```
+
+   3. **Run the application**
+
+      Once the dependencies are installed, you can run the application using:
+
+      
+   ```bash
+      mvn spring-boot:run
+   ```
+
+   This will start the application on http://localhost:8080.
+
+   2. Application Properties Configuration
+
+   3. Database Setup
+
+   4. Docker Usage
 
 ## Allowed CRUD Operations
 
@@ -50,36 +90,6 @@ Welcome to the Mini Hacker News project! This is a lightweight version of the po
 - Upvote/Downvote a post
 - Delete a post
 
-## Installation
-
-1. **Clone the repository**
-
-   
-```bash
-   git clone https://github.com/WildandArt/HackerNewsAPI.git
-   cd mini-hacker-news
-```
-
-
-2. **Install dependencies**
-
-   Using Maven, you can install all required dependencies for the project:
-
-   
-```bash
-   mvn install
-```
-
-3. **Run the application**
-
-   Once the dependencies are installed, you can run the application using:
-
-   
-```bash
-   mvn spring-boot:run
-```
-
-   This will start the application on http://localhost:8080.
 
 ## API Usage
 
@@ -140,13 +150,6 @@ curl -X PATCH http://localhost:8080/api/posts/<ID>/downvote
 curl -X DELETE http://localhost:8080/api/posts/<ID>
 ```
 
-
-## Database Schema
-
-Below is the schema used by the Mini Hacker News database:
-
-
-# Testing:
 # How to Use a Postman Collection JSON File
 
 ## 1. Download the Collection JSON File
