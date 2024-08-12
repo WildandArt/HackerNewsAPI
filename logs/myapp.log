@@ -25,3 +25,30 @@
 2024-08-12T19:58:07.138+03:00  INFO 2435873 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-12T19:58:07.140+03:00  INFO 2435873 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-08-12T19:58:07.143+03:00  INFO 2435873 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-12T20:49:27.349+03:00  INFO 2469043 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 2469043 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-12T20:49:27.349+03:00 DEBUG 2469043 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-12T20:49:27.350+03:00  INFO 2469043 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-12T20:49:27.808+03:00  INFO 2469043 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-12T20:49:27.840+03:00  INFO 2469043 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interface.
+2024-08-12T20:49:28.207+03:00  INFO 2469043 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-12T20:49:28.239+03:00  INFO 2469043 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-12T20:49:28.265+03:00  INFO 2469043 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-12T20:49:28.352+03:00  INFO 2469043 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-12T20:49:28.366+03:00  INFO 2469043 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-12T20:49:28.504+03:00  INFO 2469043 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3a6b94b6
+2024-08-12T20:49:28.505+03:00  INFO 2469043 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-12T20:49:28.527+03:00  WARN 2469043 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-12T20:49:28.932+03:00  INFO 2469043 --- [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl (class must be instantiated by Interceptor)
+2024-08-12T20:49:29.183+03:00  INFO 2469043 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-12T20:49:29.249+03:00  INFO 2469043 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-12T20:49:29.274+03:00  INFO 2469043 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-12T20:49:29.461+03:00  WARN 2469043 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-12T20:49:29.556+03:00  INFO 2469043 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-12T20:49:30.129+03:00  WARN 2469043 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-12T20:49:31.035+03:00  INFO 2469043 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-12T20:49:31.200+03:00  INFO 2469043 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 4.032 seconds (process running for 5.016)
+2024-08-12T20:49:31.375+03:00  INFO 2469043 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-12T20:49:31.375+03:00  INFO 2469043 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-12T20:49:31.378+03:00  INFO 2469043 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-12T20:49:31.381+03:00  INFO 2469043 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-12T20:49:31.389+03:00  INFO 2469043 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

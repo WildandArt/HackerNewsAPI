@@ -56,4 +56,7 @@ public interface CacheEntityService {
      * @param cachedPosts The list of cached {@link NewsPostModelImpl} entities to check.
      * @return True if the cached posts are stale, false otherwise.
      */
+    public NewsPostModelImpl getLowestScorePost();
+    public Integer getSize();
+    public Integer getMaxSize();
 }

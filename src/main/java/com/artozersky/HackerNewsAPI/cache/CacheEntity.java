@@ -54,4 +54,6 @@ public interface CacheEntity {
      * @return the size of the cache
      */
     int size();
+    public NewsPostModelImpl getLowestScorePost();
+    public int getMaxSize();
 }

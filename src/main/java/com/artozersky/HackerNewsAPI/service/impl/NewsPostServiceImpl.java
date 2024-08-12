@@ -92,7 +92,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Override
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
 
-        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();//stale will be checked inside
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();
 
         int postsNeeded = limit - cachedPosts.size();
 
@@ -123,14 +123,28 @@ public class NewsPostServiceImpl implements NewsPostService {
         post.initialize();
         
         NewsPostModelImpl savedPost = postRepository.save(post);
+
+        updateCacheForNewPost(savedPost);
         
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(savedPost, NewsPostsResponseDTOImpl.class);
         
         responseDTO.setMessage("Post created successfully");
 
-        updateCacheWithTopPosts();
         
         return responseDTO;
+    }
+    private void updateCacheForNewPost(NewsPostModelImpl newPost) {
+        // Get the current lowest-scoring post in the cache
+        NewsPostModelImpl lowestCachedPost = cacheService.getLowestScorePost();
+    
+        // If the cache is not full, simply add the new post
+        if (cacheService.getSize() < cacheService.getMaxSize()) {
+            cacheService.putPost(newPost);
+        } else if (lowestCachedPost != null && newPost.getScore() > lowestCachedPost.getScore()) {
+            // If the cache is full and the new post has a higher score than the lowest-scoring cached post
+            cacheService.evictPost(lowestCachedPost.getPostId());  // Remove the lowest-scoring post
+            cacheService.putPost(newPost);  // Add the new post
+        }
     }
 
     @Override
@@ -165,13 +179,26 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         NewsPostModelImpl updatedPost = postRepository.save(post);
         
-        updateCacheWithTopPosts();
+        updateCacheForUpdatedPost(updatedPost);
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Post updated successfully");
 
         
         return responseDTO;
+    }
+
+    private void updateCacheForUpdatedPost(NewsPostModelImpl updatedPost) {
+        // Get the current post in the cache if it exists
+        NewsPostModelImpl cachedPost = cacheService.getPostById(updatedPost.getPostId());
+    
+        // If the post is already in the cache, remove it to update its position based on the new score
+        if (cachedPost != null) {
+            cacheService.evictPost(updatedPost.getPostId());
+        }
+    
+        // Attempt to add the updated post to the cache
+        cacheService.putPost(updatedPost);
     }
     
     @Override
@@ -203,7 +230,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //downvote can make a post go down in the rank and out of sorted cache
-        updateCacheWithTopPosts();
+        //updateCacheWithTopPosts();
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Vote updated successfully");
@@ -219,7 +246,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         postRepository.delete(post);
 
-        updateCacheWithTopPosts();
+        //updateCacheWithTopPosts();
 
         NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
         responseDTO.setPostId(postId);
@@ -256,15 +283,15 @@ public class NewsPostServiceImpl implements NewsPostService {
     return new ArrayList<>();
 }
 
-public void updateCacheWithTopPosts() {
+// public void updateCacheWithTopPosts() {
 
-    List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
+//     List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
 
-    cacheService.clearCache(); // Clear the existing cache before updating
+//     cacheService.clearCache(); // Clear the existing cache before updating
 
-    cacheService.putAllPosts(topPosts);
+//     cacheService.putAllPosts(topPosts);
 
-}
+// }
     @Async
     @Scheduled(fixedRateString = "${db.update.interval:3600000}")  // default 3600000 milliseconds = 1 hour
     public void updateTimeElapsedAndRefreshCache() {

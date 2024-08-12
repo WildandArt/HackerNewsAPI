@@ -36,6 +36,20 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     }
 
     @Override
+    public Integer getMaxSize() {
+
+        return cacheEntity.getMaxSize();
+
+    }
+
+    @Override
+    public Integer getSize() {
+
+        return cacheEntity.size();
+
+    }
+
+    @Override
     public List<NewsPostModelImpl> getAllPosts() {
 
         List<NewsPostModelImpl> cachedPosts = cacheEntity.getAllPosts();
@@ -43,6 +57,13 @@ public class CacheEntityServiceImpl implements CacheEntityService {
         logger.info("inside getAllPostsFromCache size : " + cachedPosts.size());
 
         return cachedPosts;
+    }
+    
+    @Override
+    public NewsPostModelImpl getLowestScorePost() {
+
+        return cacheEntity.getLowestScorePost();
+
     }
 
     @Override
