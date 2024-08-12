@@ -99,6 +99,9 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 ## Features
 
 ## Diagram
+![Diagarm](drawio/diagram.png)
+
+
 
 ## Prerequisites
 
