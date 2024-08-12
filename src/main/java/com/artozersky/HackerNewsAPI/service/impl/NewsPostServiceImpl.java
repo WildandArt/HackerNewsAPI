@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
@@ -267,7 +268,7 @@ public void updateCacheWithTopPosts() {
     cacheService.putAllPostsInCache(topPosts);
 
 }
-
+    @Async
     @Scheduled(fixedRate = 3600000)  // 3600000 milliseconds = 1 hour
     public void updateTimeElapsedAndRefreshCache() {
         // Fetch all posts from the database
@@ -282,9 +283,10 @@ public void updateCacheWithTopPosts() {
 
         // Clear and refresh the cache
         cacheService.clearCache();
+
         List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
 
-        cacheService.putAllPostsInCache(allPosts);
+        cacheService.putAllPostsInCache(topPosts);
         
         logger.info("Cache updated and timeElapsed field refreshed.");
     }
