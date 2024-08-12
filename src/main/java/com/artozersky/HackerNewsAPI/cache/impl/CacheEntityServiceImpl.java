@@ -3,6 +3,7 @@ package com.artozersky.HackerNewsAPI.cache.impl;
 
 import com.artozersky.HackerNewsAPI.cache.CacheEntityService;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
+import com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl;
 
 import java.util.List;
 import java.time.LocalDateTime;
@@ -11,10 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class CacheEntityServiceImpl implements CacheEntityService {
 
     private final CacheEntityImpl cacheEntity;
+    private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
+
 
     @Autowired
     public CacheEntityServiceImpl(@Value("${cache.size:100}") int maxSize) {
@@ -34,7 +40,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         List<NewsPostModelImpl> cachedPosts = cacheEntity.getAllPosts();
 
-        System.out.println("inside getAllPostsFromCache size : " + cachedPosts.size());
+        logger.info("inside getAllPostsFromCache size : " + cachedPosts.size());
 
         boolean isStale = cachedPosts.stream().anyMatch(post -> {
             int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
@@ -43,7 +49,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         if(isStale) {
            this.clearCache();
-           System.out.println("Cache invalidated due to stale data");
+           logger.info("Cache invalidated due to stale data");
            return List.of();
         }
         return cachedPosts;
@@ -53,7 +59,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     public void putPost(NewsPostModelImpl post) {
 
         cacheEntity.put(post.getPostId(), post);
-        System.out.println("Storing in Cache: key = " + post.getPostId() + ", value = " + post);
+        logger.info("Storing in Cache: key = " + post.getPostId() + ", value = " + post);
 
     }
 
@@ -62,7 +68,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         cacheEntity.putAllPosts(posts);
 
-        System.out.println("putAllPostsInCache.");
+        logger.info("putAllPostsInCache.");
 
     }
 

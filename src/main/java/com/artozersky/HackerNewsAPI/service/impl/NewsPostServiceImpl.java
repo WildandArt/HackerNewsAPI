@@ -29,6 +29,10 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 @Service
 public class NewsPostServiceImpl implements NewsPostService {
     
@@ -44,6 +48,8 @@ public class NewsPostServiceImpl implements NewsPostService {
     private Integer limit = 400;
 
     private final int cacheSize;
+
+    private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
     @Autowired
     public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize, @Value("${posts.page.limit:400}") int limit) {
@@ -92,15 +98,15 @@ public class NewsPostServiceImpl implements NewsPostService {
 
     int postsNeeded = limit - cachedPosts.size();
 
-    System.out.println("cached posts size: " + cachedPosts.size() );
+    logger.info("cached posts size: " + cachedPosts.size() );
 
-    System.out.println("posts needed: " + postsNeeded );
+    logger.info("posts needed: " + postsNeeded );
 
     List<NewsPostModelImpl> dbPosts = new ArrayList<>();
 
     dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
 
-    System.out.println("fetched from db: " + dbPosts.size() );
+    logger.info("fetched from db: " + dbPosts.size() );
 
     List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
     combinedPosts.addAll(dbPosts);
@@ -280,7 +286,7 @@ public void updateCacheWithTopPosts() {
 
         cacheService.putAllPostsInCache(allPosts);
         
-        System.out.println("Cache updated and timeElapsed field refreshed.");
+        logger.info("Cache updated and timeElapsed field refreshed.");
     }
 
 
