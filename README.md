@@ -99,7 +99,9 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 ## Features
 
 ## Diagram
-![Diagarm](drawio/diagram.png)
+   <p align="center"> 
+   <img src="drawio/diagram.png">
+   </p>
 
 
 
@@ -332,65 +334,98 @@ curl -X PATCH http://localhost:8080/api/posts/<ID>/downvote
 curl -X DELETE http://localhost:8080/api/posts/<ID>
 ``` -->
 
-Create a Post
+### Create a Post
 Method: POST
 URL: http://localhost:8080/api/posts
+
 Headers:
 
 Content-Type: application/json Request Body:
 JSON
+```
 {
   "userId": 1,
   "author": "John Doe",
   "url": "http://example.com/post",
   "title": "My First Post"
 }
-Use code with caution.
+```
 
-Response: The response will be the newly created post object in JSON format.
+Response: The response will be the newly created DTO Response post object in JSON format.
 
-Get a Post by Id
+### Get a Post by Id
+
 Method: GET
-URL: http://localhost:8080/api/posts/{id} (replace {id} with the actual post ID)
-Response: The response will be the post object with the specified ID in JSON format.
 
-Get Top Posts
+URL: ```http://localhost:8080/api/posts/{id} (replace {id} with the actual post ID)```
+
+Response: The response will be the DTO post object with the specified ID in JSON format.
+
+
+### Get Top Posts
+
 Method: GET
-URL: http://localhost:8080/api/top_posts
+
+URL: ```http://localhost:8080/api/top_posts```
+
 Response: The response will be an array of the top posts in JSON format.
 
-Get All Posts
+
+### Get All Posts
 Method: GET
-URL: http://localhost:8080/api/posts
+URL: 
+```http://localhost:8080/api/posts```
 Response: The response will be an array of all posts in JSON format.
 
-Update a Post
+### Update a Post
+
 Method: PUT
-URL: http://localhost:8080/api/posts/{id} (replace {id} with the actual post ID)
+
+URL: ```http://localhost:8080/api/posts/{id} ```
+
+(replace {id} with the actual post ID)
 Headers:
 
-Content-Type: application/json Request Body:
+Content-Type: application/json 
+
+Request Body:
 JSON
+
+```
 {
-  "content": "Updated post content"
+  "url": "www.example.com",
+  "title": "Updated title"
 }
-Use code with caution.
+```
 
 Response: The response will be the updated post object in JSON format.
 
-Upvote a Post
+### Upvote a Post
+
 Method: PATCH
-URL: http://localhost:8080/api/posts/{id}/upvote (replace {id} with the actual post ID)
+
+URL: ```http://localhost:8080/api/posts/{id}/upvote```
+
+ (replace {id} with the actual post ID)
 Response: The response will be the updated post object with the incremented upvote count in JSON format.
 
-Downvote a Post
+### Downvote a Post
+
 Method: PATCH
-URL: http://localhost:8080/api/posts/{id}/downvote (replace {id} with the actual post ID)
+
+URL: ```http://localhost:8080/api/posts/{id}/downvote``` 
+
+(replace {id} with the actual post ID)
 Response: The response will be the updated post object with the decremented downvote count in JSON format.
 
-Delete a Post
+### Delete a Post
+
 Method: DELETE
-URL: http://localhost:8080/api/posts/{id} (replace {id} with the actual post ID)
+
+URL: ```http://localhost:8080/api/posts/{id} ```
+
+(replace {id} with the actual post ID)
+
 Response: A successful deletion typically returns a 204 No Content status code.
 
 # How to Use a Postman Collection JSON File
