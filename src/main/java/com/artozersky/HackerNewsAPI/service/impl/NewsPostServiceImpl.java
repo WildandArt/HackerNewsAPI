@@ -71,9 +71,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl postModel = postRepository.findById(postId)
             .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + postId));
 
-        //cacheService.putPostInCache(postModel);
-        //should i update the cache with the top posts???
-
         return convertToDTO(postModel);
     }
 
@@ -95,26 +92,26 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Override
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
 
-    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();//stale will be checked inside
+        List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();//stale will be checked inside
 
-    int postsNeeded = limit - cachedPosts.size();
+        int postsNeeded = limit - cachedPosts.size();
 
-    logger.info("cached posts size: " + cachedPosts.size() );
+        logger.info("cached posts size: " + cachedPosts.size() );
 
-    logger.info("posts needed: " + postsNeeded );
+        logger.info("posts needed: " + postsNeeded );
 
-    List<NewsPostModelImpl> dbPosts = new ArrayList<>();
+        List<NewsPostModelImpl> dbPosts = new ArrayList<>();
 
-    dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
+        dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
 
-    logger.info("fetched from db: " + dbPosts.size() );
+        logger.info("fetched from db: " + dbPosts.size() );
 
-    List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
-    combinedPosts.addAll(dbPosts);
+        List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
+        combinedPosts.addAll(dbPosts);
 
-    return combinedPosts.stream()
-        .map(this::convertToDTO)
-        .collect(Collectors.toList());
+        return combinedPosts.stream()
+            .map(this::convertToDTO)
+            .collect(Collectors.toList());
 }
 
     
@@ -265,11 +262,11 @@ public void updateCacheWithTopPosts() {
 
     cacheService.clearCache(); // Clear the existing cache before updating
 
-    cacheService.putAllPostsInCache(topPosts);
+    cacheService.putAllPosts(topPosts);
 
 }
     @Async
-    @Scheduled(fixedRate = 3600000)  // 3600000 milliseconds = 1 hour
+    @Scheduled(fixedRateString = "${db.update.interval:3600000}")  // default 3600000 milliseconds = 1 hour
     public void updateTimeElapsedAndRefreshCache() {
         // Fetch all posts from the database
         List<NewsPostModelImpl> allPosts = postRepository.findAll();
@@ -286,7 +283,7 @@ public void updateCacheWithTopPosts() {
 
         List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
 
-        cacheService.putAllPostsInCache(topPosts);
+        cacheService.putAllPosts(topPosts);
         
         logger.info("Cache updated and timeElapsed field refreshed.");
     }

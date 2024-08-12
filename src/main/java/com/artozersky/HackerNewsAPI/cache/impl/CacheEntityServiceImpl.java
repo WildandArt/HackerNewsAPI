@@ -42,16 +42,6 @@ public class CacheEntityServiceImpl implements CacheEntityService {
 
         logger.info("inside getAllPostsFromCache size : " + cachedPosts.size());
 
-        boolean isStale = cachedPosts.stream().anyMatch(post -> {
-            int currentElapsedTime = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
-            return Math.abs(post.getTimeElapsed() - currentElapsedTime) > 1;//more than one hour difference
-        });
-
-        if(isStale) {
-           this.clearCache();
-           logger.info("Cache invalidated due to stale data");
-           return List.of();
-        }
         return cachedPosts;
     }
 
@@ -64,7 +54,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     }
 
     @Override
-    public void putAllPostsInCache(List<NewsPostModelImpl> posts) {
+    public void putAllPosts(List<NewsPostModelImpl> posts) {
 
         cacheEntity.putAllPosts(posts);
 

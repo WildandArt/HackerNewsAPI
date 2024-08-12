@@ -3,10 +3,11 @@ package com.artozersky.HackerNewsAPI.cache.impl;
 import com.artozersky.HackerNewsAPI.cache.CacheEntity;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.PriorityBlockingQueue;
 import java.util.ArrayList;
+import java.util.Comparator;
+
 
 /**
  * Implementation of the CacheEntity interface that provides a simple cache mechanism.
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 public class CacheEntityImpl implements CacheEntity {
 
     private final int maxSize;
-    private final Map<Long, NewsPostModelImpl> cache;
+    private final PriorityBlockingQueue<NewsPostModelImpl> cache;
 
     /**
      * Constructs a CacheEntityImpl with a specified maximum size.
@@ -23,41 +24,41 @@ public class CacheEntityImpl implements CacheEntity {
      */
     public CacheEntityImpl(int maxSize) {
         this.maxSize = maxSize;
-        this.cache = new LinkedHashMap<Long, NewsPostModelImpl>(maxSize, 0.75f, true) {
-            @Override
-            protected boolean removeEldestEntry(Map.Entry<Long, NewsPostModelImpl> eldest) {
-                // Remove the eldest entry if the size of the map exceeds the maxSize
-                return size() > CacheEntityImpl.this.maxSize;
-            }
-        };
+        this.cache = new PriorityBlockingQueue<>(maxSize, Comparator.comparingDouble(NewsPostModelImpl::getScore));
     }
 
     @Override
     public NewsPostModelImpl get(Long key) {
-        return cache.get(key);
+        return cache.stream()
+                .filter(post -> post.getPostId().equals(key))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public List<NewsPostModelImpl> getAllPosts() {
-        return new ArrayList<>(cache.values());
+        return new ArrayList<>(cache);
     }
 
     @Override
     public void put(Long key, NewsPostModelImpl value) {
-        cache.put(key, value);
+        if (cache.size() >= maxSize) {
+            cache.poll(); // Remove the lowest priority element if the max size is reached
+        }
+        cache.offer(value); // Add the new item to the queue
     }
 
     @Override
     public void putAllPosts(List<NewsPostModelImpl> allPosts) {
         for (NewsPostModelImpl post : allPosts) {
             Long key = post.getPostId();
-            cache.put(key, post);
+            put(post.getPostId(), post);
         }
     }
 
     @Override
     public void evict(Long key) {
-        cache.remove(key);
+        cache.removeIf(post -> post.getPostId().equals(key));
     }
 
     @Override

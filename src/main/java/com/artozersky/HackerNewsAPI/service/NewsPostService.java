@@ -72,4 +72,6 @@ public interface NewsPostService {
     NewsPostsResponseDTOImpl getPostById(Long id);
 
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit);
+
+    public void updateTimeElapsedAndRefreshCache();
 }

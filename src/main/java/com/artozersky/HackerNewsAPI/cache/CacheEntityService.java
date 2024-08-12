@@ -36,7 +36,7 @@ public interface CacheEntityService {
      *
      * @param posts The list of {@link NewsPostModelImpl} entities to store in the cache.
      */
-    void putAllPostsInCache(List<NewsPostModelImpl> posts);
+    void putAllPosts(List<NewsPostModelImpl> posts);
 
     /**
      * Removes a post from the cache by its ID.
