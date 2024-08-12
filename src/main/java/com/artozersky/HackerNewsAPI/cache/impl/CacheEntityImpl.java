@@ -38,7 +38,7 @@ public class CacheEntityImpl implements CacheEntity {
     }
 
     @Override
-    public List<NewsPostModelImpl> getAll() {
+    public List<NewsPostModelImpl> getAllPosts() {
         return new ArrayList<>(cache.values());
     }
 
@@ -48,7 +48,7 @@ public class CacheEntityImpl implements CacheEntity {
     }
 
     @Override
-    public void putAll(List<NewsPostModelImpl> allPosts) {
+    public void putAllPosts(List<NewsPostModelImpl> allPosts) {
         for (NewsPostModelImpl post : allPosts) {
             Long key = post.getPostId();
             cache.put(key, post);

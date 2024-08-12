@@ -15,21 +15,21 @@ public interface CacheEntityService {
      * @param postId The ID of the post to retrieve.
      * @return The cached {@link NewsPostModelImpl} if found, or null if not present in the cache.
      */
-    NewsPostModelImpl getPostFromCacheById(Long postId);
+    NewsPostModelImpl getPostById(Long postId);
 
     /**
      * Retrieves all posts currently stored in the cache.
      *
      * @return A list of all cached {@link NewsPostModelImpl} entities.
      */
-    List<NewsPostModelImpl> getAllPostsFromCache();
+    List<NewsPostModelImpl> getAllPosts();
 
     /**
      * Stores a single post in the cache.
      *
      * @param post The {@link NewsPostModelImpl} to store in the cache.
      */
-    void putPostInCache(NewsPostModelImpl post);
+    void putPost(NewsPostModelImpl post);
 
     /**
      * Stores a list of posts in the cache.
@@ -56,5 +56,4 @@ public interface CacheEntityService {
      * @param cachedPosts The list of cached {@link NewsPostModelImpl} entities to check.
      * @return True if the cached posts are stale, false otherwise.
      */
-    boolean checkIfStale(List<NewsPostModelImpl> cachedPosts);
 }

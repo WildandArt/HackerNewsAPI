@@ -1,6 +1,7 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
 import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -13,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
@@ -53,7 +55,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Override
     public  NewsPostsResponseDTOImpl getPostById(Long postId) {
 
-        NewsPostModelImpl cachedValue = cacheService.getPostFromCacheById(postId);
+        NewsPostModelImpl cachedValue = cacheService.getPostById(postId);
 
         if (cachedValue != null) {
             return convertToDTO(cachedValue);
@@ -86,7 +88,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Override
     public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
 
-    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPostsFromCache();//stale will be checked inside
+    List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();//stale will be checked inside
 
     int postsNeeded = limit - cachedPosts.size();
 
@@ -176,8 +178,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
         //if in the cache update the cache
-        if (cacheService.getPostFromCacheById(id) != null) {
-            cacheService.putPostInCache(updatedPost);
+        if (cacheService.getPostById(id) != null) {
+            cacheService.putPost(updatedPost);
         }
         //updateCacheWithTopPosts();
 
@@ -259,4 +261,28 @@ public void updateCacheWithTopPosts() {
     cacheService.putAllPostsInCache(topPosts);
 
 }
+
+    @Scheduled(fixedRate = 3600000)  // 3600000 milliseconds = 1 hour
+    public void updateTimeElapsedAndRefreshCache() {
+        // Fetch all posts from the database
+        List<NewsPostModelImpl> allPosts = postRepository.findAll();
+
+        // Update the timeElapsed field for each post
+        for (NewsPostModelImpl post : allPosts) {
+            int newTimeElapsed = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
+            post.setTimeElapsed(newTimeElapsed);
+            postRepository.save(post);
+        }
+
+        // Clear and refresh the cache
+        cacheService.clearCache();
+        List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
+
+        cacheService.putAllPostsInCache(allPosts);
+        
+        System.out.println("Cache updated and timeElapsed field refreshed.");
+    }
+
+
+
 }

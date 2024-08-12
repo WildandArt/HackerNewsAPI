@@ -100,7 +100,7 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 ## Diagram
    <p align="center"> 
-   <img src="drawio/diagram.png">
+   <img src="img/diagram.png">
    </p>
 
 

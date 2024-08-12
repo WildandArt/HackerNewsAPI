@@ -24,15 +24,15 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     }
 
     @Override
-    public NewsPostModelImpl getPostFromCacheById(Long postId) {
+    public NewsPostModelImpl getPostById(Long postId) {
 
         return cacheEntity.get(postId);
     }
 
     @Override
-    public List<NewsPostModelImpl> getAllPostsFromCache() {
+    public List<NewsPostModelImpl> getAllPosts() {
 
-        List<NewsPostModelImpl> cachedPosts = cacheEntity.getAll();
+        List<NewsPostModelImpl> cachedPosts = cacheEntity.getAllPosts();
 
         System.out.println("inside getAllPostsFromCache size : " + cachedPosts.size());
 
@@ -50,7 +50,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     }
 
     @Override
-    public void putPostInCache(NewsPostModelImpl post) {
+    public void putPost(NewsPostModelImpl post) {
 
         cacheEntity.put(post.getPostId(), post);
         System.out.println("Storing in Cache: key = " + post.getPostId() + ", value = " + post);
@@ -60,7 +60,7 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     @Override
     public void putAllPostsInCache(List<NewsPostModelImpl> posts) {
 
-        cacheEntity.putAll(posts);
+        cacheEntity.putAllPosts(posts);
 
         System.out.println("putAllPostsInCache.");
 
@@ -79,12 +79,5 @@ public class CacheEntityServiceImpl implements CacheEntityService {
         cacheEntity.clear();
 
     }
-    @Override
-    public boolean checkIfStale(List<NewsPostModelImpl> cachedPosts) {
-    
-        return false;
-
-    }
-
 
 }

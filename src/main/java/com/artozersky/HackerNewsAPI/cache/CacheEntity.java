@@ -4,9 +4,6 @@ import java.util.List;
 
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
-/**
- * Interface for the cache entity that provides methods to interact with the cache.
- */
 public interface CacheEntity {
 
     /**
@@ -22,7 +19,7 @@ public interface CacheEntity {
      *
      * @return a list of all NewsPostModels in the cache
      */
-    List<NewsPostModelImpl> getAll();
+    List<NewsPostModelImpl> getAllPosts();
 
     /**
      * Puts a NewsPostModel into the cache with the specified key.
@@ -37,7 +34,7 @@ public interface CacheEntity {
      *
      * @param allPosts a list of NewsPostModels to store in the cache
      */
-    void putAll(List<NewsPostModelImpl> allPosts);
+    void putAllPosts(List<NewsPostModelImpl> allPosts);
 
     /**
      * Removes a NewsPostModel from the cache based on the given key.

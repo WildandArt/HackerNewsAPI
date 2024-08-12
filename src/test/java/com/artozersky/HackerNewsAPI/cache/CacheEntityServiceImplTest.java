@@ -63,9 +63,9 @@ class CacheEntityServiceImplTest {
             .createdAt(LocalDateTime.now())
             .build();
 
-        cacheEntityService.putPostInCache(modelImpl);
+        cacheEntityService.putPost(modelImpl);
 
-        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostById(1L);
         assertNotNull(cachedPost);
         assertEquals("Test Post", cachedPost.getTitle());
     }
@@ -94,10 +94,10 @@ class CacheEntityServiceImplTest {
             .timeElapsed(2)
             .build();
 
-        cacheEntityService.putPostInCache(post1);
-        cacheEntityService.putPostInCache(post2);
+        cacheEntityService.putPost(post1);
+        cacheEntityService.putPost(post2);
 
-        List<NewsPostModelImpl> cachedPosts = cacheEntityService.getAllPostsFromCache();
+        List<NewsPostModelImpl> cachedPosts = cacheEntityService.getAllPosts();
         assertEquals(2, cachedPosts.size());
     }
 
@@ -133,10 +133,10 @@ class CacheEntityServiceImplTest {
             .createdAt(LocalDateTime.now())
             .build();
 
-        cacheEntityService.putPostInCache(modelImpl);
+        cacheEntityService.putPost(modelImpl);
 
         cacheEntityService.evictPost(1L);
-        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostById(1L);
         assertNull(cachedPost, "Post should be evicted from cache");
     }
 
@@ -152,10 +152,10 @@ class CacheEntityServiceImplTest {
             .createdAt(LocalDateTime.now())
             .build();
 
-        cacheEntityService.putPostInCache(modelImpl);
+        cacheEntityService.putPost(modelImpl);
 
         cacheEntityService.clearCache();
-        NewsPostModelImpl cachedPost = cacheEntityService.getPostFromCacheById(1L);
+        NewsPostModelImpl cachedPost = cacheEntityService.getPostById(1L);
         assertNull(cachedPost, "Cache should be cleared");
     }
 }
