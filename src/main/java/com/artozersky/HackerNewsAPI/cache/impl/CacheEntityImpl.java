@@ -2,6 +2,7 @@ package com.artozersky.HackerNewsAPI.cache.impl;
 
 import com.artozersky.HackerNewsAPI.cache.CacheEntity;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
+import com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,15 +10,20 @@ import java.util.concurrent.PriorityBlockingQueue;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Implementation of the CacheEntity interface that provides a simple cache mechanism.
  */
 public class CacheEntityImpl implements CacheEntity {
 
-    private final int maxSize;
+    private final Integer maxSize;
     private final PriorityBlockingQueue<NewsPostModelImpl> cacheQueue;
     private final ConcurrentHashMap<Long, NewsPostModelImpl> cacheMap;
+    private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
+
 
 
     /**
@@ -25,7 +31,7 @@ public class CacheEntityImpl implements CacheEntity {
      *
      * @param maxSize the maximum number of entries the cache can hold
      */
-    public CacheEntityImpl(int maxSize) {
+    public CacheEntityImpl(Integer maxSize) {
         this.maxSize = maxSize;
         this.cacheQueue = new PriorityBlockingQueue<>(maxSize, Comparator.comparingDouble(NewsPostModelImpl::getScore));
         this.cacheMap = new ConcurrentHashMap<>();
@@ -55,13 +61,13 @@ public class CacheEntityImpl implements CacheEntity {
         return cacheQueue.peek(); // Returns the post with the lowest score
     }
     @Override
-    public int getMaxSize() {
+    public Integer getMaxSize() {
         return this.maxSize;
     }
     @Override
     public void put(Long key, NewsPostModelImpl value) {
         synchronized (this) {
-
+            logger.info("inside put fiunction");
             // Check if the post is already in the cache
             if (cacheMap.containsKey(key)) {
                 // Evict the old version of the post from both the map and the queue
@@ -116,7 +122,7 @@ public class CacheEntityImpl implements CacheEntity {
     }
 
     @Override
-    public int size() {
+    public Integer size() {
         return cacheMap.size();
     }
 }

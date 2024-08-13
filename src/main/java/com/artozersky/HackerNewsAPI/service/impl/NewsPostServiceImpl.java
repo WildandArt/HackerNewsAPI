@@ -48,12 +48,12 @@ public class NewsPostServiceImpl implements NewsPostService {
 
     private Integer limit = 400;
 
-    private final int cacheSize;
+    private final Integer cacheSize;
 
     private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
     @Autowired
-    public NewsPostServiceImpl(@Value("${cache.size:100}") int cacheSize, @Value("${posts.page.limit:400}") int limit) {
+    public NewsPostServiceImpl(@Value("${cache.size:100}") Integer cacheSize, @Value("${posts.page.limit:400}") Integer limit) {
         this.cacheSize = cacheSize;
         this.limit = limit;
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
@@ -75,7 +75,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public List<NewsPostsResponseDTOImpl> getAllPosts(int limit) {
+    public List<NewsPostsResponseDTOImpl> getAllPosts(Integer limit) {
 
         if (limit <= 0) {
             throw new CustomServiceException("Limit must be greater than 0");
@@ -90,7 +90,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public List<NewsPostsResponseDTOImpl> getTopPosts(int limit) {
+    public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit) {
 
         List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();
 
@@ -124,7 +124,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         NewsPostModelImpl savedPost = postRepository.save(post);
 
-        updateCacheForNewPost(savedPost);
+        cacheService.putPost(savedPost);
         
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(savedPost, NewsPostsResponseDTOImpl.class);
         
@@ -133,19 +133,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         return responseDTO;
     }
-    private void updateCacheForNewPost(NewsPostModelImpl newPost) {
-        // Get the current lowest-scoring post in the cache
-        NewsPostModelImpl lowestCachedPost = cacheService.getLowestScorePost();
     
-        // If the cache is not full, simply add the new post
-        if (cacheService.getSize() < cacheService.getMaxSize()) {
-            cacheService.putPost(newPost);
-        } else if (lowestCachedPost != null && newPost.getScore() > lowestCachedPost.getScore()) {
-            // If the cache is full and the new post has a higher score than the lowest-scoring cached post
-            cacheService.evictPost(lowestCachedPost.getPostId());  // Remove the lowest-scoring post
-            cacheService.putPost(newPost);  // Add the new post
-        }
-    }
 
     @Override
     public NewsPostsResponseDTOImpl updatePost(NewsPostsUpdateDTOImpl postUpdateDTO, Long postId) {
@@ -179,27 +167,14 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         NewsPostModelImpl updatedPost = postRepository.save(post);
         
-        updateCacheForUpdatedPost(updatedPost);
+        cacheService.putPost(updatedPost);
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Post updated successfully");
-
         
         return responseDTO;
     }
 
-    private void updateCacheForUpdatedPost(NewsPostModelImpl updatedPost) {
-        // Get the current post in the cache if it exists
-        NewsPostModelImpl cachedPost = cacheService.getPostById(updatedPost.getPostId());
-    
-        // If the post is already in the cache, remove it to update its position based on the new score
-        if (cachedPost != null) {
-            cacheService.evictPost(updatedPost.getPostId());
-        }
-    
-        // Attempt to add the updated post to the cache
-        cacheService.putPost(updatedPost);
-    }
     
     @Override
     public NewsPostsResponseDTOImpl upVote(Long id) {
@@ -236,7 +211,7 @@ public class NewsPostServiceImpl implements NewsPostService {
 
         // Check if the updated post is now the lowest-scoring post in the cache
         NewsPostModelImpl lowestPostInCache = cacheService.getLowestScorePost();
-        
+
         if (lowestPostInCache != null && lowestPostInCache.getPostId().equals(updatedPost.getPostId())) {
             // If it is, check if there's a higher-scoring post in the database that isn't in the cache
             List<Long> excludedIds = cacheService.getAllPosts().stream()
@@ -319,15 +294,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         return new ArrayList<>();
     }
 
-// public void updateCacheWithTopPosts() {
 
-//     List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
-
-//     cacheService.clearCache(); // Clear the existing cache before updating
-
-//     cacheService.putAllPosts(topPosts);
-
-// }
     @Async
     @Scheduled(fixedRateString = "${db.update.interval:3600000}")  // default 3600000 milliseconds = 1 hour
     public void updateTimeElapsedAndRefreshCache() {
@@ -336,7 +303,7 @@ public class NewsPostServiceImpl implements NewsPostService {
 
         // Update the timeElapsed field for each post
         for (NewsPostModelImpl post : allPosts) {
-            int newTimeElapsed = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
+            Integer newTimeElapsed = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
             post.setTimeElapsed(newTimeElapsed);
             postRepository.save(post);
         }

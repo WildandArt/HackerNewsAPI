@@ -539,3 +539,259 @@ Identify and stop the process that's listening on port 8081 or configure this ap
 2024-08-13T08:42:17.777+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-13T08:42:17.778+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-08-13T08:42:17.784+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T08:47:40.346+03:00  INFO 2624388 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 2624388 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:47:40.346+03:00 DEBUG 2624388 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:47:40.347+03:00  INFO 2624388 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:47:40.698+03:00  INFO 2624388 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:47:40.723+03:00  INFO 2624388 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2024-08-13T08:47:41.018+03:00  INFO 2624388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-13T08:47:41.024+03:00  INFO 2624388 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T08:47:41.024+03:00  INFO 2624388 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T08:47:41.044+03:00  INFO 2624388 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T08:47:41.044+03:00  INFO 2624388 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 678 ms
+2024-08-13T08:47:41.181+03:00  INFO 2624388 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:47:41.202+03:00  INFO 2624388 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:47:41.214+03:00  INFO 2624388 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:47:41.325+03:00  INFO 2624388 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:47:41.336+03:00  INFO 2624388 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:47:41.472+03:00  INFO 2624388 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45f241df
+2024-08-13T08:47:41.473+03:00  INFO 2624388 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:47:41.487+03:00  WARN 2624388 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:47:41.825+03:00  INFO 2624388 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:47:41.847+03:00  INFO 2624388 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:47:41.858+03:00  INFO 2624388 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:47:41.949+03:00  WARN 2624388 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:47:41.980+03:00  INFO 2624388 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:47:42.196+03:00  WARN 2624388 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:47:42.503+03:00  INFO 2624388 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:47:42.543+03:00  INFO 2624388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-13T08:47:42.551+03:00  INFO 2624388 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.401 seconds (process running for 2.528)
+2024-08-13T08:47:42.643+03:00  INFO 2624388 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:47:42.643+03:00  INFO 2624388 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:48:09.725+03:00  INFO 2624388 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T08:48:09.725+03:00  INFO 2624388 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T08:48:09.726+03:00  INFO 2624388 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T08:48:09.742+03:00  INFO 2624388 --- [http-nio-8081-exec-2] c.a.H.service.impl.NewsPostServiceImpl   : inside getAllPostsFromCache size : 5
+2024-08-13T08:48:09.742+03:00  INFO 2624388 --- [http-nio-8081-exec-2] c.a.H.service.impl.NewsPostServiceImpl   : cached posts size: 5
+2024-08-13T08:48:09.742+03:00  INFO 2624388 --- [http-nio-8081-exec-2] c.a.H.service.impl.NewsPostServiceImpl   : posts needed: 2
+2024-08-13T08:48:09.750+03:00  INFO 2624388 --- [http-nio-8081-exec-2] c.a.H.service.impl.NewsPostServiceImpl   : fetched from db: 2
+2024-08-13T08:48:42.578+03:00  INFO 2624388 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:48:42.578+03:00  INFO 2624388 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:49:42.563+03:00  INFO 2624388 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:49:42.563+03:00  INFO 2624388 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:50:42.578+03:00  INFO 2624388 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:50:42.578+03:00  INFO 2624388 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:51:42.574+03:00  INFO 2624388 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:51:42.574+03:00  INFO 2624388 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:52:42.571+03:00  INFO 2624388 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:52:42.571+03:00  INFO 2624388 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:53:42.574+03:00  INFO 2624388 --- [task-7] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:53:42.574+03:00  INFO 2624388 --- [task-7] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:54:42.572+03:00  INFO 2624388 --- [task-8] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:54:42.572+03:00  INFO 2624388 --- [task-8] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:55:42.576+03:00  INFO 2624388 --- [task-9] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:55:42.576+03:00  INFO 2624388 --- [task-9] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:56:42.573+03:00  INFO 2624388 --- [task-10] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:56:42.573+03:00  INFO 2624388 --- [task-10] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:57:42.571+03:00  INFO 2624388 --- [task-11] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:57:42.572+03:00  INFO 2624388 --- [task-11] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:58:42.576+03:00  INFO 2624388 --- [task-12] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:58:42.576+03:00  INFO 2624388 --- [task-12] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:59:42.572+03:00  INFO 2624388 --- [task-13] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:59:42.572+03:00  INFO 2624388 --- [task-13] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:00:42.571+03:00  INFO 2624388 --- [task-14] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:00:42.572+03:00  INFO 2624388 --- [task-14] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:01:42.583+03:00  INFO 2624388 --- [task-15] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:01:42.583+03:00  INFO 2624388 --- [task-15] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:02:42.570+03:00  INFO 2624388 --- [task-16] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:02:42.570+03:00  INFO 2624388 --- [task-16] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:03:42.582+03:00  INFO 2624388 --- [task-17] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:03:42.582+03:00  INFO 2624388 --- [task-17] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:04:42.569+03:00  INFO 2624388 --- [task-18] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:04:42.570+03:00  INFO 2624388 --- [task-18] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:05:42.572+03:00  INFO 2624388 --- [task-19] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:05:42.572+03:00  INFO 2624388 --- [task-19] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:06:42.571+03:00  INFO 2624388 --- [task-20] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:06:42.571+03:00  INFO 2624388 --- [task-20] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:07:42.574+03:00  INFO 2624388 --- [task-21] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:07:42.574+03:00  INFO 2624388 --- [task-21] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:08:42.574+03:00  INFO 2624388 --- [task-22] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:08:42.574+03:00  INFO 2624388 --- [task-22] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:09:42.571+03:00  INFO 2624388 --- [task-23] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:09:42.571+03:00  INFO 2624388 --- [task-23] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:10:42.572+03:00  INFO 2624388 --- [task-24] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:10:42.572+03:00  INFO 2624388 --- [task-24] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:11:42.572+03:00  INFO 2624388 --- [task-25] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:11:42.572+03:00  INFO 2624388 --- [task-25] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:12:42.570+03:00  INFO 2624388 --- [task-26] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:12:42.570+03:00  INFO 2624388 --- [task-26] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:13:42.576+03:00  INFO 2624388 --- [task-27] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:13:42.576+03:00  INFO 2624388 --- [task-27] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:14:42.571+03:00  INFO 2624388 --- [task-28] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:14:42.571+03:00  INFO 2624388 --- [task-28] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:15:42.583+03:00  INFO 2624388 --- [task-29] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:15:42.584+03:00  INFO 2624388 --- [task-29] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:16:42.570+03:00  INFO 2624388 --- [task-30] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:16:42.570+03:00  INFO 2624388 --- [task-30] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:17:42.577+03:00  INFO 2624388 --- [task-31] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:17:42.577+03:00  INFO 2624388 --- [task-31] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:18:42.575+03:00  INFO 2624388 --- [task-32] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:18:42.575+03:00  INFO 2624388 --- [task-32] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:19:42.573+03:00  INFO 2624388 --- [task-33] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:19:42.573+03:00  INFO 2624388 --- [task-33] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:20:42.570+03:00  INFO 2624388 --- [task-34] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:20:42.571+03:00  INFO 2624388 --- [task-34] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:28:53.142+03:00  INFO 2624388 --- [task-35] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:28:53.142+03:00  INFO 2624388 --- [task-35] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:29:53.137+03:00  INFO 2624388 --- [task-36] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:29:53.138+03:00  INFO 2624388 --- [task-36] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:30:53.141+03:00  INFO 2624388 --- [task-37] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:30:53.142+03:00  INFO 2624388 --- [task-37] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:31:53.145+03:00  INFO 2624388 --- [task-38] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:31:53.146+03:00  INFO 2624388 --- [task-38] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:32:53.142+03:00  INFO 2624388 --- [task-39] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:32:53.142+03:00  INFO 2624388 --- [task-39] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:33:53.147+03:00  INFO 2624388 --- [task-40] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:33:53.147+03:00  INFO 2624388 --- [task-40] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:34:53.148+03:00  INFO 2624388 --- [task-41] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:34:53.149+03:00  INFO 2624388 --- [task-41] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:35:53.139+03:00  INFO 2624388 --- [task-42] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:35:53.140+03:00  INFO 2624388 --- [task-42] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:36:53.137+03:00  INFO 2624388 --- [task-43] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:36:53.137+03:00  INFO 2624388 --- [task-43] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:37:53.142+03:00  INFO 2624388 --- [task-44] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:37:53.142+03:00  INFO 2624388 --- [task-44] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:38:53.128+03:00  INFO 2624388 --- [task-45] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:38:53.128+03:00  INFO 2624388 --- [task-45] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:39:53.141+03:00  INFO 2624388 --- [task-46] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:39:53.141+03:00  INFO 2624388 --- [task-46] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:40:53.140+03:00  INFO 2624388 --- [task-47] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:40:53.140+03:00  INFO 2624388 --- [task-47] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:41:53.141+03:00  INFO 2624388 --- [task-48] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:41:53.141+03:00  INFO 2624388 --- [task-48] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:42:53.138+03:00  INFO 2624388 --- [task-49] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:42:53.139+03:00  INFO 2624388 --- [task-49] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:43:53.141+03:00  INFO 2624388 --- [task-50] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:43:53.141+03:00  INFO 2624388 --- [task-50] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:44:53.142+03:00  INFO 2624388 --- [task-51] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:44:53.142+03:00  INFO 2624388 --- [task-51] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:45:53.138+03:00  INFO 2624388 --- [task-52] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:45:53.138+03:00  INFO 2624388 --- [task-52] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:46:53.139+03:00  INFO 2624388 --- [task-53] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:46:53.139+03:00  INFO 2624388 --- [task-53] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:47:53.139+03:00  INFO 2624388 --- [task-54] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:47:53.139+03:00  INFO 2624388 --- [task-54] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:48:53.140+03:00  INFO 2624388 --- [task-55] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:48:53.140+03:00  INFO 2624388 --- [task-55] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:49:53.141+03:00  INFO 2624388 --- [task-56] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:49:53.141+03:00  INFO 2624388 --- [task-56] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:50:53.142+03:00  INFO 2624388 --- [task-57] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:50:53.142+03:00  INFO 2624388 --- [task-57] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:51:53.141+03:00  INFO 2624388 --- [task-58] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:51:53.141+03:00  INFO 2624388 --- [task-58] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:52:53.138+03:00  INFO 2624388 --- [task-59] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:52:53.138+03:00  INFO 2624388 --- [task-59] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:53:53.139+03:00  INFO 2624388 --- [task-60] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:53:53.139+03:00  INFO 2624388 --- [task-60] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:54:53.144+03:00  INFO 2624388 --- [task-61] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:54:53.144+03:00  INFO 2624388 --- [task-61] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:55:53.138+03:00  INFO 2624388 --- [task-62] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:55:53.138+03:00  INFO 2624388 --- [task-62] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:56:53.127+03:00  INFO 2624388 --- [task-63] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:56:53.127+03:00  INFO 2624388 --- [task-63] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:57:53.138+03:00  INFO 2624388 --- [task-64] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:57:53.139+03:00  INFO 2624388 --- [task-64] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:58:53.128+03:00  INFO 2624388 --- [task-65] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:58:53.128+03:00  INFO 2624388 --- [task-65] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T09:59:53.127+03:00  INFO 2624388 --- [task-66] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T09:59:53.127+03:00  INFO 2624388 --- [task-66] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:00:53.136+03:00  INFO 2624388 --- [task-67] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:00:53.136+03:00  INFO 2624388 --- [task-67] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:01:53.126+03:00  INFO 2624388 --- [task-68] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:01:53.126+03:00  INFO 2624388 --- [task-68] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:02:53.137+03:00  INFO 2624388 --- [task-69] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:02:53.137+03:00  INFO 2624388 --- [task-69] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:03:53.136+03:00  INFO 2624388 --- [task-70] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:03:53.136+03:00  INFO 2624388 --- [task-70] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:04:53.140+03:00  INFO 2624388 --- [task-71] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:04:53.140+03:00  INFO 2624388 --- [task-71] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:05:53.139+03:00  INFO 2624388 --- [task-72] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:05:53.139+03:00  INFO 2624388 --- [task-72] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:06:53.139+03:00  INFO 2624388 --- [task-73] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:06:53.139+03:00  INFO 2624388 --- [task-73] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:07:53.133+03:00  INFO 2624388 --- [task-74] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:07:53.134+03:00  INFO 2624388 --- [task-74] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:08:53.137+03:00  INFO 2624388 --- [task-75] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:08:53.138+03:00  INFO 2624388 --- [task-75] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:09:53.135+03:00  INFO 2624388 --- [task-76] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:09:53.135+03:00  INFO 2624388 --- [task-76] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:10:53.142+03:00  INFO 2624388 --- [task-77] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:10:53.142+03:00  INFO 2624388 --- [task-77] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:11:53.138+03:00  INFO 2624388 --- [task-78] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:11:53.138+03:00  INFO 2624388 --- [task-78] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:12:53.140+03:00  INFO 2624388 --- [task-79] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:12:53.140+03:00  INFO 2624388 --- [task-79] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:13:53.142+03:00  INFO 2624388 --- [task-80] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:13:53.143+03:00  INFO 2624388 --- [task-80] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:14:53.138+03:00  INFO 2624388 --- [task-81] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:14:53.138+03:00  INFO 2624388 --- [task-81] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:15:53.144+03:00  INFO 2624388 --- [task-82] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:15:53.144+03:00  INFO 2624388 --- [task-82] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:16:53.137+03:00  INFO 2624388 --- [task-83] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:16:53.137+03:00  INFO 2624388 --- [task-83] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:17:53.141+03:00  INFO 2624388 --- [task-84] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:17:53.141+03:00  INFO 2624388 --- [task-84] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:18:53.146+03:00  INFO 2624388 --- [task-85] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:18:53.146+03:00  INFO 2624388 --- [task-85] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:19:53.136+03:00  INFO 2624388 --- [task-86] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:19:53.136+03:00  INFO 2624388 --- [task-86] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:20:53.138+03:00  INFO 2624388 --- [task-87] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:20:53.138+03:00  INFO 2624388 --- [task-87] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:21:53.137+03:00  INFO 2624388 --- [task-88] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:21:53.137+03:00  INFO 2624388 --- [task-88] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:22:53.138+03:00  INFO 2624388 --- [task-89] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:22:53.138+03:00  INFO 2624388 --- [task-89] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:23:53.127+03:00  INFO 2624388 --- [task-90] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:23:53.127+03:00  INFO 2624388 --- [task-90] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:24:53.134+03:00  INFO 2624388 --- [task-91] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:24:53.134+03:00  INFO 2624388 --- [task-91] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:25:53.142+03:00  INFO 2624388 --- [task-92] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:25:53.143+03:00  INFO 2624388 --- [task-92] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:26:53.131+03:00  INFO 2624388 --- [task-93] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:26:53.131+03:00  INFO 2624388 --- [task-93] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:27:53.126+03:00  INFO 2624388 --- [task-94] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:27:53.127+03:00  INFO 2624388 --- [task-94] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:28:34.726+03:00  INFO 2624388 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T10:28:34.728+03:00  INFO 2624388 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T10:28:34.733+03:00  INFO 2624388 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T10:31:15.617+03:00  INFO 2686057 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 2686057 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T10:31:15.617+03:00 DEBUG 2686057 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T10:31:15.618+03:00  INFO 2686057 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T10:31:16.100+03:00  INFO 2686057 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T10:31:16.130+03:00  INFO 2686057 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2024-08-13T10:31:16.449+03:00  INFO 2686057 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T10:31:16.481+03:00  INFO 2686057 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T10:31:16.497+03:00  INFO 2686057 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T10:31:16.635+03:00  INFO 2686057 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T10:31:16.647+03:00  INFO 2686057 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T10:31:16.806+03:00  INFO 2686057 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2cc34cd5
+2024-08-13T10:31:16.807+03:00  INFO 2686057 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T10:31:16.824+03:00  WARN 2686057 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T10:31:17.211+03:00  INFO 2686057 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T10:31:17.234+03:00  INFO 2686057 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T10:31:17.247+03:00  INFO 2686057 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T10:31:17.372+03:00  WARN 2686057 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T10:31:17.429+03:00  INFO 2686057 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T10:31:17.744+03:00  WARN 2686057 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T10:31:18.271+03:00  INFO 2686057 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T10:31:18.318+03:00  INFO 2686057 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 2.879 seconds (process running for 3.407)
+2024-08-13T10:31:18.450+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T10:31:18.451+03:00  INFO 2686057 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T10:31:18.477+03:00  INFO 2686057 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T10:31:18.478+03:00  INFO 2686057 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T10:31:18.484+03:00  INFO 2686057 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

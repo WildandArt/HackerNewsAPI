@@ -30,10 +30,10 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
 
     private final NewsPostService postService;
 
-    private final int limit;
+    private final Integer limit;
 
     
-    public NewsPostsControllerImpl(NewsPostService postService, @Value("${posts.page.limit}") int limit) {
+    public NewsPostsControllerImpl(NewsPostService postService, @Value("${posts.page.limit}") Integer limit) {
         this.postService = postService;
         //this.modelMapper = modelMapper;
         this.limit = limit;

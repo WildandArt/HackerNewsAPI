@@ -17,7 +17,7 @@ public interface NewsPostService {
      *
      * @return A list of all {@link NewsPostModelImpl} objects.
      */
-    List<NewsPostsResponseDTOImpl> getAllPosts(int limit);
+    List<NewsPostsResponseDTOImpl> getAllPosts(Integer limit);
 
 
     /**
@@ -71,7 +71,7 @@ public interface NewsPostService {
      */
     NewsPostsResponseDTOImpl getPostById(Long id);
 
-    public List<NewsPostsResponseDTOImpl> getTopPosts(int limit);
+    public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
 
     public void updateTimeElapsedAndRefreshCache();
 }
