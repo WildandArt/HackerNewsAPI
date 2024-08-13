@@ -13,10 +13,6 @@ import java.util.Comparator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-/**
- * Implementation of the CacheEntity interface that provides a simple cache mechanism.
- */
 public class CacheEntityImpl implements CacheEntity {
 
     private final Integer maxSize;
@@ -49,21 +45,16 @@ public class CacheEntityImpl implements CacheEntity {
         return sortedPosts;
     }
 
-    // @Override
-    // public void put(Long key, NewsPostModelImpl value) {
-    //     if (cache.size() >= maxSize) {
-    //         cache.poll(); // Remove the lowest priority element if the max size is reached
-    //     }
-    //     cache.offer(value); // Add the new item to the queue
-    // }
     @Override
     public NewsPostModelImpl getLowestScorePost() {
         return cacheQueue.peek(); // Returns the post with the lowest score
     }
+
     @Override
     public Integer getMaxSize() {
         return this.maxSize;
     }
+
     @Override
     public void put(Long key, NewsPostModelImpl value) {
         synchronized (this) {
@@ -98,30 +89,14 @@ public class CacheEntityImpl implements CacheEntity {
             logCacheContents();
         }
     }
-    public void logCacheContents() {
-        logger.info("Current Cache Contents:");
-
-        // Log each entry in the PriorityBlockingQueue (ordered by score)
-        logger.info("Priority Queue (ordered by score):");
-        for (NewsPostModelImpl post : cacheQueue) {
-            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
-        }
-
-        // Log each entry in the ConcurrentHashMap (unordered, by post ID)
-        logger.info("ConcurrentHashMap (unordered):");
-        for (Long postId : cacheMap.keySet()) {
-            NewsPostModelImpl post = cacheMap.get(postId);
-            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
-        }
-    }
-
+    
     @Override
     public void putAllPosts(List<NewsPostModelImpl> allPosts) {
         for (NewsPostModelImpl post : allPosts) {
             put(post.getPostId(), post);
         }
     }
-
+    
     @Override
     public void evict(Long key) {
         synchronized (this) {
@@ -132,7 +107,7 @@ public class CacheEntityImpl implements CacheEntity {
             logCacheContents();
         }
     }
-
+    
     @Override
     public void clear() {
         cacheQueue.clear();
@@ -142,5 +117,29 @@ public class CacheEntityImpl implements CacheEntity {
     @Override
     public Integer size() {
         return cacheMap.size();
+    }
+
+    public void logCacheContents() {
+
+        logger.info("Current Cache Contents:");
+
+        // Log each entry in the PriorityBlockingQueue (ordered by score)
+        logger.info("Priority Queue (ordered by score):");
+
+        for (NewsPostModelImpl post : cacheQueue) {
+
+            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
+
+        }
+
+        // Log each entry in the ConcurrentHashMap (unordered, by post ID)
+        logger.info("ConcurrentHashMap (unordered):");
+
+        for (Long postId : cacheMap.keySet()) {
+
+            NewsPostModelImpl post = cacheMap.get(postId);
+            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
+
+        }
     }
 }

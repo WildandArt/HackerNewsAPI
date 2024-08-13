@@ -104,6 +104,8 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 2. **Custom Caching Mechanism**
    - Implements a high-performance caching system that stores the top posts in memory, reducing the load on the database and improving response times. The cache automatically evicts the least relevant posts when it reaches capacity and updates when posts are created, updated, or voted on.
+   - **Thread Safety**: The caching mechanism is designed to be thread-safe, ensuring that multiple threads can access and modify the cache simultaneously without causing data inconsistencies. This is achieved through synchronized methods and concurrent data structures like `ConcurrentHashMap`.
+
 
 3. **Dynamic Post Ranking**
    - Posts are ranked dynamically based on a custom scoring algorithm that takes into account both the number of votes and the time elapsed since posting. This ensures that the most relevant and popular posts are always at the top.
@@ -470,7 +472,170 @@ This file contains all the endpoints, requests, and configurations defined in th
 
 #  Error Handling
 
+## Global Exception Handler in Mini Hacker News
+
+The **Global Exception Handler** in the Mini Hacker News project is a centralized mechanism that manages and handles exceptions occurring within the application. This component ensures that all exceptions are captured and processed uniformly, providing clear and structured feedback to API consumers.
+
+### Key Features
+
+- **Centralized Error Handling**: All exceptions are managed in a single location, reducing redundancy and promoting consistent error handling throughout the application.
+
+- **Custom Exception Responses**: The handler catches specific exceptions like `CustomNotFoundException` or `DataIntegrityViolationException` and returns meaningful error messages and appropriate HTTP status codes.
+
+- **User-Friendly Error Messages**: Instead of exposing internal server errors or stack traces, the Global Exception Handler returns user-friendly error messages that help clients understand what went wrong without revealing sensitive details.
+
+### Exception Handling Methods
+
+The `GlobalExceptionHandler` class provides specific methods to handle various types of exceptions:
+
+1. **General Exception Handling**:
+   - **Method**: `handleGeneralException`
+   - **Handles**: All unhandled exceptions (`Exception.class`)
+   - **Response**: 
+     ```json
+     {
+       "message": "An unexpected error occurred: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `500 Internal Server Error`
+
+2. **Database Access Exceptions**:
+   - **Method**: `handleDataAccessException`
+   - **Handles**: Exceptions related to database operations (`DataAccessException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "Database error: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `500 Internal Server Error`
+
+3. **Validation Errors**:
+   - **Method**: `handleMethodArgumentNotValid`
+   - **Handles**: Validation failures for method arguments annotated with `@Valid` (`MethodArgumentNotValidException.class`)
+   - **Response**:
+     ```json
+     {
+       "{field}": "{error message}"
+     }
+     ```
+   - **HTTP Status**: `400 Bad Request`
+
+4. **Constraint Violations**:
+   - **Method**: `handleConstraintViolation`
+   - **Handles**: Validation constraints not met (`ConstraintViolationException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "Constraint violation: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `400 Bad Request`
+
+5. **Resource Not Found**:
+   - **Method**: `handleNotFoundException`
+   - **Handles**: Cases where a requested resource is not found (`CustomNotFoundException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "{exception message}"
+     }
+     ```
+   - **HTTP Status**: `404 Not Found`
+
+6. **Data Integrity Violations**:
+   - **Method**: `handleDataIntegrityViolation`
+   - **Handles**: Data integrity issues, such as unique constraint violations (`DataIntegrityViolationException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "Data integrity violation: {specific cause}"
+     }
+     ```
+   - **HTTP Status**: `409 Conflict`
+
+7. **Cache Retrieval Errors**:
+   - **Method**: `handleCacheRetrievalException`
+   - **Handles**: Errors related to cache retrieval operations (`CacheRetrievalException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "Error retrieving data from cache: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `500 Internal Server Error`
+
+8. **Database Fetch Errors**:
+   - **Method**: `handleDatabaseFetchException`
+   - **Handles**: Errors when fetching data from the database (`DatabaseFetchException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "Error fetching data from the database: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `500 Internal Server Error`
+
+9. **Service Layer Errors**:
+   - **Method**: `handleCustomServiceException`
+   - **Handles**: Errors that occur within the service layer (`CustomServiceException.class`)
+   - **Response**:
+     ```json
+     {
+       "message": "An error occurred: {exception message}"
+     }
+     ```
+   - **HTTP Status**: `500 Internal Server Error`
+
+
+
 # Cache Strategy
+
+The Mini Hacker News project implements a sophisticated caching strategy to optimize performance and reduce database load. The caching mechanism ensures that the most relevant posts are stored in memory, allowing for quick retrieval and reducing the need for repeated database queries.
+
+### Key Features of the Cache Strategy
+
+1. **Priority-Based Caching**:
+   - The cache is designed to store posts based on their score. Higher-scoring posts are given priority, ensuring that the most popular content is readily accessible.
+   - The cache is implemented using a combination of `PriorityBlockingQueue` and `ConcurrentHashMap`, where the queue maintains posts in a sorted order based on their score, and the map allows for quick lookup by post ID.
+
+2. **Size Limitation**:
+   - The cache has a configurable maximum size (`cache.size`), which determines how many posts can be stored at any given time. Once the cache reaches its maximum size, the post with the lowest score is evicted to make room for new, higher-scoring posts.
+
+3. **Dynamic Updates**:
+   - The cache is updated dynamically in response to CRUD operations:
+     - **SavePost**: When a new post is saved, it is evaluated to determine if it should be added to the cache. If its score is higher than the lowest-scoring post in the cache (or if there is room in the cache), it is added.
+     - **Upvote/Downvote**: When a post is upvoted or downvoted, its position in the cache is reevaluated. If its score changes significantly, it may be moved within the cache or evicted if it no longer qualifies as a top post.
+     - **UpdatePost**: If a post is updated, its score and relevance are reassessed. The cache is then updated accordingly to ensure that only the most relevant posts are retained.
+     - **DeletePost**: When a post is deleted, it is removed from the cache, and the next highest-scoring post (if available) is fetched from the database and added to the cache.
+
+4. **Eviction Policy**:
+   - The cache eviction policy is based on the post's score. When the cache is full, the post with the lowest score is automatically evicted to make space for new entries.
+   - This strategy ensures that the cache always contains the most relevant content, making it efficient for serving requests that require the top posts.
+
+5. **Concurrency Control**:
+   - The caching mechanism is designed to be thread-safe, allowing concurrent read and write operations without data inconsistency or race conditions.
+   - Synchronization is used when updating the cache to ensure that operations such as eviction and insertion are performed atomically.
+
+6. **Cache Monitoring and Logging**:
+   - The application includes logging capabilities to monitor cache operations, such as insertions, evictions, and retrievals. This is useful for debugging and understanding the cache's behavior under different load conditions.
+
+### Example Configuration
+
+The following configuration properties can be adjusted in the `application.properties` file to customize the cache behavior:
+
+```properties
+# Set Cache SIZE and Limit SIZE
+cache.size=100
+posts.page.limit=150
+
+# Set your field update interval here
+db.update.interval=600000
+# 3600000 # 1 hour in milliseconds
+
+# Set your logging path here:
+logging.file.name=logs/myapp.log
+
 
 ## Support and Contribution
 

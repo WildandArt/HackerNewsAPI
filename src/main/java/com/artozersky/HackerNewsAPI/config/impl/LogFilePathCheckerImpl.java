@@ -25,35 +25,54 @@ public class LogFilePathCheckerImpl implements LogFilePathChecker {
     public void checkLogFilePath() {
         Path logPath;
         try {
+
             logPath = Paths.get(logFilePath);
+
         } catch (InvalidPathException e) {
+
             logger.error("Invalid log file path: {}", logFilePath, e);
             return; // Exit if path is invalid
+
         }
+        
         File logFile = logPath.toFile();
 
         // Ensure parent directory exists
         if (!logFile.getParentFile().exists()) {
+
             logFile.getParentFile().mkdirs();
             logger.info("Created missing directories for log file: {}", logFile.getAbsolutePath());
+
         }
 
         // Check and create log file
         if (!logFile.exists()) {
+
             try {
+
                 logFile.createNewFile();
                 logger.info("Created log file: {}", logFile.getAbsolutePath());
+
             } catch (IOException e) {
+
                 logger.error("Failed to create log file: {}", logFile.getAbsolutePath(), e);
+
             }
         } else {
+
             // Check file type and permissions
             if (!logFile.isFile()) {
+
                 logger.warn("The specified log file path is not a valid file: {}", logFile.getAbsolutePath());
+
             } else if (!logFile.canWrite()) {
+
                 logger.warn("No write permissions for the log file: {}", logFile.getAbsolutePath());
+
             } else {
+
                 logger.info("Log file path {} is valid and writable.", logFile.getAbsolutePath());
+
             }
         }
     }

@@ -1,59 +1,66 @@
 package com.artozersky.HackerNewsAPI.cache;
 
-import java.util.List;
-
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
+import java.util.List;
+
+/**
+ * @brief Interface for the cache entity that provides methods to manage cached posts.
+ */
 public interface CacheEntity {
 
     /**
-     * Retrieves a NewsPostModel from the cache based on the given key.
-     *
-     * @param key the key of the cache entry
-     * @return the NewsPostModel associated with the key, or null if not found
+     * @brief Retrieves a post from the cache by its key.
+     * @param key The key of the post to retrieve.
+     * @return The cached post, or null if not found.
      */
     NewsPostModelImpl get(Long key);
 
     /**
-     * Retrieves all NewsPostModels currently stored in the cache.
-     *
-     * @return a list of all NewsPostModels in the cache
+     * @brief Retrieves all posts from the cache.
+     * @return A list of all cached posts, sorted by score in descending order.
      */
     List<NewsPostModelImpl> getAllPosts();
 
     /**
-     * Puts a NewsPostModel into the cache with the specified key.
-     *
-     * @param key the key under which the model will be stored
-     * @param value the NewsPostModel to store in the cache
+     * @brief Retrieves the post with the lowest score from the cache.
+     * @return The post with the lowest score.
+     */
+    NewsPostModelImpl getLowestScorePost();
+
+    /**
+     * @brief Retrieves the maximum size of the cache.
+     * @return The maximum number of entries the cache can hold.
+     */
+    Integer getMaxSize();
+
+    /**
+     * @brief Adds a post to the cache.
+     * @param key The key of the post.
+     * @param value The post to add.
      */
     void put(Long key, NewsPostModelImpl value);
 
     /**
-     * Puts a list of NewsPostModels into the cache.
-     *
-     * @param allPosts a list of NewsPostModels to store in the cache
+     * @brief Adds a list of posts to the cache.
+     * @param allPosts The list of posts to add.
      */
     void putAllPosts(List<NewsPostModelImpl> allPosts);
 
     /**
-     * Removes a NewsPostModel from the cache based on the given key.
-     *
-     * @param key the key of the cache entry to remove
+     * @brief Removes a post from the cache by its key.
+     * @param key The key of the post to remove.
      */
     void evict(Long key);
 
     /**
-     * Clears all entries from the cache.
+     * @brief Clears all entries from the cache.
      */
     void clear();
 
     /**
-     * Returns the current number of entries in the cache.
-     *
-     * @return the size of the cache
+     * @brief Retrieves the current number of entries in the cache.
+     * @return The current size of the cache.
      */
     Integer size();
-    public NewsPostModelImpl getLowestScorePost();
-    public Integer getMaxSize();
 }

@@ -46,7 +46,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private CacheEntityServiceImpl cacheService;
 
-    private Integer limit = 400;
+    private Integer limit;
 
     private final Integer cacheSize;
 
@@ -130,7 +130,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         responseDTO.setMessage("Post created successfully");
 
-        
         return responseDTO;
     }
     
@@ -191,8 +190,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         return responseDTO;
     }
-    
-    
     
     @Override
     public NewsPostsResponseDTOImpl downVote(Long id) {
@@ -300,7 +297,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         return new ArrayList<>();
     }
-
 
     @Async
     @Scheduled(fixedRateString = "${db.update.interval:3600000}")  // default 3600000 milliseconds = 1 hour
