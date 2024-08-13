@@ -20,7 +20,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 
-@Builder
+// @Builder
 @Entity
 @Table(name = "posts", indexes = {
     @Index(name = "idx_score", columnList = "score")
@@ -60,6 +60,18 @@ public class NewsPostModelImpl implements NewsPostModel {
     @Column(name = "posted_by", length = 100)
     private String postedBy;
 
+    public NewsPostModelImpl() {
+    }
+
+    public NewsPostModelImpl(Long postId, String title, String url, String postedBy, Double score, Integer currentVotes, LocalDateTime createdAt) {
+        this.postId = postId;
+        this.title = title;
+        this.url = url;
+        this.postedBy = postedBy;
+        this.score = score;
+        this.currentVotes = currentVotes;
+        this.createdAt = createdAt;
+    }
     // ----------------- Getters -----------------
 
     @Override

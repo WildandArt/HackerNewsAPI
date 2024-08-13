@@ -25,3 +25,517 @@
 2024-08-13T08:08:11.121+03:00  INFO 2596644 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-08-13T08:08:11.122+03:00  INFO 2596644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-08-13T08:08:11.125+03:00  INFO 2596644 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T08:12:59.098+03:00  INFO 2600506 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 2600506 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:12:59.099+03:00 DEBUG 2600506 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:12:59.099+03:00  INFO 2600506 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:12:59.437+03:00  INFO 2600506 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:12:59.462+03:00  INFO 2600506 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2024-08-13T08:12:59.751+03:00  INFO 2600506 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-13T08:12:59.757+03:00  INFO 2600506 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T08:12:59.757+03:00  INFO 2600506 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T08:12:59.778+03:00  INFO 2600506 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T08:12:59.778+03:00  INFO 2600506 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 660 ms
+2024-08-13T08:12:59.913+03:00  INFO 2600506 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:12:59.933+03:00  INFO 2600506 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:12:59.944+03:00  INFO 2600506 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:13:00.053+03:00  INFO 2600506 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:13:00.063+03:00  INFO 2600506 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:13:00.131+03:00  INFO 2600506 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3dded90a
+2024-08-13T08:13:00.132+03:00  INFO 2600506 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:13:00.144+03:00  WARN 2600506 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:13:00.420+03:00  INFO 2600506 --- [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl (class must be instantiated by Interceptor)
+2024-08-13T08:13:00.484+03:00  INFO 2600506 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:13:00.505+03:00  INFO 2600506 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:13:00.516+03:00  INFO 2600506 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:13:00.598+03:00  WARN 2600506 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:13:00.626+03:00  INFO 2600506 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:13:00.842+03:00  WARN 2600506 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:13:01.135+03:00  INFO 2600506 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:13:01.172+03:00  INFO 2600506 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-13T08:13:01.179+03:00  INFO 2600506 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.277 seconds (process running for 2.411)
+2024-08-13T08:13:01.244+03:00  INFO 2600506 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:13:01.244+03:00  INFO 2600506 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:13:26.880+03:00  INFO 2600506 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T08:13:26.880+03:00  INFO 2600506 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T08:13:26.881+03:00  INFO 2600506 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T08:13:41.028+03:00  INFO 2600506 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : inside getAllPostsFromCache size : 0
+2024-08-13T08:13:41.029+03:00  INFO 2600506 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : cached posts size: 0
+2024-08-13T08:13:41.029+03:00  INFO 2600506 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : posts needed: 7
+2024-08-13T08:13:41.034+03:00  INFO 2600506 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : fetched from db: 0
+2024-08-13T08:14:01.191+03:00  INFO 2600506 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:14:01.191+03:00  INFO 2600506 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:15:01.183+03:00  INFO 2600506 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:15:01.183+03:00  INFO 2600506 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:16:01.188+03:00  INFO 2600506 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:16:01.189+03:00  INFO 2600506 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:17:01.188+03:00  INFO 2600506 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:17:01.188+03:00  INFO 2600506 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:18:01.190+03:00  INFO 2600506 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:18:01.190+03:00  INFO 2600506 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:19:01.188+03:00  INFO 2600506 --- [task-7] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:19:01.189+03:00  INFO 2600506 --- [task-7] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:20:01.186+03:00  INFO 2600506 --- [task-8] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:20:01.187+03:00  INFO 2600506 --- [task-8] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:21:01.189+03:00  INFO 2600506 --- [task-9] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:21:01.189+03:00  INFO 2600506 --- [task-9] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:22:01.186+03:00  INFO 2600506 --- [task-10] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:22:01.187+03:00  INFO 2600506 --- [task-10] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:23:01.190+03:00  INFO 2600506 --- [task-11] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:23:01.190+03:00  INFO 2600506 --- [task-11] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:24:01.187+03:00  INFO 2600506 --- [task-12] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:24:01.187+03:00  INFO 2600506 --- [task-12] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:24:09.997+03:00  INFO 2600506 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:24:09.998+03:00  INFO 2600506 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T08:24:10.002+03:00  INFO 2600506 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T08:28:44.702+03:00  INFO 2610712 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 2610712 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:28:44.703+03:00 DEBUG 2610712 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:28:44.704+03:00  INFO 2610712 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:28:45.070+03:00  INFO 2610712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:28:45.096+03:00  INFO 2610712 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2024-08-13T08:28:45.399+03:00  INFO 2610712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-13T08:28:45.405+03:00  INFO 2610712 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T08:28:45.405+03:00  INFO 2610712 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T08:28:45.428+03:00  INFO 2610712 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T08:28:45.428+03:00  INFO 2610712 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 705 ms
+2024-08-13T08:28:45.569+03:00  INFO 2610712 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:28:45.591+03:00  INFO 2610712 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:28:45.604+03:00  INFO 2610712 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:28:45.713+03:00  INFO 2610712 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:28:45.723+03:00  INFO 2610712 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:28:45.865+03:00  INFO 2610712 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@722b3ba2
+2024-08-13T08:28:45.866+03:00  INFO 2610712 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:28:45.881+03:00  WARN 2610712 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:28:46.158+03:00  INFO 2610712 --- [main] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl (class must be instantiated by Interceptor)
+2024-08-13T08:28:46.225+03:00  INFO 2610712 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:28:46.254+03:00  INFO 2610712 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:28:46.266+03:00  INFO 2610712 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:28:46.356+03:00  WARN 2610712 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:28:46.387+03:00  INFO 2610712 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:28:46.610+03:00  WARN 2610712 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:28:46.912+03:00  INFO 2610712 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:28:46.950+03:00  INFO 2610712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-13T08:28:46.958+03:00  INFO 2610712 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.457 seconds (process running for 2.588)
+2024-08-13T08:28:47.006+03:00 ERROR 2610712 --- [task-1] .a.i.SimpleAsyncUncaughtExceptionHandler : Unexpected exception occurred invoking async method: public void com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache()
+
+org.springframework.orm.jpa.JpaSystemException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy165.findAll(Unknown Source) ~[na:na]
+	at com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache(NewsPostServiceImpl.java:335) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113) ~[spring-aop-6.1.11.jar:6.1.11]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.InstantiationException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate(EntityInstantiatorPojoStandard.java:93) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.instantiate(AbstractEntityPersister.java:4569) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionImpl.instantiate(SessionImpl.java:1485) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.instantiateEntity(AbstractEntityInitializer.java:693) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:686) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:637) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:559) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:458) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.InitializersList.resolveInstances(InitializersList.java:97) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:112) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:87) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:205) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:391) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:1) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar:6.1.11]
+	... 18 common frames omitted
+
+2024-08-13T08:28:55.590+03:00  INFO 2610712 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T08:28:55.590+03:00  INFO 2610712 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T08:28:55.591+03:00  INFO 2610712 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T08:29:46.966+03:00 ERROR 2610712 --- [task-2] .a.i.SimpleAsyncUncaughtExceptionHandler : Unexpected exception occurred invoking async method: public void com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache()
+
+org.springframework.orm.jpa.JpaSystemException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy165.findAll(Unknown Source) ~[na:na]
+	at com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache(NewsPostServiceImpl.java:335) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113) ~[spring-aop-6.1.11.jar:6.1.11]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.InstantiationException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate(EntityInstantiatorPojoStandard.java:93) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.instantiate(AbstractEntityPersister.java:4569) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionImpl.instantiate(SessionImpl.java:1485) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.instantiateEntity(AbstractEntityInitializer.java:693) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:686) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:637) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:559) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:458) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.InitializersList.resolveInstances(InitializersList.java:97) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:112) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:87) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:205) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:391) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:1) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar:6.1.11]
+	... 18 common frames omitted
+
+2024-08-13T08:30:46.964+03:00 ERROR 2610712 --- [task-3] .a.i.SimpleAsyncUncaughtExceptionHandler : Unexpected exception occurred invoking async method: public void com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache()
+
+org.springframework.orm.jpa.JpaSystemException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy165.findAll(Unknown Source) ~[na:na]
+	at com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache(NewsPostServiceImpl.java:335) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113) ~[spring-aop-6.1.11.jar:6.1.11]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.InstantiationException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate(EntityInstantiatorPojoStandard.java:93) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.instantiate(AbstractEntityPersister.java:4569) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionImpl.instantiate(SessionImpl.java:1485) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.instantiateEntity(AbstractEntityInitializer.java:693) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:686) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:637) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:559) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:458) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.InitializersList.resolveInstances(InitializersList.java:97) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:112) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:87) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:205) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:391) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:1) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar:6.1.11]
+	... 18 common frames omitted
+
+2024-08-13T08:31:46.965+03:00 ERROR 2610712 --- [task-4] .a.i.SimpleAsyncUncaughtExceptionHandler : Unexpected exception occurred invoking async method: public void com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache()
+
+org.springframework.orm.jpa.JpaSystemException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:341) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550) ~[spring-orm-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:160) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy165.findAll(Unknown Source) ~[na:na]
+	at com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache(NewsPostServiceImpl.java:335) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:113) ~[spring-aop-6.1.11.jar:6.1.11]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1570) ~[na:na]
+Caused by: org.hibernate.InstantiationException: No default constructor for entity 'com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl'
+	at org.hibernate.metamodel.internal.EntityInstantiatorPojoStandard.instantiate(EntityInstantiatorPojoStandard.java:93) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.instantiate(AbstractEntityPersister.java:4569) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.internal.SessionImpl.instantiate(SessionImpl.java:1485) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.instantiateEntity(AbstractEntityInitializer.java:693) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:686) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:637) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveEntityInstance(AbstractEntityInitializer.java:559) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.graph.entity.AbstractEntityInitializer.resolveInstance(AbstractEntityInitializer.java:458) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.InitializersList.resolveInstances(InitializersList.java:97) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.coordinateInitializers(StandardRowReader.java:112) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.internal.StandardRowReader.readRow(StandardRowReader.java:87) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:205) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.spi.ListResultsConsumer.consume(ListResultsConsumer.java:33) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:211) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.lambda$new$2(ConcreteSqmSelectQueryPlan.java:139) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.withCacheableSqmInterpretation(ConcreteSqmSelectQueryPlan.java:382) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.ConcreteSqmSelectQueryPlan.performList(ConcreteSqmSelectQueryPlan.java:302) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sqm.internal.QuerySqmImpl.doList(QuerySqmImpl.java:526) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:391) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.findAll(SimpleJpaRepository.java:1) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:168) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar:6.1.11]
+	... 18 common frames omitted
+
+2024-08-13T08:34:55.973+03:00  INFO 2615142 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 2615142 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:34:55.974+03:00 DEBUG 2615142 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:34:55.975+03:00  INFO 2615142 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:34:56.464+03:00  INFO 2615142 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:34:56.493+03:00  INFO 2615142 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+2024-08-13T08:34:56.811+03:00  INFO 2615142 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:34:56.850+03:00  INFO 2615142 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:34:56.868+03:00  INFO 2615142 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:34:57.008+03:00  INFO 2615142 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:34:57.021+03:00  INFO 2615142 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:34:57.192+03:00  INFO 2615142 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@507f47f9
+2024-08-13T08:34:57.193+03:00  INFO 2615142 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:34:57.213+03:00  WARN 2615142 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:34:57.644+03:00  INFO 2615142 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:34:57.668+03:00  INFO 2615142 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:34:57.681+03:00  INFO 2615142 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:34:57.806+03:00  WARN 2615142 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:34:57.849+03:00  INFO 2615142 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:34:58.212+03:00  WARN 2615142 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:34:58.687+03:00  INFO 2615142 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:34:58.732+03:00  INFO 2615142 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 2.935 seconds (process running for 3.457)
+2024-08-13T08:34:58.853+03:00  INFO 2615142 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:34:58.853+03:00  INFO 2615142 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:34:58.882+03:00  INFO 2615142 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:34:58.884+03:00  INFO 2615142 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T08:34:58.890+03:00  INFO 2615142 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T08:35:06.173+03:00  INFO 2615520 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 2615520 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:35:06.174+03:00 DEBUG 2615520 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:35:06.175+03:00  INFO 2615520 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:35:06.524+03:00  INFO 2615520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:35:06.549+03:00  INFO 2615520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2024-08-13T08:35:06.843+03:00  INFO 2615520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-13T08:35:06.849+03:00  INFO 2615520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T08:35:06.849+03:00  INFO 2615520 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T08:35:06.869+03:00  INFO 2615520 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T08:35:06.869+03:00  INFO 2615520 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 676 ms
+2024-08-13T08:35:07.001+03:00  INFO 2615520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:35:07.021+03:00  INFO 2615520 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:35:07.033+03:00  INFO 2615520 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:35:07.146+03:00  INFO 2615520 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:35:07.157+03:00  INFO 2615520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:35:07.287+03:00  INFO 2615520 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@60e67c06
+2024-08-13T08:35:07.288+03:00  INFO 2615520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:35:07.303+03:00  WARN 2615520 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:35:07.650+03:00  INFO 2615520 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:35:07.672+03:00  INFO 2615520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:35:07.687+03:00  INFO 2615520 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:35:07.783+03:00  WARN 2615520 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:35:07.812+03:00  INFO 2615520 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:35:08.032+03:00  WARN 2615520 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:35:08.321+03:00  INFO 2615520 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:35:08.356+03:00  WARN 2615520 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2024-08-13T08:35:08.357+03:00  INFO 2615520 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:35:08.358+03:00  INFO 2615520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T08:35:08.362+03:00  INFO 2615520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-13T08:35:08.370+03:00  INFO 2615520 --- [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-08-13T08:35:08.376+03:00 ERROR 2615520 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+
+2024-08-13T08:36:20.663+03:00  INFO 2616615 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 2616615 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-13T08:36:20.664+03:00 DEBUG 2616615 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-13T08:36:20.664+03:00  INFO 2616615 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T08:36:20.999+03:00  INFO 2616615 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-13T08:36:21.025+03:00  INFO 2616615 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 1 JPA repository interface.
+2024-08-13T08:36:21.324+03:00  INFO 2616615 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-13T08:36:21.330+03:00  INFO 2616615 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T08:36:21.330+03:00  INFO 2616615 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T08:36:21.351+03:00  INFO 2616615 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T08:36:21.352+03:00  INFO 2616615 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 668 ms
+2024-08-13T08:36:21.486+03:00  INFO 2616615 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-13T08:36:21.506+03:00  INFO 2616615 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-13T08:36:21.518+03:00  INFO 2616615 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-13T08:36:21.633+03:00  INFO 2616615 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-13T08:36:21.643+03:00  INFO 2616615 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-13T08:36:21.777+03:00  INFO 2616615 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6d80e411
+2024-08-13T08:36:21.777+03:00  INFO 2616615 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-13T08:36:21.792+03:00  WARN 2616615 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-13T08:36:22.149+03:00  INFO 2616615 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-13T08:36:22.171+03:00  INFO 2616615 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:36:22.183+03:00  INFO 2616615 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-13T08:36:22.272+03:00  WARN 2616615 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-13T08:36:22.302+03:00  INFO 2616615 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-13T08:36:22.541+03:00  WARN 2616615 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-13T08:36:22.836+03:00  INFO 2616615 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-13T08:36:22.872+03:00  INFO 2616615 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-13T08:36:22.880+03:00  INFO 2616615 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.415 seconds (process running for 2.547)
+2024-08-13T08:36:22.968+03:00  INFO 2616615 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:36:22.968+03:00  INFO 2616615 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:36:41.068+03:00  INFO 2616615 --- [http-nio-8081-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T08:36:41.068+03:00  INFO 2616615 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T08:36:41.069+03:00  INFO 2616615 --- [http-nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T08:37:22.895+03:00  INFO 2616615 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:37:22.895+03:00  INFO 2616615 --- [task-2] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:37:24.956+03:00  INFO 2616615 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : inside getAllPostsFromCache size : 5
+2024-08-13T08:37:24.956+03:00  INFO 2616615 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : cached posts size: 5
+2024-08-13T08:37:24.956+03:00  INFO 2616615 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : posts needed: 2
+2024-08-13T08:37:24.962+03:00  INFO 2616615 --- [http-nio-8081-exec-3] c.a.H.service.impl.NewsPostServiceImpl   : fetched from db: 2
+2024-08-13T08:38:22.908+03:00  INFO 2616615 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:38:22.908+03:00  INFO 2616615 --- [task-3] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:38:56.706+03:00  INFO 2616615 --- [http-nio-8081-exec-6] c.a.H.service.impl.NewsPostServiceImpl   : inside getAllPostsFromCache size : 5
+2024-08-13T08:38:56.706+03:00  INFO 2616615 --- [http-nio-8081-exec-6] c.a.H.service.impl.NewsPostServiceImpl   : cached posts size: 5
+2024-08-13T08:38:56.706+03:00  INFO 2616615 --- [http-nio-8081-exec-6] c.a.H.service.impl.NewsPostServiceImpl   : posts needed: 2
+2024-08-13T08:38:56.709+03:00  INFO 2616615 --- [http-nio-8081-exec-6] c.a.H.service.impl.NewsPostServiceImpl   : fetched from db: 2
+2024-08-13T08:39:22.904+03:00  INFO 2616615 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:39:22.904+03:00  INFO 2616615 --- [task-4] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:40:22.905+03:00  INFO 2616615 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:40:22.905+03:00  INFO 2616615 --- [task-5] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:41:22.894+03:00  INFO 2616615 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : putAllPostsInCache.
+2024-08-13T08:41:22.894+03:00  INFO 2616615 --- [task-6] c.a.H.service.impl.NewsPostServiceImpl   : Cache updated and timeElapsed field refreshed.
+2024-08-13T08:42:17.777+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-13T08:42:17.778+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-13T08:42:17.784+03:00  INFO 2616615 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

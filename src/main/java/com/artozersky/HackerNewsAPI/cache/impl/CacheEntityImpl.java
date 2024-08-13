@@ -38,7 +38,9 @@ public class CacheEntityImpl implements CacheEntity {
 
     @Override
     public List<NewsPostModelImpl> getAllPosts() {
-        return new ArrayList<>(cacheQueue);
+        List<NewsPostModelImpl> sortedPosts = new ArrayList<>(cacheQueue);
+        sortedPosts.sort(Comparator.comparingDouble(NewsPostModelImpl::getScore).reversed());
+        return sortedPosts;
     }
 
     // @Override
