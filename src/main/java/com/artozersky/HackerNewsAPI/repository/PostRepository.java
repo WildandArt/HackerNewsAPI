@@ -53,4 +53,5 @@ NewsPostModelImpl findTopPostByScoreExcludingIds(@Param("excludedIds") List<Long
  */
 @Query("SELECT p FROM NewsPostModelImpl p ORDER BY p.score DESC")
 List<NewsPostModelImpl> findTopPostsByScore(Pageable pageable);
+
 }

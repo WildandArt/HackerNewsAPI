@@ -59,6 +59,14 @@ public class CacheEntityImpl implements CacheEntity {
     @Override
     public void put(Long key, NewsPostModelImpl value) {
         synchronized (this) {
+
+            // Check if the post is already in the cache
+            if (cacheMap.containsKey(key)) {
+                // Evict the old version of the post from both the map and the queue
+                NewsPostModelImpl oldPost = cacheMap.remove(key);
+                cacheQueue.remove(oldPost);
+            }
+
             if (cacheQueue.size() < maxSize) {
                 // If there's space, add the new post to both the ConcurrentHashMap and PriorityBlockingQueue
                 cacheMap.put(key, value); // Add to ConcurrentHashMap

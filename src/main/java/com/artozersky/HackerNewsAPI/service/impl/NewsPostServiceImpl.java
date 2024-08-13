@@ -207,13 +207,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
         post.upVote();        
         NewsPostModelImpl updatedPost = postRepository.save(post);
-
-        //if in the cache update the cache
-        if (cacheService.getPostById(id) != null) {
-            cacheService.putPost(updatedPost);
-        }
-        //updateCacheWithTopPosts();
-
+        
+        cacheService.putPost(updatedPost);
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
 
@@ -231,8 +226,32 @@ public class NewsPostServiceImpl implements NewsPostService {
         post.downVote();        
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
-        //downvote can make a post go down in the rank and out of sorted cache
-        //updateCacheWithTopPosts();
+        // Check if the post is in the cache
+        if (cacheService.getPostById(id) != null) {
+            cacheService.evictPost(id); // Remove it from the cache first
+        }
+
+        // Try to put the updated post back in the cache if it still qualifies as a top post
+        cacheService.putPost(updatedPost);
+
+        // Check if the updated post is now the lowest-scoring post in the cache
+        NewsPostModelImpl lowestPostInCache = cacheService.getLowestScorePost();
+        
+        if (lowestPostInCache != null && lowestPostInCache.getPostId().equals(updatedPost.getPostId())) {
+            // If it is, check if there's a higher-scoring post in the database that isn't in the cache
+            List<Long> excludedIds = cacheService.getAllPosts().stream()
+                                    .map(NewsPostModelImpl::getPostId)
+                                    .collect(Collectors.toList());
+
+            NewsPostModelImpl nextHighestPost = postRepository.findTopPostByScoreExcludingIds(excludedIds);
+
+            if (nextHighestPost != null && nextHighestPost.getScore() > lowestPostInCache.getScore()) {
+                // Evict the lowest-scoring post from the cache
+                cacheService.evictPost(lowestPostInCache.getPostId());
+                // Add the higher-scoring post to the cache
+                cacheService.putPost(nextHighestPost);
+            }
+        }
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
         responseDTO.setMessage("Vote updated successfully");
@@ -261,6 +280,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     
         return responseDTO;
     }
+
     private NewsPostModelImpl fetchNextHighestPost() {
         // Fetch the next highest-scoring post from the database that is not in the cache
         List<Long> cachedPostIds = cacheService.getAllPosts().stream()
@@ -281,23 +301,23 @@ public class NewsPostServiceImpl implements NewsPostService {
     int postsNeeded, 
     List<NewsPostModelImpl> cachedPosts) {
 
-    if (postsNeeded > 0) {
+        if (postsNeeded > 0) {
 
-        Pageable pageable = PageRequest.of(0, postsNeeded);
+            Pageable pageable = PageRequest.of(0, postsNeeded);
 
-        List<NewsPostModelImpl> dbPosts = postRepository.findTopPostsByScoreExcludingIds(
-            cachedPosts.stream()
-                .map(NewsPostModelImpl::getPostId)
-                .collect(Collectors.toList()), 
-            pageable);
+            List<NewsPostModelImpl> dbPosts = postRepository.findTopPostsByScoreExcludingIds(
+                cachedPosts.stream()
+                    .map(NewsPostModelImpl::getPostId)
+                    .collect(Collectors.toList()), 
+                pageable);
 
-            //updating this field each time called to db
-            dbPosts.forEach(NewsPostModelImpl::updateElapsedTime);
-            return dbPosts;
+                //updating this field each time called to db
+                dbPosts.forEach(NewsPostModelImpl::updateElapsedTime);
+                return dbPosts;
+        }
+        
+        return new ArrayList<>();
     }
-    
-    return new ArrayList<>();
-}
 
 // public void updateCacheWithTopPosts() {
 
@@ -330,7 +350,5 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         logger.info("Cache updated and timeElapsed field refreshed.");
     }
-
-
 
 }
