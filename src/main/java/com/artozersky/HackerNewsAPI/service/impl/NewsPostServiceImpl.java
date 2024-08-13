@@ -198,7 +198,9 @@ public class NewsPostServiceImpl implements NewsPostService {
     public NewsPostsResponseDTOImpl downVote(Long id) {
         NewsPostModelImpl post = postRepository.findById(id)
         .orElseThrow(() -> new CustomNotFoundException("Post not found with id: " + id));
-        post.downVote();        
+
+        post.downVote();    
+
         NewsPostModelImpl updatedPost = postRepository.save(post);
 
         // Check if the post is in the cache
@@ -213,17 +215,16 @@ public class NewsPostServiceImpl implements NewsPostService {
         NewsPostModelImpl lowestPostInCache = cacheService.getLowestScorePost();
 
         if (lowestPostInCache != null && lowestPostInCache.getPostId().equals(updatedPost.getPostId())) {
-            // If it is, check if there's a higher-scoring post in the database that isn't in the cache
-            List<Long> excludedIds = cacheService.getAllPosts().stream()
-                                    .map(NewsPostModelImpl::getPostId)
-                                    .collect(Collectors.toList());
+        // If it is, check if there's a higher-scoring post in the database that isn't in the cache
+        List<Long> excludedIds = cacheService.getAllPosts().stream()
+                                .map(NewsPostModelImpl::getPostId)
+                                .collect(Collectors.toList());
 
-            NewsPostModelImpl nextHighestPost = postRepository.findTopPostByScoreExcludingIds(excludedIds);
+        List<NewsPostModelImpl> nextHighestPosts = postRepository.findTopPostByScoreExcludingIds(excludedIds);
 
-            if (nextHighestPost != null && nextHighestPost.getScore() > lowestPostInCache.getScore()) {
-                // Evict the lowest-scoring post from the cache
-                cacheService.evictPost(lowestPostInCache.getPostId());
-                // Add the higher-scoring post to the cache
+        if (!nextHighestPosts.isEmpty()) {
+            NewsPostModelImpl nextHighestPost = nextHighestPosts.get(0); // Pick the first one
+            
                 cacheService.putPost(nextHighestPost);
             }
         }
@@ -264,7 +265,7 @@ public class NewsPostServiceImpl implements NewsPostService {
                 .collect(Collectors.toList());
 
         logger.info(" inside nextHighestPost ");
-        
+
         Pageable pageable = PageRequest.of(0, 1);
         List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScoreExcludingIds(cachedPostIds, pageable);
 

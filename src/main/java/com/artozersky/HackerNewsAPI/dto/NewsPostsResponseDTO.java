@@ -7,7 +7,11 @@ import java.time.LocalDateTime;
  * This interface defines the structure of the data returned by the API when
  * interacting with post resources.
  */
-public interface NewsPostsResponseDTO {
+    public interface NewsPostsResponseDTO {
+
+    public Integer getTimeElapsed();
+
+    public void setTimeElapsed(Integer timeElapsed);
 
     Integer getCurrentVotes();
 

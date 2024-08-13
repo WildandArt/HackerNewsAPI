@@ -14,6 +14,17 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
     private Integer currentVotes;
     private String message;
     private LocalDateTime createdAt;
+    private Integer timeElapsed;
+
+    @Override
+    public Integer getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    @Override
+    public void setTimeElapsed(Integer timeElapsed) {
+        this.timeElapsed = timeElapsed;
+    }
 
 
     @Override
@@ -95,12 +106,5 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
         this.createdAt = createdAt;
     }
 
-    // Calculated dynamically
-    // @Override
-    // public Integer getTimeElapsed() {
-    //     if (this.createdAt == null) {
-    //         return null; // or return a default value like 0
-    //     }
-    //     return (int) java.time.Duration.between(this.createdAt, LocalDateTime.now()).toHours();
-    // }
+    
 }
