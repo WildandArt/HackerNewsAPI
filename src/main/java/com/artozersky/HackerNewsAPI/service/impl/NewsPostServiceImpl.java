@@ -222,6 +222,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         return responseDTO;
     }
     
+    
+    
     @Override
     public NewsPostsResponseDTOImpl downVote(Long id) {
         NewsPostModelImpl post = postRepository.findById(id)
@@ -246,13 +248,27 @@ public class NewsPostServiceImpl implements NewsPostService {
         
         postRepository.delete(post);
 
-        //updateCacheWithTopPosts();
+        cacheService.evictPost(postId);
+
+        NewsPostModelImpl nextHighestPost = fetchNextHighestPost();
+        if (nextHighestPost != null) {
+            cacheService.putPost(nextHighestPost);
+        }
 
         NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
         responseDTO.setPostId(postId);
         responseDTO.setMessage("Post deleted successfully");
     
         return responseDTO;
+    }
+    private NewsPostModelImpl fetchNextHighestPost() {
+        // Fetch the next highest-scoring post from the database that is not in the cache
+        List<Long> cachedPostIds = cacheService.getAllPosts().stream()
+                .map(NewsPostModelImpl::getPostId)
+                .collect(Collectors.toList());
+    
+        // Fetch a single post with the highest score not currently in the cache
+        return postRepository.findTopPostByScoreExcludingIds(cachedPostIds);
     }
 
     private NewsPostsResponseDTOImpl convertToDTO(NewsPostModelImpl postModel) {
