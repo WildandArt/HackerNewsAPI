@@ -245,6 +245,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         cacheService.evictPost(postId);
 
         NewsPostModelImpl nextHighestPost = fetchNextHighestPost();
+        logger.info("nextHighestPost id is: " + nextHighestPost.getPostId());
         if (nextHighestPost != null) {
             cacheService.putPost(nextHighestPost);
         }
@@ -261,9 +262,14 @@ public class NewsPostServiceImpl implements NewsPostService {
         List<Long> cachedPostIds = cacheService.getAllPosts().stream()
                 .map(NewsPostModelImpl::getPostId)
                 .collect(Collectors.toList());
-    
-        // Fetch a single post with the highest score not currently in the cache
-        return postRepository.findTopPostByScoreExcludingIds(cachedPostIds);
+
+        logger.info(" inside nextHighestPost ");
+        
+        Pageable pageable = PageRequest.of(0, 1);
+        List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScoreExcludingIds(cachedPostIds, pageable);
+
+    // Return the first post in the list, or null if the list is empty
+    return topPosts.isEmpty() ? null : topPosts.get(0);
     }
 
     private NewsPostsResponseDTOImpl convertToDTO(NewsPostModelImpl postModel) {

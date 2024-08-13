@@ -94,9 +94,26 @@ public class CacheEntityImpl implements CacheEntity {
                 }
                 // If the new post's score is lower, it is not added to the cache
             }
+
+            logCacheContents();
         }
     }
+    public void logCacheContents() {
+        logger.info("Current Cache Contents:");
 
+        // Log each entry in the PriorityBlockingQueue (ordered by score)
+        logger.info("Priority Queue (ordered by score):");
+        for (NewsPostModelImpl post : cacheQueue) {
+            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
+        }
+
+        // Log each entry in the ConcurrentHashMap (unordered, by post ID)
+        logger.info("ConcurrentHashMap (unordered):");
+        for (Long postId : cacheMap.keySet()) {
+            NewsPostModelImpl post = cacheMap.get(postId);
+            logger.info("Post ID: {}, Title: {}, Score: {}", post.getPostId(), post.getTitle(), post.getScore());
+        }
+    }
 
     @Override
     public void putAllPosts(List<NewsPostModelImpl> allPosts) {
@@ -112,6 +129,7 @@ public class CacheEntityImpl implements CacheEntity {
             if (removedPost != null) {
                 cacheQueue.remove(removedPost);
             }
+            logCacheContents();
         }
     }
 

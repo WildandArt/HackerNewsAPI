@@ -20,7 +20,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 
-// @Builder
+//@Builder
 @Entity
 @Table(name = "posts", indexes = {
     @Index(name = "idx_score", columnList = "score")

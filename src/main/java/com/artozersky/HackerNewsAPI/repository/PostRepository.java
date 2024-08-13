@@ -41,9 +41,11 @@ List<NewsPostModelImpl> findTopPostsByScoreExcludingIds(
         Pageable pageable
 );
 
-@Query("SELECT p FROM NewsPostModelImpl p WHERE p.postId NOT IN :excludedIds ORDER BY p.score DESC")
-NewsPostModelImpl findTopPostByScoreExcludingIds(@Param("excludedIds") List<Long> excludedIds);
+// @Query("SELECT p FROM NewsPostModelImpl p WHERE p.postId NOT IN :excludedIds ORDER BY p.score DESC")
+// NewsPostModelImpl findTopPostByScoreExcludingIds(@Param("excludedIds") List<Long> excludedIds);
 
+@Query("SELECT p FROM NewsPostModelImpl p WHERE p.postId NOT IN :excludedIds ORDER BY p.score DESC, p.postId DESC")
+NewsPostModelImpl findTopPostByScoreExcludingIds(@Param("excludedIds") List<Long> excludedIds);
 
 /**
  * Finds the top posts by score and orders them by score in descending order.
