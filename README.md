@@ -13,9 +13,10 @@ The Mini Hacker News Project is an implementation of a content aggregation platf
 5. [Prerequisites](#prerequisites)
 6. [Installation](#installation)
    - [Application Properties Configuration](#application-properties-configuration)
-   - [Database Setup](#database-setup)
+   - [Database connection settings](#database-connection-settings)
+   - [User Configuration Settings](#user-configuration-settings)
    - [Docker Usage](#docker-usage)
-7. [API Usage](#api-usage)
+7. [Allowed CRUD Operations](#allowed-crud-operations)
    - [Endpoints](#endpoints)
    - [Postman Collection](#postman-collection)
    - [Error Handling](#error-handling)
@@ -98,7 +99,39 @@ Additionally, ensure that you have Maven installed to manage project dependencie
 
 ## Features
 
-## Diagram
+1. **Real-time Content Aggregation**
+   - Allows users to submit and view news posts in real-time. The application aggregates and ranks posts based on their scores, which are influenced by user votes and time elapsed.
+
+2. **Custom Caching Mechanism**
+   - Implements a high-performance caching system that stores the top posts in memory, reducing the load on the database and improving response times. The cache automatically evicts the least relevant posts when it reaches capacity and updates when posts are created, updated, or voted on.
+
+3. **Dynamic Post Ranking**
+   - Posts are ranked dynamically based on a custom scoring algorithm that takes into account both the number of votes and the time elapsed since posting. This ensures that the most relevant and popular posts are always at the top.
+
+4. **Upvote and Downvote Functionality**
+   - Users can upvote or downvote posts, which directly influences the post’s score and ranking. This feature is crucial for maintaining an accurate and community-driven ranking system.
+
+5. **Pagination and Query Optimization**
+   - Supports efficient pagination for large datasets, allowing users to navigate through posts with minimal performance impact. The application includes optimized queries to ensure quick retrieval of data.
+
+6. **Flexible Configuration**
+   - Provides configurable settings for cache size, pagination limits, update intervals, and logging levels. This allows administrators to tailor the application’s performance and behavior to their specific needs.
+
+7. **Robust Error Handling**
+   - Implements comprehensive error handling throughout the application, ensuring that users receive informative and user-friendly messages in case of issues, while also logging detailed errors for developers.
+
+8. **Responsive API Endpoints**
+   - Exposes a RESTful API that allows clients to interact with the application, including creating, retrieving, updating, voting on, and deleting posts. The API is designed to be efficient and easy to integrate with other systems.
+
+9. **Post Scheduling and Maintenance**
+   - Includes scheduled tasks that automatically update post scores and other fields at regular intervals, ensuring that the data remains fresh and relevant without manual intervention.
+
+10. **Comprehensive Testing**
+    - Includes unit tests, integration tests, and Postman collections to ensure the application is reliable, with all key functionalities thoroughly tested.
+
+
+
+## UML Diagram
    <p align="center"> 
    <img src="img/diagram.png">
    </p>
@@ -214,7 +247,49 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
-# Docker Usage Dockerfile
+
+# Database connection settings
+
+Configure your application properties to connect to the PostgreSQL database inside the Docker container. This file is typically located at src/main/resources/application.properties.
+Using Docker Version of properties file:
+```
+spring.datasource.url=jdbc:postgresql://db:5432/mydatabase
+```
+
+If you need to run the application locally without Docker, use the following settings.
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/mytestdatabase
+```
+
+# User Configuration Settings
+
+In addition to the database connection properties, you can also configure various aspects of the application, such as cache size, pagination limits, logging levels, and update intervals. Below are the key properties you can adjust:
+
+### Cache Size and Pagination Limit
+
+- `cache.size`: This property controls the maximum number of posts that can be stored in the cache. Adjusting this value allows you to optimize the cache according to your application's needs. If not set, the default value is 100
+
+  Example:
+  ```properties
+  cache.size=100
+   ```
+### Database Update Interval
+
+- `db.update.interval`: This property sets the interval at which certain fields in the database (e.g., time elapsed) are updated. The value is in milliseconds.
+
+   ```
+   db.update.interval=600000  # 10 minutes
+   # 3600000  # 1 hour in milliseconds
+   ```
+
+### Log File Path
+
+- `logging.file.name`: Specifies the path and filename for the application's log file. This allows you to direct all logs to a specific file for easy monitoring and debugging.
+   ```
+   logging.file.name=logs/myapp.log
+   ```
+
+# Docker Usage
 
 This Dockerfile builds and packages the Java application using Maven and then runs it with a lightweight JRE.
 
@@ -253,48 +328,6 @@ If you need to run tests or interact with the application, you can use:
 docker-compose run --rm app
 ```
 
-# Database connection settings
-
-Configure your application properties to connect to the PostgreSQL database inside the Docker container. This file is typically located at src/main/resources/application.properties.
-Using Docker Version of properties file:
-```
-spring.datasource.url=jdbc:postgresql://db:5432/mydatabase
-```
-
-If you need to run the application locally without Docker, use the following settings.
-```
-spring.datasource.url=jdbc:postgresql://localhost:5432/mytestdatabase
-```
-
-# User Configuration Settings
-
-In addition to the database connection properties, you can also configure various aspects of the application, such as cache size, pagination limits, logging levels, and update intervals. Below are the key properties you can adjust:
-
-### Cache Size and Pagination Limit
-
-- `cache.size`: This property controls the maximum number of posts that can be stored in the cache. Adjusting this value allows you to optimize the cache according to your application's needs. If not set, the default value is 100
-
-  Example:
-  ```properties
-  cache.size=100
-   ```
-### Database Update Interval
-
-- `db.update.interval`: This property sets the interval at which certain fields in the database (e.g., time elapsed) are updated. The value is in milliseconds.
-
-```
-db.update.interval=600000  # 10 minutes
-# 3600000  # 1 hour in milliseconds
-```
-
-### Log File Path
-
-- `logging.file.name`: Specifies the path and filename for the application's log file. This allows you to direct all logs to a specific file for easy monitoring and debugging.
-```
-logging.file.name=logs/myapp.log
-```
-
-
 ## Allowed CRUD Operations
 
 - Create new posts
@@ -305,6 +338,8 @@ logging.file.name=logs/myapp.log
 - Upvote/Downvote a post
 - Delete a post
 
+## Endpoints 
+
 ### Create a Post
 Method: POST
 URL: http://localhost:8080/api/posts
@@ -313,14 +348,14 @@ Headers:
 
 Content-Type: application/json Request Body:
 JSON
-```
-{
-  "userId": 1,
-  "author": "John Doe",
-  "url": "http://example.com/post",
-  "title": "My First Post"
-}
-```
+   ```
+   {
+   "userId": 1,
+   "author": "John Doe",
+   "url": "http://example.com/post",
+   "title": "My First Post"
+   }
+   ```
 
 Response: The response will be the newly created DTO Response post object in JSON format.
 
@@ -398,8 +433,8 @@ URL: ```http://localhost:8080/api/posts/{id} ```
 (replace {id} with the actual post ID)
 
 Response: A successful deletion typically returns a 204 No Content status code.
-
-# How to Use a Postman Collection JSON File
+# Postman collection 
+- How to Use a Postman Collection JSON File
 
 ## 1. Download the Collection JSON File
 - First, ensure you have the Postman collection JSON file saved to your local machine.
@@ -433,7 +468,11 @@ This file contains all the endpoints, requests, and configurations defined in th
 - After making changes to the collection, you can save your work by clicking the save button.
 - If you need to share your modified collection with others, you can export it by right-clicking the collection name, selecting **“Export,”** and choosing the format (usually JSON).
 
-## Contributing
+#  Error Handling
+
+# Cache Strategy
+
+## Support and Contribution
 
 Contributions to the Mini Hacker News project are welcome! Please feel free to fork the repository, make your changes, and submit a pull request.
 
