@@ -254,6 +254,7 @@ docker-compose run --rm app
 ```
 
 # Database connection settings
+
 Configure your application properties to connect to the PostgreSQL database inside the Docker container. This file is typically located at src/main/resources/application.properties.
 Using Docker Version of properties file:
 ```
@@ -264,6 +265,35 @@ If you need to run the application locally without Docker, use the following set
 ```
 spring.datasource.url=jdbc:postgresql://localhost:5432/mytestdatabase
 ```
+
+# User Configuration Settings
+
+In addition to the database connection properties, you can also configure various aspects of the application, such as cache size, pagination limits, logging levels, and update intervals. Below are the key properties you can adjust:
+
+### Cache Size and Pagination Limit
+
+- `cache.size`: This property controls the maximum number of posts that can be stored in the cache. Adjusting this value allows you to optimize the cache according to your application's needs. If not set, the default value is 100
+
+  Example:
+  ```properties
+  cache.size=100
+   ```
+### Database Update Interval
+
+- `db.update.interval`: This property sets the interval at which certain fields in the database (e.g., time elapsed) are updated. The value is in milliseconds.
+
+```
+db.update.interval=600000  # 10 minutes
+# 3600000  # 1 hour in milliseconds
+```
+
+### Log File Path
+
+- `logging.file.name`: Specifies the path and filename for the application's log file. This allows you to direct all logs to a specific file for easy monitoring and debugging.
+```
+logging.file.name=logs/myapp.log
+```
+
 
 ## Allowed CRUD Operations
 
