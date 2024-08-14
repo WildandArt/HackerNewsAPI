@@ -2,100 +2,115 @@ package com.artozersky.HackerNewsAPI.dto;
 
 import java.time.LocalDateTime;
 
-/**
- * Interface for Post Response Data Transfer Object.
- * This interface defines the structure of the data returned by the API when
- * interacting with post resources.
- */
-    public interface NewsPostsResponseDTO {
+public interface NewsPostsResponseDTO {
 
+    /**
+     * @brief Gets the time elapsed since the post was created.
+     * 
+     * @return The time elapsed in an integer format.
+     */
     public Integer getTimeElapsed();
 
+    /**
+     * @brief Sets the time elapsed since the post was created.
+     * 
+     * @param timeElapsed The time elapsed to set.
+     */
     public void setTimeElapsed(Integer timeElapsed);
 
+    /**
+     * @brief Gets the current number of votes on the post.
+     * 
+     * @return The current number of votes.
+     */
     Integer getCurrentVotes();
 
     /**
-     * Gets the ID of the post.
+     * @brief Sets the current number of votes on the post.
+     * 
+     * @param currentVotes The current number of votes to set.
+     */
+    void setCurrentVotes(Integer currentVotes);
+
+    /**
+     * @brief Gets the ID of the post.
      * 
      * @return The ID of the post.
      */
     Long getPostId();
 
     /**
-     * Gets the URL of the post.
-     * 
-     * @return The URL of the post.
-     */
-    String getUrl();
-
-    /**
-     * Gets the title of the post.
-     * 
-     * @return The title of the post.
-     */
-    String getTitle();
-
-    /**
-     * Gets the author who posted.
-     * 
-     * @return The author of the post.
-     */
-    String getPostedBy();
-
-    /**
-     * Gets the score of the post.
-     * 
-     * @return The score of the post.
-     */
-    Double getScore();
-
-    /**
-     * Gets the message related to the post action.
-     * 
-     * @return The message related to the post action.
-     */
-    String getMessage();
-
-    void setCurrentVotes(Integer currentVotes);
-
-    /**
-     * Sets the ID of the post.
+     * @brief Sets the ID of the post.
      * 
      * @param postId The ID to set for the post.
      */
     void setPostId(Long postId);
 
     /**
-     * Sets the URL of the post.
+     * @brief Gets the URL of the post.
+     * 
+     * @return The URL of the post.
+     */
+    String getUrl();
+
+    /**
+     * @brief Sets the URL of the post.
      * 
      * @param url The URL to set for the post.
      */
     void setUrl(String url);
 
     /**
-     * Sets the title of the post.
+     * @brief Gets the title of the post.
+     * 
+     * @return The title of the post.
+     */
+    String getTitle();
+
+    /**
+     * @brief Sets the title of the post.
      * 
      * @param title The title to set for the post.
      */
     void setTitle(String title);
 
     /**
-     * Sets the author of the post.
+     * @brief Gets the author who posted the post.
+     * 
+     * @return The author of the post.
+     */
+    String getPostedBy();
+
+    /**
+     * @brief Sets the author of the post.
      * 
      * @param postedBy The author to set for the post.
      */
     void setPostedBy(String postedBy);
 
     /**
-     * Sets the score of the post.
+     * @brief Gets the score of the post.
+     * 
+     * @return The score of the post.
+     */
+    Double getScore();
+
+    /**
+     * @brief Sets the score of the post.
      * 
      * @param score The score to set for the post.
      */
     void setScore(Double score);
 
     /**
-     * Sets the message related to the post action.
+     * @brief Gets the message related to the post action.
+     * 
+     * @return The message related to the post action.
+     */
+    String getMessage();
+
+    /**
+     * @brief Sets the message related to the post action.
      * 
      * @param message The message to set related to the post action.
      */
@@ -103,14 +118,14 @@ import java.time.LocalDateTime;
 
     /**
      * @brief Gets the creation timestamp of the post.
-     *
+     * 
      * @return The timestamp when the post was created.
      */
     LocalDateTime getCreatedAt();
 
     /**
      * @brief Sets the creation timestamp of the post.
-     *
+     * 
      * @param createdAt The timestamp to set for the creation of the post.
      */
     void setCreatedAt(LocalDateTime createdAt);

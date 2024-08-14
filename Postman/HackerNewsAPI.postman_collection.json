@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userId\": 1,\n    \"author\": \"Jack Black\",\n    \"url\": \"http://example.com/post7\",\n    \"title\": \"How to become a hacker\"\n  }",
+							"raw": "{\n   \"author\": \"Jack Black\",\n    \"url\": \"http://example.com/post7\",\n    \"title\": \"How to become a hacker\"\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2368,7 +2368,7 @@
 			"name": "Delete",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "delete post #12",
 					"request": {
 						"method": "DELETE",
 						"header": [],

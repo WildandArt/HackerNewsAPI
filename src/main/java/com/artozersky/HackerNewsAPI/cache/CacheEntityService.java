@@ -4,13 +4,15 @@ import java.util.List;
 import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
 /**
- * Interface for cache operations related to {@link NewsPostModelImpl} entities.
- * Provides methods for retrieving, storing, and managing cached posts.
+ * @brief Interface for cache operations related to {@link NewsPostModelImpl} entities.
+ * 
+ * This interface provides methods for retrieving, storing, and managing cached posts, 
+ * ensuring efficient access and manipulation of cached data.
  */
 public interface CacheEntityService {
 
     /**
-     * Retrieves a post from the cache by its ID.
+     * @brief Retrieves a post from the cache by its ID.
      *
      * @param postId The ID of the post to retrieve.
      * @return The cached {@link NewsPostModelImpl} if found, or null if not present in the cache.
@@ -18,45 +20,56 @@ public interface CacheEntityService {
     NewsPostModelImpl getPostById(Long postId);
 
     /**
-     * Retrieves all posts currently stored in the cache.
+     * @brief Retrieves all posts currently stored in the cache.
      *
      * @return A list of all cached {@link NewsPostModelImpl} entities.
      */
     List<NewsPostModelImpl> getAllPosts();
 
     /**
-     * Stores a single post in the cache.
+     * @brief Stores a single post in the cache.
      *
      * @param post The {@link NewsPostModelImpl} to store in the cache.
      */
     void putPost(NewsPostModelImpl post);
 
     /**
-     * Stores a list of posts in the cache.
+     * @brief Stores a list of posts in the cache.
      *
      * @param posts The list of {@link NewsPostModelImpl} entities to store in the cache.
      */
     void putAllPosts(List<NewsPostModelImpl> posts);
 
     /**
-     * Removes a post from the cache by its ID.
+     * @brief Removes a post from the cache by its ID.
      *
      * @param postId The ID of the post to evict from the cache.
      */
     void evictPost(Long postId);
 
     /**
-     * Clears all entries from the cache.
+     * @brief Clears all entries from the cache.
      */
     void clearCache();
 
     /**
-     * Checks if the cached posts are stale by comparing their elapsed time.
+     * @brief Retrieves the post with the lowest score from the cache.
      *
-     * @param cachedPosts The list of cached {@link NewsPostModelImpl} entities to check.
-     * @return True if the cached posts are stale, false otherwise.
+     * @return The {@link NewsPostModelImpl} with the lowest score.
      */
     public NewsPostModelImpl getLowestScorePost();
+
+    /**
+     * @brief Gets the current size of the cache.
+     *
+     * @return The current number of posts in the cache.
+     */
     public Integer getSize();
+
+    /**
+     * @brief Gets the maximum size limit of the cache.
+     *
+     * @return The maximum number of posts that the cache can hold.
+     */
     public Integer getMaxSize();
 }

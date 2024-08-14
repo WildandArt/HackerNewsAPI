@@ -46,16 +46,15 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private CacheEntityServiceImpl cacheService;
 
-    private Integer limit;
+    //private Integer limit;
 
     private final Integer cacheSize;
 
     private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
-    @Autowired
     public NewsPostServiceImpl(@Value("${cache.size:100}") Integer cacheSize, @Value("${posts.page.limit:400}") Integer limit) {
         this.cacheSize = cacheSize;
-        this.limit = limit;
+       // this.limit = limit;
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
     }
     
@@ -279,7 +278,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         logger.info(" inside nextHighestPost ");
 
         Pageable pageable = PageRequest.of(0, 1);
-        
+
         List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScoreExcludingIds(cachedPostIds, pageable);
 
     // Return the first post in the list, or null if the list is empty

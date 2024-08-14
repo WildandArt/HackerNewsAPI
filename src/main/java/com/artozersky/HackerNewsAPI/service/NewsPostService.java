@@ -7,21 +7,19 @@ import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
 import java.util.List;
 
-/**
- * Service interface for managing news posts.
- */
+
 public interface NewsPostService {
 
     /**
-     * Retrieves all posts.
+     * @brief Retrieves all posts with an optional limit.
      *
-     * @return A list of all {@link NewsPostModelImpl} objects.
+     * @param limit The maximum number of posts to retrieve. If null, all posts are retrieved.
+     * @return A list of all {@link NewsPostsResponseDTOImpl} objects.
      */
     List<NewsPostsResponseDTOImpl> getAllPosts(Integer limit);
 
-
     /**
-     * Saves a new post.
+     * @brief Saves a new post.
      *
      * @param postCreateDTO Data Transfer Object containing the details of the post to be created.
      * @return A {@link NewsPostsResponseDTOImpl} containing the details of the newly created post.
@@ -29,7 +27,7 @@ public interface NewsPostService {
     NewsPostsResponseDTOImpl savePost(NewsPostsCreateDTOImpl postCreateDTO);
 
     /**
-     * Updates an existing post.
+     * @brief Updates an existing post.
      *
      * @param postUpdateDTO Data Transfer Object containing the updated details of the post.
      * @param postId The ID of the post to be updated.
@@ -38,25 +36,23 @@ public interface NewsPostService {
     NewsPostsResponseDTOImpl updatePost(NewsPostsUpdateDTOImpl postUpdateDTO, Long postId);
 
     /**
-     * Adds to the vote count for a post.
+     * @brief Increments the vote count for a post.
      *
-     * @param id The ID of the post to be updated.
-     * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
+     * @param id The ID of the post to be upvoted.
      * @return A {@link NewsPostsResponseDTOImpl} containing the details of the post after the vote update.
      */
     public NewsPostsResponseDTOImpl upVote(Long id);
 
-      /**
-     * Subtracts 1 from the vote count for a post.
+    /**
+     * @brief Decrements the vote count for a post.
      *
-     * @param id The ID of the post to be updated.
-     * @param byNum The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote).
+     * @param id The ID of the post to be downvoted.
      * @return A {@link NewsPostsResponseDTOImpl} containing the details of the post after the vote update.
      */
     public NewsPostsResponseDTOImpl downVote(Long id);
 
     /**
-     * Deletes a post by its ID.
+     * @brief Deletes a post by its ID.
      *
      * @param id The ID of the post to be deleted.
      * @return A {@link NewsPostsResponseDTOImpl} confirming the deletion of the post.
@@ -64,14 +60,26 @@ public interface NewsPostService {
     NewsPostsResponseDTOImpl deletePost(Long id);
 
     /**
-     * Retrieves a post by its ID.
+     * @brief Retrieves a post by its ID.
      *
      * @param id The ID of the post to be retrieved.
      * @return A {@link NewsPostsResponseDTOImpl} containing the details of the retrieved post.
      */
     NewsPostsResponseDTOImpl getPostById(Long id);
 
+    /**
+     * @brief Retrieves the top posts based on a limit.
+     *
+     * @param limit The maximum number of top posts to retrieve.
+     * @return A list of {@link NewsPostsResponseDTOImpl} objects representing the top posts.
+     */
     public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
 
+    /**
+     * @brief Updates the time elapsed for posts and refreshes the cache.
+     * 
+     * This method is used to update the time elapsed since each post was created and to refresh the cached data
+     * used by the service.
+     */
     public void updateTimeElapsedAndRefreshCache();
 }

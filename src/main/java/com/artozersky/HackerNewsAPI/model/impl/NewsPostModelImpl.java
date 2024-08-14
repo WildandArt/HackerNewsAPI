@@ -18,9 +18,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
 
-//@Builder
 @Entity
 @Table(name = "posts", indexes = {
     @Index(name = "idx_score", columnList = "score")
@@ -61,7 +59,7 @@ public class NewsPostModelImpl implements NewsPostModel {
     private String postedBy;
 
     public NewsPostModelImpl() {
-        
+
     }
 
     public NewsPostModelImpl(Long postId, String title, String url, String postedBy, Double score, Integer currentVotes, LocalDateTime createdAt) {

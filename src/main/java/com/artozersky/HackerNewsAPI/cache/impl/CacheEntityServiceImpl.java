@@ -6,9 +6,7 @@ import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 import com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl;
 
 import java.util.List;
-import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +19,6 @@ public class CacheEntityServiceImpl implements CacheEntityService {
     private final CacheEntityImpl cacheEntity;
     private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
-
-    @Autowired
     public CacheEntityServiceImpl(@Value("${cache.size:100}") int maxSize) {
 
         this.cacheEntity = new CacheEntityImpl(maxSize);
