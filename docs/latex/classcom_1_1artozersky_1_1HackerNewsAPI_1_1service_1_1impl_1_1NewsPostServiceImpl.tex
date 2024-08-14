@@ -11,33 +11,31 @@ Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a96c60f82625ef0a8d10270054cf65ec4}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a96c60f82625ef0a8d10270054cf65ec4}} 
-{\bfseries News\+Post\+Service\+Impl} (@Value(\char`\"{}\$\{cache.\+size\+:100\}\char`\"{}) int cache\+Size, @Value(\char`\"{}\$\{posts.\+page.\+limit\+:400\}\char`\"{}) int limit)
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad8952ba26d16371e6a1fabf406b9df41}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad8952ba26d16371e6a1fabf406b9df41}} 
+{\bfseries News\+Post\+Service\+Impl} (@Value(\char`\"{}\$\{cache.\+size\+:100\}\char`\"{}) Integer cache\+Size, @Value(\char`\"{}\$\{posts.\+page.\+limit\+:400\}\char`\"{}) Integer limit)
 \item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a55a0e7267361b4e73a5c45470794f9a6}{get\+Post\+By\+Id}} (Long post\+Id)
-\item 
-List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a4824940cc7c1556743c949b1265426a7}{get\+All\+Posts}} (int limit)
-\item 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a13e5dad0e1e08757a77dd58a1249221d}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a13e5dad0e1e08757a77dd58a1249221d}} 
-List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ {\bfseries get\+Top\+Posts} (int limit)
-\item 
+\begin{DoxyCompactList}\small\item\em Retrieves a post by its ID. \end{DoxyCompactList}\item 
+Page$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a1a0f696e019a50fe0f8cd04ddafc39be}{get\+All\+Posts}} (Integer limit)
+\begin{DoxyCompactList}\small\item\em Retrieves all posts with an optional limit. \end{DoxyCompactList}\item 
+Page$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5947ed57c35d04b3e3c0ce00387a554}{get\+Top\+Posts}} (Integer limit)
+\begin{DoxyCompactList}\small\item\em Retrieves the top posts based on a limit. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a8f2716fe77762032ad7b0731a361ab7d}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a8f2716fe77762032ad7b0731a361ab7d}} 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} {\bfseries save\+Post} (@Valid \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsCreateDTOImpl}{News\+Posts\+Create\+DTOImpl}} post\+Create\+DTO)
 \item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5f6c412bb23b7957d6a81f0c40f2fd4}{update\+Post}} (\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsUpdateDTOImpl}{News\+Posts\+Update\+DTOImpl}} post\+Update\+DTO, Long post\+Id)
-\item 
+\begin{DoxyCompactList}\small\item\em Updates an existing post. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_aa1c77b070760cffdbaf239039db6cc3b}{up\+Vote}} (Long id)
-\item 
+\begin{DoxyCompactList}\small\item\em Increments the vote count for a post. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a334c15daf688511f1a396d144d479048}{down\+Vote}} (Long id)
-\item 
+\begin{DoxyCompactList}\small\item\em Decrements the vote count for a post. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_acedcba090d7894fdbf4c2d052d57d435}{delete\+Post}} (Long post\+Id)
-\item 
+\begin{DoxyCompactList}\small\item\em Deletes a post by its ID. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a71d2aba55f6dafde0c0a2ec728b2feab}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a71d2aba55f6dafde0c0a2ec728b2feab}} 
 List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ {\bfseries fetch\+Posts\+From\+Db\+If\+Needed} (int posts\+Needed, List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl}{News\+Post\+Model\+Impl}} $>$ cached\+Posts)
 \item 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_aff4308e558e9c1fa7692a54b5d6a1189}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_aff4308e558e9c1fa7692a54b5d6a1189}} 
-void {\bfseries update\+Cache\+With\+Top\+Posts} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ae376455dc7b23ad805eb31c102e5961b}{update\+Time\+Elapsed\+And\+Refresh\+Cache}} ()
+\begin{DoxyCompactList}\small\item\em Updates the time elapsed for posts and refreshes the cache. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -47,7 +45,9 @@ void {\bfseries update\+Cache\+With\+Top\+Posts} ()
 \doxysubsubsection{\texorpdfstring{deletePost()}{deletePost()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+delete\+Post (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Deletes a post by its ID.
+
+
+Deletes a post by its ID. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -67,13 +67,13 @@ Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1servi
 \doxysubsubsection{\texorpdfstring{downVote()}{downVote()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+down\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Subtracts 1 from the vote count for a post.
+
+
+Decrements the vote count for a post. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & The ID of the post to be updated. \\
-\hline
-{\em by\+Num} & The number to adjust the vote count by. Must be either 1 (upvote) or -\/1 (downvote). \\
+{\em id} & The ID of the post to be downvoted. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -83,20 +83,27 @@ A \mbox{\hyperlink{}{News\+Posts\+Response\+DTOImpl}} containing the details of 
 
 Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_ad8d258ed169ff2a1898d61d0fa176be5}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a4824940cc7c1556743c949b1265426a7}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a4824940cc7c1556743c949b1265426a7}} 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a1a0f696e019a50fe0f8cd04ddafc39be}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a1a0f696e019a50fe0f8cd04ddafc39be}} 
 \index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!getAllPosts@{getAllPosts}}
 \index{getAllPosts@{getAllPosts}!com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}}
 \doxysubsubsection{\texorpdfstring{getAllPosts()}{getAllPosts()}}
-{\footnotesize\ttfamily List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+get\+All\+Posts (\begin{DoxyParamCaption}\item[{int}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Page$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+get\+All\+Posts (\begin{DoxyParamCaption}\item[{Integer}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Retrieves all posts.
 
+
+Retrieves all posts with an optional limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & The maximum number of posts to retrieve. If null, all posts are retrieved. \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A list of all \mbox{\hyperlink{}{News\+Post\+Model\+Impl}} objects. 
+A Page of all \mbox{\hyperlink{}{News\+Posts\+Response\+DTOImpl}} objects. 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_ac0e51b356d2176476cd63a57647b17eb}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_af4dafea362457ad96e9a4a1c5b498199}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a55a0e7267361b4e73a5c45470794f9a6}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_a55a0e7267361b4e73a5c45470794f9a6}} 
 \index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!getPostById@{getPostById}}
@@ -104,7 +111,9 @@ Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1servi
 \doxysubsubsection{\texorpdfstring{getPostById()}{getPostById()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+get\+Post\+By\+Id (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Retrieves a post by its ID.
+
+
+Retrieves a post by its ID. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -118,13 +127,37 @@ A \mbox{\hyperlink{}{News\+Posts\+Response\+DTOImpl}} containing the details of 
 
 Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a5fd476de46753149745134a143ebe07f}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5947ed57c35d04b3e3c0ce00387a554}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5947ed57c35d04b3e3c0ce00387a554}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!getTopPosts@{getTopPosts}}
+\index{getTopPosts@{getTopPosts}!com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{getTopPosts()}{getTopPosts()}}
+{\footnotesize\ttfamily Page$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+get\+Top\+Posts (\begin{DoxyParamCaption}\item[{Integer}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieves the top posts based on a limit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & The maximum number of top posts to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Page of \mbox{\hyperlink{}{News\+Posts\+Response\+DTOImpl}} objects representing the top posts. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a46600440d2f1a3488a42f961b187e305}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5f6c412bb23b7957d6a81f0c40f2fd4}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ad5f6c412bb23b7957d6a81f0c40f2fd4}} 
 \index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!updatePost@{updatePost}}
 \index{updatePost@{updatePost}!com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}}
 \doxysubsubsection{\texorpdfstring{updatePost()}{updatePost()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+update\+Post (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsUpdateDTOImpl}{News\+Posts\+Update\+DTOImpl}}}]{post\+Update\+DTO,  }\item[{Long}]{post\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Updates an existing post.
+
+
+Updates an existing post. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -140,19 +173,33 @@ A \mbox{\hyperlink{}{News\+Posts\+Response\+DTOImpl}} containing the details of 
 
 Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_a9c825f5246926186d6fce0678a400a8b}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ae376455dc7b23ad805eb31c102e5961b}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_ae376455dc7b23ad805eb31c102e5961b}} 
+\index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!updateTimeElapsedAndRefreshCache@{updateTimeElapsedAndRefreshCache}}
+\index{updateTimeElapsedAndRefreshCache@{updateTimeElapsedAndRefreshCache}!com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}}
+\doxysubsubsection{\texorpdfstring{updateTimeElapsedAndRefreshCache()}{updateTimeElapsedAndRefreshCache()}}
+{\footnotesize\ttfamily void com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+update\+Time\+Elapsed\+And\+Refresh\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Updates the time elapsed for posts and refreshes the cache. 
+
+This method is used to update the time elapsed since each post was created and to refresh the cached data used by the service. 
+
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService_ae4230129afc22bde4e473762bf56fcb8}{com.\+artozersky.\+Hacker\+News\+API.\+service.\+News\+Post\+Service}}.
+
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_aa1c77b070760cffdbaf239039db6cc3b}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl_aa1c77b070760cffdbaf239039db6cc3b}} 
 \index{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}!upVote@{upVote}}
 \index{upVote@{upVote}!com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl@{com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl}}
 \doxysubsubsection{\texorpdfstring{upVote()}{upVote()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} com.\+artozersky.\+Hacker\+News\+API.\+service.\+impl.\+News\+Post\+Service\+Impl.\+up\+Vote (\begin{DoxyParamCaption}\item[{Long}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-Adds to the vote count for a post.
+
+
+Increments the vote count for a post. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em id} & The ID of the post to be updated. \\
-\hline
-{\em by\+Num} & The number to adjust the vote count by. Must be either 1 (upvote) or -\/1 (downvote). \\
+{\em id} & The ID of the post to be upvoted. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

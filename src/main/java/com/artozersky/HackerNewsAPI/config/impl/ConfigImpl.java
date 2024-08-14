@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.artozersky.HackerNewsAPI.config.Config;
 
 /**
- * Configuration class for beans like CacheManager and ModelMapper.
+ * Configuration class for beans  ModelMapper.
  */
 @Configuration
 public class ConfigImpl implements Config{

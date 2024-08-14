@@ -13,14 +13,13 @@ import java.util.Comparator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class CacheEntityImpl implements CacheEntity {
 
     private final Integer maxSize;
     private final PriorityBlockingQueue<NewsPostModelImpl> cacheQueue;
     private final ConcurrentHashMap<Long, NewsPostModelImpl> cacheMap;
     private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
-
-
 
     /**
      * Constructs a CacheEntityImpl with a specified maximum size.
@@ -85,8 +84,6 @@ public class CacheEntityImpl implements CacheEntity {
                 }
                 // If the new post's score is lower, it is not added to the cache
             }
-
-            logCacheContents();
         }
     }
     
@@ -100,23 +97,29 @@ public class CacheEntityImpl implements CacheEntity {
     @Override
     public void evict(Long key) {
         synchronized (this) {
+
             NewsPostModelImpl removedPost = cacheMap.remove(key);
             if (removedPost != null) {
+
                 cacheQueue.remove(removedPost);
+
             }
-            logCacheContents();
         }
     }
     
     @Override
     public void clear() {
+
         cacheQueue.clear();
         cacheMap.clear();
+
     }
 
     @Override
     public Integer size() {
+
         return cacheMap.size();
+        
     }
 
     public void logCacheContents() {

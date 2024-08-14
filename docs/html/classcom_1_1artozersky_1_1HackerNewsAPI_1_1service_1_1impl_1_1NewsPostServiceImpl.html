@@ -85,35 +85,42 @@ Collaboration diagram for com.artozersky.HackerNewsAPI.service.impl.NewsPostServ
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a96c60f82625ef0a8d10270054cf65ec4"><td class="memItemLeft" align="right" valign="top"><a id="a96c60f82625ef0a8d10270054cf65ec4"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NewsPostServiceImpl</b> (@Value(&quot;${cache.size:100}&quot;) int cacheSize, @Value(&quot;${posts.page.limit:400}&quot;) int limit)</td></tr>
-<tr class="separator:a96c60f82625ef0a8d10270054cf65ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8952ba26d16371e6a1fabf406b9df41"><td class="memItemLeft" align="right" valign="top"><a id="ad8952ba26d16371e6a1fabf406b9df41"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>NewsPostServiceImpl</b> (@Value(&quot;${cache.size:100}&quot;) Integer cacheSize, @Value(&quot;${posts.page.limit:400}&quot;) Integer limit)</td></tr>
+<tr class="separator:ad8952ba26d16371e6a1fabf406b9df41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55a0e7267361b4e73a5c45470794f9a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a55a0e7267361b4e73a5c45470794f9a6">getPostById</a> (Long postId)</td></tr>
+<tr class="memdesc:a55a0e7267361b4e73a5c45470794f9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a post by its ID.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a55a0e7267361b4e73a5c45470794f9a6">More...</a><br /></td></tr>
 <tr class="separator:a55a0e7267361b4e73a5c45470794f9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4824940cc7c1556743c949b1265426a7"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a4824940cc7c1556743c949b1265426a7">getAllPosts</a> (int limit)</td></tr>
-<tr class="separator:a4824940cc7c1556743c949b1265426a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13e5dad0e1e08757a77dd58a1249221d"><td class="memItemLeft" align="right" valign="top"><a id="a13e5dad0e1e08757a77dd58a1249221d"></a>
-List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getTopPosts</b> (int limit)</td></tr>
-<tr class="separator:a13e5dad0e1e08757a77dd58a1249221d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a0f696e019a50fe0f8cd04ddafc39be"><td class="memItemLeft" align="right" valign="top">Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a1a0f696e019a50fe0f8cd04ddafc39be">getAllPosts</a> (Integer limit)</td></tr>
+<tr class="memdesc:a1a0f696e019a50fe0f8cd04ddafc39be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all posts with an optional limit.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a1a0f696e019a50fe0f8cd04ddafc39be">More...</a><br /></td></tr>
+<tr class="separator:a1a0f696e019a50fe0f8cd04ddafc39be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5947ed57c35d04b3e3c0ce00387a554"><td class="memItemLeft" align="right" valign="top">Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ad5947ed57c35d04b3e3c0ce00387a554">getTopPosts</a> (Integer limit)</td></tr>
+<tr class="memdesc:ad5947ed57c35d04b3e3c0ce00387a554"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the top posts based on a limit.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ad5947ed57c35d04b3e3c0ce00387a554">More...</a><br /></td></tr>
+<tr class="separator:ad5947ed57c35d04b3e3c0ce00387a554"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2716fe77762032ad7b0731a361ab7d"><td class="memItemLeft" align="right" valign="top"><a id="a8f2716fe77762032ad7b0731a361ab7d"></a>
 <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><b>savePost</b> (@Valid <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsCreateDTOImpl.html">NewsPostsCreateDTOImpl</a> postCreateDTO)</td></tr>
 <tr class="separator:a8f2716fe77762032ad7b0731a361ab7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f6c412bb23b7957d6a81f0c40f2fd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ad5f6c412bb23b7957d6a81f0c40f2fd4">updatePost</a> (<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsUpdateDTOImpl.html">NewsPostsUpdateDTOImpl</a> postUpdateDTO, Long postId)</td></tr>
+<tr class="memdesc:ad5f6c412bb23b7957d6a81f0c40f2fd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates an existing post.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ad5f6c412bb23b7957d6a81f0c40f2fd4">More...</a><br /></td></tr>
 <tr class="separator:ad5f6c412bb23b7957d6a81f0c40f2fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1c77b070760cffdbaf239039db6cc3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#aa1c77b070760cffdbaf239039db6cc3b">upVote</a> (Long id)</td></tr>
+<tr class="memdesc:aa1c77b070760cffdbaf239039db6cc3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the vote count for a post.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#aa1c77b070760cffdbaf239039db6cc3b">More...</a><br /></td></tr>
 <tr class="separator:aa1c77b070760cffdbaf239039db6cc3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a334c15daf688511f1a396d144d479048"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a334c15daf688511f1a396d144d479048">downVote</a> (Long id)</td></tr>
+<tr class="memdesc:a334c15daf688511f1a396d144d479048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the vote count for a post.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#a334c15daf688511f1a396d144d479048">More...</a><br /></td></tr>
 <tr class="separator:a334c15daf688511f1a396d144d479048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acedcba090d7894fdbf4c2d052d57d435"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#acedcba090d7894fdbf4c2d052d57d435">deletePost</a> (Long postId)</td></tr>
+<tr class="memdesc:acedcba090d7894fdbf4c2d052d57d435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes a post by its ID.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#acedcba090d7894fdbf4c2d052d57d435">More...</a><br /></td></tr>
 <tr class="separator:acedcba090d7894fdbf4c2d052d57d435"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71d2aba55f6dafde0c0a2ec728b2feab"><td class="memItemLeft" align="right" valign="top"><a id="a71d2aba55f6dafde0c0a2ec728b2feab"></a>
 List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fetchPostsFromDbIfNeeded</b> (int postsNeeded, List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt; cachedPosts)</td></tr>
 <tr class="separator:a71d2aba55f6dafde0c0a2ec728b2feab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff4308e558e9c1fa7692a54b5d6a1189"><td class="memItemLeft" align="right" valign="top"><a id="aff4308e558e9c1fa7692a54b5d6a1189"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPosts</b> ()</td></tr>
-<tr class="separator:aff4308e558e9c1fa7692a54b5d6a1189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae376455dc7b23ad805eb31c102e5961b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ae376455dc7b23ad805eb31c102e5961b">updateTimeElapsedAndRefreshCache</a> ()</td></tr>
+<tr class="memdesc:ae376455dc7b23ad805eb31c102e5961b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the time elapsed for posts and refreshes the cache.  <a href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1impl_1_1NewsPostServiceImpl.html#ae376455dc7b23ad805eb31c102e5961b">More...</a><br /></td></tr>
+<tr class="separator:ae376455dc7b23ad805eb31c102e5961b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html">com.artozersky.HackerNewsAPI.service.NewsPostService</a></td></tr>
 <tr class="memitem:a6c510e23f825a618e1f7a76db8eb0cac inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#a6c510e23f825a618e1f7a76db8eb0cac">savePost</a> (<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsCreateDTOImpl.html">NewsPostsCreateDTOImpl</a> postCreateDTO)</td></tr>
+<tr class="memdesc:a6c510e23f825a618e1f7a76db8eb0cac inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves a new post.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#a6c510e23f825a618e1f7a76db8eb0cac">More...</a><br /></td></tr>
 <tr class="separator:a6c510e23f825a618e1f7a76db8eb0cac inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -140,7 +147,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Deletes a post by its ID.</p>
+
+<p>Deletes a post by its ID. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>The ID of the post to be deleted. </td></tr>
@@ -176,11 +184,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Subtracts 1 from the vote count for a post.</p>
+
+<p>Decrements the vote count for a post. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>The ID of the post to be updated. </td></tr>
-    <tr><td class="paramname">byNum</td><td>The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote). </td></tr>
+    <tr><td class="paramname">id</td><td>The ID of the post to be downvoted. </td></tr>
   </table>
   </dd>
 </dl>
@@ -190,8 +198,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
 
 </div>
 </div>
-<a id="a4824940cc7c1556743c949b1265426a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4824940cc7c1556743c949b1265426a7">&#9670;&nbsp;</a></span>getAllPosts()</h2>
+<a id="a1a0f696e019a50fe0f8cd04ddafc39be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a0f696e019a50fe0f8cd04ddafc39be">&#9670;&nbsp;</a></span>getAllPosts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,9 +208,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.getAllPosts </td>
+          <td class="memname">Page&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.getAllPosts </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">Integer&#160;</td>
           <td class="paramname"><em>limit</em></td><td>)</td>
           <td></td>
         </tr>
@@ -213,10 +221,17 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Retrieves all posts.</p>
-<dl class="section return"><dt>Returns</dt><dd>A list of all <a class="el" href="">NewsPostModelImpl</a> objects. </dd></dl>
 
-<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#ac0e51b356d2176476cd63a57647b17eb">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
+<p>Retrieves all posts with an optional limit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limit</td><td>The maximum number of posts to retrieve. If null, all posts are retrieved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A Page of all <a class="el" href="">NewsPostsResponseDTOImpl</a> objects. </dd></dl>
+
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#af4dafea362457ad96e9a4a1c5b498199">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
 
 </div>
 </div>
@@ -243,7 +258,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Retrieves a post by its ID.</p>
+
+<p>Retrieves a post by its ID. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>The ID of the post to be retrieved. </td></tr>
@@ -253,6 +269,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="">NewsPostsResponseDTOImpl</a> containing the details of the retrieved post. </dd></dl>
 
 <p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#a5fd476de46753149745134a143ebe07f">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
+
+</div>
+</div>
+<a id="ad5947ed57c35d04b3e3c0ce00387a554"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5947ed57c35d04b3e3c0ce00387a554">&#9670;&nbsp;</a></span>getTopPosts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Page&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.getTopPosts </td>
+          <td>(</td>
+          <td class="paramtype">Integer&#160;</td>
+          <td class="paramname"><em>limit</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the top posts based on a limit. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limit</td><td>The maximum number of top posts to retrieve. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A Page of <a class="el" href="">NewsPostsResponseDTOImpl</a> objects representing the top posts. </dd></dl>
+
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#a46600440d2f1a3488a42f961b187e305">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
 
 </div>
 </div>
@@ -289,7 +342,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Updates an existing post.</p>
+
+<p>Updates an existing post. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">postUpdateDTO</td><td>Data Transfer Object containing the updated details of the post. </td></tr>
@@ -300,6 +354,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
 <dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="">NewsPostsResponseDTOImpl</a> containing the details of the updated post. </dd></dl>
 
 <p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#a9c825f5246926186d6fce0678a400a8b">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
+
+</div>
+</div>
+<a id="ae376455dc7b23ad805eb31c102e5961b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae376455dc7b23ad805eb31c102e5961b">&#9670;&nbsp;</a></span>updateTimeElapsedAndRefreshCache()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void com.artozersky.HackerNewsAPI.service.impl.NewsPostServiceImpl.updateTimeElapsedAndRefreshCache </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the time elapsed for posts and refreshes the cache. </p>
+<p>This method is used to update the time elapsed since each post was created and to refresh the cached data used by the service. </p>
+
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html#ae4230129afc22bde4e473762bf56fcb8">com.artozersky.HackerNewsAPI.service.NewsPostService</a>.</p>
 
 </div>
 </div>
@@ -326,11 +410,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>updateCacheWithTopPos
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Adds to the vote count for a post.</p>
+
+<p>Increments the vote count for a post. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>The ID of the post to be updated. </td></tr>
-    <tr><td class="paramname">byNum</td><td>The number to adjust the vote count by. Must be either 1 (upvote) or -1 (downvote). </td></tr>
+    <tr><td class="paramname">id</td><td>The ID of the post to be upvoted. </td></tr>
   </table>
   </dd>
 </dl>

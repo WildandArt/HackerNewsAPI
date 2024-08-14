@@ -11,18 +11,18 @@ Collaboration diagram for com.\+artozersky.\+Hacker\+News\+API.\+controller.\+im
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a5dd98b619938e5f6928c2755769c61f5}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a5dd98b619938e5f6928c2755769c61f5}} 
-{\bfseries News\+Posts\+Controller\+Impl} (\mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService}{News\+Post\+Service}} post\+Service, @Value(\char`\"{}\$\{posts.\+page.\+limit\}\char`\"{}) int limit)
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a2a23ec53fa49db3d23749b6c9fb812c3}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a2a23ec53fa49db3d23749b6c9fb812c3}} 
+{\bfseries News\+Posts\+Controller\+Impl} (\mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService}{News\+Post\+Service}} post\+Service, @Value(\char`\"{}\$\{posts.\+page.\+limit\}\char`\"{}) Integer limit)
 \item 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a9c7481477b224337fe0472c970aa2932}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a9c7481477b224337fe0472c970aa2932}} 
 Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ {\bfseries create\+Post} (@Request\+Body @Validated \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsCreateDTOImpl}{News\+Posts\+Create\+DTOImpl}} post\+Create\+DTO)
 \item 
-Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_aebb28689ed7551f3acbeb3ab85241f1b}{get\+All\+Posts}} ()
+Response\+Entity$<$ Page$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a755bcf38a05df76011444188f801193b}{get\+All\+Posts}} ()
 \item 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a94aed5ac342495ada752ab453728fe51}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a94aed5ac342495ada752ab453728fe51}} 
 Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ {\bfseries get\+Post} (@Path\+Variable(\char`\"{}id\char`\"{}) Long id)
 \item 
-Response\+Entity$<$ List$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a8a8ccff92cf8c7ff1fbf29eb2fc25d41}{get\+All\+Sorted\+Posts}} ()
+Response\+Entity$<$ Page$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ $>$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a0888d51f0167a32ae728bdb42a8eabab}{get\+All\+Sorted\+Posts}} ()
 \item 
 \mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a159c0428becb2f728747301ccc7f9d17}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a159c0428becb2f728747301ccc7f9d17}} 
 Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}} $>$ {\bfseries update\+Post} (@Path\+Variable(\char`\"{}id\char`\"{}) Long id, @Request\+Body @Validated \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsUpdateDTOImpl}{News\+Posts\+Update\+DTOImpl}} post\+Update\+DTO)
@@ -39,11 +39,11 @@ Response\+Entity$<$ \mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_aebb28689ed7551f3acbeb3ab85241f1b}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_aebb28689ed7551f3acbeb3ab85241f1b}} 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a755bcf38a05df76011444188f801193b}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a755bcf38a05df76011444188f801193b}} 
 \index{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl@{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl}!getAllPosts@{getAllPosts}}
 \index{getAllPosts@{getAllPosts}!com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl@{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl}}
 \doxysubsubsection{\texorpdfstring{getAllPosts()}{getAllPosts()}}
-{\footnotesize\ttfamily Response\+Entity$<$List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+impl.\+News\+Posts\+Controller\+Impl.\+get\+All\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Response\+Entity$<$Page$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+impl.\+News\+Posts\+Controller\+Impl.\+get\+All\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Retrieves all posts.
 
@@ -52,13 +52,13 @@ A Response\+Entity containing a list of Post\+Response\+DTOs and HTTP status.
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController_a2a7b022c1441accc38f425f3c02222bf}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+News\+Posts\+Posts\+Controller}}.
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController_aa83e3534fcf2147678b079eb175afda1}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+News\+Posts\+Posts\+Controller}}.
 
-\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a8a8ccff92cf8c7ff1fbf29eb2fc25d41}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a8a8ccff92cf8c7ff1fbf29eb2fc25d41}} 
+\mbox{\Hypertarget{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a0888d51f0167a32ae728bdb42a8eabab}\label{classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl_a0888d51f0167a32ae728bdb42a8eabab}} 
 \index{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl@{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl}!getAllSortedPosts@{getAllSortedPosts}}
 \index{getAllSortedPosts@{getAllSortedPosts}!com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl@{com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl}}
 \doxysubsubsection{\texorpdfstring{getAllSortedPosts()}{getAllSortedPosts()}}
-{\footnotesize\ttfamily Response\+Entity$<$List$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+impl.\+News\+Posts\+Controller\+Impl.\+get\+All\+Sorted\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily Response\+Entity$<$Page$<$\mbox{\hyperlink{classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl}{News\+Posts\+Response\+DTOImpl}}$>$ $>$ com.\+artozersky.\+Hacker\+News\+API.\+controller.\+impl.\+News\+Posts\+Controller\+Impl.\+get\+All\+Sorted\+Posts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 Retrieves all posts sorted by score in descending order.
 
@@ -67,7 +67,7 @@ A Response\+Entity containing a list of sorted Post\+Response\+DTOs and HTTP sta
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController_a90c4026b5b3b3cf4a6c62e796bcfc9c2}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+News\+Posts\+Posts\+Controller}}.
+Implements \mbox{\hyperlink{interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController_a18724fa67f348646a38c8e2359f56060}{com.\+artozersky.\+Hacker\+News\+API.\+controller.\+News\+Posts\+Posts\+Controller}}.
 
 
 

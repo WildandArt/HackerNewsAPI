@@ -85,19 +85,50 @@ Collaboration diagram for com.artozersky.HackerNewsAPI.repository.PostRepository
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac4b3262037d88db009a2dd0b982138ce"><td class="memItemLeft" align="right" valign="top"><a id="ac4b3262037d88db009a2dd0b982138ce"></a>
-Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findAll</b> (Pageable pageable)</td></tr>
+<tr class="memitem:ac4b3262037d88db009a2dd0b982138ce"><td class="memItemLeft" align="right" valign="top">Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ac4b3262037d88db009a2dd0b982138ce">findAll</a> (Pageable pageable)</td></tr>
+<tr class="memdesc:ac4b3262037d88db009a2dd0b982138ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all posts with pagination support.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ac4b3262037d88db009a2dd0b982138ce">More...</a><br /></td></tr>
 <tr class="separator:ac4b3262037d88db009a2dd0b982138ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab94de9d8c1a13dad54bd7eae351d99f1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab94de9d8c1a13dad54bd7eae351d99f1">findAllByOrderByScoreDesc</a> ()</td></tr>
+<tr class="memdesc:ab94de9d8c1a13dad54bd7eae351d99f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds all posts ordered by score in descending order.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab94de9d8c1a13dad54bd7eae351d99f1">More...</a><br /></td></tr>
 <tr class="separator:ab94de9d8c1a13dad54bd7eae351d99f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2e9dd15e065937e006a2d40e11a2335"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab2e9dd15e065937e006a2d40e11a2335">findTopPostsByScoreExcludingIds</a> ( @Param(&quot;excludedIds&quot;) List&lt; Long &gt; excludedIds, Pageable pageable)</td></tr>
+<tr class="memdesc:ab2e9dd15e065937e006a2d40e11a2335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the top posts by score, excluding specific post IDs.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab2e9dd15e065937e006a2d40e11a2335">More...</a><br /></td></tr>
 <tr class="separator:ab2e9dd15e065937e006a2d40e11a2335"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2898468e3fe739677c87c465621b9b1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab2898468e3fe739677c87c465621b9b1">findTopPostByScoreExcludingIds</a> (@Param(&quot;excludedIds&quot;) List&lt; Long &gt; excludedIds)</td></tr>
+<tr class="memdesc:ab2898468e3fe739677c87c465621b9b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the top post by score, excluding specific post IDs.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#ab2898468e3fe739677c87c465621b9b1">More...</a><br /></td></tr>
+<tr class="separator:ab2898468e3fe739677c87c465621b9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82e1b605a75c2e034f0b04543c175e99"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#a82e1b605a75c2e034f0b04543c175e99">findTopPostsByScore</a> (Pageable pageable)</td></tr>
+<tr class="memdesc:a82e1b605a75c2e034f0b04543c175e99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the top posts by score with pagination support.  <a href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1repository_1_1PostRepository.html#a82e1b605a75c2e034f0b04543c175e99">More...</a><br /></td></tr>
 <tr class="separator:a82e1b605a75c2e034f0b04543c175e99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Repository interface for managing <a class="el" href="">NewsPostModelImpl</a> entities. Provides methods for retrieving posts based on their score and other criteria. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac4b3262037d88db009a2dd0b982138ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4b3262037d88db009a2dd0b982138ce">&#9670;&nbsp;</a></span>findAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Page&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findAll </td>
+          <td>(</td>
+          <td class="paramtype">Pageable&#160;</td>
+          <td class="paramname"><em>pageable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves all posts with pagination support. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pageable</td><td>The pagination information (e.g., page number, size). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A paginated list of <a class="el" href="">NewsPostModelImpl</a> objects. </dd></dl>
+
+</div>
+</div>
 <a id="ab94de9d8c1a13dad54bd7eae351d99f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab94de9d8c1a13dad54bd7eae351d99f1">&#9670;&nbsp;</a></span>findAllByOrderByScoreDesc()</h2>
 
@@ -112,8 +143,37 @@ Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds all posts and orders them by score in descending order.</p>
+
+<p>Finds all posts ordered by score in descending order. </p>
 <dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModelImpl</a> objects ordered by their score in descending order. </dd></dl>
+
+</div>
+</div>
+<a id="ab2898468e3fe739677c87c465621b9b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2898468e3fe739677c87c465621b9b1">&#9670;&nbsp;</a></span>findTopPostByScoreExcludingIds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_1impl_1_1NewsPostModelImpl.html">NewsPostModelImpl</a>&gt; com.artozersky.HackerNewsAPI.repository.PostRepository.findTopPostByScoreExcludingIds </td>
+          <td>(</td>
+          <td class="paramtype">@Param(&quot;excludedIds&quot;) List&lt; Long &gt;&#160;</td>
+          <td class="paramname"><em>excludedIds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the top post by score, excluding specific post IDs. </p>
+<p>This method retrieves the top post by score while excluding the posts with the specified IDs. The results are ordered by score in descending order and by post ID in descending order.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">excludedIds</td><td>A list of post IDs to exclude from the results. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A list of <a class="el" href="">NewsPostModelImpl</a> objects excluding the specified IDs, ordered by their score and post ID in descending order. </dd></dl>
 
 </div>
 </div>
@@ -132,7 +192,9 @@ Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds the top posts by score and orders them by score in descending order.</p>
+
+<p>Finds the top posts by score with pagination support. </p>
+<p>This method retrieves the top posts by score and orders them in descending order of their score, with support for pagination.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pageable</td><td>The pagination information (e.g., page size). </td></tr>
@@ -168,7 +230,9 @@ Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1model_1_
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds the top posts by score excluding specific IDs and orders them by score in descending order.</p>
+
+<p>Finds the top posts by score, excluding specific post IDs. </p>
+<p>This method retrieves the top posts by score while excluding the posts with the specified IDs. The results are ordered by score in descending order and support pagination.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">excludedIds</td><td>A list of post IDs to exclude from the results. </td></tr>

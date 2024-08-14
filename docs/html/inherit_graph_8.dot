@@ -4,9 +4,13 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node7 [label="Exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
-  Node7 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node0 [label="com.artozersky.HackerNews\lAPI.exception.CacheRetrievalException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1CacheRetrievalException.html",tooltip=" "];
-  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node9 [label="com.artozersky.HackerNews\lAPI.exception.DatabaseFetchException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1DatabaseFetchException.html",tooltip=" "];
+  Node26 [label="RuntimeException",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node26 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="com.artozersky.HackerNews\lAPI.exception.CacheLoadingException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1CacheLoadingException.html",tooltip=" "];
+  Node26 -> Node28 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="com.artozersky.HackerNews\lAPI.exception.CustomNotFoundException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1CustomNotFoundException.html",tooltip=" "];
+  Node26 -> Node29 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="com.artozersky.HackerNews\lAPI.exception.CustomServiceException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1CustomServiceException.html",tooltip=" "];
+  Node26 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node30 [label="com.artozersky.HackerNews\lAPI.exception.DownvoteNotAllowed\lException",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classcom_1_1artozersky_1_1HackerNewsAPI_1_1exception_1_1DownvoteNotAllowedException.html",tooltip=" "];
 }

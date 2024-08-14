@@ -85,19 +85,19 @@ Collaboration diagram for com.artozersky.HackerNewsAPI.controller.impl.NewsPosts
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5dd98b619938e5f6928c2755769c61f5"><td class="memItemLeft" align="right" valign="top"><a id="a5dd98b619938e5f6928c2755769c61f5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>NewsPostsControllerImpl</b> (<a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html">NewsPostService</a> postService, @Value(&quot;${posts.page.limit}&quot;) int limit)</td></tr>
-<tr class="separator:a5dd98b619938e5f6928c2755769c61f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a23ec53fa49db3d23749b6c9fb812c3"><td class="memItemLeft" align="right" valign="top"><a id="a2a23ec53fa49db3d23749b6c9fb812c3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>NewsPostsControllerImpl</b> (<a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1service_1_1NewsPostService.html">NewsPostService</a> postService, @Value(&quot;${posts.page.limit}&quot;) Integer limit)</td></tr>
+<tr class="separator:a2a23ec53fa49db3d23749b6c9fb812c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c7481477b224337fe0472c970aa2932"><td class="memItemLeft" align="right" valign="top"><a id="a9c7481477b224337fe0472c970aa2932"></a>
 ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>createPost</b> (@RequestBody @Validated <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsCreateDTOImpl.html">NewsPostsCreateDTOImpl</a> postCreateDTO)</td></tr>
 <tr class="separator:a9c7481477b224337fe0472c970aa2932"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebb28689ed7551f3acbeb3ab85241f1b"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl.html#aebb28689ed7551f3acbeb3ab85241f1b">getAllPosts</a> ()</td></tr>
-<tr class="separator:aebb28689ed7551f3acbeb3ab85241f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a755bcf38a05df76011444188f801193b"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl.html#a755bcf38a05df76011444188f801193b">getAllPosts</a> ()</td></tr>
+<tr class="separator:a755bcf38a05df76011444188f801193b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94aed5ac342495ada752ab453728fe51"><td class="memItemLeft" align="right" valign="top"><a id="a94aed5ac342495ada752ab453728fe51"></a>
 ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getPost</b> (@PathVariable(&quot;id&quot;) Long id)</td></tr>
 <tr class="separator:a94aed5ac342495ada752ab453728fe51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a8ccff92cf8c7ff1fbf29eb2fc25d41"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; List&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl.html#a8a8ccff92cf8c7ff1fbf29eb2fc25d41">getAllSortedPosts</a> ()</td></tr>
-<tr class="separator:a8a8ccff92cf8c7ff1fbf29eb2fc25d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0888d51f0167a32ae728bdb42a8eabab"><td class="memItemLeft" align="right" valign="top">ResponseEntity&lt; Page&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1impl_1_1NewsPostsControllerImpl.html#a0888d51f0167a32ae728bdb42a8eabab">getAllSortedPosts</a> ()</td></tr>
+<tr class="separator:a0888d51f0167a32ae728bdb42a8eabab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a159c0428becb2f728747301ccc7f9d17"><td class="memItemLeft" align="right" valign="top"><a id="a159c0428becb2f728747301ccc7f9d17"></a>
 ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>updatePost</b> (@PathVariable(&quot;id&quot;) Long id, @RequestBody @Validated <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsUpdateDTOImpl.html">NewsPostsUpdateDTOImpl</a> postUpdateDTO)</td></tr>
 <tr class="separator:a159c0428becb2f728747301ccc7f9d17"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -125,8 +125,8 @@ ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1
 <tr class="separator:a378610838ea4854147332c98f6ae2de7 inherit pub_methods_interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aebb28689ed7551f3acbeb3ab85241f1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebb28689ed7551f3acbeb3ab85241f1b">&#9670;&nbsp;</a></span>getAllPosts()</h2>
+<a id="a755bcf38a05df76011444188f801193b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a755bcf38a05df76011444188f801193b">&#9670;&nbsp;</a></span>getAllPosts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -135,7 +135,7 @@ ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ResponseEntity&lt;List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl.getAllPosts </td>
+          <td class="memname">ResponseEntity&lt;Page&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl.getAllPosts </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -150,12 +150,12 @@ ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1
 <p>Retrieves all posts.</p>
 <dl class="section return"><dt>Returns</dt><dd>A ResponseEntity containing a list of PostResponseDTOs and HTTP status. </dd></dl>
 
-<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController.html#a2a7b022c1441accc38f425f3c02222bf">com.artozersky.HackerNewsAPI.controller.NewsPostsPostsController</a>.</p>
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController.html#aa83e3534fcf2147678b079eb175afda1">com.artozersky.HackerNewsAPI.controller.NewsPostsPostsController</a>.</p>
 
 </div>
 </div>
-<a id="a8a8ccff92cf8c7ff1fbf29eb2fc25d41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a8ccff92cf8c7ff1fbf29eb2fc25d41">&#9670;&nbsp;</a></span>getAllSortedPosts()</h2>
+<a id="a0888d51f0167a32ae728bdb42a8eabab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0888d51f0167a32ae728bdb42a8eabab">&#9670;&nbsp;</a></span>getAllSortedPosts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,7 +164,7 @@ ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ResponseEntity&lt;List&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl.getAllSortedPosts </td>
+          <td class="memname">ResponseEntity&lt;Page&lt;<a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1_1dto_1_1impl_1_1NewsPostsResponseDTOImpl.html">NewsPostsResponseDTOImpl</a>&gt; &gt; com.artozersky.HackerNewsAPI.controller.impl.NewsPostsControllerImpl.getAllSortedPosts </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -179,7 +179,7 @@ ResponseEntity&lt; <a class="el" href="classcom_1_1artozersky_1_1HackerNewsAPI_1
 <p>Retrieves all posts sorted by score in descending order.</p>
 <dl class="section return"><dt>Returns</dt><dd>A ResponseEntity containing a list of sorted PostResponseDTOs and HTTP status. </dd></dl>
 
-<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController.html#a90c4026b5b3b3cf4a6c62e796bcfc9c2">com.artozersky.HackerNewsAPI.controller.NewsPostsPostsController</a>.</p>
+<p>Implements <a class="el" href="interfacecom_1_1artozersky_1_1HackerNewsAPI_1_1controller_1_1NewsPostsPostsController.html#a18724fa67f348646a38c8e2359f56060">com.artozersky.HackerNewsAPI.controller.NewsPostsPostsController</a>.</p>
 
 </div>
 </div>
