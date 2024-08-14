@@ -143,23 +143,30 @@ public class NewsPostServiceImpl implements NewsPostService {
         boolean isRedundant = true;
         
         if (postUpdateDTO.getTitle() != null && !postUpdateDTO.getTitle().trim().isEmpty()) {
+
             if (!postUpdateDTO.getTitle().equals(post.getTitle())) {
+
                 post.setTitle(postUpdateDTO.getTitle());
                 isRedundant = false;
+
             }
         }
         
         if (postUpdateDTO.getUrl() != null && !postUpdateDTO.getUrl().trim().isEmpty()) {
             if (!postUpdateDTO.getUrl().equals(post.getUrl())) {
+
                 post.setUrl(postUpdateDTO.getUrl());
                 isRedundant = false;
+
             }
         }
         
         if(isRedundant) {
+
             NewsPostsResponseDTOImpl responseDTO = modelMapper.map(post, NewsPostsResponseDTOImpl.class);
             responseDTO.setMessage("No changes detected. Update skipped.");
             return responseDTO;
+
         }
 
         post.onPostUpdate();
@@ -169,6 +176,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         cacheService.putPost(updatedPost);
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
+
         responseDTO.setMessage("Post updated successfully");
         
         return responseDTO;
@@ -227,6 +235,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         }
 
         NewsPostsResponseDTOImpl responseDTO = modelMapper.map(updatedPost, NewsPostsResponseDTOImpl.class);
+
         responseDTO.setMessage("Vote updated successfully");
         
         return responseDTO;
@@ -243,13 +252,19 @@ public class NewsPostServiceImpl implements NewsPostService {
         cacheService.evictPost(postId);
 
         NewsPostModelImpl nextHighestPost = fetchNextHighestPost();
+
         logger.info("nextHighestPost id is: " + nextHighestPost.getPostId());
+
         if (nextHighestPost != null) {
+
             cacheService.putPost(nextHighestPost);
+
         }
 
         NewsPostsResponseDTOImpl responseDTO = new NewsPostsResponseDTOImpl();
+
         responseDTO.setPostId(postId);
+
         responseDTO.setMessage("Post deleted successfully");
     
         return responseDTO;
@@ -264,6 +279,7 @@ public class NewsPostServiceImpl implements NewsPostService {
         logger.info(" inside nextHighestPost ");
 
         Pageable pageable = PageRequest.of(0, 1);
+        
         List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScoreExcludingIds(cachedPostIds, pageable);
 
     // Return the first post in the list, or null if the list is empty
