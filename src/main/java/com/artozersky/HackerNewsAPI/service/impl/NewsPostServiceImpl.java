@@ -4,6 +4,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,9 +29,6 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 
 @Service
 public class NewsPostServiceImpl implements NewsPostService {
@@ -45,8 +43,6 @@ public class NewsPostServiceImpl implements NewsPostService {
     private CacheEntityServiceImpl cacheService;
 
     private final Integer cacheSize;
-
-    private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
     public NewsPostServiceImpl(@Value("${cache.size:100}") Integer cacheSize, @Value("${posts.page.limit:400}") Integer limit) {
         this.cacheSize = cacheSize;
@@ -90,13 +86,8 @@ public class NewsPostServiceImpl implements NewsPostService {
         // Calculate how many posts are needed from the database
         int postsNeeded = limit - cachedPosts.size();
 
-        logger.info("cached posts size: " + cachedPosts.size());
-        logger.info("posts needed: " + postsNeeded);
-
         // Fetch additional posts from the database if needed
         List<NewsPostModelImpl> dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
-
-        logger.info("fetched from db: " + dbPosts.size());
 
         // Combine cached and database posts
         List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
@@ -253,8 +244,6 @@ public class NewsPostServiceImpl implements NewsPostService {
 
         NewsPostModelImpl nextHighestPost = fetchNextHighestPost();
 
-        logger.info("nextHighestPost id is: " + nextHighestPost.getPostId());
-
         if (nextHighestPost != null) {
 
             cacheService.putPost(nextHighestPost);
@@ -275,8 +264,6 @@ public class NewsPostServiceImpl implements NewsPostService {
         List<Long> cachedPostIds = cacheService.getAllPosts().stream()
                 .map(NewsPostModelImpl::getPostId)
                 .collect(Collectors.toList());
-
-        logger.info(" inside nextHighestPost ");
 
         Pageable pageable = PageRequest.of(0, 1);
 
@@ -334,7 +321,6 @@ public class NewsPostServiceImpl implements NewsPostService {
 
         cacheService.putAllPosts(topPosts);
         
-        logger.info("Cache updated and timeElapsed field refreshed.");
     }
 
 }

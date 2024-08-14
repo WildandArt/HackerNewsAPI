@@ -2,6 +2,7 @@ package com.artozersky.HackerNewsAPI.dto;
 
 import java.time.LocalDateTime;
 
+
 public interface NewsPostsResponseDTO {
 
     /**

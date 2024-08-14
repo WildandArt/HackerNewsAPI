@@ -4,11 +4,7 @@ import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
 
-import java.util.List;
 import org.springframework.data.domain.Page;
-import org.springframework.data.web.PagedResourcesAssembler;
-import org.springframework.hateoas.PagedModel;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 
 /**
