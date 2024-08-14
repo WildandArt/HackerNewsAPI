@@ -135,4 +135,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(DownvoteNotAllowedException.class)
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleDownvoteNotAllowedException(DownvoteNotAllowedException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
+        errorResponse.setMessage("Downvoting is not allowed: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+}
+
 }

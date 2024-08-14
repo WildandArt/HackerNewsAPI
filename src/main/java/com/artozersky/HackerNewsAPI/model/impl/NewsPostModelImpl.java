@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.URL;
 
+import com.artozersky.HackerNewsAPI.exception.DownvoteNotAllowedException;
 import com.artozersky.HackerNewsAPI.model.NewsPostModel;
 
 import jakarta.persistence.Column;
@@ -195,6 +196,10 @@ public class NewsPostModelImpl implements NewsPostModel {
 
     @Override
     public void downVote() {
+
+        if (this.currentVotes <= 0) {
+            throw new DownvoteNotAllowedException("Downvoting is not allowed when the number of votes is zero.");
+        }
         this.currentVotes--;
         this.updateScore();
     }
