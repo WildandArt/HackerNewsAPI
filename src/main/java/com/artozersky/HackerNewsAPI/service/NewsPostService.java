@@ -3,10 +3,8 @@ package com.artozersky.HackerNewsAPI.service;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
-import com.artozersky.HackerNewsAPI.model.impl.NewsPostModelImpl;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 
 public interface NewsPostService {
 
@@ -14,9 +12,9 @@ public interface NewsPostService {
      * @brief Retrieves all posts with an optional limit.
      *
      * @param limit The maximum number of posts to retrieve. If null, all posts are retrieved.
-     * @return A list of all {@link NewsPostsResponseDTOImpl} objects.
+     * @return A Page of all {@link NewsPostsResponseDTOImpl} objects.
      */
-    List<NewsPostsResponseDTOImpl> getAllPosts(Integer limit);
+    Page<NewsPostsResponseDTOImpl> getAllPosts(Integer limit);
 
     /**
      * @brief Saves a new post.
@@ -71,9 +69,10 @@ public interface NewsPostService {
      * @brief Retrieves the top posts based on a limit.
      *
      * @param limit The maximum number of top posts to retrieve.
-     * @return A list of {@link NewsPostsResponseDTOImpl} objects representing the top posts.
+     * @return A Page of {@link NewsPostsResponseDTOImpl} objects representing the top posts.
      */
-    public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
+    // public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
+    public Page<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
 
     /**
      * @brief Updates the time elapsed for posts and refreshes the cache.

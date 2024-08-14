@@ -4,9 +4,12 @@ import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
 
-import org.springframework.http.ResponseEntity;
-
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 
 /**
  * Interface for PostController that defines the API endpoints for managing posts.
@@ -26,15 +29,15 @@ public interface NewsPostsPostsController {
      *
      * @return A ResponseEntity containing a list of PostResponseDTOs and HTTP status.
      */
-    ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllPosts();
+    ResponseEntity<Page<NewsPostsResponseDTOImpl>> getAllPosts();
 
     /**
      * Retrieves all posts sorted by score in descending order.
      *
      * @return A ResponseEntity containing a list of sorted PostResponseDTOs and HTTP status.
      */
-    ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllSortedPosts();
-
+    //ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllSortedPosts();
+    public ResponseEntity<Page<NewsPostsResponseDTOImpl>> getAllSortedPosts();
     /**
      * Updates an existing post.
      *

@@ -1,10 +1,11 @@
 package com.artozersky.HackerNewsAPI.controller.impl;
 
-import java.util.List;
-
+//import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsUpdateDTOImpl;
 import com.artozersky.HackerNewsAPI.service.NewsPostService;
 
+
 @RestController
 @RequestMapping("/api/posts")
 @Validated
@@ -34,7 +36,6 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     
     public NewsPostsControllerImpl(NewsPostService postService, @Value("${posts.page.limit}") Integer limit) {
         this.postService = postService;
-        //this.modelMapper = modelMapper;
         this.limit = limit;
 
     }
@@ -42,17 +43,21 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     @PostMapping("")
     @Override
     public ResponseEntity<NewsPostsResponseDTOImpl> createPost(@RequestBody @Validated NewsPostsCreateDTOImpl postCreateDTO) {
+
         NewsPostsResponseDTOImpl createdPost = postService.savePost(postCreateDTO);
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
+
     }
     @GetMapping("")
     @Override
-    public ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllPosts() {
+    public ResponseEntity<Page<NewsPostsResponseDTOImpl>> getAllPosts() {
 
-        List<NewsPostsResponseDTOImpl> posts = postService.getAllPosts(limit);
+        Page<NewsPostsResponseDTOImpl> posts = postService.getAllPosts(limit);
 
         if (posts.isEmpty()) {
+
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
         }
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
@@ -60,16 +65,18 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
     @GetMapping("/{id}")
     @Override
     public ResponseEntity<NewsPostsResponseDTOImpl> getPost(@PathVariable("id") Long id) {
-        NewsPostsResponseDTOImpl gotPost = postService.getPostById(id);
-        return new ResponseEntity<>(gotPost, HttpStatus.OK);
-    }
 
+        NewsPostsResponseDTOImpl gotPost = postService.getPostById(id);
+
+        return new ResponseEntity<>(gotPost, HttpStatus.OK);
+
+    }
 
     @GetMapping("/top_posts")
     @Override
-    public ResponseEntity<List<NewsPostsResponseDTOImpl>> getAllSortedPosts() {
+    public ResponseEntity<Page<NewsPostsResponseDTOImpl>> getAllSortedPosts() {
 
-        List<NewsPostsResponseDTOImpl> posts = postService.getTopPosts(limit);
+        Page<NewsPostsResponseDTOImpl> posts = postService.getTopPosts(limit);
 
         if (posts.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

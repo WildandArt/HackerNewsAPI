@@ -4,13 +4,11 @@ import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-
-// import org.hibernate.engine.internal.Collections;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
@@ -46,15 +44,12 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private CacheEntityServiceImpl cacheService;
 
-    //private Integer limit;
-
     private final Integer cacheSize;
 
     private static final Logger logger = LoggerFactory.getLogger(NewsPostServiceImpl.class);
 
     public NewsPostServiceImpl(@Value("${cache.size:100}") Integer cacheSize, @Value("${posts.page.limit:400}") Integer limit) {
         this.cacheSize = cacheSize;
-       // this.limit = limit;
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
     }
     
@@ -74,7 +69,7 @@ public class NewsPostServiceImpl implements NewsPostService {
     }
 
     @Override
-    public List<NewsPostsResponseDTOImpl> getAllPosts(Integer limit) {
+    public Page<NewsPostsResponseDTOImpl> getAllPosts(Integer limit) {
 
         if (limit <= 0) {
             throw new CustomServiceException("Limit must be greater than 0");
@@ -83,36 +78,42 @@ public class NewsPostServiceImpl implements NewsPostService {
         Pageable pageable = PageRequest.of(0, limit);
         Page<NewsPostModelImpl> page = postRepository.findAll(pageable);
 
-        return page.getContent().stream()
-                .map(this::convertToDTO)
-                .collect(Collectors.toList());
+        return page.map(this::convertToDTO);
     }
 
     @Override
-    public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit) {
+    public Page<NewsPostsResponseDTOImpl> getTopPosts(Integer limit) {
 
+        // Fetch posts from the cache
         List<NewsPostModelImpl> cachedPosts = cacheService.getAllPosts();
 
+        // Calculate how many posts are needed from the database
         int postsNeeded = limit - cachedPosts.size();
 
-        logger.info("cached posts size: " + cachedPosts.size() );
+        logger.info("cached posts size: " + cachedPosts.size());
+        logger.info("posts needed: " + postsNeeded);
 
-        logger.info("posts needed: " + postsNeeded );
+        // Fetch additional posts from the database if needed
+        List<NewsPostModelImpl> dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
 
-        List<NewsPostModelImpl> dbPosts = new ArrayList<>();
+        logger.info("fetched from db: " + dbPosts.size());
 
-        dbPosts = fetchPostsFromDbIfNeeded(postsNeeded, cachedPosts);
-
-        logger.info("fetched from db: " + dbPosts.size() );
-
+        // Combine cached and database posts
         List<NewsPostModelImpl> combinedPosts = new ArrayList<>(cachedPosts);
         combinedPosts.addAll(dbPosts);
 
-        return combinedPosts.stream()
+        // Convert combined posts to DTOs
+        List<NewsPostsResponseDTOImpl> combinedDTOs = combinedPosts.stream()
             .map(this::convertToDTO)
             .collect(Collectors.toList());
-}
 
+        // Create a Pageable object to represent the page request
+        Pageable pageable = PageRequest.of(0, limit);
+
+        // Return the DTOs wrapped in a PageImpl
+        return new PageImpl<>(combinedDTOs, pageable, combinedDTOs.size());
+
+    }
     
     @Override
     public NewsPostsResponseDTOImpl savePost(@Valid NewsPostsCreateDTOImpl postCreateDTO) {
