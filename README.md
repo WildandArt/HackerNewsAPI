@@ -162,7 +162,81 @@ Before you can run this project, ensure that you have the following software ins
 
 5. **PostgreSQL**:
    - Version: `15.3` or compatible.
-   - This project uses PostgreSQL as the database. You can run it via Docker or install it locally. Ensure you have the correct environment variables set for `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`.
+   - This project uses PostgreSQL as the database. You can either run PostgreSQL via Docker or install it locally on your machine.
+   - **Docker Approach**: You can include PostgreSQL in your Docker setup. Ensure you have the correct environment variables set for `POSTGRES_DB`, `POSTGRES_USER`, and `POSTGRES_PASSWORD`.
+   - **Local Installation**: If you prefer to install PostgreSQL locally, download it from the [official PostgreSQL website](https://www.postgresql.org/download/). After installation, ensure the PostgreSQL service is running, and you've created the necessary database and user. For help with installation and setup, refer to the [PostgreSQL Documentation](https://www.postgresql.org/docs/).
+   - **Environment Variables**: Ensure you set up the following environment variables:
+     - `POSTGRES_DB`: Name of your database
+     - `POSTGRES_USER`: Your PostgreSQL username
+     - `POSTGRES_PASSWORD`: Your PostgreSQL password
+      ### Basic PostgreSQL Commands
+
+   - **Connecting to PostgreSQL**:
+     ```bash
+     psql -U username -d database
+     ```
+     If PostgreSQL is installed locally, you can connect to the default database:
+     ```bash
+     psql -U postgres
+     ```
+
+   - **Checking PostgreSQL Status**:
+     - **On Ubuntu/Debian**:
+       ```bash
+       sudo systemctl status postgresql
+       ```
+     - **On macOS with Homebrew**:
+       ```bash
+       brew services list | grep postgresql
+       ```
+     - **On Windows**:
+       ```powershell
+       Get-Service -Name postgresql*
+       ```
+
+   - **Starting PostgreSQL**:
+     - **On Ubuntu/Debian**:
+       ```bash
+       sudo systemctl start postgresql
+       ```
+     - **On macOS with Homebrew**:
+       ```bash
+       brew services start postgresql
+       ```
+     - **On Windows**:
+       ```powershell
+       Start-Service -Name postgresql*
+       ```
+
+   - **Stopping PostgreSQL**:
+     - **On Ubuntu/Debian**:
+       ```bash
+       sudo systemctl stop postgresql
+       ```
+     - **On macOS with Homebrew**:
+       ```bash
+       brew services stop postgresql
+       ```
+     - **On Windows**:
+       ```powershell
+       Stop-Service -Name postgresql*
+       ```
+
+   - **Restarting PostgreSQL**:
+     - **On Ubuntu/Debian**:
+       ```bash
+       sudo systemctl restart postgresql
+       ```
+     - **On macOS with Homebrew**:
+       ```bash
+       brew services restart postgresql
+       ```
+     - **On Windows**:
+       ```powershell
+       Restart-Service -Name postgresql*
+       ```
+
+   For more help with PostgreSQL installation and management, refer to the [official PostgreSQL documentation](https://www.postgresql.org/docs/).
 
 6. **Git**:
    - Version: `2.0` or higher.
@@ -293,8 +367,6 @@ In addition to the database connection properties, you can also configure variou
 
 # Docker Usage
 
-This Dockerfile builds and packages the Java application using Maven and then runs it with a lightweight JRE.
-
 ```dockerfile
 # First stage: Build the application with Maven
 FROM eclipse-temurin:17-jdk-ubi9-minimal as build
@@ -309,7 +381,7 @@ RUN mvn dependency:go-offline
 
 # Copy the source code and build the application
 COPY src ./src
-RUN mvn clean test
+RUN mvn package -DskipTests
 
 # Second stage: Use a lightweight JRE to run the application
 FROM eclipse-temurin:17-jre-ubi9-minimal
@@ -317,17 +389,49 @@ WORKDIR /app
 COPY --from=build /app/target/HackerNewsAPI-0.0.1-SNAPSHOT.jar app.jar
 ENTRYPOINT ["java","-jar","app.jar"]
 ```
-To build and start the application using Docker Compose, run the following commands:
+
+## Using Docker Compose to Run the Application
+
+### 1. **Pull the Docker Image**
+
+First, you need to pull the Docker image from Docker Hub.
 ```
-docker-compose up --build
+docker pull artozersky/hackernewsapi_app:latest
 ```
-Alternatively, if the containers are already built, just start them
+### 2. **Navigate to the Project Directory**
+
+Make sure you're in the directory where your docker-compose.yml file is located. Then, start the application in detached mode:
 ```
-docker-compose up
+docker-compose up -d
 ```
-If you need to run tests or interact with the application, you can use:
+### 4. **Verify Running Containers**
+
+To verify that your containers are running, use the following command:
 ```
-docker-compose run --rm app
+docker-compose ps
+```
+### 5. **Access the Application**
+The application should now be accessible via your web browser at:
+```
+http://localhost:8181/api/posts
+```
+### 6. **Stop the Running Services**
+
+To stop all running services, use the following command:
+```
+docker-compose down
+
+```
+### 7. **Restart the Application**
+To restart the application after stopping it, simply use:
+```
+docker-compose up -d
+```
+### 8. **Remove Docker Images**
+
+If you need to remove the images used by Docker Compose, you can do so after stopping the services:
+```
+docker-compose down --rmi all
 ```
 
 ## Allowed CRUD Operations
