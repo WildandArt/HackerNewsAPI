@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
-import com.artozersky.HackerNewsAPI.dto.PostResponseDTO;
+import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
 
 import jakarta.validation.ConstraintViolationException;
 
@@ -33,8 +33,8 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity containing a PostResponseDTO with an error message and an HTTP status code
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<PostResponseDTO> handleGeneralException(Exception e) {
-        PostResponseDTO errorResponse = new PostResponseDTO();
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleGeneralException(Exception e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
         errorResponse.setMessage("An unexpected error occurred: " + e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -46,8 +46,8 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity containing a PostResponseDTO with an error message and an HTTP status code
      */
     @ExceptionHandler(DataAccessException.class)
-    public ResponseEntity<PostResponseDTO> handleDataAccessException(DataAccessException e) {
-        PostResponseDTO errorResponse = new PostResponseDTO();
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleDataAccessException(DataAccessException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
         errorResponse.setMessage("Database error: " + e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     } 
@@ -82,8 +82,8 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity containing a PostResponseDTO with an error message and an HTTP status code
      */
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<PostResponseDTO> handleConstraintViolation(ConstraintViolationException e) {
-        PostResponseDTO errorResponse = new PostResponseDTO();
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleConstraintViolation(ConstraintViolationException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
         errorResponse.setMessage("Constraint violation: " + e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
@@ -95,8 +95,8 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity containing a PostResponseDTO with an error message and an HTTP status code
      */
     @ExceptionHandler(CustomNotFoundException.class)
-    public ResponseEntity<PostResponseDTO> handleNotFoundException(CustomNotFoundException e) {
-        PostResponseDTO errorResponse = new PostResponseDTO();
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleNotFoundException(CustomNotFoundException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
         errorResponse.setMessage(e.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
@@ -108,9 +108,38 @@ public class GlobalExceptionHandler {
      * @return a ResponseEntity containing a PostResponseDTO with an error message and an HTTP status code
      */
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<PostResponseDTO> handleDataIntegrityViolation(DataIntegrityViolationException e) {
-        PostResponseDTO errorResponse = new PostResponseDTO();
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleDataIntegrityViolation(DataIntegrityViolationException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
         errorResponse.setMessage("Data integrity violation: " + e.getMostSpecificCause().getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(CacheRetrievalException.class)
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleCacheRetrievalException(CacheRetrievalException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
+        errorResponse.setMessage("Error retrieving data from cache: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+}
+
+    @ExceptionHandler(DatabaseFetchException.class)
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleDatabaseFetchException(DatabaseFetchException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
+        errorResponse.setMessage("Error fetching data from the database: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(CustomServiceException.class)
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleCustomServiceException(CustomServiceException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
+        errorResponse.setMessage("An error occurred: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(DownvoteNotAllowedException.class)
+    public ResponseEntity<NewsPostsResponseDTOImpl> handleDownvoteNotAllowedException(DownvoteNotAllowedException e) {
+        NewsPostsResponseDTOImpl errorResponse = new NewsPostsResponseDTOImpl();
+        errorResponse.setMessage("Downvoting is not allowed: " + e.getMessage());
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+}
+
 }

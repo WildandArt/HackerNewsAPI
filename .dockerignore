@@ -1,0 +1,28 @@
+# Ignore the node_modules directory (for Node.js projects)
+node_modules
+
+# Ignore the target directory (for Maven/Java projects)
+target
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore all log files
+*.log
+
+# Ignore .env files (potentially containing sensitive information)
+#.env
+
+# Ignore the Git directory and Git files
+.git
+.gitignore
+
+# Ignore Dockerfile itself (commonly used to avoid copying the Dockerfile into the image)
+Dockerfile
+
+# Ignore IDE/editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

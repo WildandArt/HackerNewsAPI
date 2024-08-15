@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug ="true">
+    <property name="LOG_FILE" value="${logging.file.name}" />
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss},[%X{serverIp}],[%X{serverName}],[%thread],%-5level,%logger{36},%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

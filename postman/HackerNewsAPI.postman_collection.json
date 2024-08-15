@@ -1,0 +1,2419 @@
+{
+	"info": {
+		"_postman_id": "dc337a22-995f-4d4c-a238-ca3bbc8a5839",
+		"name": "HackerNewsAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7030144"
+	},
+	"item": [
+		{
+			"name": "GET Requests",
+			"item": [
+				{
+					"name": "GET /posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /posts/11",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Post Requests",
+			"item": [
+				{
+					"name": "Jack Black",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"author\": \"Jack Black\",\n    \"url\": \"http://example.com/post7\",\n    \"title\": \"How to become a hacker\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jane smith",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jane Smith\",\n    \"url\": \"http://example.com/post2\",\n    \"title\": \"Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jill White",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jill White\",\n    \"url\": \"http://example.com/post4\",\n    \"title\": \"Interesting Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alice smith",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sarah Connor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Michael Johnson",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Emily Davis",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "art black",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "savePostCacheTest",
+			"item": [
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=23,downvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=24,downvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=25, downvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jon Johnson",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Added new post to the cache where all the posts have lower rank should make it the top ranked post"
+		},
+		{
+			"name": "DeletePostCacheTest",
+			"item": [
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jimmmy Crown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete 30",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Deletion of Post that is in cache would lead to its disappearance from cache and replacement by another post from DB"
+		},
+		{
+			"name": "UpdatePostTest",
+			"item": [
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Janny White",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=1,downvote Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=2,downvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=3,downvote Copy 2",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=4,downvote Copy 3",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post_id 1 Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"url\": \"http://newupdatedurl.com/post6\",\n           \"title\": \"Updated Again Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Updated post score makes it higher due to the formula. Among other posts with low rank this should become the top 1 post."
+		},
+		{
+			"name": "downvotePostCacheTest Copy",
+			"item": [
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=3,downvote Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testing Strategy would be, downvote all of the posts,\n\nfor example: post1: -1, post2: -3, post3: -5.\n\nnegative number represents a downvote.\n\nAfter that downvote the highest ranked post and observe closesly how by GET top_posts it will move in the order. first cache.size posts are in cache. You can reassure that by the logger messages."
+		},
+		{
+			"name": "upvotePostCacheTest",
+			"item": [
+				{
+					"name": "Jim Brown",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \n    \"postedBy\": \"Jim Brown\",\n    \"url\": \"http://example.com/post3\",\n    \"title\": \"Yet Another Post\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post5\",\n    \"title\": \"Final Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jack Black 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"postedBy\": \"Jack Black\",\n    \"url\": \"http://example.com/post8\",\n    \"title\": \"#1 Post\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=2, upvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get /posts/sorted Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/top_posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"top_posts"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The act of upvoting should increase the score of the post and either bring it into the cache if its score is high enough relatively to others OR change the order of posts if its already in the cache."
+		},
+		{
+			"name": "Update Post Requests",
+			"item": [
+				{
+					"name": "Update post 6 only title",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"title\": \"Updated Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post6 field url",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"url\": \"http://updated.com/post6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post_id 6 2 fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"url\": \"http://newupdatedurl.com/post6\",\n           \"title\": \"Updated Again Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post_id 15 2 fields Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"url\": \"http://newupdatedurl.com/post6\",\n           \"title\": \"Updated Again Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post_id 18",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"url\": \"http://newupdatedurl.com/post6\",\n           \"title\": \"Updated Again Title\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update post_id 6, send null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n           \"title\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upvote/Downvote",
+			"item": [
+				{
+					"name": "post_d=2,upvote",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/upvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=16,upvote Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/upvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"upvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=18,downvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=19,upvote",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_d=19,upvote Copy",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/downvote",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"downvote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "delete post #12",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete 16",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/posts/2/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"2",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "savePostCacheTest",
+			"item": []
+		}
+	]
+}
