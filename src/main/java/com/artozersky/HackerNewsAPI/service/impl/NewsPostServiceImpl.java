@@ -1,7 +1,6 @@
 package com.artozersky.HackerNewsAPI.service.impl;
 
 import java.util.List;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
@@ -13,9 +12,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.Scheduled;
-
 import com.artozersky.HackerNewsAPI.cache.impl.CacheEntityServiceImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsCreateDTOImpl;
 import com.artozersky.HackerNewsAPI.dto.impl.NewsPostsResponseDTOImpl;
@@ -42,11 +38,10 @@ public class NewsPostServiceImpl implements NewsPostService {
     @Autowired
     private CacheEntityServiceImpl cacheService;
 
-    private final Integer cacheSize;
-
     public NewsPostServiceImpl(@Value("${cache.size:100}") Integer cacheSize, @Value("${posts.page.limit:400}") Integer limit) {
-        this.cacheSize = cacheSize;
+
         this.cacheService = new CacheEntityServiceImpl(cacheSize);
+        
     }
     
     @Override
@@ -301,26 +296,5 @@ public class NewsPostServiceImpl implements NewsPostService {
         return new ArrayList<>();
     }
 
-    @Async
-    @Scheduled(fixedRateString = "${db.update.interval:3600000}")  // default 3600000 milliseconds = 1 hour
-    public void updateTimeElapsedAndRefreshCache() {
-        // Fetch all posts from the database
-        List<NewsPostModelImpl> allPosts = postRepository.findAll();
-
-        // Update the timeElapsed field for each post
-        for (NewsPostModelImpl post : allPosts) {
-            Integer newTimeElapsed = (int) java.time.Duration.between(post.getCreatedAt(), LocalDateTime.now()).toHours();
-            post.setTimeElapsed(newTimeElapsed);
-            postRepository.save(post);
-        }
-
-        // Clear and refresh the cache
-        cacheService.clearCache();
-
-        List<NewsPostModelImpl> topPosts = postRepository.findTopPostsByScore(PageRequest.of(0, cacheSize));
-
-        cacheService.putAllPosts(topPosts);
-        
-    }
 
 }

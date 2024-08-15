@@ -80,5 +80,5 @@ public interface NewsPostService {
      * This method is used to update the time elapsed since each post was created and to refresh the cached data
      * used by the service.
      */
-    public void updateTimeElapsedAndRefreshCache();
+    //public void updateTimeElapsedAndRefreshCache();
 }

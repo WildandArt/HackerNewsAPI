@@ -1,124 +1,586 @@
-2024-08-14T21:53:53.070+03:00  INFO 3518655 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 3518655 (started by art in /home/art/dev/java/HackerNewsAPI)
-2024-08-14T21:53:53.070+03:00 DEBUG 3518655 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
-2024-08-14T21:53:53.071+03:00  INFO 3518655 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
-2024-08-14T21:53:53.496+03:00  INFO 3518655 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-14T21:53:53.525+03:00  INFO 3518655 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 1 JPA repository interface.
-2024-08-14T21:53:53.870+03:00  INFO 3518655 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-14T21:53:53.901+03:00  INFO 3518655 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-08-14T21:53:53.917+03:00  INFO 3518655 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-08-14T21:53:54.049+03:00  INFO 3518655 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-08-14T21:53:54.061+03:00  INFO 3518655 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-14T21:53:54.229+03:00  INFO 3518655 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5cd701e4
-2024-08-14T21:53:54.230+03:00  INFO 3518655 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-14T21:53:54.246+03:00  WARN 3518655 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-14T21:53:54.648+03:00  INFO 3518655 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-08-14T21:53:54.670+03:00  INFO 3518655 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-14T21:53:54.683+03:00  INFO 3518655 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
-2024-08-14T21:53:54.786+03:00  WARN 3518655 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
-2024-08-14T21:53:54.819+03:00  INFO 3518655 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-08-14T21:53:55.138+03:00  WARN 3518655 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-08-14T21:53:55.602+03:00  INFO 3518655 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
-2024-08-14T21:53:55.646+03:00  INFO 3518655 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 2.738 seconds (process running for 3.217)
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.277+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.278+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.279+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.280+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.281+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.282+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.283+03:00  INFO 3518655 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
-2024-08-14T21:53:56.286+03:00  INFO 3518655 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-08-14T21:53:56.288+03:00  INFO 3518655 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-08-14T21:53:56.293+03:00  INFO 3518655 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:27:21.424+03:00  INFO 3560053 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 3560053 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:27:21.428+03:00 DEBUG 3560053 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:27:21.429+03:00  INFO 3560053 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:27:21.859+03:00  INFO 3560053 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:27:21.888+03:00  INFO 3560053 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+2024-08-15T06:27:22.293+03:00  INFO 3560053 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:27:22.342+03:00  INFO 3560053 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:27:22.362+03:00  INFO 3560053 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:27:22.523+03:00  INFO 3560053 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:27:22.535+03:00  INFO 3560053 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:27:22.699+03:00  INFO 3560053 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19739906
+2024-08-15T06:27:22.700+03:00  INFO 3560053 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:27:22.716+03:00  WARN 3560053 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:27:23.112+03:00  INFO 3560053 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:27:23.136+03:00  INFO 3560053 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:27:23.149+03:00  INFO 3560053 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:27:23.258+03:00  WARN 3560053 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:27:23.295+03:00  INFO 3560053 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.736+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.737+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.738+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.739+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.740+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.741+03:00  INFO 3560053 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:24.844+03:00  WARN 3560053 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:27:25.265+03:00  INFO 3560053 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:27:25.306+03:00  INFO 3560053 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 4.081 seconds (process running for 4.551)
+2024-08-15T06:27:25.628+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.628+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.628+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.628+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.628+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.629+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.630+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.631+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.632+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.633+03:00  INFO 3560053 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:25.636+03:00  INFO 3560053 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:27:25.638+03:00  INFO 3560053 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:27:25.643+03:00  INFO 3560053 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:27:34.331+03:00  INFO 3560473 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 3560473 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:27:34.332+03:00 DEBUG 3560473 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:27:34.332+03:00  INFO 3560473 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:27:34.703+03:00  INFO 3560473 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:27:34.728+03:00  INFO 3560473 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interface.
+2024-08-15T06:27:35.041+03:00  INFO 3560473 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-15T06:27:35.047+03:00  INFO 3560473 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T06:27:35.047+03:00  INFO 3560473 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T06:27:35.080+03:00  INFO 3560473 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T06:27:35.081+03:00  INFO 3560473 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 727 ms
+2024-08-15T06:27:35.223+03:00  INFO 3560473 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:27:35.242+03:00  INFO 3560473 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:27:35.255+03:00  INFO 3560473 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:27:35.364+03:00  INFO 3560473 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:27:35.375+03:00  INFO 3560473 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:27:35.513+03:00  INFO 3560473 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@26712838
+2024-08-15T06:27:35.513+03:00  INFO 3560473 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:27:35.528+03:00  WARN 3560473 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:27:35.871+03:00  INFO 3560473 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:27:35.894+03:00  INFO 3560473 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:27:35.905+03:00  INFO 3560473 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:27:35.994+03:00  WARN 3560473 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:27:36.022+03:00  INFO 3560473 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.689+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.690+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.691+03:00  INFO 3560473 --- [main] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:36.724+03:00  WARN 3560473 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:27:37.072+03:00  INFO 3560473 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:27:37.106+03:00  INFO 3560473 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-15T06:27:37.114+03:00  INFO 3560473 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.984 seconds (process running for 3.123)
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.272+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.273+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:27:37.274+03:00  INFO 3560473 --- [task-1] c.a.H.service.impl.NewsPostServiceImpl   : inside put fiunction
+2024-08-15T06:31:03.768+03:00  INFO 3560473 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:31:03.770+03:00  INFO 3560473 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:31:03.776+03:00  INFO 3560473 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:31:09.279+03:00  INFO 3563148 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 3563148 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:31:09.280+03:00 DEBUG 3563148 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:31:09.281+03:00  INFO 3563148 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:31:09.739+03:00  INFO 3563148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:31:09.769+03:00  INFO 3563148 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 1 JPA repository interface.
+2024-08-15T06:31:10.103+03:00  INFO 3563148 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:31:10.136+03:00  INFO 3563148 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:31:10.151+03:00  INFO 3563148 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:31:10.283+03:00  INFO 3563148 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:31:10.294+03:00  INFO 3563148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:31:10.453+03:00  INFO 3563148 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3eb0fd88
+2024-08-15T06:31:10.454+03:00  INFO 3563148 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:31:10.471+03:00  WARN 3563148 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:31:10.860+03:00  INFO 3563148 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:31:10.885+03:00  INFO 3563148 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:31:10.898+03:00  INFO 3563148 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:31:11.007+03:00  WARN 3563148 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:31:11.043+03:00  INFO 3563148 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:31:12.057+03:00  WARN 3563148 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:31:12.518+03:00  INFO 3563148 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:31:12.564+03:00  INFO 3563148 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 3.457 seconds (process running for 3.959)
+2024-08-15T06:31:12.915+03:00  INFO 3563148 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:31:12.917+03:00  INFO 3563148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:31:12.921+03:00  INFO 3563148 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:31:16.994+03:00  INFO 3563456 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 3563456 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:31:16.994+03:00 DEBUG 3563456 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:31:16.995+03:00  INFO 3563456 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:31:17.352+03:00  INFO 3563456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:31:17.376+03:00  INFO 3563456 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interface.
+2024-08-15T06:31:17.695+03:00  INFO 3563456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-15T06:31:17.701+03:00  INFO 3563456 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T06:31:17.702+03:00  INFO 3563456 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T06:31:17.731+03:00  INFO 3563456 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T06:31:17.731+03:00  INFO 3563456 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 717 ms
+2024-08-15T06:31:17.873+03:00  INFO 3563456 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:31:17.894+03:00  INFO 3563456 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:31:17.906+03:00  INFO 3563456 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:31:18.020+03:00  INFO 3563456 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:31:18.031+03:00  INFO 3563456 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:31:18.177+03:00  INFO 3563456 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@47fca3cc
+2024-08-15T06:31:18.178+03:00  INFO 3563456 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:31:18.195+03:00  WARN 3563456 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:31:18.544+03:00  INFO 3563456 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:31:18.566+03:00  INFO 3563456 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:31:18.578+03:00  INFO 3563456 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:31:18.665+03:00  WARN 3563456 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:31:18.695+03:00  INFO 3563456 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:31:19.364+03:00  WARN 3563456 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:31:19.712+03:00  INFO 3563456 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:31:19.748+03:00  INFO 3563456 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-15T06:31:19.756+03:00  INFO 3563456 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.963 seconds (process running for 3.108)
+2024-08-15T06:36:29.440+03:00  INFO 3563456 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:36:29.442+03:00  INFO 3563456 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:36:29.448+03:00  INFO 3563456 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:38:57.498+03:00  INFO 3584501 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 3584501 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:38:57.499+03:00 DEBUG 3584501 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:38:57.500+03:00  INFO 3584501 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:38:58.067+03:00  INFO 3584501 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:38:58.099+03:00  INFO 3584501 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2024-08-15T06:38:58.478+03:00  INFO 3584501 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:38:58.529+03:00  INFO 3584501 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:38:58.553+03:00  INFO 3584501 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:38:58.705+03:00  INFO 3584501 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:38:58.718+03:00  INFO 3584501 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:38:58.902+03:00  INFO 3584501 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@75add13c
+2024-08-15T06:38:58.903+03:00  INFO 3584501 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:38:58.924+03:00  WARN 3584501 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:38:59.343+03:00  INFO 3584501 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:38:59.367+03:00  INFO 3584501 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:38:59.381+03:00  INFO 3584501 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:38:59.527+03:00  WARN 3584501 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:38:59.591+03:00  INFO 3584501 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:39:00.570+03:00  WARN 3584501 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:39:01.058+03:00  INFO 3584501 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:39:01.097+03:00  INFO 3584501 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 3.804 seconds (process running for 4.376)
+2024-08-15T06:39:01.435+03:00  INFO 3584501 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:39:01.437+03:00  INFO 3584501 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:39:01.443+03:00  INFO 3584501 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:39:06.243+03:00  INFO 3584841 --- [main] c.a.H.HackerNewsAPIApplication           : Starting HackerNewsAPIApplication using Java 22.0.1 with PID 3584841 (/home/art/dev/java/HackerNewsAPI/target/classes started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:39:06.244+03:00 DEBUG 3584841 --- [main] c.a.H.HackerNewsAPIApplication           : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:39:06.244+03:00  INFO 3584841 --- [main] c.a.H.HackerNewsAPIApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:39:06.603+03:00  INFO 3584841 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:39:06.628+03:00  INFO 3584841 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interface.
+2024-08-15T06:39:06.950+03:00  INFO 3584841 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2024-08-15T06:39:06.956+03:00  INFO 3584841 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-15T06:39:06.956+03:00  INFO 3584841 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-15T06:39:06.985+03:00  INFO 3584841 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-15T06:39:06.986+03:00  INFO 3584841 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 722 ms
+2024-08-15T06:39:07.125+03:00  INFO 3584841 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:39:07.145+03:00  INFO 3584841 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:39:07.158+03:00  INFO 3584841 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:39:07.272+03:00  INFO 3584841 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:39:07.283+03:00  INFO 3584841 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:39:07.422+03:00  INFO 3584841 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@47fca3cc
+2024-08-15T06:39:07.422+03:00  INFO 3584841 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:39:07.437+03:00  WARN 3584841 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:39:07.792+03:00  INFO 3584841 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:39:07.815+03:00  INFO 3584841 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:39:07.826+03:00  INFO 3584841 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:39:07.916+03:00  WARN 3584841 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:39:07.945+03:00  INFO 3584841 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:39:08.599+03:00  WARN 3584841 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:39:08.967+03:00  INFO 3584841 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:39:09.008+03:00  INFO 3584841 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2024-08-15T06:39:09.016+03:00  INFO 3584841 --- [main] c.a.H.HackerNewsAPIApplication           : Started HackerNewsAPIApplication in 2.969 seconds (process running for 3.107)
+2024-08-15T06:40:22.959+03:00  INFO 3584841 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:40:22.961+03:00  INFO 3584841 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:40:22.969+03:00  INFO 3584841 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-08-15T06:44:29.761+03:00  INFO 3588571 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Starting HackerNewsAPIApplicationTests using Java 22.0.1 with PID 3588571 (started by art in /home/art/dev/java/HackerNewsAPI)
+2024-08-15T06:44:29.762+03:00 DEBUG 3588571 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-15T06:44:29.763+03:00  INFO 3588571 --- [main] c.a.H.HackerNewsAPIApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2024-08-15T06:44:30.326+03:00  INFO 3588571 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-15T06:44:30.356+03:00  INFO 3588571 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interface.
+2024-08-15T06:44:30.711+03:00  INFO 3588571 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-15T06:44:30.748+03:00  INFO 3588571 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-15T06:44:30.765+03:00  INFO 3588571 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-15T06:44:30.909+03:00  INFO 3588571 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-15T06:44:30.921+03:00  INFO 3588571 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-15T06:44:31.099+03:00  INFO 3588571 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@224d537d
+2024-08-15T06:44:31.100+03:00  INFO 3588571 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-15T06:44:31.116+03:00  WARN 3588571 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-15T06:44:31.560+03:00  INFO 3588571 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-15T06:44:31.587+03:00  INFO 3588571 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:44:31.603+03:00  INFO 3588571 --- [main] c.a.H.c.impl.LogFilePathCheckerImpl      : Log file path /home/art/dev/java/HackerNewsAPI/logs/myapp.log is valid and writable.
+2024-08-15T06:44:31.727+03:00  WARN 3588571 --- [main] o.s.c.annotation.AnnotationTypeMapping   : Support for convention-based annotation attribute overrides is deprecated and will be removed in Spring Framework 6.2. Please annotate the following attributes in @org.hibernate.validator.constraints.URL with appropriate @AliasFor declarations: [regexp, payload, flags, groups, message]
+2024-08-15T06:44:31.769+03:00  INFO 3588571 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-08-15T06:44:32.737+03:00  WARN 3588571 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-15T06:44:33.208+03:00  INFO 3588571 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2024-08-15T06:44:33.245+03:00  INFO 3588571 --- [main] c.a.H.HackerNewsAPIApplicationTests      : Started HackerNewsAPIApplicationTests in 3.666 seconds (process running for 4.198)
+2024-08-15T06:44:33.580+03:00  INFO 3588571 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-15T06:44:33.581+03:00  INFO 3588571 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-08-15T06:44:33.586+03:00  INFO 3588571 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

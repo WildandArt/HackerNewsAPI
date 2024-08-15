@@ -57,7 +57,6 @@ public class CacheEntityImpl implements CacheEntity {
     @Override
     public void put(Long key, NewsPostModelImpl value) {
         synchronized (this) {
-            logger.info("inside put fiunction");
             // Check if the post is already in the cache
             if (cacheMap.containsKey(key)) {
                 // Evict the old version of the post from both the map and the queue
