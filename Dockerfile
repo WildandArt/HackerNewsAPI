@@ -8,7 +8,7 @@ RUN microdnf install -y maven
 
 # Copy the pom.xml file and download dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline
+RUN mvn dependency:resolve
 
 # Copy the source code and build the application
 COPY src ./src

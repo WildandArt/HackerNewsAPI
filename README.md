@@ -1,5 +1,13 @@
 
 
+[![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.java.com)
+[![Docker](https://img.shields.io/badge/Docker-27.1.2-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-42.7.3-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.3.2-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Postman](https://img.shields.io/badge/Postman-8.0.7-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](https://www.postman.com)
+[![Maven](https://img.shields.io/badge/Maven-3.6.3-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)](https://maven.apache.org/)
+
+
 # Welcome to the Mini Hacker News project
 
 The Mini Hacker News Project is an implementation of a content aggregation platform similar to Hacker News. This project provides a RESTful API for managing posts, allowing users to submit, view, and interact with various news articles. The core feature of the application is its caching system, which stores posts in a cache for efficient retrieval while ensuring that cached data remains fresh and relevant. By implementing a caching strategy, the project optimizes performance and reduces the load on the database, making it capable of handling high traffic scenarios typical of popular news aggregation sites.
