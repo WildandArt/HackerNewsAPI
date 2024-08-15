@@ -35,3 +35,5 @@ build/
 .env
 logs/
 *.log
+### docs
+docs/
