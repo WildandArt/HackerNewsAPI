@@ -56,7 +56,7 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
 
         if (posts.isEmpty()) {
 
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(Page.empty(), HttpStatus.OK);
 
         }
         return new ResponseEntity<>(posts, HttpStatus.OK);
@@ -79,7 +79,7 @@ public class NewsPostsControllerImpl implements NewsPostsPostsController{
         Page<NewsPostsResponseDTOImpl> posts = postService.getTopPosts(limit);
 
         if (posts.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(Page.empty(), HttpStatus.OK);
         }
 
         return new ResponseEntity<>(posts, HttpStatus.OK);

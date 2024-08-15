@@ -74,11 +74,4 @@ public interface NewsPostService {
     // public List<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
     public Page<NewsPostsResponseDTOImpl> getTopPosts(Integer limit);
 
-    /**
-     * @brief Updates the time elapsed for posts and refreshes the cache.
-     * 
-     * This method is used to update the time elapsed since each post was created and to refresh the cached data
-     * used by the service.
-     */
-    //public void updateTimeElapsedAndRefreshCache();
 }

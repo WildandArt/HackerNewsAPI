@@ -89,19 +89,19 @@ public interface NewsPostsResponseDTO {
      */
     void setPostedBy(String postedBy);
 
-    /**
-     * @brief Gets the score of the post.
-     * 
-     * @return The score of the post.
-     */
-    Double getScore();
+    // /**
+    //  * @brief Gets the score of the post.
+    //  * 
+    //  * @return The score of the post.
+    //  */
+    // Double getScore();
 
-    /**
-     * @brief Sets the score of the post.
-     * 
-     * @param score The score to set for the post.
-     */
-    void setScore(Double score);
+    // /**
+    //  * @brief Sets the score of the post.
+    //  * 
+    //  * @param score The score to set for the post.
+    //  */
+    // void setScore(Double score);
 
     /**
      * @brief Gets the message related to the post action.

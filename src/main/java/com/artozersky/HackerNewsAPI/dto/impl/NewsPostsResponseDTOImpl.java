@@ -52,10 +52,10 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
         return postedBy;
     }
 
-    @Override
-    public Double getScore() {
-        return score;
-    }
+    // @Override
+    // public Double getScore() {
+    //     return score;
+    // }
 
     @Override
     public String getMessage() {
@@ -88,10 +88,10 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
         this.postedBy = postedBy;
     }
 
-    @Override
-    public void setScore(Double score) {
-        this.score = score;
-    }
+    // @Override
+    // public void setScore(Double score) {
+    //     this.score = score;
+    // }
 
     @Override
     public void setMessage(String message) {
