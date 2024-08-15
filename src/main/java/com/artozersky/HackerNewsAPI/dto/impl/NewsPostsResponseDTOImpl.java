@@ -10,7 +10,6 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
     private String title;
     private String url;
     private String postedBy;
-    private Double score;
     private Integer currentVotes;
     private String message;
     private LocalDateTime createdAt;
@@ -52,10 +51,6 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
         return postedBy;
     }
 
-    // @Override
-    // public Double getScore() {
-    //     return score;
-    // }
 
     @Override
     public String getMessage() {
@@ -87,11 +82,6 @@ public class NewsPostsResponseDTOImpl implements NewsPostsResponseDTO {
     public void setPostedBy(String postedBy) {
         this.postedBy = postedBy;
     }
-
-    // @Override
-    // public void setScore(Double score) {
-    //     this.score = score;
-    // }
 
     @Override
     public void setMessage(String message) {
